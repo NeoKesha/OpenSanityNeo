@@ -1,6 +1,7 @@
 echo off
 cls
 echo %time%
+mkdir bin
 ..\runtime\bin\CL.Exe libdbg.cpp /I..\runtime\include\ /Fo"bin\\libdbg.obj" /c  /EHsc
 ..\runtime\bin\CL.Exe libtwindata.c /I..\runtime\include\ /Fo"bin\\libtwindata.obj" /c
 ..\runtime\bin\ML.Exe /coff /c /Fo"bin\\main.obj" /Zf /nologo main.asm
