@@ -10,7 +10,7 @@ Right now this decompilation isn't perfect, giving crashes and glitches there an
 # How to build
 
 1. Clone repository
-2. In the same folder where repository is create "runtime" folder and put NeoXBOX (downloadable from files) contents there
+2. In the same folder where repository is create "runtime" folder and put NeoXBOX ([download](https://drive.google.com/file/d/1uI7oD7KNx8ic8WATWsD50uFFylAJhy6a)) contents there
 3. Additionally, one level higher, create "Content" folder and put Crash Twinsanity game files there. After build, default.xbe will be copied there
 4. Additionally, edit build.bat to your preferences
 5. Additionally, add "Levels\School\Madame\ambercor" line at command.txt to boot into something "playable" and avoid crash at beach into cutscene.
@@ -19,6 +19,7 @@ Right now this decompilation isn't perfect, giving crashes and glitches there an
 NeoXBOX is a mini Xbox SDK bundle, containing Visual Studio tools (Assembler, Compiler, Linker), XBE image builder and XboxSDK libs and include.
 It's lightweight and don't require Windows XP virtual machine to work.
 XboxSDK contents are aquired from Internet Archive: https://archive.org/details/xbox-sdks
+Download bundle: https://drive.google.com/file/d/1uI7oD7KNx8ic8WATWsD50uFFylAJhy6a
 # When will you release Ghidra project and Code Generation script?
 
 Ghidra project and Code Generation script will be released after code generation process will be ironed out, fixing crashes and glitches it produces right now.
