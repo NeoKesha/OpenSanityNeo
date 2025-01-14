@@ -1,0 +1,12 @@
+DBG_CHECK1 db "CHECK1", 0, 0, 0, 0
+DBG_CHECK2 db "CHECK2", 0, 0, 0, 0
+DBG_ENTER db "ENTER", 0, 0, 0, 0
+DBG_EXIT db "EXIT", 0, 0, 0, 0
+DBG_VAL db "VAL", 0, 0, 0, 0
+
+DBG_HIT1 db "HIT1", 0, 0, 0, 0
+DBG_HIT2 db "HIT2", 0, 0, 0, 0
+DBG_HIT3 db "HIT3", 0, 0, 0, 0
+DBG_HIT4 db "HIT4", 0, 0, 0, 0
+DBG_HIT5 db "HIT5", 0, 0, 0, 0
+DBG_HIT6 db "HIT6", 0, 0, 0, 0
