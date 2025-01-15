@@ -1,6 +1,7 @@
 #include <XTL.h>
 #include <stl.h>
 #include <SIGNAL.H>
+#include "libdbg.h"
 
 char* debugPrintString;
 int debugPrintValue;
@@ -10,20 +11,6 @@ int debugFPUStatus;
 void* _this;
 void* EBP;
 void* ESP;
-void ClearLog();
-void __stdcall Backtrace();
-void __stdcall DbgInit();
-void Log(char* buffer);
-extern "C" void DebugPrint(char*);
-
-extern "C" char* VTABLE_NAMES_START;
-extern "C" char* VTABLE_NAMES_END;
-extern "C" char* RDATA_START;
-extern "C" char* RDATA_END;
-extern "C" void* FUNC_NAMES_START;
-extern "C" void* FUNC_NAMES_END;
-extern "C" void* RETURN_TO_FUNC_MAP_START;
-extern "C" void* RETURN_TO_FUNC_MAP_END;
 
 set <char*> functionNames;
 map <void*, char*> addressToName;
@@ -107,7 +94,7 @@ void __stdcall DbgInit() {
 void __stdcall RegisterFunction() {
 	if (functionNames.find(debugPrintString) == functionNames.end()) {
 		functionNames.insert(debugPrintString);
-		sprintf(buffer, "%s\nFPU Status on enter: 0x%X\n", debugPrintString, debugFPUStatus);
+		sprintf(buffer, "%s\n", debugPrintString, debugFPUStatus);
 		Log(buffer);
 	}
 }
