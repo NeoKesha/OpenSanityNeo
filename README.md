@@ -1,6 +1,6 @@
 # OpenSanityNeo
  
-OpenSanityNeo is Crash Twinsanity (XBOX) decompilation\disassembly project, made using Ghidra and code generation script.
+OpenSanityNeo is Crash Twinsanity (XBOX PAL) decompilation\disassembly project, made using Ghidra and code generation script.
 Goal of this project is to achieve accurate disassembly of the game able to be built back, then one by one manually replace assembly with C\C++
 Code Generation script and Ghidra project are not published yet, but will be later.
 # What it can do? What's the catch?
