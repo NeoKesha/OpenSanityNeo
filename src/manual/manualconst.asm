@@ -3,6 +3,9 @@ DBG_CHECK2 db "CHECK2", 0, 0, 0, 0
 DBG_ENTER db "ENTER", 0, 0, 0, 0
 DBG_EXIT db "EXIT", 0, 0, 0, 0
 DBG_VAL db "VAL", 0, 0, 0, 0
+DBG_PHYS_ALLOC db "PHYS ADDR", 0, 0, 0, 0
+DBG_ALLOC db "VIRTUAL ADDR", 0, 0, 0, 0
+DBG_ALLOC_ALIGNED db "VIRTUAL ADDR ALIGNED", 0, 0, 0, 0
 DBG_FSTATUS db "FPU STATUS", 0, 0, 0, 0
 
 DBG_HIT1 db "HIT1", 0, 0, 0, 0
@@ -11,3 +14,5 @@ DBG_HIT3 db "HIT3", 0, 0, 0, 0
 DBG_HIT4 db "HIT4", 0, 0, 0, 0
 DBG_HIT5 db "HIT5", 0, 0, 0, 0
 DBG_HIT6 db "HIT6", 0, 0, 0, 0
+
+DAT_002a4ccc dword 0Ah

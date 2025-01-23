@@ -7,6 +7,7 @@
 	
 DEBUG_ENABLED = 1
 DEBUG_REG_FUNC = 1
+DEBUG_FPU_MONITOR = 1
 ;;DEBUG_THIS_PRINT = 1
 ;;DEBUG_CALLLOG = 1
 .686p
@@ -26,5 +27,6 @@ DEBUG_REG_FUNC = 1
 	INCLUDE manual\manualconst.asm
 	INCLUDE data\const.asm
 .data
+	DBG_FPU_STATE db 512 dup(0)
 	INCLUDE data\data.asm
 end

@@ -1,5 +1,6 @@
 #include <XTL.h>
 #include <stl.h>
+#include "libtwin.h"
 #ifdef DEBUG
 #include "..\debug\libdbg.h"
 extern char buffer[1024];

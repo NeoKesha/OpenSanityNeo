@@ -4,6 +4,7 @@
 #include "libdbg.h"
 
 char* debugPrintString;
+char* debugCurrentFunction;
 int debugPrintValue;
 float debugPrintValueFloat;
 int debugPrintValueArrayCnt;
@@ -90,18 +91,21 @@ void __stdcall DbgInit() {
 	inited = 1;
 }
 
-
+void __stdcall DbgCalllog() {
+	sprintf(buffer, "%s\n", debugCurrentFunction);
+	Log(buffer);
+}
 void __stdcall RegisterFunction() {
-	if (functionNames.find(debugPrintString) == functionNames.end()) {
-		functionNames.insert(debugPrintString);
-		sprintf(buffer, "%s\n", debugPrintString, debugFPUStatus);
+	if (functionNames.find(debugCurrentFunction) == functionNames.end()) {
+		functionNames.insert(debugCurrentFunction);
+		sprintf(buffer, "%s\n", debugCurrentFunction);
 		Log(buffer);
 	}
 }
 void __stdcall CheckFPUState() {
-	if (debugFPUStatus != 0x00) {
-		functionNames.insert(debugPrintString);
-		sprintf(buffer, "%s\nFPU Status on enter: 0x%X\n", debugPrintString, debugFPUStatus);
+	if (debugFPUStatus != 0x00 && debugFPUStatus != 0x20) {
+		functionNames.insert(debugCurrentFunction);
+		sprintf(buffer, "%s FPU Status on enter: 0x%X\n", debugCurrentFunction, debugFPUStatus);
 		Log(buffer);
 	}
 }
@@ -142,12 +146,12 @@ void __stdcall Backtrace() {
 
 void __stdcall PrintThisInfo() {
 	void** vtablePtr = (void**)_this;
-	if (functionNames.find(debugPrintString) == functionNames.end()) {
-		functionNames.insert(debugPrintString);
+	if (functionNames.find(debugCurrentFunction) == functionNames.end()) {
+		functionNames.insert(debugCurrentFunction);
 		if ((char*)vtablePtr >= RDATA_START && (char*)vtablePtr < RDATA_END) {
 			char* vtName = (char*)vtablePtr[-1];
 			if (vtName >= VTABLE_NAMES_START && vtName < VTABLE_NAMES_END && ((int)vtName) % 4 == 0) {
-				sprintf(buffer, "Function name: %s, ", debugPrintString);
+				sprintf(buffer, "Function name: %s, ", debugCurrentFunction);
 				Log(buffer);
 				sprintf(buffer, "VTable name: %s\n", vtName);
 				Log(buffer);
