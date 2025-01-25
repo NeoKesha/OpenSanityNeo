@@ -20,6 +20,40 @@ NeoXBOX is a mini Xbox SDK bundle, containing Visual Studio tools (Assembler, Co
 It's lightweight and don't require Windows XP virtual machine to work.
 XboxSDK contents are aquired from Internet Archive: https://archive.org/details/xbox-sdks
 Download bundle: https://drive.google.com/file/d/1uI7oD7KNx8ic8WATWsD50uFFylAJhy6a
+# List of "playable" chunks
+Add one of those chunks names to "command.txt". Coreent, or Antagony, is most playable right now (skip all checkpoints and disable autosave)
+- Levels\AltEarth\Hub\Coreent
+- Levels\AltEarth\Hub\Alta
+- Levels\AltEarth\Hub\Slipjoin
+- Levels\AltEarth\Core\Corea
+- Levels\AltEarth\Core\Coreb
+- Levels\AltEarth\Core\Corec
+- Levels\AltEarth\Core\Cored
+- Levels\AltEarth\Lab\Altlabin
+- Levels\AltEarth\Lab\Labext
+- Levels\AltEarth\RockSlid\l10start
+- Levels\School\Boiler\boiler_3
+- Levels\School\Boiler\boiler_4
+- Levels\School\Boiler\boiler_5
+- Levels\School\Boiler\boiler_6
+- Levels\School\Crash\crgpa02
+- Levels\School\Crash\crgpa04
+- Levels\School\Crash\crgpa08
+- Levels\School\Madame\Ambercor
+- Levels\School\Madame\Amberly
+- Levels\School\Sch_Hub\schship
+- Levels\School\Sch_Hub\slk01
+- Levels\Ice\HighSeas\gpa01
+- Levels\Ice\HighSeas\gpa02
+- Levels\Ice\HighSeas\gpa04
+- Levels\Ice\IceClimb\ukatrans
+- Levels\Ice\SlipSlide\l05start
+- Levels\Ice\Hub\airship
+- Levels\Ice\Hub\Labint
+- Levels\Ice\Hub\shipent
+- Levels\Earth\Hub\hubd
+- Levels\Earth\Hub\pier
+
 # When will you release Ghidra project and Code Generation script?
 
 Ghidra project and Code Generation script will be released after code generation process will be ironed out, fixing crashes and glitches it produces right now.
