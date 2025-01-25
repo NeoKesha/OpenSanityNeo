@@ -5,6 +5,8 @@
 	OPTION PROC:PUBLIC
 	OPTION DOTNAME
 	
+;;USE_MOVAPS_HACK = 1
+	
 .686p
 .xmm
 .model flat, stdcall
