@@ -35478,8 +35478,8 @@ Path STRUCT
     field5_0x1c DWORD 0
     field6_0x20 Vector4 {}
     field7_0x30 Vector4 {}
-    field8_0x40 DWORD 0
-    field9_0x44 DWORD 0
+    field8_0x40 REAL4 0.0;
+    field9_0x44 REAL4 0.0;
     num DWORD 0
     field11_0x4c DWORD 0
 Path ENDS

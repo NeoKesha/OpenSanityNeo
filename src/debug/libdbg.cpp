@@ -41,6 +41,47 @@ char thunk(int a, int b, int c) {
 	return 0;
 }
 
+class Vector4 {
+public:
+	float x, y, z, w;
+};
+class Matrix4 {
+public:
+	Vector4 v1, v2, v3, v4;
+};
+
+class Path {
+public:
+	void* vftable;
+	int cnt;
+	Vector4* points;
+};
+
+void __stdcall foo() {
+	Path* path = (Path*)debugPrintValue;
+	sprintf(buffer, "POINTS: %d\n", path->cnt);
+	Log(buffer);
+	for (int i = 0; i < path->cnt; ++i) {
+		sprintf(buffer, "(%f %f %f %f)\n", path->points[i].x, path->points[i].y, path->points[i].z, path->points[i].w);
+		Log(buffer);
+	}
+}
+
+void __stdcall PrintVector4() {
+	Vector4* vec = (Vector4*)debugPrintValue;
+	sprintf(buffer, "(%f %f %f %f)\n", vec->x, vec->y, vec->z, vec->w);
+	Log(buffer);
+}
+
+void __stdcall PrintMatrix4() {
+	Matrix4* mat = (Matrix4*)debugPrintValue;
+	sprintf(buffer, "(%f %f %f %f)\n", mat->v1.x, mat->v1.y, mat->v1.z, mat->v1.w); Log(buffer);
+	sprintf(buffer, "(%f %f %f %f)\n", mat->v2.x, mat->v2.y, mat->v2.z, mat->v2.w); Log(buffer);
+	sprintf(buffer, "(%f %f %f %f)\n", mat->v3.x, mat->v3.y, mat->v3.z, mat->v3.w); Log(buffer);
+	sprintf(buffer, "(%f %f %f %f)\n", mat->v4.x, mat->v4.y, mat->v4.z, mat->v4.w); Log(buffer);
+	
+}
+
 LONG WINAPI HandleCrash(PEXCEPTION_POINTERS pExceptionInfo) {
 	sprintf(buffer, "CRASH!\n", debugPrintString);
 	Log(buffer);
@@ -102,7 +143,17 @@ void __stdcall RegisterFunction() {
 		Log(buffer);
 	}
 }
+
+double get_st0() {
+    double value;
+    __asm {
+        fst value
+    }
+    return value;
+}
+
 void __stdcall CheckFPUState() {
+	double st0 = get_st0();
 	if (debugFPUStatus != 0x00 && debugFPUStatus != 0x20) {
 		functionNames.insert(debugCurrentFunction);
 		sprintf(buffer, "%s FPU Status on enter: 0x%X\n", debugCurrentFunction, debugFPUStatus);
