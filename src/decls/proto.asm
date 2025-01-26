@@ -1,13 +1,13 @@
-EXTERN PASCAL ??_C@_01DGKLNCNG@R?$AA@ : DWORD
-EXTERN D3D__TextureState : DWORD
-EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
-EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
-EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
-EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
 EXTERN PASCAL ??_C@_01BBODEMC@G?$AA@ : DWORD
+EXTERN PASCAL ??_C@_01DGKLNCNG@R?$AA@ : DWORD
 EXTERN PASCAL ??_C@_04CNFFLDFF@BLUE?$AA@ : DWORD
 EXTERN D3D__RenderState : DWORD
+EXTERN D3D__TextureState : DWORD
+EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
 EXTERN D3D__DirtyFlags : DWORD
+EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
+EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
+EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN PASCAL ??_C@_03FNPLCCOA@RED?$AA@ : DWORD
 EXTERN ObOpenObjectByName@16 :PROC
 EXTERN NtQueryFullAttributesFile@8 :PROC
@@ -82,7 +82,6 @@ EXTERN MmGetPhysicalAddress@4 :PROC
 EXTERN NtQueryInformationFile@20 :PROC
 EXTERN RtlCompareMemoryUlong@12 :PROC
 EXTERN KeSaveFloatingPointState@4 :PROC
-EXTERN NtWriteFileGather@32 :PROC
 EXTERN NtAllocateVirtualMemory@20 :PROC
 EXTERN MmLockUnlockPhysicalPage@8 :PROC
 EXTERN NtCreateIoCompletion@16 :PROC
@@ -95,7 +94,6 @@ EXTERN NtRemoveIoCompletion@20 :PROC
 EXTERN NtFsControlFile@40 :PROC
 EXTERN SYSCALL @KfRaiseIrql@4 :PROC
 EXTERN NtSetIoCompletion@20 :PROC
-EXTERN NtReadFileScatter@32 :PROC
 EXTERN ExFreePool@4 :PROC
 EXTERN LaunchDataPage :PROC
 EXTERN KeQueryInterruptTime@0 :PROC
@@ -130,7 +128,6 @@ EXTERN NtSetTimerEx@32 :PROC
 EXTERN KeStallExecutionProcessor@4 :PROC
 EXTERN NtSignalAndWaitForSingleObjectEx@20 :PROC
 EXTERN KeInitializeInterrupt@28 :PROC
-EXTERN NtWaitForSingleObjectEx@16 :PROC
 EXTERN KeConnectInterrupt@4 :PROC
 EXTERN KeDelayExecutionThread@12 :PROC
 EXTERN KeDisconnectInterrupt@4 :PROC
@@ -159,262 +156,255 @@ EXTERN RtlTimeToTimeFields@8 :PROC
 EXTERN RtlEqualString@12 :PROC
 EXTERN IoDeleteSymbolicLink@4 :PROC
 EXTERN MmQueryStatistics@4 :PROC
-EXTERN XGetLanguage@0 :PROC
-EXTERN lstrcpyW@8 :PROC
-EXTERN lstrcpynW@12 :PROC
-EXTERN XGetSectionHandleA@4 :PROC
-EXTERN XLoadSectionByHandle@4 :PROC
-EXTERN XFreeSectionByHandle@4 :PROC
-EXTERN mainXapiStartup@4 :PROC
-EXTERN xCompareStringW@20 :PROC
-EXTERN GetLastError@0 :PROC
-EXTERN SetLastError@4 :PROC
-EXTERN XapiSetLastNTError@4 :PROC
-EXTERN GetOverlappedResult@16 :PROC
-EXTERN XapiValidateDiskPartitionEx@8 :PROC
-EXTERN XapiCopySectionToFile@16 :PROC
-EXTERN XapiMapLetterToDirectory@24 :PROC
-EXTERN XapiSetupPerTitleDriveLetters@8 :PROC
-EXTERN XapiBootToDash@12 :PROC
-EXTERN XapiValidateDiskPartition@4 :PROC
-EXTERN XapiInitProcess@0 :PROC
-EXTERN _rtinit@0 :PROC
-EXTERN XapiRestrictCodeSelectorLimit@0 :PROC
-EXTERN XapiApplyKernelPatches@0 :PROC
-EXTERN CloseHandle@4 :PROC
-EXTERN XapiCallThreadNotifyRoutines@4 :PROC
-EXTERN RaiseException@16 :PROC
-EXTERN CreateThread@24 :PROC
-EXTERN xCompareStringA@20 :PROC
-EXTERN XapiFormatObjectAttributes@12 :PROC
-EXTERN XapiFormatTimeOut@8 :PROC
-EXTERN WaitForSingleObjectEx@12 :PROC
-EXTERN WaitForMultipleObjectsEx@20 :PROC
-EXTERN SleepEx@8 :PROC
-EXTERN WaitForSingleObject@8 :PROC
-EXTERN lstrcpynA@12 :PROC
-EXTERN XLaunchNewImageA@8 :PROC
-EXTERN XWriteTitleInfoNoReboot@24 :PROC
-EXTERN XGetLaunchInfo@8 :PROC
-EXTERN XWriteTitleInfoAndRebootA@20 :PROC
-EXTERN BuildUpdateFilePath@12 :PROC
-EXTERN XapipUpdateMountDashPartition@0 :PROC
-EXTERN XoUpdateLoadXBEInfo@8 :PROC
-EXTERN XoRebootToUpdaterWhilePreservingDDrive@12 :PROC
-EXTERN XoUpdateGetSavedDataFromLaunchPage@12 :PROC
-EXTERN XapipUpdateGetCurrentDDriveMapping@8 :PROC
-EXTERN XapipUpdateSaveDDriveMappingToLaunchPage@8 :PROC
-EXTERN XapipUpdateDetectAndVerify@16 :PROC
-EXTERN XapipLaunchNewImageInternal@16 :PROC
-EXTERN XapipUpdateRebootIfNecessary@0 :PROC
-EXTERN XGetParentalControlSetting@0 :PROC
-EXTERN GetDiskFreeSpaceExA@16 :PROC
-EXTERN XapiSelectCachePartition@12 :PROC
-EXTERN XMountUtilityDrive@4 :PROC
-EXTERN XGetDiskSectorSizeA@4 :PROC
-EXTERN LocalAlloc@8 :PROC
-EXTERN LocalFree@4 :PROC
-EXTERN RtlpCreateUnCommittedRange@4 :PROC
-EXTERN RtlpDestroyUnCommittedRange@8 :PROC
-EXTERN RtlpInsertUnCommittedPages@12 :PROC
-EXTERN RtlpFindAndCommitPages@16 :PROC
-EXTERN RtlpDestroyHeapSegment@4 :PROC
-EXTERN RtlpCoalesceFreeBlocks@16 :PROC
-EXTERN RtlpInsertFreeBlock@12 :PROC
-EXTERN RtlpGetExtraStuffPointer@4 :PROC
-EXTERN RtlDestroyHeap@4 :PROC
-EXTERN RtlpGrowBlockInPlace@20 :PROC
-EXTERN RtlSizeHeap@12 :PROC
-EXTERN RtlpInitializeHeapSegment@28 :PROC
-EXTERN RtlpExtendHeap@8 :PROC
-EXTERN RtlpDeCommitFreeBlock@12 :PROC
-EXTERN RtlCreateHeap@24 :PROC
-EXTERN RtlAllocateHeap@12 :PROC
-EXTERN RtlFreeHeap@12 :PROC
-EXTERN RtlReAllocateHeap@16 :PROC
-EXTERN XAutoPowerDownResetTimer@0 :PROC
-EXTERN XapiInitAutoPowerDown@0 :PROC
-EXTERN XapiChangeCodeSelectorLimit@8 :PROC
-EXTERN ReadFile@20 :PROC
-EXTERN WriteFile@20 :PROC
-EXTERN SetEndOfFile@4 :PROC
-EXTERN SetFilePointer@16 :PROC
-EXTERN GetFileInformationByHandle@8 :PROC
-EXTERN GetFileSizeEx@8 :PROC
-EXTERN GetFileSize@8 :PROC
-EXTERN CreateFileA@28 :PROC
-EXTERN CopyFileExA@24 :PROC
-EXTERN XapiComputeContentMetadataFileName@8 :PROC
-EXTERN XComputeContentSignatureKey@8 :PROC
-EXTERN XapiComputeContentHeaderSignature@16 :PROC
-EXTERN XapiLoadContentMetadataHeader@16 :PROC
-EXTERN XapiVerifyAndLoadOptionalSectionData@12 :PROC
-EXTERN XapipGetAlternateTitleID@0 :PROC
-EXTERN XGetContentInstallLocationFromIDs@16 :PROC
-EXTERN XInstallContentSignaturesWithFileName@16 :PROC
-EXTERN XInstallContentSignaturesEx@16 :PROC
-EXTERN XLoadContentSignaturesWithFileName@8 :PROC
-EXTERN XLocateSignatureByIndex@16 :PROC
-EXTERN XLocateSignatureByNameEx@24 :PROC
-EXTERN XMemAlloc@8 :PROC
-EXTERN XMemFree@8 :PROC
-EXTERN XapiFormatFATVolumeEx@8 :PROC
-EXTERN XQueryValue@20 :PROC
-EXTERN XShaHmacInitialize@12 :PROC
-EXTERN XcSHAUpdate@12 :PROC
-EXTERN XShaHmacComputeFinal@16 :PROC
-EXTERN XapiConvertSignatureToNonRoamable@12 :PROC
-EXTERN XapipCalculateSaveGameSignatureBegin@8 :PROC
-EXTERN XapipCalculateSaveGameSignatureEnd@8 :PROC
-EXTERN XapipCalculateContentSignatureBegin@0 :PROC
-EXTERN XapipCalculateContentSignatureEnd@8 :PROC
-EXTERN XCalculateSignatureBeginEx@8 :PROC
-EXTERN XCalculateSignatureBegin@4 :PROC
-EXTERN XCalculateSignatureUpdate@12 :PROC
-EXTERN XCalculateSignatureEnd@8 :PROC
-EXTERN XapiNukeDirectoryFromHandle@8 :PROC
-EXTERN XapiNukeDirectory@8 :PROC
-EXTERN SetFileAttributesA@8 :PROC
-EXTERN DeleteFileA@4 :PROC
-EXTERN XSetFileCacheSize@4 :PROC
-EXTERN XapiGetDirectoryDisplayBlocks@12 :PROC
-EXTERN XPhysicalAlloc@16 :PROC
-EXTERN XPhysicalAllocEx@20 :PROC
-EXTERN XcSHAFinal@8 :PROC
-EXTERN XcSHAUpdate@12 :PROC
-EXTERN XcSHAInit@4 :PROC
-EXTERN XcHMAC@28 :PROC
-EXTERN rand :PROC
-EXTERN _fpmath :PROC
-EXTERN _purecall :PROC
-EXTERN _ftol2 :PROC
-EXTERN tolower :PROC
-EXTERN atexit :PROC
-EXTERN __onexitinit :PROC
+EXTERN STDCALL XGetLanguage@0 :PROC
+EXTERN STDCALL lstrcpyW@8 :PROC
+EXTERN STDCALL lstrcpynW@12 :PROC
+EXTERN STDCALL XGetSectionHandleA@4 :PROC
+EXTERN STDCALL XLoadSectionByHandle@4 :PROC
+EXTERN STDCALL XFreeSectionByHandle@4 :PROC
+EXTERN STDCALL mainXapiStartup@4 :PROC
+EXTERN STDCALL xCompareStringW@20 :PROC
+EXTERN STDCALL GetLastError@0 :PROC
+EXTERN STDCALL SetLastError@4 :PROC
+EXTERN STDCALL XapiSetLastNTError@4 :PROC
+EXTERN STDCALL GetOverlappedResult@16 :PROC
+EXTERN STDCALL XapiValidateDiskPartitionEx@8 :PROC
+EXTERN STDCALL XapiCopySectionToFile@16 :PROC
+EXTERN STDCALL XapiMapLetterToDirectory@24 :PROC
+EXTERN STDCALL XapiSetupPerTitleDriveLetters@8 :PROC
+EXTERN C XapiBootToDash@12 :PROC
+EXTERN STDCALL XapiValidateDiskPartition@4 :PROC
+EXTERN STDCALL XapiInitProcess@0 :PROC
+EXTERN STDCALL _rtinit@0 :PROC
+EXTERN STDCALL XapiRestrictCodeSelectorLimit@0 :PROC
+EXTERN STDCALL XapiApplyKernelPatches@0 :PROC
+EXTERN STDCALL CloseHandle@4 :PROC
+EXTERN STDCALL XapiCallThreadNotifyRoutines@4 :PROC
+EXTERN STDCALL RaiseException@16 :PROC
+EXTERN STDCALL CreateThread@24 :PROC
+EXTERN STDCALL xCompareStringA@20 :PROC
+EXTERN STDCALL XapiFormatObjectAttributes@12 :PROC
+EXTERN STDCALL XapiFormatTimeOut@8 :PROC
+EXTERN STDCALL WaitForSingleObjectEx@12 :PROC
+EXTERN STDCALL WaitForMultipleObjectsEx@20 :PROC
+EXTERN STDCALL SleepEx@8 :PROC
+EXTERN STDCALL WaitForSingleObject@8 :PROC
+EXTERN STDCALL lstrcpynA@12 :PROC
+EXTERN STDCALL XLaunchNewImageA@8 :PROC
+EXTERN STDCALL XWriteTitleInfoNoReboot@24 :PROC
+EXTERN STDCALL XGetLaunchInfo@8 :PROC
+EXTERN STDCALL XWriteTitleInfoAndRebootA@20 :PROC
+EXTERN STDCALL BuildUpdateFilePath@12 :PROC
+EXTERN STDCALL XapipUpdateMountDashPartition@0 :PROC
+EXTERN STDCALL XoUpdateLoadXBEInfo@8 :PROC
+EXTERN STDCALL XoRebootToUpdaterWhilePreservingDDrive@12 :PROC
+EXTERN STDCALL XoUpdateGetSavedDataFromLaunchPage@12 :PROC
+EXTERN STDCALL XapipUpdateGetCurrentDDriveMapping@8 :PROC
+EXTERN STDCALL XapipUpdateSaveDDriveMappingToLaunchPage@8 :PROC
+EXTERN STDCALL XapipUpdateDetectAndVerify@16 :PROC
+EXTERN STDCALL XapipLaunchNewImageInternal@16 :PROC
+EXTERN STDCALL XapipUpdateRebootIfNecessary@0 :PROC
+EXTERN STDCALL XGetParentalControlSetting@0 :PROC
+EXTERN STDCALL GetDiskFreeSpaceExA@16 :PROC
+EXTERN STDCALL XapiSelectCachePartition@12 :PROC
+EXTERN STDCALL XMountUtilityDrive@4 :PROC
+EXTERN STDCALL XGetDiskSectorSizeA@4 :PROC
+EXTERN STDCALL LocalAlloc@8 :PROC
+EXTERN STDCALL LocalFree@4 :PROC
+EXTERN STDCALL RtlpCreateUnCommittedRange@4 :PROC
+EXTERN STDCALL RtlpDestroyUnCommittedRange@8 :PROC
+EXTERN STDCALL RtlpInsertUnCommittedPages@12 :PROC
+EXTERN STDCALL RtlpFindAndCommitPages@16 :PROC
+EXTERN STDCALL RtlpDestroyHeapSegment@4 :PROC
+EXTERN STDCALL RtlpCoalesceFreeBlocks@16 :PROC
+EXTERN STDCALL RtlpInsertFreeBlock@12 :PROC
+EXTERN STDCALL RtlpGetExtraStuffPointer@4 :PROC
+EXTERN STDCALL RtlDestroyHeap@4 :PROC
+EXTERN STDCALL RtlpGrowBlockInPlace@20 :PROC
+EXTERN STDCALL RtlSizeHeap@12 :PROC
+EXTERN STDCALL RtlpInitializeHeapSegment@28 :PROC
+EXTERN STDCALL RtlpExtendHeap@8 :PROC
+EXTERN STDCALL RtlpDeCommitFreeBlock@12 :PROC
+EXTERN STDCALL RtlCreateHeap@24 :PROC
+EXTERN STDCALL RtlAllocateHeap@12 :PROC
+EXTERN STDCALL RtlFreeHeap@12 :PROC
+EXTERN STDCALL RtlReAllocateHeap@16 :PROC
+EXTERN STDCALL XAutoPowerDownResetTimer@0 :PROC
+EXTERN STDCALL XapiInitAutoPowerDown@0 :PROC
+EXTERN STDCALL XapiChangeCodeSelectorLimit@8 :PROC
+EXTERN STDCALL ReadFile@20 :PROC
+EXTERN STDCALL WriteFile@20 :PROC
+EXTERN STDCALL SetEndOfFile@4 :PROC
+EXTERN STDCALL SetFilePointer@16 :PROC
+EXTERN STDCALL GetFileInformationByHandle@8 :PROC
+EXTERN STDCALL GetFileSizeEx@8 :PROC
+EXTERN STDCALL GetFileSize@8 :PROC
+EXTERN STDCALL CreateFileA@28 :PROC
+EXTERN STDCALL CopyFileExA@24 :PROC
+EXTERN STDCALL XapiComputeContentMetadataFileName@8 :PROC
+EXTERN STDCALL XComputeContentSignatureKey@8 :PROC
+EXTERN STDCALL XapiComputeContentHeaderSignature@16 :PROC
+EXTERN STDCALL XapiLoadContentMetadataHeader@16 :PROC
+EXTERN STDCALL XapiVerifyAndLoadOptionalSectionData@12 :PROC
+EXTERN STDCALL XapipGetAlternateTitleID@0 :PROC
+EXTERN STDCALL XGetContentInstallLocationFromIDs@16 :PROC
+EXTERN STDCALL XInstallContentSignaturesWithFileName@16 :PROC
+EXTERN STDCALL XInstallContentSignaturesEx@16 :PROC
+EXTERN STDCALL XLoadContentSignaturesWithFileName@8 :PROC
+EXTERN STDCALL XLocateSignatureByIndex@16 :PROC
+EXTERN STDCALL XLocateSignatureByNameEx@24 :PROC
+EXTERN STDCALL XMemAlloc@8 :PROC
+EXTERN STDCALL XMemFree@8 :PROC
+EXTERN STDCALL XapiFormatFATVolumeEx@8 :PROC
+EXTERN STDCALL XQueryValue@20 :PROC
+EXTERN STDCALL XShaHmacInitialize@12 :PROC
+EXTERN STDCALL XShaHmacComputeFinal@16 :PROC
+EXTERN STDCALL XapiConvertSignatureToNonRoamable@12 :PROC
+EXTERN STDCALL XapipCalculateSaveGameSignatureBegin@8 :PROC
+EXTERN STDCALL XapipCalculateSaveGameSignatureEnd@8 :PROC
+EXTERN STDCALL XapipCalculateContentSignatureBegin@0 :PROC
+EXTERN STDCALL XapipCalculateContentSignatureEnd@8 :PROC
+EXTERN STDCALL XCalculateSignatureBeginEx@8 :PROC
+EXTERN STDCALL XCalculateSignatureBegin@4 :PROC
+EXTERN STDCALL XCalculateSignatureUpdate@12 :PROC
+EXTERN STDCALL XCalculateSignatureEnd@8 :PROC
+EXTERN STDCALL XapiNukeDirectoryFromHandle@8 :PROC
+EXTERN STDCALL XapiNukeDirectory@8 :PROC
+EXTERN STDCALL SetFileAttributesA@8 :PROC
+EXTERN STDCALL DeleteFileA@4 :PROC
+EXTERN STDCALL XSetFileCacheSize@4 :PROC
+EXTERN STDCALL XapiGetDirectoryDisplayBlocks@12 :PROC
+EXTERN STDCALL XPhysicalAlloc@16 :PROC
+EXTERN STDCALL XPhysicalAllocEx@20 :PROC
+EXTERN STDCALL rand :PROC
+EXTERN C _fpmath :PROC
+EXTERN STDCALL _purecall :PROC
+EXTERN STDCALL _ftol2 :PROC
+EXTERN C tolower :PROC
+EXTERN C atexit :PROC
+EXTERN STDCALL __onexitinit :PROC
 EXTERN SYSCALL @__security_check_cookie@4 :PROC
-EXTERN qsort :PROC
-EXTERN wcscmp :PROC
-EXTERN _wcsicmp :PROC
-EXTERN wcscat :PROC
-EXTERN wcscpy :PROC
-EXTERN _SEH_prolog :PROC
-EXTERN _SEH_epilog :PROC
-EXTERN wcslen :PROC
-EXTERN _snwprintf :PROC
-EXTERN sprintf :PROC
-EXTERN _stricmp :PROC
-EXTERN _snprintf :PROC
-EXTERN strncpy :PROC
-EXTERN _strnicmp :PROC
-EXTERN _chkstk :PROC
-EXTERN _allmul :PROC
-EXTERN memmove :PROC
-EXTERN _aulldiv :PROC
-EXTERN wcsncpy :PROC
-EXTERN _alldiv :PROC
-EXTERN toupper :PROC
-EXTERN rand :PROC
-EXTERN _aullshr :PROC
-EXTERN strstr :PROC
-EXTERN islower :PROC
-EXTERN atol :PROC
-EXTERN atof :PROC
-EXTERN _exit :PROC
-EXTERN __security_init_cookie :PROC
-EXTERN _fptrap :PROC
-EXTERN __initstdio :PROC
-EXTERN __endstdio :PROC
-EXTERN XGetVideoFlags@0 :PROC
-EXTERN VirtualAlloc@16 :PROC
-EXTERN QueryPerformanceCounter@4 :PROC
-EXTERN QueryPerformanceFrequency@4 :PROC
-EXTERN FileTimeToSystemTime@8 :PROC
-EXTERN GetLocalTime@4 :PROC
-EXTERN XGetVideoStandard@0 :PROC
-EXTERN XCreateSaveGame@24 :PROC
-EXTERN XFindFirstSaveGame@8 :PROC
-EXTERN XFindNextSaveGame@8 :PROC
-EXTERN XFindClose@4 :PROC
-EXTERN __CxxFrameHandler :PROC
+EXTERN C qsort :PROC
+EXTERN C wcscmp :PROC
+EXTERN C _wcsicmp :PROC
+EXTERN C wcscat :PROC
+EXTERN C wcscpy :PROC
+EXTERN C _SEH_prolog :PROC
+EXTERN STDCALL _SEH_epilog :PROC
+EXTERN C wcslen :PROC
+EXTERN C _snwprintf :PROC
+EXTERN C sprintf :PROC
+EXTERN C _stricmp :PROC
+EXTERN C _snprintf :PROC
+EXTERN C strncpy :PROC
+EXTERN C _strnicmp :PROC
+EXTERN STDCALL _chkstk :PROC
+EXTERN STDCALL _allmul :PROC
+EXTERN C memmove :PROC
+EXTERN STDCALL _aulldiv :PROC
+EXTERN C wcsncpy :PROC
+EXTERN STDCALL _alldiv :PROC
+EXTERN C toupper :PROC
+EXTERN STDCALL _aullshr :PROC
+EXTERN C strstr :PROC
+EXTERN C islower :PROC
+EXTERN C atol :PROC
+EXTERN C atof :PROC
+EXTERN C _exit :PROC
+EXTERN STDCALL __security_init_cookie :PROC
+EXTERN STDCALL _fptrap :PROC
+EXTERN STDCALL __initstdio :PROC
+EXTERN C __endstdio :PROC
+EXTERN STDCALL XGetVideoFlags@0 :PROC
+EXTERN STDCALL VirtualAlloc@16 :PROC
+EXTERN STDCALL QueryPerformanceCounter@4 :PROC
+EXTERN STDCALL QueryPerformanceFrequency@4 :PROC
+EXTERN STDCALL FileTimeToSystemTime@8 :PROC
+EXTERN STDCALL GetLocalTime@4 :PROC
+EXTERN STDCALL XGetVideoStandard@0 :PROC
+EXTERN STDCALL XCreateSaveGame@24 :PROC
+EXTERN STDCALL XFindFirstSaveGame@8 :PROC
+EXTERN STDCALL XFindNextSaveGame@8 :PROC
+EXTERN STDCALL XFindClose@4 :PROC
+EXTERN C __CxxFrameHandler :PROC
 EXTERN SYSCALL ?terminate@@YAXXZ :PROC
 EXTERN SYSCALL ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z :PROC
-EXTERN D3DDevice_SetRenderState_PSTextureModes@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_PSTextureModes@4 :PROC
 EXTERN SYSCALL @D3DDevice_SetRenderState_Simple@8 :PROC
-EXTERN D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
-EXTERN D3DDevice_SetRenderState_ShadowFunc@4 :PROC
-EXTERN D3DDevice_SetRenderState_FogColor@4 :PROC
-EXTERN D3DDevice_SetRenderState_CullMode@4 :PROC
-EXTERN D3DDevice_SetRenderState_FrontFace@4 :PROC
-EXTERN D3DDevice_SetRenderState_NormalizeNormals@4 :PROC
-EXTERN D3DDevice_SetRenderState_TextureFactor@4 :PROC
-EXTERN D3DDevice_SetRenderState_LineWidth@4 :PROC
-EXTERN D3DDevice_SetRenderState_Dxt1NoiseEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_ZBias@4 :PROC
-EXTERN D3DDevice_SetRenderState_LogicOp@4 :PROC
-EXTERN D3DDevice_SetRenderState_FillMode@4 :PROC
-EXTERN D3DDevice_SetRenderState_BackFillMode@4 :PROC
-EXTERN D3DDevice_SetRenderState_TwoSidedLighting@4 :PROC
-EXTERN D3DDevice_SetRenderState_VertexBlend@4 :PROC
-EXTERN D3DDevice_SetTextureState_TexCoordIndex@8 :PROC
-EXTERN D3DDevice_SetTextureState_BumpEnv@12 :PROC
-EXTERN D3DDevice_SetTextureState_BorderColor@8 :PROC
-EXTERN D3DDevice_SetTextureState_ColorKeyColor@8 :PROC
-EXTERN D3DDevice_SetRenderState_ZEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_StencilEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_StencilFail@4 :PROC
-EXTERN D3DDevice_SetRenderState_YuvEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
-EXTERN D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 :PROC
-EXTERN D3DDevice_SetRenderState_RopZRead@4 :PROC
-EXTERN D3DDevice_SetRenderState_DoNotCullUncompressed@4 :PROC
-EXTERN D3DDevice_SetRenderState_MultiSampleMode@4 :PROC
-EXTERN D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 :PROC
-EXTERN D3DDevice_SetRenderState_MultiSampleAntiAlias@4 :PROC
-EXTERN D3DDevice_SetRenderState_MultiSampleMask@4 :PROC
-EXTERN D3DDevice_SetRenderState_SampleAlpha@4 :PROC
-EXTERN D3DDevice_SetGammaRamp@8 :PROC
-EXTERN D3DDevice_SetTransform@8 :PROC
-EXTERN D3DDevice_GetTransform@8 :PROC
-EXTERN D3DDevice_BlockUntilVerticalBlank@0 :PROC
-EXTERN D3DDevice_SetRenderTarget@8 :PROC
-EXTERN D3DDevice_GetRenderTarget2@0 :PROC
-EXTERN D3DDevice_GetDepthStencilSurface2@0 :PROC
-EXTERN D3DDevice_GetPalette2@4 :PROC
-EXTERN D3DDevice_SetTexture@8 :PROC
-EXTERN D3DDevice_SetOverscanColor@4 :PROC
-EXTERN D3DDevice_SelectVertexShaderDirect@8 :PROC
-EXTERN D3DDevice_CreateVertexShader@16 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_ShadowFunc@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_FogColor@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_CullMode@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_FrontFace@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_NormalizeNormals@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_TextureFactor@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_LineWidth@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_Dxt1NoiseEnable@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_ZBias@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_LogicOp@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_FillMode@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_BackFillMode@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_TwoSidedLighting@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_VertexBlend@4 :PROC
+EXTERN STDCALL D3DDevice_SetTextureState_TexCoordIndex@8 :PROC
+EXTERN STDCALL D3DDevice_SetTextureState_BumpEnv@12 :PROC
+EXTERN STDCALL D3DDevice_SetTextureState_BorderColor@8 :PROC
+EXTERN STDCALL D3DDevice_SetTextureState_ColorKeyColor@8 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_ZEnable@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_StencilEnable@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_StencilFail@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_YuvEnable@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_RopZRead@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_DoNotCullUncompressed@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMode@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleAntiAlias@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMask@4 :PROC
+EXTERN STDCALL D3DDevice_SetRenderState_SampleAlpha@4 :PROC
+EXTERN STDCALL D3DDevice_SetGammaRamp@8 :PROC
+EXTERN STDCALL D3DDevice_SetTransform@8 :PROC
+EXTERN STDCALL D3DDevice_GetTransform@8 :PROC
+EXTERN STDCALL D3DDevice_BlockUntilVerticalBlank@0 :PROC
+EXTERN STDCALL D3DDevice_SetRenderTarget@8 :PROC
+EXTERN STDCALL D3DDevice_GetRenderTarget2@0 :PROC
+EXTERN STDCALL D3DDevice_GetDepthStencilSurface2@0 :PROC
+EXTERN STDCALL D3DDevice_GetPalette2@4 :PROC
+EXTERN STDCALL D3DDevice_SetTexture@8 :PROC
+EXTERN STDCALL D3DDevice_SetOverscanColor@4 :PROC
+EXTERN STDCALL D3DDevice_SelectVertexShaderDirect@8 :PROC
+EXTERN STDCALL D3DDevice_CreateVertexShader@16 :PROC
 EXTERN SYSCALL @D3DDevice_SetVertexShaderConstant1Fast@8 :PROC
 EXTERN SYSCALL @D3DDevice_SetVertexShaderConstantNotInlineFast@12 :PROC
-EXTERN D3DDevice_SetStreamSource@12 :PROC
-EXTERN D3DDevice_LoadVertexShaderProgram@8 :PROC
-EXTERN D3DDevice_SetShaderConstantMode@4 :PROC
-EXTERN D3DDevice_DeleteVertexShader@4 :PROC
-EXTERN D3DDevice_SetVertexShader@4 :PROC
-EXTERN D3DDevice_SetVertexShaderInput@12 :PROC
-EXTERN D3DResource_Release@4 :PROC
-EXTERN D3DResource_Register@8 :PROC
-EXTERN D3DDevice_Clear@24 :PROC
-EXTERN D3DSurface_LockRect@16 :PROC
-EXTERN D3DDevice_DrawVerticesUP@16 :PROC
-EXTERN D3DDevice_DrawVertices@12 :PROC
-EXTERN D3DDevice_Begin@4 :PROC
-EXTERN D3DDevice_End@0 :PROC
-EXTERN Direct3DCreate8@4 :PROC
-EXTERN Direct3D_GetAdapterModeCount@4 :PROC
-EXTERN Direct3D_EnumAdapterModes@12 :PROC
-EXTERN Direct3D_SetPushBufferSize@8 :PROC
-EXTERN Direct3D_CreateDevice@24 :PROC
-EXTERN D3DDevice_Swap@4 :PROC
-EXTERN D3DDevice_SetPixelShader@4 :PROC
-EXTERN D3DTexture_GetSurfaceLevel2@8 :PROC
-EXTERN D3DTexture_LockRect@20 :PROC
-EXTERN D3D_AllocContiguousMemory@8 :PROC
-EXTERN D3DDevice_GetOverlayUpdateStatus@0 :PROC
-EXTERN D3DDevice_UpdateOverlay@20 :PROC
-EXTERN D3DDevice_EnableOverlay@4 :PROC
-EXTERN D3DXCreateTexture@32 :PROC
+EXTERN STDCALL D3DDevice_SetStreamSource@12 :PROC
+EXTERN STDCALL D3DDevice_LoadVertexShaderProgram@8 :PROC
+EXTERN STDCALL D3DDevice_SetShaderConstantMode@4 :PROC
+EXTERN STDCALL D3DDevice_DeleteVertexShader@4 :PROC
+EXTERN STDCALL D3DDevice_SetVertexShader@4 :PROC
+EXTERN STDCALL D3DDevice_SetVertexShaderInput@12 :PROC
+EXTERN STDCALL D3DResource_Release@4 :PROC
+EXTERN STDCALL D3DResource_Register@8 :PROC
+EXTERN STDCALL D3DDevice_Clear@24 :PROC
+EXTERN STDCALL D3DSurface_LockRect@16 :PROC
+EXTERN STDCALL D3DDevice_DrawVerticesUP@16 :PROC
+EXTERN STDCALL D3DDevice_DrawVertices@12 :PROC
+EXTERN STDCALL D3DDevice_Begin@4 :PROC
+EXTERN STDCALL D3DDevice_End@0 :PROC
+EXTERN STDCALL Direct3DCreate8@4 :PROC
+EXTERN STDCALL Direct3D_GetAdapterModeCount@4 :PROC
+EXTERN STDCALL Direct3D_EnumAdapterModes@12 :PROC
+EXTERN STDCALL Direct3D_SetPushBufferSize@8 :PROC
+EXTERN STDCALL Direct3D_CreateDevice@24 :PROC
+EXTERN STDCALL D3DDevice_Swap@4 :PROC
+EXTERN STDCALL D3DDevice_SetPixelShader@4 :PROC
+EXTERN STDCALL D3DTexture_GetSurfaceLevel2@8 :PROC
+EXTERN STDCALL D3DTexture_LockRect@20 :PROC
+EXTERN STDCALL D3D_AllocContiguousMemory@8 :PROC
+EXTERN STDCALL D3DDevice_GetOverlayUpdateStatus@0 :PROC
+EXTERN STDCALL D3DDevice_UpdateOverlay@20 :PROC
+EXTERN STDCALL D3DDevice_EnableOverlay@4 :PROC
+EXTERN STDCALL D3DXCreateTexture@32 :PROC
 EXTERN SYSCALL ?Decode@CD3DXCodec@@UAEXIIPAUD3DXCOLOR@@@Z :PROC
 EXTERN SYSCALL ?Encode@CD3DXCodec@@UAEXIIPAUD3DXCOLOR@@@Z :PROC
 EXTERN SYSCALL ?Decode@CD3DXCodec_V8U8@@UAEXIIPAUD3DXCOLOR@@@Z :PROC
@@ -474,33 +464,23 @@ EXTERN SYSCALL ??_GCD3DXCodec_YUY2@@UAEPAXI@Z :PROC
 EXTERN SYSCALL ??_GCD3DXCodec_DXT1@@UAEPAXI@Z :PROC
 EXTERN SYSCALL ??_GCD3DXCodec_DXT2@@UAEPAXI@Z :PROC
 EXTERN SYSCALL ??_GCD3DXCodec_DXT4@@UAEPAXI@Z :PROC
-EXTERN XGSetSurfaceHeader@24 :PROC
-EXTERN XGSetTextureHeader@36 :PROC
-EXTERN XGSetVertexBufferHeader@24 :PROC
+EXTERN STDCALL XGSetSurfaceHeader@24 :PROC
+EXTERN STDCALL XGSetTextureHeader@36 :PROC
+EXTERN STDCALL XGSetVertexBufferHeader@24 :PROC
 EXTERN SYSCALL ?GetBufferPointer@XGBuffer@@QAGPAXXZ :PROC
 EXTERN SYSCALL ?GetBufferSize@XGBuffer@@QAGKXZ :PROC
 EXTERN SYSCALL ?g_pErrorLog@XGRAPHICS@@3PAUXD3DXErrorLog@1@A :PROC
-EXTERN XGAssembleShader@44 :PROC
-EXTERN XGSpliceVertexShaders@24 :PROC
-EXTERN XGSwizzleRect@32 :PROC
+EXTERN STDCALL XGAssembleShader@44 :PROC
+EXTERN STDCALL XGSpliceVertexShaders@24 :PROC
+EXTERN STDCALL XGSwizzleRect@32 :PROC
 EXTERN SYSCALL ??1node@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@UAE@XZ :PROC
 EXTERN SYSCALL ??1CompMask@VS_GRAPH_OPTIMIZER@XGRAPHICS@@UAE@XZ :PROC
 EXTERN SYSCALL ??_GSwizzle@VS_GRAPH_OPTIMIZER@XGRAPHICS@@UAEPAXI@Z :PROC
 EXTERN SYSCALL ?D3DTokensToUCode@XGRAPHICS@@YGJPBKPAU_D3DVertexShaderProgram@@PAUXD3DXErrorLog@1@@Z :PROC
 EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?erase@?$list@PAVInstruction@VS_GRAPH_OPTIMIZER@XGRAPHICS@@@VS_GRAPH_OPTIMIZER@XGRAPHICS@@AAEXPAVnode@123@@Z :PROC
-EXTERN SYSCALL ?D3DTokensToUCode@XGRAPHICS@@YGJPBKPAU_D3DVertexShaderProgram@@PAUXD3DXErrorLog@1@@Z :PROC
 EXTERN SYSCALL ?InstructionMOV@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionMUL@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionDP3@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionADD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionADD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionMAD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionLRP@XGRAPHICS@@YGXKKPAK00000@Z :PROC
@@ -510,107 +490,65 @@ EXTERN SYSCALL ?InstructionXMMC@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionXDM@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionXDD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN SYSCALL ?InstructionXFC@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionMOV@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionMUL@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionDP3@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionADD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionADD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionMAD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionLRP@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionCND@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionXMMA@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionXMMC@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionXDM@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionXDD@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?InstructionXFC@XGRAPHICS@@YGXKKPAK00000@Z :PROC
-EXTERN SYSCALL ?OptimizeImp@PSORemoveEmptyStages@XGRAPHICS@@UAEXAAVOptContext@2@@Z :PROC
 EXTERN SYSCALL ?OptimizeImp@PSORemoveEmptyStages@XGRAPHICS@@UAEXAAVOptContext@2@@Z :PROC
 EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
-EXTERN IDirectSound_Release@4 :PROC
-EXTERN IDirectSoundBuffer_Release@4 :PROC
-EXTERN XAudioCreatePcmFormat@16 :PROC
+EXTERN STDCALL IDirectSound_Release@4 :PROC
+EXTERN STDCALL IDirectSoundBuffer_Release@4 :PROC
+EXTERN STDCALL XAudioCreatePcmFormat@16 :PROC
 EXTERN SYSCALL ?CreateXboxAdpcmFormat@WaveFormat@DirectSound@@YGXGKPAUxbox_adpcmwaveformat_tag@@@Z :PROC
-EXTERN IDirectSoundBuffer_AddRef@4 :PROC
-EXTERN IDirectSoundBuffer_AddRef@4 :PROC
-EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
+EXTERN STDCALL IDirectSoundBuffer_AddRef@4 :PROC
 EXTERN SYSCALL ?DoDefine@CPreProcessor@D3DXShader@@IAEJPBDH@Z :PROC
-EXTERN IDirectSound_GetCaps@8 :PROC
-EXTERN IDirectSound_EnableHeadphones@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_Play@16 :PROC
-EXTERN IDirectSoundBuffer_PlayEx@16 :PROC
-EXTERN IDirectSoundBuffer_GetStatus@8 :PROC
-EXTERN IDirectSoundBuffer_SetCurrentPosition@8 :PROC
-EXTERN IDirectSoundStream_SetVolume@8 :PROC
-EXTERN IDirectSoundStream_SetHeadroom@8 :PROC
+EXTERN STDCALL IDirectSound_GetCaps@8 :PROC
+EXTERN STDCALL IDirectSound_EnableHeadphones@8 :PROC
+EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+EXTERN STDCALL IDirectSoundBuffer_Play@16 :PROC
+EXTERN STDCALL IDirectSoundBuffer_PlayEx@16 :PROC
+EXTERN STDCALL IDirectSoundBuffer_GetStatus@8 :PROC
+EXTERN STDCALL IDirectSoundBuffer_SetCurrentPosition@8 :PROC
+EXTERN STDCALL IDirectSoundStream_SetVolume@8 :PROC
+EXTERN STDCALL IDirectSoundStream_SetHeadroom@8 :PROC
 EXTERN SYSCALL ?SetMixBinVolumes@CDirectSoundStream@DirectSound@@QAGJPBU_DSMIXBINS@@@Z :PROC
-EXTERN IDirectSoundStream_Pause@8 :PROC
-EXTERN IDirectSoundStream_FlushEx@16 :PROC
-EXTERN DirectSoundDoWork@0 :PROC
-EXTERN XAudioDownloadEffectsImage@16 :PROC
-EXTERN XFileCreateMediaObjectAsync@12 :PROC
-EXTERN IDirectSoundBuffer_SetFrequency@8 :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundStream_SetFrequency@8 :PROC
-EXTERN IDirectSoundStream_SetMixBins@8 :PROC
-EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
-EXTERN IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN IDirectSoundBuffer_SetBufferData@12 :PROC
-EXTERN IDirectSoundStream_SetFormat@8 :PROC
-EXTERN IDirectSound_CommitDeferredSettings@4 :PROC
-EXTERN IDirectSound_CreateSoundBuffer@16 :PROC
-EXTERN IDirectSound_SetI3DL2Listener@12 :PROC
-EXTERN DirectSoundCreate@12 :PROC
-EXTERN DirectSoundCreateBuffer@8 :PROC
-EXTERN DirectSoundCreateStream@8 :PROC
+EXTERN STDCALL IDirectSoundStream_Pause@8 :PROC
+EXTERN STDCALL IDirectSoundStream_FlushEx@16 :PROC
+EXTERN STDCALL DirectSoundDoWork@0 :PROC
+EXTERN STDCALL XAudioDownloadEffectsImage@16 :PROC
+EXTERN STDCALL XFileCreateMediaObjectAsync@12 :PROC
+EXTERN STDCALL IDirectSoundBuffer_SetFrequency@8 :PROC
+EXTERN STDCALL IDirectSoundStream_SetFrequency@8 :PROC
+EXTERN STDCALL IDirectSoundStream_SetMixBins@8 :PROC
+EXTERN STDCALL IDirectSoundBuffer_SetBufferData@12 :PROC
+EXTERN STDCALL IDirectSoundStream_SetFormat@8 :PROC
+EXTERN STDCALL IDirectSound_CommitDeferredSettings@4 :PROC
+EXTERN STDCALL IDirectSound_CreateSoundBuffer@16 :PROC
+EXTERN STDCALL IDirectSound_SetI3DL2Listener@12 :PROC
+EXTERN STDCALL DirectSoundCreate@12 :PROC
+EXTERN STDCALL DirectSoundCreateBuffer@8 :PROC
+EXTERN STDCALL DirectSoundCreateStream@8 :PROC
 EXTERN SYSCALL ?ScheduleDeferredCommandLow@CMcpxAPU@DirectSound@@IAEHPAUMCPX_DEFERRED_COMMAND@@@Z :PROC
 EXTERN SYSCALL ?RemoveDeferredCommandLow@CMcpxAPU@DirectSound@@IAEXPAUMCPX_DEFERRED_COMMAND@@@Z :PROC
 EXTERN SYSCALL ?ServiceVoiceInterrupt@CMcpxAPU@DirectSound@@IAEXXZ :PROC
 EXTERN SYSCALL ?SetFormat@CDirectSoundStream@DirectSound@@QAGJPBUtWAVEFORMATEX@@@Z :PROC
 EXTERN SYSCALL ?ServiceDeferredCommand@CMcpxStream@DirectSound@@MAEXKK@Z :PROC
-EXTERN scl_InitializeScaling@60 :PROC
-EXTERN SYSCALL ?SetFormat@CDirectSoundStream@DirectSound@@QAGJPBUtWAVEFORMATEX@@@Z :PROC
-EXTERN SYSCALL ?ServiceVoiceInterrupt@CMcpxAPU@DirectSound@@IAEXXZ :PROC
-EXTERN SYSCALL ?ScheduleDeferredCommandLow@CMcpxAPU@DirectSound@@IAEHPAUMCPX_DEFERRED_COMMAND@@@Z :PROC
-EXTERN SYSCALL ?RemoveDeferredCommandLow@CMcpxAPU@DirectSound@@IAEXPAUMCPX_DEFERRED_COMMAND@@@Z :PROC
-EXTERN SYSCALL ?SetFormat@CDirectSoundStream@DirectSound@@QAGJPBUtWAVEFORMATEX@@@Z :PROC
-EXTERN SYSCALL ?ServiceDeferredCommand@CMcpxStream@DirectSound@@MAEXKK@Z :PROC
-EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
+EXTERN STDCALL scl_InitializeScaling@60 :PROC
 EXTERN SYSCALL ?GetLoopRegion@CWaveFile@WaveLoaderFoo@@QAEJPAK0@Z :PROC
 EXTERN SYSCALL ?GetInfo@CFileMediaObject@DirectSound@@UAGJPAU_XMEDIAINFO@@@Z :PROC
-EXTERN SYSCALL ?DoDefine@CPreProcessor@D3DXShader@@IAEJPBDH@Z :PROC
-EXTERN SYSCALL ?g_WmaXmoPostSeekToTimeSilence@@3KA :PROC
 EXTERN SYSCALL ?g_WmaXmoPostSeekToTimeSilence@@3KA :PROC
 EXTERN SYSCALL ?Flush@CWMAXMediaObject@@UAGJXZ :PROC
 EXTERN SYSCALL ?DoWork@CDirectSound@DirectSound@@QAGXXZ :PROC
-EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
-EXTERN IDirectSoundBuffer_GetStatus@8 :PROC
-EXTERN SYSCALL ?DoDefine@CPreProcessor@D3DXShader@@IAEJPBDH@Z :PROC
-EXTERN SYSCALL ?GetInfo@CFileMediaObject@DirectSound@@UAGJPAU_XMEDIAINFO@@@Z :PROC
-EXTERN IDirectSoundBuffer_GetStatus@8 :PROC
-EXTERN SYSCALL ?DoDefine@CPreProcessor@D3DXShader@@IAEJPBDH@Z :PROC
 EXTERN SYSCALL ?SetMode@CAc97MediaObject@DirectSound@@UAGJK@Z :PROC
-EXTERN IDirectSoundBuffer_GetCurrentPosition@12 :PROC
-EXTERN SYSCALL ?Flush@CWMAXMediaObject@@UAGJXZ :PROC
-EXTERN IDirectSoundBuffer_AddRef@4 :PROC
-EXTERN SYSCALL ?ReleaseVoice@CMcpxVoiceClient@DirectSound@@IAEXXZ :PROC
-EXTERN scl_InitializeScaling@60 :PROC
-EXTERN XMVDecoder_CreateDecoderForFile@12 :PROC
-EXTERN XMVDecoder_CloseDecoder@4 :PROC
-EXTERN XMVDecoder_GetVideoDescriptor@8 :PROC
-EXTERN XMVDecoder_EnableAudioStream@20 :PROC
-EXTERN XMVDecoder_GetNextFrame@16 :PROC
-EXTERN XInputOpen@16 :PROC
-EXTERN XInputClose@4 :PROC
-EXTERN XInputGetState@8 :PROC
-EXTERN XInputSetState@8 :PROC
-EXTERN USBD_Init@8 :PROC
-EXTERN XGetDevices@4 :PROC
-EXTERN XGetDeviceChanges@12 :PROC
+EXTERN STDCALL IDirectSoundBuffer_GetCurrentPosition@12 :PROC
+EXTERN STDCALL XMVDecoder_CreateDecoderForFile@12 :PROC
+EXTERN STDCALL XMVDecoder_CloseDecoder@4 :PROC
+EXTERN STDCALL XMVDecoder_GetVideoDescriptor@8 :PROC
+EXTERN STDCALL XMVDecoder_EnableAudioStream@20 :PROC
+EXTERN STDCALL XMVDecoder_GetNextFrame@16 :PROC
+EXTERN STDCALL XInputOpen@16 :PROC
+EXTERN STDCALL XInputClose@4 :PROC
+EXTERN STDCALL XInputGetState@8 :PROC
+EXTERN STDCALL XInputSetState@8 :PROC
+EXTERN STDCALL USBD_Init@8 :PROC
+EXTERN STDCALL XGetDevices@4 :PROC
+EXTERN STDCALL XGetDeviceChanges@12 :PROC
 FUN_00011005 PROTO stdcall
 FUN_0001100A PROTO stdcall
 FUN_0001100F PROTO stdcall
