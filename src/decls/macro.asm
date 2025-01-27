@@ -1,6 +1,6 @@
 ;;Common macro
 
-TwinMain MACRO arg1, arg2
+TwinMain MACRO procName, conv
     main PROC c
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
@@ -10,7 +10,11 @@ TwinMain MACRO arg1, arg2
 	TwinCall FUN_000C62A4
 ENDM
 
-TwinProcThiscall MACRO procName, arg2
+TwinProcThunk MACRO procName, conv
+    procName PROC conv
+ENDM
+
+TwinProcThiscall MACRO procName, conv
 	procName PROC stdcall
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
@@ -23,8 +27,8 @@ TwinProcThiscall MACRO procName, arg2
 	ENDIF
 ENDM
 
-TwinProc MACRO procName, arg2
-    procName PROC arg2
+TwinProc MACRO procName, conv
+    procName PROC conv
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
 		PUSH EAX
@@ -48,10 +52,20 @@ TwinProcExit MACRO arg1
     RET arg1  
 ENDM
 
+;;Hacks
+MovApsHackMacro MACRO arg1, arg2
+	IFDEF USE_MOVAPS_HACK
+		MOVUPS arg1, arg2
+	ELSE
+		MOVAPS arg1, arg2
+	ENDIF
+ENDM
 
 ;;Debug macro
+STACK_CANARY EQU 0DEADBEEFh
+
 DEBUG_STACK_PROTECT_START MACRO
-    push    STACK_CANARY      
+    PUSH STACK_CANARY      
 ENDM
 
 DEBUG_STACK_PROTECT_END MACRO
@@ -59,7 +73,7 @@ DEBUG_STACK_PROTECT_END MACRO
     MOV EAX, [ESP]           
     CMP EAX, STACK_CANARY   
 	MOV EAX, dword ptr [DBG_TMP_BUFFER]
-    JNE stack_corrupted   
+    JNE ASSERT_STACK_CORRUPTED   
     ADD ESP, 4              
 ENDM
 

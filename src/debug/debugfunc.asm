@@ -48,7 +48,7 @@ DBG_BACKTRACE PROC
 	RET
 DBG_BACKTRACE ENDP
 
-stack_corrupted PROC
+ASSERT_STACK_CORRUPTED PROC
 	MOV EAX, dword ptr [?debugCurrentFunction@@3PADA]
 	MOV [?debugPrintString@@3PADA], EAX
 	CALL DBG_PRINT
@@ -56,9 +56,9 @@ stack_corrupted PROC
 	MOV EAX, OFFSET DBG_HALT
 	MOV [?debugPrintString@@3PADA], EAX
 	CALL DBG_PRINT
-halt:
-	JMP halt
-stack_corrupted ENDP
+HALT:
+	JMP HALT
+ASSERT_STACK_CORRUPTED ENDP
 
 DBG_PRINT_FPU_STATE PROC
 	XOR EAX, EAX
