@@ -57,6 +57,15 @@ public:
 	Vector4* points;
 };
 
+int enableCallog = 0;
+void __stdcall EnableCalllog() {
+	enableCallog = 1;
+}
+
+void __stdcall DisableCalllog() {
+	enableCallog = 0;
+}
+
 void __stdcall foo() {
 	Path* path = (Path*)debugPrintValue;
 	sprintf(buffer, "POINTS: %d\n", path->cnt);
@@ -133,6 +142,8 @@ void __stdcall DbgInit() {
 }
 
 void __stdcall DbgCalllog() {
+	if (enableCallog == 0) return;
+	
 	sprintf(buffer, "%s\n", debugCurrentFunction);
 	Log(buffer);
 }
@@ -194,6 +205,7 @@ void __stdcall Backtrace() {
 		++ptr;
 	}
 }
+
 
 void __stdcall PrintThisInfo() {
 	void** vtablePtr = (void**)_this;

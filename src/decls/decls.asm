@@ -33408,7 +33408,7 @@ ActionTriggerLinkedObjects STRUCT
 ActionTriggerLinkedObjects ENDS
 ActionSetState STRUCT
     parent ActionAbstract {}
-     DWORD 0
+    arr DWORD 0; void *
 ActionSetState ENDS
 ActionToggleState STRUCT
     parent ActionAbstract {}

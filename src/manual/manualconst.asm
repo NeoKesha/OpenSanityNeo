@@ -18,5 +18,8 @@ DBG_HIT3 db "HIT3", 0, 0, 0, 0
 DBG_HIT4 db "HIT4", 0, 0, 0, 0
 DBG_HIT5 db "HIT5", 0, 0, 0, 0
 DBG_HIT6 db "HIT6", 0, 0, 0, 0
+DBG_HALT db "HALT!", 0, 0, 0, 0
 
 DAT_002a4ccc dword 0Ah
+
+STACK_CANARY EQU 0DEADBEEFh
