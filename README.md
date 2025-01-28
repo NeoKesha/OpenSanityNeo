@@ -20,39 +20,24 @@ NeoXBOX is a mini Xbox SDK bundle, containing Visual Studio tools (Assembler, Co
 It's lightweight and don't require Windows XP virtual machine to work.
 XboxSDK contents are aquired from Internet Archive: https://archive.org/details/xbox-sdks
 Download bundle: https://drive.google.com/file/d/1uI7oD7KNx8ic8WATWsD50uFFylAJhy6a
-# List of "playable" chunks
-Add one of those chunks names to "command.txt". Coreent, or Antagony, is most playable right now (skip all checkpoints and disable autosave)
+# List of Playable chunks
+- Slip and Slide if start normally
+- Rockslide if start normally
+- All of Levels\School\Crash\
+- All of Levels\School\Sch_Hub\
+- All of Levels\AltEarth\Core\
+- All of Levels\School\Boiler\ except boiler_2
+- All of Levels\Ice\IceClimb\ except bergext and caveent
+- Half of Levels\Ice\HighSeas\
+- Levels\School\Madame\Ambercor (turn left)
 - Levels\AltEarth\Hub\Coreent
-- Levels\AltEarth\Hub\Alta
 - Levels\AltEarth\Hub\Slipjoin
-- Levels\AltEarth\Core\Corea
-- Levels\AltEarth\Core\Coreb
-- Levels\AltEarth\Core\Corec
-- Levels\AltEarth\Core\Cored
+- Levels\AltEarth\Hub\Alta
+- Levels\AltEarth\Hub\altdoc_c
+- Levels\AltEarth\Lab\Psycho
 - Levels\AltEarth\Lab\Altlabin
 - Levels\AltEarth\Lab\Labext
-- Levels\AltEarth\RockSlid\l10start
-- Levels\School\Boiler\boiler_3
-- Levels\School\Boiler\boiler_4
-- Levels\School\Boiler\boiler_5
-- Levels\School\Boiler\boiler_6
-- Levels\School\Crash\crgpa02
-- Levels\School\Crash\crgpa04
-- Levels\School\Crash\crgpa08
-- Levels\School\Madame\Ambercor
-- Levels\School\Madame\Amberly
-- Levels\School\Sch_Hub\schship
-- Levels\School\Sch_Hub\slk01
-- Levels\Ice\HighSeas\gpa01
-- Levels\Ice\HighSeas\gpa02
-- Levels\Ice\HighSeas\gpa04
-- Levels\Ice\IceClimb\ukatrans
-- Levels\Ice\SlipSlide\l05start
-- Levels\Ice\Hub\airship
-- Levels\Ice\Hub\Labint
-- Levels\Ice\Hub\shipent
-- Levels\Earth\Hub\hubd
-- Levels\Earth\Hub\pier
+  Earth and Ice Hub are unchecked yet
 
 # When will you release Ghidra project and Code Generation script?
 
