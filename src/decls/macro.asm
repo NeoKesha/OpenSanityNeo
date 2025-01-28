@@ -48,8 +48,17 @@ TwinCall MACRO procName
 	CALL procName
 ENDM
 
-TwinProcExit MACRO arg1
-    RET arg1  
+TwinProcExit MACRO stackDepth, procName
+	IFDEF DEBUG_ENABLED
+		DEBUG_PROLOGUE_MACRO
+		MOV EAX, OFFSET @CatStr(<DBG_>, procName)
+		MOV [?debugCurrentFunction@@3PADA], EAX
+		IFDEF DEBUG_CALLLOG
+			CALL DBG_RETLOG
+		ENDIF
+		DEBUG_EPILOGUE_MACRO
+	ENDIF
+    RET stackDepth  
 ENDM
 
 ;;Hacks

@@ -11,3 +11,12 @@ extern "C" void* FUNC_NAMES_START;
 extern "C" void* FUNC_NAMES_END;
 extern "C" void* RETURN_TO_FUNC_MAP_START;
 extern "C" void* RETURN_TO_FUNC_MAP_END;
+
+struct funcDesc {
+	void* funcPtr;
+	char* funcName;
+};
+struct returnDesc {
+	void* retPtr;
+	void* funcPtr;
+};
