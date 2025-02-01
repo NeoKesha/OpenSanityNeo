@@ -63,7 +63,7 @@ void Log(char* buffer) {
 
 void __stdcall PrintThisInfo() {
 	void** vtablePtr = (void**)_this;
-	if (functionNames.find(debugCurrentFunction) == functionNames.end()) {
+	//if (functionNames.find(debugCurrentFunction) == functionNames.end()) {
 		functionNames.insert(debugCurrentFunction);
 		if ((char*)vtablePtr >= RDATA_START && (char*)vtablePtr < RDATA_END) {
 			char* vtName = (char*)vtablePtr[-1];
@@ -74,7 +74,7 @@ void __stdcall PrintThisInfo() {
 				Log(buffer);
 			}
 		} 
-	}
+	//}
 }
 
 void __stdcall Backtrace() {

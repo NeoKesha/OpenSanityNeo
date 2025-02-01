@@ -8,4 +8,4 @@
 .686p
 .xmm
 .model flat, stdcall
-;;USE_MOVAPS_HACK = 1
+USE_MOVAPS_HACK = 1

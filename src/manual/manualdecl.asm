@@ -16,3 +16,7 @@ CRITICAL_SECTION ENDS
 EXTERN SYSCALL  ?InstructionDP3@PixelShaderAssembler@XGRAPHICS@@AAEXKKPAK00000@Z :PROC
 EXTERN SYSCALL  ?InstructionLRP@XGRAPHICS@@YGXKKPAK00000@Z :PROC
 EXTERN __security_cookie : DWORD
+
+EXTERN stdcall __security_init_cookie : PROC 
+EXTERN stdcall __onexitinit : PROC 
+EXTERN stdcall __initstdio : PROC 
