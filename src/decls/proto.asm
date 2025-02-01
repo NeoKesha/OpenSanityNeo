@@ -1,161 +1,14 @@
-EXTERN PASCAL ??_C@_03FNPLCCOA@RED?$AA@ : DWORD
+EXTERN D3D__RenderState : DWORD
 EXTERN PASCAL ??_C@_04CNFFLDFF@BLUE?$AA@ : DWORD
-EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
-EXTERN D3D__DirtyFlags : DWORD
 EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
+EXTERN PASCAL ??_C@_03FNPLCCOA@RED?$AA@ : DWORD
+EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
+EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
+EXTERN D3D__TextureState : DWORD
 EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN PASCAL ??_C@_01BBODEMC@G?$AA@ : DWORD
-EXTERN D3D__RenderState : DWORD
 EXTERN PASCAL ??_C@_01DGKLNCNG@R?$AA@ : DWORD
-EXTERN D3D__TextureState : DWORD
-EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
-EXTERN ObOpenObjectByName@16 :PROC
-EXTERN NtQueryFullAttributesFile@8 :PROC
-EXTERN NtCreateEvent@16 :PROC
-EXTERN NtQueryDirectoryFile@40 :PROC
-EXTERN NtSetEvent@8 :PROC
-EXTERN FscGetCacheSize@0 :PROC
-EXTERN ExEventObjectType :PROC
-EXTERN FscSetCacheSize@4 :PROC
-EXTERN PsTerminateSystemThread@4 :PROC
-EXTERN RtlCompareString@12 :PROC
-EXTERN NtYieldExecution@0 :PROC
-EXTERN XboxHDKey :PROC
-EXTERN PsCreateSystemThreadEx@40 :PROC
-EXTERN XboxAlternateSignatureKeys :PROC
-EXTERN KeTimeIncrement :PROC
-EXTERN XboxSignatureKey :PROC
-EXTERN NtCreateMutant@12 :PROC
-EXTERN AvSetSavedDataAddress@4 :PROC
-EXTERN NtReleaseSemaphore@12 :PROC
-EXTERN AvSetDisplayMode@24 :PROC
-EXTERN NtReleaseMutant@8 :PROC
-EXTERN HalReadWritePCISpace@24 :PROC
-EXTERN ExMutantObjectType :PROC
-EXTERN KeInsertQueueDpc@12 :PROC
-EXTERN NtPulseEvent@8 :PROC
-EXTERN MmQueryAllocationSize@4 :PROC
-EXTERN NtClearEvent@4 :PROC
-EXTERN MmAllocateContiguousMemoryEx@20 :PROC
-EXTERN ExSemaphoreObjectType :PROC
-EXTERN AvSendTVEncoderOption@16 :PROC
-EXTERN NtCreateSemaphore@16 :PROC
-EXTERN AvGetSavedDataAddress@0 :PROC
-EXTERN RtlEnterCriticalSectionAndRegion@4 :PROC
-EXTERN NtWaitForSingleObjectEx@16 :PROC
-EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
-EXTERN KeWaitForSingleObject@20 :PROC
-EXTERN KeSetBasePriorityThread@8 :PROC
-EXTERN NtUserIoApcDispatcher@12 :PROC
-EXTERN SYSCALL @ObfDereferenceObject@4 :PROC
-EXTERN NtFlushBuffersFile@8 :PROC
-EXTERN MmQueryAddressProtect@4 :PROC
-EXTERN KeInitializeDpc@12 :PROC
-EXTERN MmSetAddressProtect@12 :PROC
-EXTERN KeInitializeTimerEx@8 :PROC
-EXTERN NtDuplicateObject@12 :PROC
-EXTERN IdexChannelObject :PROC
-EXTERN XboxKrnlVersion :PROC
-EXTERN KeSetEvent@12 :PROC
-EXTERN NtResumeThread@8 :PROC
-EXTERN MmFreeSystemMemory@8 :PROC
-EXTERN NtSuspendThread@8 :PROC
-EXTERN IoFileObjectType :PROC
-EXTERN NtQueueApcThread@20 :PROC
-EXTERN XcHMAC@28 :PROC
-EXTERN RtlRaiseException@4 :PROC
-EXTERN MmAllocateSystemMemory@8 :PROC
-EXTERN PsThreadObjectType :PROC
-EXTERN NtReadFileScatter@32 :PROC
-EXTERN ObReferenceObjectByHandle@12 :PROC
-EXTERN NtDeviceIoControlFile@40 :PROC
-EXTERN KeSetDisableBoostThread@8 :PROC
-EXTERN IoQueryVolumeInformation@20 :PROC
-EXTERN KeQueryBasePriorityThread@4 :PROC
-EXTERN NtWriteFileGather@32 :PROC
-EXTERN NtOpenFile@24 :PROC
-EXTERN NtFreeVirtualMemory@12 :PROC
-EXTERN MmLockUnlockBufferPages@12 :PROC
-EXTERN NtQueryVolumeInformationFile@20 :PROC
-EXTERN RtlFillMemoryUlong@12 :PROC
-EXTERN MmGetPhysicalAddress@4 :PROC
-EXTERN NtQueryInformationFile@20 :PROC
-EXTERN RtlCompareMemoryUlong@12 :PROC
-EXTERN KeSaveFloatingPointState@4 :PROC
-EXTERN NtAllocateVirtualMemory@20 :PROC
-EXTERN MmLockUnlockPhysicalPage@8 :PROC
-EXTERN NtCreateIoCompletion@16 :PROC
-EXTERN HalDiskCachePartitionCount :PROC
-EXTERN ExAllocatePoolWithTag@8 :PROC
-EXTERN NtSetInformationFile@20 :PROC
-EXTERN XeImageFileName :PROC
-EXTERN KeCancelTimer@4 :PROC
-EXTERN NtRemoveIoCompletion@20 :PROC
-EXTERN NtFsControlFile@40 :PROC
-EXTERN SYSCALL @KfRaiseIrql@4 :PROC
-EXTERN NtSetIoCompletion@20 :PROC
-EXTERN ExFreePool@4 :PROC
-EXTERN LaunchDataPage :PROC
-EXTERN KeQueryInterruptTime@0 :PROC
-EXTERN RtlUnicodeStringToAnsiString@12 :PROC
-EXTERN MmFreeContiguousMemory@4 :PROC
-EXTERN SYSCALL @KfLowerIrql@4 :PROC
-EXTERN RtlAnsiStringToUnicodeString@12 :PROC
-EXTERN HalRegisterShutdownNotification@8 :PROC
-EXTERN HalInitiateShutdown@0 :PROC
-EXTERN XboxHardwareInfo :PROC
-EXTERN KeRaiseIrqlToDpcLevel@0 :PROC
-EXTERN SYSCALL @IofCompleteRequest@8 :PROC
-EXTERN IoCreateSymbolicLink@8 :PROC
-EXTERN RtlInitializeCriticalSection@4 :PROC
-EXTERN ExQueryPoolBlockSize@4 :PROC
-EXTERN NtCreateFile@36 :PROC
-EXTERN RtlCompareMemory@12 :PROC
-EXTERN KeRestoreFloatingPointState@4 :PROC
-EXTERN HalReturnToFirmware@4 :PROC
-EXTERN KeSetTimerEx@20 :PROC
-EXTERN KeSynchronizeExecution@12 :PROC
-EXTERN KeQuerySystemTime@4 :PROC
-EXTERN NtQueryVirtualMemory@8 :PROC
-EXTERN KeRemoveQueueDpc@4 :PROC
-EXTERN ExTimerObjectType :PROC
-EXTERN MmClaimGpuInstanceMemory@8 :PROC
-EXTERN NtCreateTimer@12 :PROC
-EXTERN TtfdDbgPrint :PROC
-EXTERN NtCancelTimer@8 :PROC
-EXTERN RtlUnwind@16 :PROC
-EXTERN NtSetTimerEx@32 :PROC
-EXTERN KeStallExecutionProcessor@4 :PROC
-EXTERN NtSignalAndWaitForSingleObjectEx@20 :PROC
-EXTERN KeInitializeInterrupt@28 :PROC
-EXTERN KeConnectInterrupt@4 :PROC
-EXTERN KeDelayExecutionThread@12 :PROC
-EXTERN KeDisconnectInterrupt@4 :PROC
-EXTERN NtWaitForMultipleObjectsEx@24 :PROC
-EXTERN HalGetInterruptVector@8 :PROC
-EXTERN XeUnloadSection@4 :PROC
-EXTERN XcSHAFinal@8 :PROC
-EXTERN RtlTimeFieldsToTime@8 :PROC
-EXTERN XeLoadSection@4 :PROC
-EXTERN NtOpenSymbolicLinkObject@8 :PROC
-EXTERN KeTickCount :PROC
-EXTERN NtClose@4 :PROC
-EXTERN XcSHAInit@4 :PROC
-EXTERN HalBootSMCVideoMode :PROC
-EXTERN RtlNtStatusToDosError@4 :PROC
-EXTERN XcSHAUpdate@12 :PROC
-EXTERN DbgBreakPointWithStatus@4 :PROC
-EXTERN ExQueryNonVolatileSetting@20 :PROC
-EXTERN MmAllocateContiguousMemory@4 :PROC
-EXTERN NtProtectVirtualMemory@16 :PROC
-EXTERN MmPersistContiguousMemory@12 :PROC
-EXTERN KeBugCheckEx@20 :PROC
-EXTERN RtlInitAnsiString@8 :PROC
-EXTERN NtQuerySymbolicLinkObject@12 :PROC
-EXTERN RtlTimeToTimeFields@8 :PROC
-EXTERN RtlEqualString@12 :PROC
-EXTERN IoDeleteSymbolicLink@4 :PROC
-EXTERN MmQueryStatistics@4 :PROC
+EXTERN D3D__DirtyFlags : DWORD
 EXTERN STDCALL XGetLanguage@0 :PROC
 EXTERN STDCALL lstrcpyW@8 :PROC
 EXTERN STDCALL lstrcpynW@12 :PROC
@@ -12624,10 +12477,8 @@ FUN_000CB918 PROTO stdcall
 FUN_000CC206 PROTO stdcall
 FUN_000CC244 PROTO stdcall
 FUN_000CE420 PROTO stdcall
-FUN_000CF051 PROTO c
 FUN_000CF057 PROTO c
 FUN_000CF067 PROTO c
-FUN_000CF074 PROTO c
 FUN_000CF2F6 PROTO c
 FUN_000CF310 PROTO stdcall
 FUN_000CF320 PROTO stdcall
@@ -24614,6 +24465,60 @@ FUN_0027DCB0 PROTO stdcall
 FUN_0027DCC0 PROTO stdcall
 FUN_0027DCD0 PROTO stdcall
 FUN_00293FD0 PROTO stdcall
+EXTERN NtQueryFullAttributesFile@8 :PROC
+EXTERN NtQueryDirectoryFile@40 :PROC
+EXTERN FscGetCacheSize@0 :PROC
+EXTERN FscSetCacheSize@4 :PROC
+EXTERN RtlCompareString@12 :PROC
+EXTERN AvSetSavedDataAddress@4 :PROC
+EXTERN AvSetDisplayMode@24 :PROC
+EXTERN HalReadWritePCISpace@24 :PROC
+EXTERN KeInsertQueueDpc@12 :PROC
+EXTERN MmQueryAllocationSize@4 :PROC
+EXTERN MmAllocateContiguousMemoryEx@20 :PROC
+EXTERN AvSendTVEncoderOption@16 :PROC
+EXTERN AvGetSavedDataAddress@0 :PROC
+EXTERN NtWaitForSingleObjectEx@16 :PROC
+EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
+EXTERN KeWaitForSingleObject@20 :PROC
+EXTERN NtUserIoApcDispatcher@12 :PROC
+EXTERN NtFlushBuffersFile@8 :PROC
+EXTERN MmQueryAddressProtect@4 :PROC
+EXTERN KeInitializeDpc@12 :PROC
+EXTERN MmSetAddressProtect@12 :PROC
+EXTERN KeInitializeTimerEx@8 :PROC
+EXTERN KeSetEvent@12 :PROC
+EXTERN MmFreeSystemMemory@8 :PROC
+EXTERN XcHMAC@28 :PROC
+EXTERN MmAllocateSystemMemory@8 :PROC
+EXTERN NtReadFileScatter@32 :PROC
+EXTERN NtDeviceIoControlFile@40 :PROC
+EXTERN IoQueryVolumeInformation@20 :PROC
+EXTERN NtWriteFileGather@32 :PROC
+EXTERN NtFreeVirtualMemory@12 :PROC
+EXTERN RtlFillMemoryUlong@12 :PROC
+EXTERN RtlCompareMemoryUlong@12 :PROC
+EXTERN NtAllocateVirtualMemory@20 :PROC
+EXTERN NtFsControlFile@40 :PROC
+EXTERN KeQueryInterruptTime@0 :PROC
+EXTERN MmFreeContiguousMemory@4 :PROC
+EXTERN SYSCALL @KfLowerIrql@4 :PROC
+EXTERN HalInitiateShutdown@0 :PROC
+EXTERN KeRaiseIrqlToDpcLevel@0 :PROC
+EXTERN RtlInitializeCriticalSection@4 :PROC
+EXTERN RtlCompareMemory@12 :PROC
+EXTERN KeSetTimerEx@20 :PROC
+EXTERN NtQueryVirtualMemory@8 :PROC
+EXTERN MmClaimGpuInstanceMemory@8 :PROC
+EXTERN TtfdDbgPrint :PROC
+EXTERN KeStallExecutionProcessor@4 :PROC
+EXTERN KeInitializeInterrupt@28 :PROC
+EXTERN KeConnectInterrupt@4 :PROC
+EXTERN KeDisconnectInterrupt@4 :PROC
+EXTERN HalGetInterruptVector@8 :PROC
+EXTERN XcSHAFinal@8 :PROC
+EXTERN XcSHAInit@4 :PROC
+EXTERN XcSHAUpdate@12 :PROC
 EXTERN STR_0x003864d4 : DWORD
 EXTERN STR_0x003864e4 : DWORD
 EXTERN STR_0x00386550 : DWORD
