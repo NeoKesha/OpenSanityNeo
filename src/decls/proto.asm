@@ -1,134 +1,96 @@
+EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
+EXTERN PASCAL ??_C@_01DGKLNCNG@R?$AA@ : DWORD
 EXTERN D3D__RenderState : DWORD
 EXTERN PASCAL ??_C@_04CNFFLDFF@BLUE?$AA@ : DWORD
-EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
-EXTERN PASCAL ??_C@_03FNPLCCOA@RED?$AA@ : DWORD
-EXTERN PASCAL ??_C@_01HMGJMAIH@B?$AA@ : DWORD
-EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
-EXTERN D3D__TextureState : DWORD
 EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN PASCAL ??_C@_01BBODEMC@G?$AA@ : DWORD
-EXTERN PASCAL ??_C@_01DGKLNCNG@R?$AA@ : DWORD
 EXTERN D3D__DirtyFlags : DWORD
+EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
+EXTERN PASCAL ??_C@_03FNPLCCOA@RED?$AA@ : DWORD
+EXTERN PASCAL ??_C@_05KKNCHNIM@GREEN?$AA@ : DWORD
+EXTERN D3D__TextureState : DWORD
+EXTERN NtQueryFullAttributesFile@8 :PROC
+EXTERN NtQueryDirectoryFile@40 :PROC
+EXTERN FscGetCacheSize@0 :PROC
+EXTERN FscSetCacheSize@4 :PROC
+EXTERN RtlCompareString@12 :PROC
+EXTERN AvSetSavedDataAddress@4 :PROC
+EXTERN AvSetDisplayMode@24 :PROC
+EXTERN HalReadWritePCISpace@24 :PROC
+EXTERN KeInsertQueueDpc@12 :PROC
+EXTERN MmQueryAllocationSize@4 :PROC
+EXTERN MmAllocateContiguousMemoryEx@20 :PROC
+EXTERN AvSendTVEncoderOption@16 :PROC
+EXTERN AvGetSavedDataAddress@0 :PROC
+EXTERN NtWaitForSingleObjectEx@16 :PROC
+EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
+EXTERN KeWaitForSingleObject@20 :PROC
+EXTERN NtUserIoApcDispatcher@12 :PROC
+EXTERN NtFlushBuffersFile@8 :PROC
+EXTERN MmQueryAddressProtect@4 :PROC
+EXTERN KeInitializeDpc@12 :PROC
+EXTERN MmSetAddressProtect@12 :PROC
+EXTERN KeInitializeTimerEx@8 :PROC
+EXTERN KeSetEvent@12 :PROC
+EXTERN MmFreeSystemMemory@8 :PROC
+EXTERN XcHMAC@28 :PROC
+EXTERN MmAllocateSystemMemory@8 :PROC
+EXTERN NtReadFileScatter@32 :PROC
+EXTERN NtDeviceIoControlFile@40 :PROC
+EXTERN IoQueryVolumeInformation@20 :PROC
+EXTERN NtWriteFileGather@32 :PROC
+EXTERN NtFreeVirtualMemory@12 :PROC
+EXTERN RtlFillMemoryUlong@12 :PROC
+EXTERN RtlCompareMemoryUlong@12 :PROC
+EXTERN NtAllocateVirtualMemory@20 :PROC
+EXTERN NtFsControlFile@40 :PROC
+EXTERN KeQueryInterruptTime@0 :PROC
+EXTERN MmFreeContiguousMemory@4 :PROC
+EXTERN SYSCALL @KfLowerIrql@4 :PROC
+EXTERN HalInitiateShutdown@0 :PROC
+EXTERN KeRaiseIrqlToDpcLevel@0 :PROC
+EXTERN RtlInitializeCriticalSection@4 :PROC
+EXTERN RtlCompareMemory@12 :PROC
+EXTERN KeSetTimerEx@20 :PROC
+EXTERN NtQueryVirtualMemory@8 :PROC
+EXTERN MmClaimGpuInstanceMemory@8 :PROC
+EXTERN TtfdDbgPrint :PROC
+EXTERN KeStallExecutionProcessor@4 :PROC
+EXTERN KeInitializeInterrupt@28 :PROC
+EXTERN KeConnectInterrupt@4 :PROC
+EXTERN KeDisconnectInterrupt@4 :PROC
+EXTERN HalGetInterruptVector@8 :PROC
+EXTERN XcSHAFinal@8 :PROC
+EXTERN XcSHAInit@4 :PROC
+EXTERN XcSHAUpdate@12 :PROC
 EXTERN STDCALL XGetLanguage@0 :PROC
 EXTERN STDCALL lstrcpyW@8 :PROC
-EXTERN STDCALL lstrcpynW@12 :PROC
 EXTERN STDCALL XGetSectionHandleA@4 :PROC
 EXTERN STDCALL XLoadSectionByHandle@4 :PROC
 EXTERN STDCALL XFreeSectionByHandle@4 :PROC
 EXTERN STDCALL mainXapiStartup@4 :PROC
-EXTERN STDCALL xCompareStringW@20 :PROC
 EXTERN STDCALL GetLastError@0 :PROC
-EXTERN STDCALL SetLastError@4 :PROC
-EXTERN STDCALL XapiSetLastNTError@4 :PROC
 EXTERN STDCALL GetOverlappedResult@16 :PROC
-EXTERN STDCALL XapiValidateDiskPartitionEx@8 :PROC
-EXTERN STDCALL XapiCopySectionToFile@16 :PROC
-EXTERN STDCALL XapiMapLetterToDirectory@24 :PROC
-EXTERN STDCALL XapiSetupPerTitleDriveLetters@8 :PROC
 EXTERN C XapiBootToDash@12 :PROC
-EXTERN STDCALL XapiValidateDiskPartition@4 :PROC
-EXTERN STDCALL XapiInitProcess@0 :PROC
-EXTERN STDCALL _rtinit@0 :PROC
-EXTERN STDCALL XapiRestrictCodeSelectorLimit@0 :PROC
-EXTERN STDCALL XapiApplyKernelPatches@0 :PROC
 EXTERN STDCALL CloseHandle@4 :PROC
-EXTERN STDCALL XapiCallThreadNotifyRoutines@4 :PROC
-EXTERN STDCALL RaiseException@16 :PROC
 EXTERN STDCALL CreateThread@24 :PROC
-EXTERN STDCALL xCompareStringA@20 :PROC
-EXTERN STDCALL XapiFormatObjectAttributes@12 :PROC
-EXTERN STDCALL XapiFormatTimeOut@8 :PROC
-EXTERN STDCALL WaitForSingleObjectEx@12 :PROC
-EXTERN STDCALL WaitForMultipleObjectsEx@20 :PROC
-EXTERN STDCALL SleepEx@8 :PROC
-EXTERN STDCALL WaitForSingleObject@8 :PROC
-EXTERN STDCALL lstrcpynA@12 :PROC
 EXTERN STDCALL XLaunchNewImageA@8 :PROC
-EXTERN STDCALL XWriteTitleInfoNoReboot@24 :PROC
 EXTERN STDCALL XGetLaunchInfo@8 :PROC
-EXTERN STDCALL XWriteTitleInfoAndRebootA@20 :PROC
-EXTERN STDCALL BuildUpdateFilePath@12 :PROC
-EXTERN STDCALL XapipUpdateMountDashPartition@0 :PROC
-EXTERN STDCALL XoUpdateLoadXBEInfo@8 :PROC
-EXTERN STDCALL XoRebootToUpdaterWhilePreservingDDrive@12 :PROC
-EXTERN STDCALL XoUpdateGetSavedDataFromLaunchPage@12 :PROC
-EXTERN STDCALL XapipUpdateGetCurrentDDriveMapping@8 :PROC
-EXTERN STDCALL XapipUpdateSaveDDriveMappingToLaunchPage@8 :PROC
-EXTERN STDCALL XapipUpdateDetectAndVerify@16 :PROC
-EXTERN STDCALL XapipLaunchNewImageInternal@16 :PROC
-EXTERN STDCALL XapipUpdateRebootIfNecessary@0 :PROC
-EXTERN STDCALL XGetParentalControlSetting@0 :PROC
 EXTERN STDCALL GetDiskFreeSpaceExA@16 :PROC
-EXTERN STDCALL XapiSelectCachePartition@12 :PROC
-EXTERN STDCALL XMountUtilityDrive@4 :PROC
 EXTERN STDCALL XGetDiskSectorSizeA@4 :PROC
-EXTERN STDCALL LocalAlloc@8 :PROC
-EXTERN STDCALL LocalFree@4 :PROC
-EXTERN STDCALL RtlpCreateUnCommittedRange@4 :PROC
-EXTERN STDCALL RtlpDestroyUnCommittedRange@8 :PROC
-EXTERN STDCALL RtlpInsertUnCommittedPages@12 :PROC
-EXTERN STDCALL RtlpFindAndCommitPages@16 :PROC
-EXTERN STDCALL RtlpDestroyHeapSegment@4 :PROC
-EXTERN STDCALL RtlpCoalesceFreeBlocks@16 :PROC
-EXTERN STDCALL RtlpInsertFreeBlock@12 :PROC
-EXTERN STDCALL RtlpGetExtraStuffPointer@4 :PROC
-EXTERN STDCALL RtlDestroyHeap@4 :PROC
-EXTERN STDCALL RtlpGrowBlockInPlace@20 :PROC
 EXTERN STDCALL RtlSizeHeap@12 :PROC
-EXTERN STDCALL RtlpInitializeHeapSegment@28 :PROC
-EXTERN STDCALL RtlpExtendHeap@8 :PROC
-EXTERN STDCALL RtlpDeCommitFreeBlock@12 :PROC
-EXTERN STDCALL RtlCreateHeap@24 :PROC
-EXTERN STDCALL RtlAllocateHeap@12 :PROC
-EXTERN STDCALL RtlFreeHeap@12 :PROC
-EXTERN STDCALL RtlReAllocateHeap@16 :PROC
-EXTERN STDCALL XAutoPowerDownResetTimer@0 :PROC
-EXTERN STDCALL XapiInitAutoPowerDown@0 :PROC
-EXTERN STDCALL XapiChangeCodeSelectorLimit@8 :PROC
 EXTERN STDCALL ReadFile@20 :PROC
 EXTERN STDCALL WriteFile@20 :PROC
-EXTERN STDCALL SetEndOfFile@4 :PROC
 EXTERN STDCALL SetFilePointer@16 :PROC
 EXTERN STDCALL GetFileInformationByHandle@8 :PROC
-EXTERN STDCALL GetFileSizeEx@8 :PROC
 EXTERN STDCALL GetFileSize@8 :PROC
 EXTERN STDCALL CreateFileA@28 :PROC
-EXTERN STDCALL CopyFileExA@24 :PROC
-EXTERN STDCALL XapiComputeContentMetadataFileName@8 :PROC
-EXTERN STDCALL XComputeContentSignatureKey@8 :PROC
-EXTERN STDCALL XapiComputeContentHeaderSignature@16 :PROC
-EXTERN STDCALL XapiLoadContentMetadataHeader@16 :PROC
-EXTERN STDCALL XapiVerifyAndLoadOptionalSectionData@12 :PROC
-EXTERN STDCALL XapipGetAlternateTitleID@0 :PROC
-EXTERN STDCALL XGetContentInstallLocationFromIDs@16 :PROC
-EXTERN STDCALL XInstallContentSignaturesWithFileName@16 :PROC
-EXTERN STDCALL XInstallContentSignaturesEx@16 :PROC
-EXTERN STDCALL XLoadContentSignaturesWithFileName@8 :PROC
-EXTERN STDCALL XLocateSignatureByIndex@16 :PROC
-EXTERN STDCALL XLocateSignatureByNameEx@24 :PROC
-EXTERN STDCALL XMemAlloc@8 :PROC
 EXTERN STDCALL XMemFree@8 :PROC
-EXTERN STDCALL XapiFormatFATVolumeEx@8 :PROC
-EXTERN STDCALL XQueryValue@20 :PROC
-EXTERN STDCALL XShaHmacInitialize@12 :PROC
-EXTERN STDCALL XShaHmacComputeFinal@16 :PROC
-EXTERN STDCALL XapiConvertSignatureToNonRoamable@12 :PROC
-EXTERN STDCALL XapipCalculateSaveGameSignatureBegin@8 :PROC
-EXTERN STDCALL XapipCalculateSaveGameSignatureEnd@8 :PROC
-EXTERN STDCALL XapipCalculateContentSignatureBegin@0 :PROC
-EXTERN STDCALL XapipCalculateContentSignatureEnd@8 :PROC
-EXTERN STDCALL XCalculateSignatureBeginEx@8 :PROC
 EXTERN STDCALL XCalculateSignatureBegin@4 :PROC
 EXTERN STDCALL XCalculateSignatureUpdate@12 :PROC
 EXTERN STDCALL XCalculateSignatureEnd@8 :PROC
-EXTERN STDCALL XapiNukeDirectoryFromHandle@8 :PROC
-EXTERN STDCALL XapiNukeDirectory@8 :PROC
-EXTERN STDCALL SetFileAttributesA@8 :PROC
-EXTERN STDCALL DeleteFileA@4 :PROC
 EXTERN STDCALL XSetFileCacheSize@4 :PROC
-EXTERN STDCALL XapiGetDirectoryDisplayBlocks@12 :PROC
 EXTERN STDCALL XPhysicalAlloc@16 :PROC
-EXTERN STDCALL XPhysicalAllocEx@20 :PROC
 EXTERN STDCALL rand :PROC
 EXTERN C _fpmath :PROC
 EXTERN STDCALL _purecall :PROC
@@ -137,25 +99,13 @@ EXTERN C tolower :PROC
 EXTERN C atexit :PROC
 EXTERN SYSCALL @__security_check_cookie@4 :PROC
 EXTERN C qsort :PROC
-EXTERN C wcscmp :PROC
-EXTERN C _wcsicmp :PROC
-EXTERN C wcscat :PROC
-EXTERN C wcscpy :PROC
-EXTERN C _SEH_prolog :PROC
-EXTERN STDCALL _SEH_epilog :PROC
-EXTERN C wcslen :PROC
-EXTERN C _snwprintf :PROC
 EXTERN C sprintf :PROC
 EXTERN C _stricmp :PROC
-EXTERN C _snprintf :PROC
 EXTERN C strncpy :PROC
 EXTERN C _strnicmp :PROC
 EXTERN STDCALL _chkstk :PROC
-EXTERN STDCALL _allmul :PROC
 EXTERN C memmove :PROC
 EXTERN STDCALL _aulldiv :PROC
-EXTERN C wcsncpy :PROC
-EXTERN STDCALL _alldiv :PROC
 EXTERN C toupper :PROC
 EXTERN STDCALL _aullshr :PROC
 EXTERN C strstr :PROC
@@ -24465,60 +24415,6 @@ FUN_0027DCB0 PROTO stdcall
 FUN_0027DCC0 PROTO stdcall
 FUN_0027DCD0 PROTO stdcall
 FUN_00293FD0 PROTO stdcall
-EXTERN NtQueryFullAttributesFile@8 :PROC
-EXTERN NtQueryDirectoryFile@40 :PROC
-EXTERN FscGetCacheSize@0 :PROC
-EXTERN FscSetCacheSize@4 :PROC
-EXTERN RtlCompareString@12 :PROC
-EXTERN AvSetSavedDataAddress@4 :PROC
-EXTERN AvSetDisplayMode@24 :PROC
-EXTERN HalReadWritePCISpace@24 :PROC
-EXTERN KeInsertQueueDpc@12 :PROC
-EXTERN MmQueryAllocationSize@4 :PROC
-EXTERN MmAllocateContiguousMemoryEx@20 :PROC
-EXTERN AvSendTVEncoderOption@16 :PROC
-EXTERN AvGetSavedDataAddress@0 :PROC
-EXTERN NtWaitForSingleObjectEx@16 :PROC
-EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
-EXTERN KeWaitForSingleObject@20 :PROC
-EXTERN NtUserIoApcDispatcher@12 :PROC
-EXTERN NtFlushBuffersFile@8 :PROC
-EXTERN MmQueryAddressProtect@4 :PROC
-EXTERN KeInitializeDpc@12 :PROC
-EXTERN MmSetAddressProtect@12 :PROC
-EXTERN KeInitializeTimerEx@8 :PROC
-EXTERN KeSetEvent@12 :PROC
-EXTERN MmFreeSystemMemory@8 :PROC
-EXTERN XcHMAC@28 :PROC
-EXTERN MmAllocateSystemMemory@8 :PROC
-EXTERN NtReadFileScatter@32 :PROC
-EXTERN NtDeviceIoControlFile@40 :PROC
-EXTERN IoQueryVolumeInformation@20 :PROC
-EXTERN NtWriteFileGather@32 :PROC
-EXTERN NtFreeVirtualMemory@12 :PROC
-EXTERN RtlFillMemoryUlong@12 :PROC
-EXTERN RtlCompareMemoryUlong@12 :PROC
-EXTERN NtAllocateVirtualMemory@20 :PROC
-EXTERN NtFsControlFile@40 :PROC
-EXTERN KeQueryInterruptTime@0 :PROC
-EXTERN MmFreeContiguousMemory@4 :PROC
-EXTERN SYSCALL @KfLowerIrql@4 :PROC
-EXTERN HalInitiateShutdown@0 :PROC
-EXTERN KeRaiseIrqlToDpcLevel@0 :PROC
-EXTERN RtlInitializeCriticalSection@4 :PROC
-EXTERN RtlCompareMemory@12 :PROC
-EXTERN KeSetTimerEx@20 :PROC
-EXTERN NtQueryVirtualMemory@8 :PROC
-EXTERN MmClaimGpuInstanceMemory@8 :PROC
-EXTERN TtfdDbgPrint :PROC
-EXTERN KeStallExecutionProcessor@4 :PROC
-EXTERN KeInitializeInterrupt@28 :PROC
-EXTERN KeConnectInterrupt@4 :PROC
-EXTERN KeDisconnectInterrupt@4 :PROC
-EXTERN HalGetInterruptVector@8 :PROC
-EXTERN XcSHAFinal@8 :PROC
-EXTERN XcSHAInit@4 :PROC
-EXTERN XcSHAUpdate@12 :PROC
 EXTERN STR_0x003864d4 : DWORD
 EXTERN STR_0x003864e4 : DWORD
 EXTERN STR_0x00386550 : DWORD
