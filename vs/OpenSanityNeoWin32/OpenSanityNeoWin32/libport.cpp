@@ -3,7 +3,6 @@
 #include <dsound.h>
 #include "xbox.h"
 
-
 extern "C" int main(int argc, char** argv);
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 	main(0,0);
@@ -79,7 +78,7 @@ extern "C" XBOXAPI BOOL WINAPI XSetFileCacheSize(IN SIZE_T dwCacheSize) {
 	return FALSE; //MOCK
 }
 extern "C" XBOXAPI LPVOID WINAPI XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect) {
-	return (LPVOID)0; //MOCK
+	return (LPVOID)malloc(dwSize); //MOCK
 }
 extern "C" XBOXAPI DWORD WINAPI XGetVideoFlags(VOID) {
 	return XC_VIDEO_FLAGS_WIDESCREEN | XC_VIDEO_FLAGS_HDTV_1080i;

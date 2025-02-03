@@ -975,13 +975,13 @@ UnkFamily17Base STRUCT
     field1_0x4 BYTE 12 dup (0)
     ptrArray BYTE 512 dup (0)
     cnt WORD 0
-    field15_0x212 BYTE 2034 dup (0)
-    field2049_0xa04 REAL4 0.0;
-    field2050_0xa08 WORD 0
-    field2051_0xa0a WORD 0
-    field2052_0xa0c DWORD 0
-    field2053_0xa10 REAL4 0.0;
-	field2054_0xa14 BYTE 2096 dup (0)
+    field4_0x212 BYTE 2034 dup (0)
+    field5_0xa04 REAL4 0.0;
+    field6_0xa08 WORD 0
+    field7_0xa0a WORD 0
+    field8_0xa0c DWORD 0
+    field9_0xa10 REAL4 0.0;
+    field10_0xa14 BYTE 2096 dup (0)
     unkPtr DWORD 0; uint *
 UnkFamily17Base ENDS
 UnkFamily17A STRUCT
@@ -6207,11 +6207,9 @@ BlackboardAbstract STRUCT
     ints DWORD 0; int *
 BlackboardAbstract ENDS
 SoundBuffer STRUCT
-	field0_0x0 BYTE 220 dup(0)
+    field0_0x0 BYTE 220 dup (0)
     soundBufferFlags DWORD 0
-    field221_0xe0 BYTE 464 dup(0)
-	next DWORD 0; SoundBuffer *
-    field686_0x2b4 BYTE 15852 dup(0)
+    field2_0xe0 BYTE 16320 dup (0)
 SoundBuffer ENDS
 SoundControllerUnkClass STRUCT
     field0_0x0 WORD 0
@@ -6373,7 +6371,7 @@ AutoClass46 STRUCT
     field16_0x28 DWORD 0
     field17_0x2c DWORD 0
     field18_0x30 DWORD 0
-	field19_0x34 BYTE 4084 dup(0)
+    field19_0x34 BYTE 4084 dup (0)
 AutoClass46 ENDS
 UnkFamily28Abstract STRUCT
     vtable DWORD 0; UnkFamily28Abstract_VTable *
