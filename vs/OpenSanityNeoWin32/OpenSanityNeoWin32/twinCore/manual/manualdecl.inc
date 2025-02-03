@@ -1,0 +1,20 @@
+UNICODE_STRING STRUCT
+	_Length WORD 0
+	MaximumLength WORD 0
+	Buffer DWORD 0
+UNICODE_STRING ENDS
+CRITICAL_SECTION STRUCT
+	PTR1 DWORD 0
+	PTR2 DWORD 0
+	PTR3 DWORD 0
+	PTR4 DWORD 0
+	CNT1 DWORD 0
+	CNT2 DWORD 0
+	HNDL DWORD 0
+CRITICAL_SECTION ENDS
+
+EXTERN __security_cookie : DWORD
+
+EXTERN stdcall __security_init_cookie : PROC 
+EXTERN stdcall __onexitinit : PROC 
+EXTERN stdcall __initstdio : PROC 
