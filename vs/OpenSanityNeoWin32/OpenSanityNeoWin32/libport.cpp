@@ -1,12 +1,4 @@
-#include <Windows.h>
-#include <d3d8.h>
-#include <dsound.h>
-#include "xbox.h"
-
-extern "C" int main(int argc, char** argv);
-int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
-	main(0,0);
-};
+#include "libport.h"
 
 extern "C" LPVOID WINAPI XMemAlloc(SIZE_T dwSize, DWORD dwAllocAttributes) { return malloc(dwSize); }
 extern "C" VOID WINAPI XMemFree(PVOID pAddress, DWORD dwAllocAttributes) { free(pAddress); }
@@ -38,6 +30,9 @@ extern "C" const DWORD D3DDIRTYFROMRENDERSTATE[46] = {};
 
 extern "C" void __stdcall RtlSizeHeap(int arg1, int arg2, int arg3) { return; }
 
+//Port Data
+
+
 //WINBASEAPI SIZE_T WINAPI HeapSize(IN HANDLE hHeap, IN DWORD dwFlags, IN LPCVOID lpMem) {
 //	return 0;
 //}
@@ -47,7 +42,8 @@ extern "C" XBOXAPI DWORD WINAPI XGetLanguage(VOID) {
 }
 	
 extern "C" XBOXAPI HANDLE WINAPI XGetSectionHandleA(IN LPCSTR pSectionName) {
-	return INVALID_HANDLE_VALUE; //MOCK
+	HANDLE ftest = CreateFileA(pSectionName, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, NULL);
+	return ftest;
 }
 extern "C" XBOXAPI PVOID WINAPI XLoadSectionByHandle(IN HANDLE hSection) {
 	return (PVOID)0; //MOCK
@@ -59,7 +55,10 @@ extern "C" XBOXAPI DWORD WINAPI XLaunchNewImageA(IN LPCSTR lpImagePath, IN PLAUN
 	return 0;
 }
 extern "C" XBOXAPI DWORD WINAPI XGetLaunchInfo(OUT PDWORD pdwLaunchDataType, OUT PLAUNCH_DATA pLaunchData) {
-	return ERROR_SUCCESS; //MOCK
+	*pdwLaunchDataType = LDT_FROM_DEBUGGER_CMDLINE;
+	LD_FROM_DEBUGGER_CMDLINE* data = (LD_FROM_DEBUGGER_CMDLINE*)pLaunchData;
+	strcpy_s(data->szCmdLine, 1, "\0");
+	return ERROR_SUCCESS; 
 }
 extern "C" XBOXAPI DWORD WINAPI XGetDiskSectorSizeA(IN LPCSTR lpRootPathName) {
 	return 0;  //MOCK
@@ -74,11 +73,10 @@ extern "C" XBOXAPI DWORD WINAPI XCalculateSignatureEnd(IN HANDLE hCalcSig, OUT P
 	return 0;  //MOCK
 }
 extern "C" XBOXAPI BOOL WINAPI XSetFileCacheSize(IN SIZE_T dwCacheSize) {
-	//return SetSystemFileCacheSize(dwCacheSize, dwCacheSize, 0);
-	return FALSE; //MOCK
+	return SetSystemFileCacheSize(dwCacheSize, dwCacheSize, 0);
 }
 extern "C" XBOXAPI LPVOID WINAPI XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect) {
-	return (LPVOID)malloc(dwSize); //MOCK
+	return malloc(dwSize);
 }
 extern "C" XBOXAPI DWORD WINAPI XGetVideoFlags(VOID) {
 	return XC_VIDEO_FLAGS_WIDESCREEN | XC_VIDEO_FLAGS_HDTV_1080i;
@@ -479,296 +477,7 @@ STDAPI_(void) DirectSoundDoWork(void) {
 }
 
 //D3DDevice
-extern "C" ULONG WINAPI D3DDevice_AddRef() {
-	return 0; //MOCK
-}
-extern "C" ULONG WINAPI D3DDevice_Release() {
-	return 0; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetDirect3D(IDirect3D8** ppD3D8) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetDeviceCaps(D3DCAPS8 *pCaps) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetDisplayMode(D3DDISPLAYMODE *pMode) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetCreationParameters(D3DDEVICE_CREATION_PARAMETERS *pParameters) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_Reset(D3DPRESENT_PARAMETERS *pPresentationParameters) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetRasterStatus(D3DRASTER_STATUS *pRasterStatus) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetFlickerFilter(DWORD Filter) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetSoftDisplayFilter(BOOL Enable) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetGammaRamp(DWORD Flags, CONST D3DGAMMARAMP *pRamp) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetGammaRamp(D3DGAMMARAMP *pRamp) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_CopyRects(IDirect3DSurface8* pSourceSurface, CONST RECT *pSourceRectsArray, UINT cRects, IDirect3DSurface8* pDestinationSurface, CONST POINT *pDestPointsArray) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetCopyRectsState(CONST D3DCOPYRECTSTATE *pCopyRectState, CONST D3DCOPYRECTROPSTATE *pCopyRectRopState) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetCopyRectsState(D3DCOPYRECTSTATE *pCopyRectState, D3DCOPYRECTROPSTATE *pCopyRectRopState) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderTarget(IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_Clear(DWORD Count, CONST D3DRECT *pRects, DWORD Flags, D3DCOLOR Color, float Z, DWORD Stencil) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTransform(D3DTRANSFORMSTATETYPE State, CONST D3DMATRIX *pMatrix) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetTransform(D3DTRANSFORMSTATETYPE State, D3DMATRIX *pMatrix) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_MultiplyTransform(D3DTRANSFORMSTATETYPE State, CONST D3DMATRIX *pMatrix) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetViewport(CONST D3DVIEWPORT8 *pViewport) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetViewport(D3DVIEWPORT8 *pViewport) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetMaterial(CONST D3DMATERIAL8 *pMaterial) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetMaterial(D3DMATERIAL8 *pMaterial) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetBackMaterial(CONST D3DMATERIAL8 *pMaterial) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetBackMaterial(D3DMATERIAL8 *pMaterial) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_SetLight(DWORD Index, CONST D3DLIGHT8 *pLight) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetLight(DWORD Index, D3DLIGHT8 *pLight) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_LightEnable(DWORD Index, BOOL Enable) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI D3DDevice_GetLightEnable(DWORD Index, BOOL *pEnable) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderStateNotInline(D3DRENDERSTATETYPE State, DWORD Value) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_SetRenderState_ParameterCheck(D3DRENDERSTATETYPE State, DWORD Value) {
-	return S_OK; //MOCK
-}
-extern "C" void D3DFASTCALL D3DDevice_SetRenderState_Simple(DWORD Method, DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_PSTextureModes(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_VertexBlend(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_FogColor(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_FillMode(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_BackFillMode(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_TwoSidedLighting(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_NormalizeNormals(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_ZEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_StencilEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_StencilFail(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_CullMode(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_FrontFace(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_TextureFactor(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_ZBias(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_LogicOp(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_EdgeAntiAlias(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_MultiSampleAntiAlias(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_MultiSampleMask(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_MultiSampleMode(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_MultiSampleRenderTargetMode(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_ShadowFunc(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_LineWidth(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_SampleAlpha(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_Dxt1NoiseEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_YuvEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_OcclusionCullEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_StencilCullEnable(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_RopZCmpAlwaysRead(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_RopZRead(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetRenderState_DoNotCullUncompressed(DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTextureStageStateNotInline(DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD Value) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_SetTextureState_ParameterCheck(DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD Value) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTextureState_BumpEnv(DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTextureState_TexCoordIndex(DWORD Stage, DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTextureState_BorderColor(DWORD Stage, DWORD Value) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTextureState_ColorKeyColor(DWORD Stage, DWORD Value) {
-	return; //MOCK
-}
 
-extern "C" void WINAPI D3DDevice_BlockUntilVerticalBlank() {
-	return;
-}
-
-extern "C" IDirect3DSurface8* WINAPI D3DDevice_GetRenderTarget2() {
-	return (IDirect3DSurface8*)0; //MOCK
-}
-extern "C" IDirect3DSurface8* WINAPI D3DDevice_GetDepthStencilSurface2() {
-	return (IDirect3DSurface8*)0; //MOCK
-}
-extern "C" IDirect3DSurface8* WINAPI D3DDevice_GetPalette2(DWORD Stage) {
-	return (IDirect3DSurface8*)0; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetTexture(DWORD Stage, IDirect3DBaseTexture8* pTexture) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetOverscanColor(D3DCOLOR Color) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SelectVertexShaderDirect(D3DVERTEXATTRIBUTEFORMAT *pVAF, DWORD Address) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI D3DDevice_CreateVertexShader(CONST DWORD *pDeclaration, CONST DWORD *pFunction, DWORD *pHandle, DWORD Usage) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_LoadVertexShaderProgram(CONST DWORD *pFunction, DWORD Address) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetShaderConstantMode(D3DSHADERCONSTANTMODE Mode) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_DeleteVertexShader(DWORD Handle) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetVertexShader(DWORD Handle) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetVertexShaderInput(DWORD Handle, UINT StreamCount, CONST D3DSTREAM_INPUT* pStreamInputs) {
-	return; //MOCK
-}
-extern "C" ULONG WINAPI D3DResource_Release(IDirect3DResource8* pThis) {
-	return 0; //MOCK
-}
-extern "C" void WINAPI D3DResource_Register(IDirect3DResource8* pThis, void *pBase) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DSurface_LockRect(IDirect3DSurface8* pThis, D3DLOCKED_RECT *pLockedRect,CONST RECT *pRect, DWORD Flags) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_DrawVerticesUP(D3DPRIMITIVETYPE PrimitiveType, UINT VertexCount, CONST void *pVertexStreamZeroData, UINT VertexStreamZeroStride) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_DrawVertices(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT VertexCount) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_End() {
-	return; //MOCK
-}
-extern "C" UINT WINAPI Direct3D_GetAdapterModeCount(UINT Adapter) {
-	return 0; //MOCK
-}
-extern "C" HRESULT WINAPI Direct3D_EnumAdapterModes(UINT Adapter, UINT Mode, D3DDISPLAYMODE *pMode) {
-	return S_OK; //MOCK
-}
-extern "C" void WINAPI Direct3D_SetPushBufferSize(DWORD PushBufferSize, DWORD KickOffSize) {
-	return; //MOCK
-}
-extern "C" HRESULT WINAPI Direct3D_CreateDevice(UINT Adapter, D3DDEVTYPE DeviceType, void *pUnused, DWORD BehaviorFlags, D3DPRESENT_PARAMETERS *pPresentationParameters, IDirect3DDevice8** ppReturnedDeviceInterface) {
-	return S_OK; //MOCK
-}
-extern "C" DWORD WINAPI D3DDevice_Swap(DWORD Flags) {
-	return 0; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetPixelShader(DWORD Handle) {
-	return; //MOCK
-}
 extern "C" IDirect3DSurface8* WINAPI D3DTexture_GetSurfaceLevel2(IDirect3DTexture8* pThis, UINT Level) {
 	return (IDirect3DSurface8*)0; //MOCK
 }
@@ -777,15 +486,6 @@ extern "C" void WINAPI D3DTexture_LockRect(IDirect3DTexture8*pThis, UINT Level, 
 }
 extern "C" void* WINAPI D3D_AllocContiguousMemory(DWORD Size, DWORD Alignment) {
 	return (void*)0; //MOCK
-}
-extern "C" BOOL WINAPI D3DDevice_GetOverlayUpdateStatus() {
-	return FALSE; //MOCK
-}
-extern "C" void WINAPI D3DDevice_UpdateOverlay(IDirect3DSurface8* pSurface, CONST RECT *SrcRect, CONST RECT *DstRect, BOOL EnableColorKey, D3DCOLOR ColorKey) {
-	return; //MOCK
-}
-extern "C" void WINAPI D3DDevice_EnableOverlay(BOOL Enable) {
-	return; //MOCK
 }
 
 extern "C" ULONG WINAPI XGBuffer_AddRef(XGBuffer *pThis) {
@@ -824,7 +524,28 @@ extern "C" void D3DFASTCALL D3DDevice_SetVertexShaderConstantNotInlineFast(INT R
 extern "C" DWORD WINAPI XGSetSurfaceHeader(UINT Width, UINT Height, D3DFORMAT Format,IDirect3DSurface8* pSurface, UINT Data, UINT Pitch) {
 	return 0; //MOCK
 }
+
+struct D3DResource {
+	int lock;
+	int data;
+	int common;
+};
+typedef struct D3DResource D3DResource;
+
+struct D3DTextureBase {
+	D3DResource resource;
+	int format;
+	int size;
+};
+
 extern "C" DWORD WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8* pTexture, UINT Data, UINT Pitch) {
+	D3DTextureBase* ptr = (D3DTextureBase*)pTexture;
+	D3DFORMAT realFormat = D3DFMT_X8R8G8B8; 
+	ptr->size = 0;
+	ptr->format = 0;
+	ptr->resource.lock = 0;
+	ptr->resource.common = 0x40001;
+	ptr->resource.data = Data;
 	return 0; //MOCK
 }
 extern "C" void WINAPI XGSetVertexBufferHeader(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8 *ppVertexBuffer, UINT Data) {
@@ -865,3 +586,5 @@ STDAPI_(void) XAudioCreateAdpcmFormat(WORD nChannels, DWORD nSamplesPerSec, LPXB
 long __stdcall DirectSound::CDirectSoundStream::SetMixBinVolumes(struct _DSMIXBINS const * arg) {
 	return 0; //MOCK
 }
+
+//WinAPI Window

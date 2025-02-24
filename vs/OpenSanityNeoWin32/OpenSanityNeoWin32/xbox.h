@@ -28,6 +28,16 @@ typedef struct _LAUNCH_DATA
 #define XC_VIDEO_STANDARD_NTSC_J    2
 #define XC_VIDEO_STANDARD_PAL_I     3
 
+#define LDT_TITLE                 0
+#define LDT_FROM_DASHBOARD        2
+#define LDT_FROM_DEBUGGER_CMDLINE 3
+#define LDT_FROM_UPDATE           4
+
+typedef struct _LD_FROM_DEBUGGER_CMDLINE
+{
+    CHAR szCmdLine[MAX_LAUNCH_DATA_SIZE];
+} LD_FROM_DEBUGGER_CMDLINE, * PLD_FROM_DEBUGGER_CMDLINE;
+
 #define MAX_GAMENAME     128
 typedef struct _XGAME_FIND_DATA {
     WIN32_FIND_DATAA wfd;

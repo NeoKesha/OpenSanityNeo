@@ -1,8 +1,8 @@
-EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN D3D__DirtyFlags : DWORD
 EXTERN D3D__RenderState : DWORD
-EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
 EXTERN D3D__TextureState : DWORD
+EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
+EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
 EXTERN MmQueryAddressProtect@4 :PROC
 EXTERN MmSetAddressProtect@12 :PROC
@@ -70,81 +70,484 @@ EXTERN STDCALL XFindFirstSaveGame@8 :PROC
 EXTERN STDCALL XFindNextSaveGame@8 :PROC
 EXTERN STDCALL XFindClose@4 :PROC
 EXTERN C __CxxFrameHandler :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_PSTextureModes@4 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_PSTextureModes@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4 EQU Wrapper_D3DDevice_SetRenderState_PSTextureModes@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_PSTextureModes@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4 EQU D3DDevice_SetRenderState_PSTextureModes@4
+ENDIF
 EXTERN SYSCALL @D3DDevice_SetRenderState_Simple@8 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_ShadowFunc@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_FogColor@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_CullMode@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_FrontFace@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_NormalizeNormals@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_TextureFactor@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_LineWidth@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_Dxt1NoiseEnable@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_ZBias@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_LogicOp@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_FillMode@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_BackFillMode@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_TwoSidedLighting@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_VertexBlend@4 :PROC
-EXTERN STDCALL D3DDevice_SetTextureState_TexCoordIndex@8 :PROC
-EXTERN STDCALL D3DDevice_SetTextureState_BumpEnv@12 :PROC
-EXTERN STDCALL D3DDevice_SetTextureState_BorderColor@8 :PROC
-EXTERN STDCALL D3DDevice_SetTextureState_ColorKeyColor@8 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_ZEnable@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_StencilEnable@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_StencilFail@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_YuvEnable@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_RopZRead@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_DoNotCullUncompressed@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMode@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleAntiAlias@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMask@4 :PROC
-EXTERN STDCALL D3DDevice_SetRenderState_SampleAlpha@4 :PROC
-EXTERN STDCALL D3DDevice_SetGammaRamp@8 :PROC
-EXTERN STDCALL D3DDevice_SetTransform@8 :PROC
-EXTERN STDCALL D3DDevice_GetTransform@8 :PROC
-EXTERN STDCALL D3DDevice_BlockUntilVerticalBlank@0 :PROC
-EXTERN STDCALL D3DDevice_SetRenderTarget@8 :PROC
-EXTERN STDCALL D3DDevice_GetRenderTarget2@0 :PROC
-EXTERN STDCALL D3DDevice_GetDepthStencilSurface2@0 :PROC
-EXTERN STDCALL D3DDevice_GetPalette2@4 :PROC
-EXTERN STDCALL D3DDevice_SetTexture@8 :PROC
-EXTERN STDCALL D3DDevice_SetOverscanColor@4 :PROC
-EXTERN STDCALL D3DDevice_SelectVertexShaderDirect@8 :PROC
-EXTERN STDCALL D3DDevice_CreateVertexShader@16 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4 EQU Wrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4 EQU D3DDevice_SetRenderState_EdgeAntiAlias@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_ShadowFunc@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4 EQU Wrapper_D3DDevice_SetRenderState_ShadowFunc@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_ShadowFunc@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4 EQU D3DDevice_SetRenderState_ShadowFunc@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_FogColor@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FogColor@4 EQU Wrapper_D3DDevice_SetRenderState_FogColor@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_FogColor@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FogColor@4 EQU D3DDevice_SetRenderState_FogColor@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_CullMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_CullMode@4 EQU Wrapper_D3DDevice_SetRenderState_CullMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_CullMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_CullMode@4 EQU D3DDevice_SetRenderState_CullMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_FrontFace@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FrontFace@4 EQU Wrapper_D3DDevice_SetRenderState_FrontFace@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_FrontFace@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FrontFace@4 EQU D3DDevice_SetRenderState_FrontFace@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_NormalizeNormals@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4 EQU Wrapper_D3DDevice_SetRenderState_NormalizeNormals@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_NormalizeNormals@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4 EQU D3DDevice_SetRenderState_NormalizeNormals@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_TextureFactor@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_TextureFactor@4 EQU Wrapper_D3DDevice_SetRenderState_TextureFactor@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_TextureFactor@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_TextureFactor@4 EQU D3DDevice_SetRenderState_TextureFactor@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_LineWidth@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_LineWidth@4 EQU Wrapper_D3DDevice_SetRenderState_LineWidth@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_LineWidth@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_LineWidth@4 EQU D3DDevice_SetRenderState_LineWidth@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4 EQU Wrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_Dxt1NoiseEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4 EQU D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_ZBias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ZBias@4 EQU Wrapper_D3DDevice_SetRenderState_ZBias@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_ZBias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ZBias@4 EQU D3DDevice_SetRenderState_ZBias@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_LogicOp@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_LogicOp@4 EQU Wrapper_D3DDevice_SetRenderState_LogicOp@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_LogicOp@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_LogicOp@4 EQU D3DDevice_SetRenderState_LogicOp@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_FillMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FillMode@4 EQU Wrapper_D3DDevice_SetRenderState_FillMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_FillMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_FillMode@4 EQU D3DDevice_SetRenderState_FillMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_BackFillMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_BackFillMode@4 EQU Wrapper_D3DDevice_SetRenderState_BackFillMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_BackFillMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_BackFillMode@4 EQU D3DDevice_SetRenderState_BackFillMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_TwoSidedLighting@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4 EQU Wrapper_D3DDevice_SetRenderState_TwoSidedLighting@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_TwoSidedLighting@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4 EQU D3DDevice_SetRenderState_TwoSidedLighting@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_VertexBlend@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_VertexBlend@4 EQU Wrapper_D3DDevice_SetRenderState_VertexBlend@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_VertexBlend@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_VertexBlend@4 EQU D3DDevice_SetRenderState_VertexBlend@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTextureState_TexCoordIndex@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_TexCoordIndex@8 EQU Wrapper_D3DDevice_SetTextureState_TexCoordIndex@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetTextureState_TexCoordIndex@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_TexCoordIndex@8 EQU D3DDevice_SetTextureState_TexCoordIndex@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTextureState_BumpEnv@12 :PROC
+    ExWrapper_D3DDevice_SetTextureState_BumpEnv@12 EQU Wrapper_D3DDevice_SetTextureState_BumpEnv@12
+ELSE
+    EXTERN STDCALL D3DDevice_SetTextureState_BumpEnv@12 :PROC
+    ExWrapper_D3DDevice_SetTextureState_BumpEnv@12 EQU D3DDevice_SetTextureState_BumpEnv@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTextureState_BorderColor@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_BorderColor@8 EQU Wrapper_D3DDevice_SetTextureState_BorderColor@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetTextureState_BorderColor@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_BorderColor@8 EQU D3DDevice_SetTextureState_BorderColor@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTextureState_ColorKeyColor@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_ColorKeyColor@8 EQU Wrapper_D3DDevice_SetTextureState_ColorKeyColor@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetTextureState_ColorKeyColor@8 :PROC
+    ExWrapper_D3DDevice_SetTextureState_ColorKeyColor@8 EQU D3DDevice_SetTextureState_ColorKeyColor@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_ZEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ZEnable@4 EQU Wrapper_D3DDevice_SetRenderState_ZEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_ZEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_ZEnable@4 EQU D3DDevice_SetRenderState_ZEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_StencilEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilEnable@4 EQU Wrapper_D3DDevice_SetRenderState_StencilEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_StencilEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilEnable@4 EQU D3DDevice_SetRenderState_StencilEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_StencilFail@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilFail@4 EQU Wrapper_D3DDevice_SetRenderState_StencilFail@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_StencilFail@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilFail@4 EQU D3DDevice_SetRenderState_StencilFail@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_YuvEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_YuvEnable@4 EQU Wrapper_D3DDevice_SetRenderState_YuvEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_YuvEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_YuvEnable@4 EQU D3DDevice_SetRenderState_YuvEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4 EQU Wrapper_D3DDevice_SetRenderState_StencilCullEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4 EQU D3DDevice_SetRenderState_StencilCullEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4 EQU Wrapper_D3DDevice_SetRenderState_StencilCullEnable@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_StencilCullEnable@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4 EQU D3DDevice_SetRenderState_StencilCullEnable@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 EQU Wrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4 EQU D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_RopZRead@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_RopZRead@4 EQU Wrapper_D3DDevice_SetRenderState_RopZRead@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_RopZRead@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_RopZRead@4 EQU D3DDevice_SetRenderState_RopZRead@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4 EQU Wrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_DoNotCullUncompressed@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4 EQU D3DDevice_SetRenderState_DoNotCullUncompressed@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_MultiSampleMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4 EQU Wrapper_D3DDevice_SetRenderState_MultiSampleMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4 EQU D3DDevice_SetRenderState_MultiSampleMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 EQU Wrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4 EQU D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4 EQU Wrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleAntiAlias@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4 EQU D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_MultiSampleMask@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4 EQU Wrapper_D3DDevice_SetRenderState_MultiSampleMask@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_MultiSampleMask@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4 EQU D3DDevice_SetRenderState_MultiSampleMask@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_SampleAlpha@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4 EQU Wrapper_D3DDevice_SetRenderState_SampleAlpha@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderState_SampleAlpha@4 :PROC
+    ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4 EQU D3DDevice_SetRenderState_SampleAlpha@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetGammaRamp@8 :PROC
+    ExWrapper_D3DDevice_SetGammaRamp@8 EQU Wrapper_D3DDevice_SetGammaRamp@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetGammaRamp@8 :PROC
+    ExWrapper_D3DDevice_SetGammaRamp@8 EQU D3DDevice_SetGammaRamp@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTransform@8 :PROC
+    ExWrapper_D3DDevice_SetTransform@8 EQU Wrapper_D3DDevice_SetTransform@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetTransform@8 :PROC
+    ExWrapper_D3DDevice_SetTransform@8 EQU D3DDevice_SetTransform@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_GetTransform@8 :PROC
+    ExWrapper_D3DDevice_GetTransform@8 EQU Wrapper_D3DDevice_GetTransform@8
+ELSE
+    EXTERN STDCALL D3DDevice_GetTransform@8 :PROC
+    ExWrapper_D3DDevice_GetTransform@8 EQU D3DDevice_GetTransform@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_BlockUntilVerticalBlank@0 :PROC
+    ExWrapper_D3DDevice_BlockUntilVerticalBlank@0 EQU Wrapper_D3DDevice_BlockUntilVerticalBlank@0
+ELSE
+    EXTERN STDCALL D3DDevice_BlockUntilVerticalBlank@0 :PROC
+    ExWrapper_D3DDevice_BlockUntilVerticalBlank@0 EQU D3DDevice_BlockUntilVerticalBlank@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetRenderTarget@8 :PROC
+    ExWrapper_D3DDevice_SetRenderTarget@8 EQU Wrapper_D3DDevice_SetRenderTarget@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetRenderTarget@8 :PROC
+    ExWrapper_D3DDevice_SetRenderTarget@8 EQU D3DDevice_SetRenderTarget@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_GetRenderTarget2@0 :PROC
+    ExWrapper_D3DDevice_GetRenderTarget2@0 EQU Wrapper_D3DDevice_GetRenderTarget2@0
+ELSE
+    EXTERN STDCALL D3DDevice_GetRenderTarget2@0 :PROC
+    ExWrapper_D3DDevice_GetRenderTarget2@0 EQU D3DDevice_GetRenderTarget2@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_GetDepthStencilSurface2@0 :PROC
+    ExWrapper_D3DDevice_GetDepthStencilSurface2@0 EQU Wrapper_D3DDevice_GetDepthStencilSurface2@0
+ELSE
+    EXTERN STDCALL D3DDevice_GetDepthStencilSurface2@0 :PROC
+    ExWrapper_D3DDevice_GetDepthStencilSurface2@0 EQU D3DDevice_GetDepthStencilSurface2@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_GetPalette2@4 :PROC
+    ExWrapper_D3DDevice_GetPalette2@4 EQU Wrapper_D3DDevice_GetPalette2@4
+ELSE
+    EXTERN STDCALL D3DDevice_GetPalette2@4 :PROC
+    ExWrapper_D3DDevice_GetPalette2@4 EQU D3DDevice_GetPalette2@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetTexture@8 :PROC
+    ExWrapper_D3DDevice_SetTexture@8 EQU Wrapper_D3DDevice_SetTexture@8
+ELSE
+    EXTERN STDCALL D3DDevice_SetTexture@8 :PROC
+    ExWrapper_D3DDevice_SetTexture@8 EQU D3DDevice_SetTexture@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetOverscanColor@4 :PROC
+    ExWrapper_D3DDevice_SetOverscanColor@4 EQU Wrapper_D3DDevice_SetOverscanColor@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetOverscanColor@4 :PROC
+    ExWrapper_D3DDevice_SetOverscanColor@4 EQU D3DDevice_SetOverscanColor@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SelectVertexShaderDirect@8 :PROC
+    ExWrapper_D3DDevice_SelectVertexShaderDirect@8 EQU Wrapper_D3DDevice_SelectVertexShaderDirect@8
+ELSE
+    EXTERN STDCALL D3DDevice_SelectVertexShaderDirect@8 :PROC
+    ExWrapper_D3DDevice_SelectVertexShaderDirect@8 EQU D3DDevice_SelectVertexShaderDirect@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_CreateVertexShader@16 :PROC
+    ExWrapper_D3DDevice_CreateVertexShader@16 EQU Wrapper_D3DDevice_CreateVertexShader@16
+ELSE
+    EXTERN STDCALL D3DDevice_CreateVertexShader@16 :PROC
+    ExWrapper_D3DDevice_CreateVertexShader@16 EQU D3DDevice_CreateVertexShader@16
+ENDIF
 EXTERN SYSCALL @D3DDevice_SetVertexShaderConstant1Fast@8 :PROC
 EXTERN SYSCALL @D3DDevice_SetVertexShaderConstantNotInlineFast@12 :PROC
-EXTERN STDCALL D3DDevice_SetStreamSource@12 :PROC
-EXTERN STDCALL D3DDevice_LoadVertexShaderProgram@8 :PROC
-EXTERN STDCALL D3DDevice_SetShaderConstantMode@4 :PROC
-EXTERN STDCALL D3DDevice_DeleteVertexShader@4 :PROC
-EXTERN STDCALL D3DDevice_SetVertexShader@4 :PROC
-EXTERN STDCALL D3DDevice_SetVertexShaderInput@12 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetStreamSource@12 :PROC
+    ExWrapper_D3DDevice_SetStreamSource@12 EQU Wrapper_D3DDevice_SetStreamSource@12
+ELSE
+    EXTERN STDCALL D3DDevice_SetStreamSource@12 :PROC
+    ExWrapper_D3DDevice_SetStreamSource@12 EQU D3DDevice_SetStreamSource@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_LoadVertexShaderProgram@8 :PROC
+    ExWrapper_D3DDevice_LoadVertexShaderProgram@8 EQU Wrapper_D3DDevice_LoadVertexShaderProgram@8
+ELSE
+    EXTERN STDCALL D3DDevice_LoadVertexShaderProgram@8 :PROC
+    ExWrapper_D3DDevice_LoadVertexShaderProgram@8 EQU D3DDevice_LoadVertexShaderProgram@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetShaderConstantMode@4 :PROC
+    ExWrapper_D3DDevice_SetShaderConstantMode@4 EQU Wrapper_D3DDevice_SetShaderConstantMode@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetShaderConstantMode@4 :PROC
+    ExWrapper_D3DDevice_SetShaderConstantMode@4 EQU D3DDevice_SetShaderConstantMode@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_DeleteVertexShader@4 :PROC
+    ExWrapper_D3DDevice_DeleteVertexShader@4 EQU Wrapper_D3DDevice_DeleteVertexShader@4
+ELSE
+    EXTERN STDCALL D3DDevice_DeleteVertexShader@4 :PROC
+    ExWrapper_D3DDevice_DeleteVertexShader@4 EQU D3DDevice_DeleteVertexShader@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetVertexShader@4 :PROC
+    ExWrapper_D3DDevice_SetVertexShader@4 EQU Wrapper_D3DDevice_SetVertexShader@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetVertexShader@4 :PROC
+    ExWrapper_D3DDevice_SetVertexShader@4 EQU D3DDevice_SetVertexShader@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetVertexShaderInput@12 :PROC
+    ExWrapper_D3DDevice_SetVertexShaderInput@12 EQU Wrapper_D3DDevice_SetVertexShaderInput@12
+ELSE
+    EXTERN STDCALL D3DDevice_SetVertexShaderInput@12 :PROC
+    ExWrapper_D3DDevice_SetVertexShaderInput@12 EQU D3DDevice_SetVertexShaderInput@12
+ENDIF
 EXTERN STDCALL D3DResource_Release@4 :PROC
 EXTERN STDCALL D3DResource_Register@8 :PROC
-EXTERN STDCALL D3DDevice_Clear@24 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_Clear@24 :PROC
+    ExWrapper_D3DDevice_Clear@24 EQU Wrapper_D3DDevice_Clear@24
+ELSE
+    EXTERN STDCALL D3DDevice_Clear@24 :PROC
+    ExWrapper_D3DDevice_Clear@24 EQU D3DDevice_Clear@24
+ENDIF
 EXTERN STDCALL D3DSurface_LockRect@16 :PROC
-EXTERN STDCALL D3DDevice_DrawVerticesUP@16 :PROC
-EXTERN STDCALL D3DDevice_DrawVertices@12 :PROC
-EXTERN STDCALL D3DDevice_Begin@4 :PROC
-EXTERN STDCALL D3DDevice_End@0 :PROC
-EXTERN STDCALL Direct3DCreate8@4 :PROC
-EXTERN STDCALL Direct3D_GetAdapterModeCount@4 :PROC
-EXTERN STDCALL Direct3D_EnumAdapterModes@12 :PROC
-EXTERN STDCALL Direct3D_SetPushBufferSize@8 :PROC
-EXTERN STDCALL Direct3D_CreateDevice@24 :PROC
-EXTERN STDCALL D3DDevice_Swap@4 :PROC
-EXTERN STDCALL D3DDevice_SetPixelShader@4 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_DrawVerticesUP@16 :PROC
+    ExWrapper_D3DDevice_DrawVerticesUP@16 EQU Wrapper_D3DDevice_DrawVerticesUP@16
+ELSE
+    EXTERN STDCALL D3DDevice_DrawVerticesUP@16 :PROC
+    ExWrapper_D3DDevice_DrawVerticesUP@16 EQU D3DDevice_DrawVerticesUP@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_DrawVertices@12 :PROC
+    ExWrapper_D3DDevice_DrawVertices@12 EQU Wrapper_D3DDevice_DrawVertices@12
+ELSE
+    EXTERN STDCALL D3DDevice_DrawVertices@12 :PROC
+    ExWrapper_D3DDevice_DrawVertices@12 EQU D3DDevice_DrawVertices@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_Begin@4 :PROC
+    ExWrapper_D3DDevice_Begin@4 EQU Wrapper_D3DDevice_Begin@4
+ELSE
+    EXTERN STDCALL D3DDevice_Begin@4 :PROC
+    ExWrapper_D3DDevice_Begin@4 EQU D3DDevice_Begin@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_End@0 :PROC
+    ExWrapper_D3DDevice_End@0 EQU Wrapper_D3DDevice_End@0
+ELSE
+    EXTERN STDCALL D3DDevice_End@0 :PROC
+    ExWrapper_D3DDevice_End@0 EQU D3DDevice_End@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_Direct3DCreate8@4 :PROC
+    ExWrapper_Direct3DCreate8@4 EQU Wrapper_Direct3DCreate8@4
+ELSE
+    EXTERN STDCALL Direct3DCreate8@4 :PROC
+    ExWrapper_Direct3DCreate8@4 EQU Direct3DCreate8@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_Direct3D_GetAdapterModeCount@4 :PROC
+    ExWrapper_Direct3D_GetAdapterModeCount@4 EQU Wrapper_Direct3D_GetAdapterModeCount@4
+ELSE
+    EXTERN STDCALL Direct3D_GetAdapterModeCount@4 :PROC
+    ExWrapper_Direct3D_GetAdapterModeCount@4 EQU Direct3D_GetAdapterModeCount@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_Direct3D_EnumAdapterModes@12 :PROC
+    ExWrapper_Direct3D_EnumAdapterModes@12 EQU Wrapper_Direct3D_EnumAdapterModes@12
+ELSE
+    EXTERN STDCALL Direct3D_EnumAdapterModes@12 :PROC
+    ExWrapper_Direct3D_EnumAdapterModes@12 EQU Direct3D_EnumAdapterModes@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_Direct3D_SetPushBufferSize@8 :PROC
+    ExWrapper_Direct3D_SetPushBufferSize@8 EQU Wrapper_Direct3D_SetPushBufferSize@8
+ELSE
+    EXTERN STDCALL Direct3D_SetPushBufferSize@8 :PROC
+    ExWrapper_Direct3D_SetPushBufferSize@8 EQU Direct3D_SetPushBufferSize@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_Direct3D_CreateDevice@24 :PROC
+    ExWrapper_Direct3D_CreateDevice@24 EQU Wrapper_Direct3D_CreateDevice@24
+ELSE
+    EXTERN STDCALL Direct3D_CreateDevice@24 :PROC
+    ExWrapper_Direct3D_CreateDevice@24 EQU Direct3D_CreateDevice@24
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_Swap@4 :PROC
+    ExWrapper_D3DDevice_Swap@4 EQU Wrapper_D3DDevice_Swap@4
+ELSE
+    EXTERN STDCALL D3DDevice_Swap@4 :PROC
+    ExWrapper_D3DDevice_Swap@4 EQU D3DDevice_Swap@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_SetPixelShader@4 :PROC
+    ExWrapper_D3DDevice_SetPixelShader@4 EQU Wrapper_D3DDevice_SetPixelShader@4
+ELSE
+    EXTERN STDCALL D3DDevice_SetPixelShader@4 :PROC
+    ExWrapper_D3DDevice_SetPixelShader@4 EQU D3DDevice_SetPixelShader@4
+ENDIF
 EXTERN STDCALL D3DTexture_GetSurfaceLevel2@8 :PROC
 EXTERN STDCALL D3DTexture_LockRect@20 :PROC
 EXTERN STDCALL D3D_AllocContiguousMemory@8 :PROC
-EXTERN STDCALL D3DDevice_GetOverlayUpdateStatus@0 :PROC
-EXTERN STDCALL D3DDevice_UpdateOverlay@20 :PROC
-EXTERN STDCALL D3DDevice_EnableOverlay@4 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_GetOverlayUpdateStatus@0 :PROC
+    ExWrapper_D3DDevice_GetOverlayUpdateStatus@0 EQU Wrapper_D3DDevice_GetOverlayUpdateStatus@0
+ELSE
+    EXTERN STDCALL D3DDevice_GetOverlayUpdateStatus@0 :PROC
+    ExWrapper_D3DDevice_GetOverlayUpdateStatus@0 EQU D3DDevice_GetOverlayUpdateStatus@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_UpdateOverlay@20 :PROC
+    ExWrapper_D3DDevice_UpdateOverlay@20 EQU Wrapper_D3DDevice_UpdateOverlay@20
+ELSE
+    EXTERN STDCALL D3DDevice_UpdateOverlay@20 :PROC
+    ExWrapper_D3DDevice_UpdateOverlay@20 EQU D3DDevice_UpdateOverlay@20
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DDevice_EnableOverlay@4 :PROC
+    ExWrapper_D3DDevice_EnableOverlay@4 EQU Wrapper_D3DDevice_EnableOverlay@4
+ELSE
+    EXTERN STDCALL D3DDevice_EnableOverlay@4 :PROC
+    ExWrapper_D3DDevice_EnableOverlay@4 EQU D3DDevice_EnableOverlay@4
+ENDIF
 EXTERN STDCALL D3DXCreateTexture@32 :PROC
 EXTERN STDCALL XGSetSurfaceHeader@24 :PROC
 EXTERN STDCALL XGSetTextureHeader@36 :PROC

@@ -138040,11 +138040,11 @@ RETURN_LAB_00081cc6::
 		LEA EAX,[ESP + 090h]
 		PUSH EAX
 		PUSH 06h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		LEA ECX,[ESP + 050h]
 		PUSH ECX
 		PUSH 01h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		MovApsHackMacro XMM0,xmmword ptr [ESP + 050h]
 		MovApsHackMacro xmmword ptr [ESP + 010h],XMM0
 		MovApsHackMacro XMM0,xmmword ptr [ESP + 060h]
@@ -138059,7 +138059,7 @@ RETURN_LAB_00081cc6::
 		PUSH EDX
 		PUSH 01h
 		MOVSS dword ptr [ESP + 050h],XMM0
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		ADD ESI,038h
 		MOV dword ptr [ESP + 0Ch],064h
 		LEA ESP,[ESP]
@@ -138070,7 +138070,7 @@ RETURN_LAB_00081cc6::
 		TwinCall FUN_0010BCB0
 RETURN_LAB_00081d46::
 		PUSH 01h
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV EDX,0205h
 		MOV ECX,040364h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -138095,7 +138095,7 @@ RETURN_LAB_00081d86::
 		PUSH EAX
 		PUSH 01h
 		MOV dword ptr [D3D__RenderState + 228],0201h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		POP ESI
 		MOV ESP,EBP
 		POP EBP
@@ -167923,7 +167923,7 @@ TwinProc FUN_000A36C0, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_000A36C0
 TwinProcEnd FUN_000A36C0
@@ -167934,7 +167934,7 @@ TwinProc FUN_000A36E0, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_000A36E0
 TwinProcEnd FUN_000A36E0
@@ -167969,7 +167969,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3763
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_PSTextureModes@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -167978,7 +167978,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A377B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_VertexBlend@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_VertexBlend@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -167987,7 +167987,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3793
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_FogColor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FogColor@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -167996,7 +167996,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A37AB
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168005,7 +168005,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A37C3
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_BackFillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_BackFillMode@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168014,7 +168014,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A37DB
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_TwoSidedLighting@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168023,7 +168023,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A37F3
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_NormalizeNormals@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168032,7 +168032,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A380B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168041,7 +168041,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3823
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168050,7 +168050,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A383B
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_StencilFail@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilFail@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168059,7 +168059,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3853
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168068,7 +168068,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A386B
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_FrontFace@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FrontFace@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168077,7 +168077,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3883
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_TextureFactor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TextureFactor@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168086,7 +168086,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A389B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_ZBias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZBias@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168095,7 +168095,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A38B3
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_LogicOp@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LogicOp@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168104,7 +168104,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A38CB
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_EdgeAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168113,7 +168113,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A38E3
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168122,7 +168122,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A38FB
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_MultiSampleMask@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168131,7 +168131,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3913
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168140,7 +168140,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A392B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168149,7 +168149,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3943
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_ShadowFunc@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168158,7 +168158,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A395B
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_LineWidth@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LineWidth@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168167,7 +168167,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3973
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_SampleAlpha@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168176,7 +168176,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A398B
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168185,7 +168185,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A39A3
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_YuvEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_YuvEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168194,7 +168194,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A39BB
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168203,7 +168203,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A39D3
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168212,7 +168212,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A39EB
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168221,7 +168221,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3A03
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_RopZRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZRead@4
 		XOR EAX,EAX
 		POP ESI
 		TwinProcExit 08h, FUN_000A3700
@@ -168230,7 +168230,7 @@ TwinProc FUN_000A3700, stdcall
 		JNZ LAB_0x000A3A15
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_DoNotCullUncompressed@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4
 	LAB_0x000A3A15: 
 		XOR EAX,EAX
 		POP ESI
@@ -264247,7 +264247,7 @@ TwinProc FUN_000FD980, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall Direct3D_SetPushBufferSize@8
+		TwinCall ExWrapper_Direct3D_SetPushBufferSize@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_000FD980
 TwinProcEnd FUN_000FD980
@@ -264278,181 +264278,181 @@ TwinProc FUN_000FD9B0, stdcall
 	LAB_0x000FD9F0: 
 		JNZ LAB_0x000FD9F9
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_PSTextureModes@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FD9F9: 
 		CMP ESI,089h
 		JNZ LAB_0x000FDA08
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_VertexBlend@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_VertexBlend@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA08: 
 		CMP ESI,08Ah
 		JNZ LAB_0x000FDA17
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FogColor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FogColor@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA17: 
 		CMP ESI,08Bh
 		JNZ LAB_0x000FDA26
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA26: 
 		CMP ESI,08Ch
 		JNZ LAB_0x000FDA35
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_BackFillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_BackFillMode@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA35: 
 		CMP ESI,08Dh
 		JNZ LAB_0x000FDA44
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_TwoSidedLighting@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA44: 
 		CMP ESI,08Eh
 		JNZ LAB_0x000FDA53
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_NormalizeNormals@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA53: 
 		CMP ESI,08Fh
 		JNZ LAB_0x000FDA62
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA62: 
 		CMP ESI,090h
 		JNZ LAB_0x000FDA71
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA71: 
 		CMP ESI,091h
 		JNZ LAB_0x000FDA80
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilFail@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilFail@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA80: 
 		CMP ESI,093h
 		JNZ LAB_0x000FDA8F
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA8F: 
 		CMP ESI,092h
 		JNZ LAB_0x000FDA9E
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FrontFace@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FrontFace@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDA9E: 
 		CMP ESI,094h
 		JNZ LAB_0x000FDAAD
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_TextureFactor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TextureFactor@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDAAD: 
 		CMP ESI,095h
 		JNZ LAB_0x000FDABC
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ZBias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZBias@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDABC: 
 		CMP ESI,096h
 		JNZ LAB_0x000FDACB
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_LogicOp@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LogicOp@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDACB: 
 		CMP ESI,097h
 		JNZ LAB_0x000FDADA
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_EdgeAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDADA: 
 		CMP ESI,098h
 		JNZ LAB_0x000FDAE9
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDAE9: 
 		CMP ESI,099h
 		JNZ LAB_0x000FDAF8
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleMask@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDAF8: 
 		CMP ESI,09Ah
 		JNZ LAB_0x000FDB07
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB07: 
 		CMP ESI,09Bh
 		JNZ LAB_0x000FDB16
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB16: 
 		CMP ESI,09Ch
 		JNZ LAB_0x000FDB25
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ShadowFunc@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB25: 
 		CMP ESI,09Dh
 		JNZ LAB_0x000FDB34
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_LineWidth@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LineWidth@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB34: 
 		CMP ESI,09Eh
 		JNZ LAB_0x000FDB43
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_SampleAlpha@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB43: 
 		CMP ESI,09Fh
 		JNZ LAB_0x000FDB52
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB52: 
 		CMP ESI,0A0h
 		JNZ LAB_0x000FDB61
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_YuvEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_YuvEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB61: 
 		CMP ESI,0A1h
 		JNZ LAB_0x000FDB70
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB70: 
 		CMP ESI,0A2h
 		JNZ LAB_0x000FDB7F
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB7F: 
 		CMP ESI,0A3h
 		JNZ LAB_0x000FDB8E
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB8E: 
 		CMP ESI,0A4h
 		JNZ LAB_0x000FDB9D
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_RopZRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZRead@4
 		TwinProcExit, FUN_000FD9B0
 	LAB_0x000FDB9D: 
 		CMP ESI,0A5h
 		JNZ LAB_0x000FDBAB
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_DoNotCullUncompressed@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4
 	LAB_0x000FDBAB: 
 		TwinProcExit, FUN_000FD9B0
 TwinProcEnd FUN_000FD9B0
@@ -264484,7 +264484,7 @@ TwinProc FUN_000FDBB0, stdcall
 		JNZ LAB_0x000FDBF8
 		PUSH EDX
 		PUSH ECX
-		TwinCall D3DDevice_SetTextureState_TexCoordIndex@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_TexCoordIndex@8
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_000FDBB0
@@ -264493,7 +264493,7 @@ TwinProc FUN_000FDBB0, stdcall
 		JNZ LAB_0x000FDC07
 		PUSH EDX
 		PUSH ECX
-		TwinCall D3DDevice_SetTextureState_BorderColor@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_BorderColor@8
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_000FDBB0
@@ -264502,7 +264502,7 @@ TwinProc FUN_000FDBB0, stdcall
 		JNZ LAB_0x000FDC16
 		PUSH EDX
 		PUSH ECX
-		TwinCall D3DDevice_SetTextureState_ColorKeyColor@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_ColorKeyColor@8
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_000FDBB0
@@ -264512,7 +264512,7 @@ TwinProc FUN_000FDBB0, stdcall
 		PUSH EDX
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetTextureState_BumpEnv@12
+		TwinCall ExWrapper_D3DDevice_SetTextureState_BumpEnv@12
 	LAB_0x000FDC23: 
 		POP EDI
 		POP ESI
@@ -266273,7 +266273,7 @@ TwinProcThiscall FUN_000FEDB0, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EDI,dword ptr [ESP + 0Ch]
 		MOV EAX,dword ptr [ESI + 020h]
 		MOV EDX,dword ptr [ESI + 010h]
@@ -269741,7 +269741,7 @@ TwinProc FUN_00101AC0, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		TwinProcExit 08h, FUN_00101AC0
 TwinProcEnd FUN_00101AC0
 
@@ -270906,7 +270906,7 @@ TwinProc FUN_001026A0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x001026AD
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x001026AD: 
 		TwinProcExit, FUN_001026A0
 TwinProcEnd FUN_001026A0
@@ -270962,9 +270962,9 @@ TwinProc FUN_00102710, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		POP ESI
 		TwinProcExit, FUN_00102710
 TwinProcEnd FUN_00102710
@@ -271085,9 +271085,9 @@ TwinProcThiscall FUN_00102850, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],AL
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		POP ESI
 		TwinProcExit 04h, FUN_00102850
 TwinProcEnd FUN_00102850
@@ -271147,7 +271147,7 @@ TwinProc FUN_00102920, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		ADD ECX,0104h
 		MOV dword ptr [ESP + 04h],ECX
-		JMP D3DDevice_LoadVertexShaderProgram@8
+		JMP ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 TwinProcEnd FUN_00102920
 
 TwinProcThiscall FUN_00102940, stdcall
@@ -271159,7 +271159,7 @@ TwinProcThiscall FUN_00102940, stdcall
 		MOV EAX,dword ptr [ESP + 08h]
 		PUSH EAX
 		PUSH ESI
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [ESI + 0100h],00h
 		POP ESI
 		TwinProcExit 04h, FUN_00102940
@@ -271167,7 +271167,7 @@ TwinProcThiscall FUN_00102940, stdcall
 		MOV ECX,dword ptr [ESP + 08h]
 		PUSH ECX
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		POP ESI
 		TwinProcExit 04h, FUN_00102940
 TwinProcEnd FUN_00102940
@@ -271436,7 +271436,7 @@ TwinProc FUN_00102DE0, c
 		SHL ECX,08h
 		OR ECX,EDX
 		PUSH ECX
-		TwinCall D3DDevice_SetOverscanColor@4
+		TwinCall ExWrapper_D3DDevice_SetOverscanColor@4
 	LAB_0x00102E24: 
 		MOV EAX,ESI
 		POP ESI
@@ -272008,7 +272008,7 @@ TwinProcThiscall FUN_00103430, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EDI,dword ptr [ESP + 0Ch]
 		MOV EAX,dword ptr [ESI + 020h]
 		MOV EDX,dword ptr [ESI + 040h]
@@ -272555,7 +272555,7 @@ TwinProcThiscall FUN_00103990, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EDI
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		INC EDI
 		CMP EDI,0Fh
 		JC LAB_0x00103997
@@ -272910,7 +272910,7 @@ TwinProc FUN_00103D70, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 054h]
 		PUSH 0A0h
 		PUSH 00h
@@ -272986,7 +272986,7 @@ TwinProc FUN_00103E70, stdcall
 		MOV ECX,dword ptr [NUM_0x003eb3c8]
 		PUSH ECX
 		PUSH 01h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOVSS XMM0,dword ptr [FLOAT_0x0038639c]
 		MOVSS dword ptr [ESP],XMM0
 		XORPS XMM0,XMM0
@@ -273027,7 +273027,7 @@ TwinProc FUN_00103F50, c
 		PUSH EDI
 		PUSH 00h
 		PUSH 01h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [NUM_0x003eb3c8]
 		PUSH 00h
 		PUSH 00h
@@ -273117,7 +273117,7 @@ TwinProc FUN_00103F50, c
 		MOV EDX,dword ptr [NUM_0x003eb3c8]
 		PUSH EDX
 		PUSH 01h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP EDI
 		POP ESI
 		POP EBP
@@ -273370,7 +273370,7 @@ TwinProcEnd FUN_001043B0
 TwinProc FUN_00104400, stdcall
 	LAB_0x00104400: 
 		PUSH 00h
-		TwinCall D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_Swap@4
 		TwinProcExit, FUN_00104400
 TwinProcEnd FUN_00104400
 
@@ -273564,9 +273564,9 @@ TwinProc FUN_00104720, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH EDI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [ESI + 014h]
 		MOV EDX,dword ptr [ESI + 010h]
 		PUSH EAX
@@ -273574,7 +273574,7 @@ TwinProc FUN_00104720, stdcall
 		PUSH ECX
 		PUSH EDX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_00104720
@@ -273958,7 +273958,7 @@ TwinProc FUN_00104C70, stdcall
 		MOV ECX,dword ptr [PTR_0x003ec570]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderTarget@8
+		TwinCall ExWrapper_D3DDevice_SetRenderTarget@8
 		TwinProcExit, FUN_00104C70
 TwinProcEnd FUN_00104C70
 
@@ -273967,7 +273967,7 @@ TwinProc FUN_00104C90, stdcall
 		MOV ECX,dword ptr [PTR_0x003ec568]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderTarget@8
+		TwinCall ExWrapper_D3DDevice_SetRenderTarget@8
 		TwinProcExit, FUN_00104C90
 TwinProcEnd FUN_00104C90
 
@@ -274016,7 +274016,7 @@ TwinProc FUN_00104D20, stdcall
 		PUSH 0F0h
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		TwinProcExit, FUN_00104D20
 TwinProcEnd FUN_00104D20
 
@@ -274047,16 +274047,16 @@ TwinProc FUN_00104D60, c
 	LAB_0x00104D8F: 
 		PUSH 00h
 		PUSH 02h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		OR dword ptr [D3D__DirtyFlags],EDI
 		JMP LAB_0x00104E12
 	LAB_0x00104DA0: 
 		PUSH 00h
 		PUSH 02h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		PUSH 00h
 		PUSH 03h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EAX,dword ptr [D3D__DirtyFlags]
 		OR EAX,EDI
 		MOV dword ptr [D3D__TextureState + 304],ESI
@@ -274070,7 +274070,7 @@ TwinProc FUN_00104D60, c
 		MOV dword ptr [D3D__TextureState + 48],EAX
 		MOV dword ptr [D3D__DirtyFlags],ECX
 		MOV dword ptr [D3D__TextureState + 64],EAX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EAX,dword ptr [D3D__DirtyFlags]
 		OR EAX,EDI
 		XOR EDX,EDX
@@ -274186,7 +274186,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F17
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_PSTextureModes@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F17: 
@@ -274194,7 +274194,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F2B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_VertexBlend@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_VertexBlend@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F2B: 
@@ -274202,7 +274202,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F3F
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_FogColor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FogColor@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F3F: 
@@ -274210,7 +274210,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F53
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F53: 
@@ -274218,7 +274218,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F67
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_BackFillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_BackFillMode@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F67: 
@@ -274226,7 +274226,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F7B
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_TwoSidedLighting@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F7B: 
@@ -274234,7 +274234,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104F8F
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_NormalizeNormals@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104F8F: 
@@ -274242,7 +274242,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104FA3
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104FA3: 
@@ -274250,7 +274250,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104FB7
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104FB7: 
@@ -274258,7 +274258,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104FCB
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_StencilFail@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilFail@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104FCB: 
@@ -274266,7 +274266,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104FDF
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104FDF: 
@@ -274274,7 +274274,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00104FF3
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_FrontFace@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FrontFace@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00104FF3: 
@@ -274282,7 +274282,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105007
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_TextureFactor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TextureFactor@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105007: 
@@ -274290,7 +274290,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010501B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_ZBias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZBias@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010501B: 
@@ -274298,7 +274298,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010502F
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_LogicOp@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LogicOp@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010502F: 
@@ -274306,7 +274306,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105043
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_EdgeAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105043: 
@@ -274314,7 +274314,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105057
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105057: 
@@ -274322,7 +274322,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010506B
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_MultiSampleMask@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010506B: 
@@ -274330,7 +274330,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010507F
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010507F: 
@@ -274338,7 +274338,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105093
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105093: 
@@ -274346,7 +274346,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x001050A7
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_ShadowFunc@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x001050A7: 
@@ -274354,7 +274354,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x001050BB
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_LineWidth@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LineWidth@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x001050BB: 
@@ -274362,7 +274362,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x001050CF
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_SampleAlpha@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x001050CF: 
@@ -274370,7 +274370,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x001050E3
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x001050E3: 
@@ -274378,7 +274378,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x001050F7
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_YuvEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_YuvEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x001050F7: 
@@ -274386,7 +274386,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010510B
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010510B: 
@@ -274394,7 +274394,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x0010511F
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x0010511F: 
@@ -274402,7 +274402,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105133
 		MOV EDX,dword ptr [ESP + 0Ch]
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105133: 
@@ -274410,7 +274410,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105147
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
-		TwinCall D3DDevice_SetRenderState_RopZRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZRead@4
 		POP ESI
 		TwinProcExit, FUN_00104EC0
 	LAB_0x00105147: 
@@ -274418,7 +274418,7 @@ TwinProc FUN_00104EC0, c
 		JNZ LAB_0x00105159
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_DoNotCullUncompressed@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4
 	LAB_0x00105159: 
 		POP ESI
 		TwinProcExit, FUN_00104EC0
@@ -274735,7 +274735,7 @@ TwinProc FUN_00105230, c
 		XOR EAX,ECX
 		PUSH 01h
 		MOV dword ptr [NUM_0x003ead44],EAX
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV ECX,040364h
 		MOV EDX,0207h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -274984,7 +274984,7 @@ RETURN_LAB_00105858::
 		MOV EDX,dword ptr [ECX + 060h]
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOVSS XMM0,dword ptr [ESI + 050h]
 		MOVSS dword ptr [ESP + 010h],XMM0
 		MOVSS XMM0,dword ptr [ESI + 054h]
@@ -275008,7 +275008,7 @@ RETURN_LAB_001058b2::
 	LAB_0x001058C0: 
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EAX,dword ptr [EDI + 024h]
 		PUSH EAX
 		TwinCall FUN_00105230
@@ -275461,7 +275461,7 @@ TwinProc FUN_00105EC0, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -281170,7 +281170,7 @@ TwinProcThiscall FUN_00109F30, stdcall
 		PUSH EDX
 		ADD EBX,04h
 		PUSH EBX
-		TwinCall D3DDevice_CreateVertexShader@16
+		TwinCall ExWrapper_D3DDevice_CreateVertexShader@16
 		POP EDI
 		POP ESI
 		POP EBP
@@ -281201,20 +281201,20 @@ TwinProcThiscall FUN_00109FC0, stdcall
 		PUSH 00h
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [ESI + 0100h]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x0010A030
 		PUSH ESI
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [ESI + 0100h],00h
 		POP ESI
 		ADD ESP,0408h
 		TwinProcExit 08h, FUN_00109FC0
 	LAB_0x0010A030: 
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		POP ESI
 		ADD ESP,0408h
 		TwinProcExit 08h, FUN_00109FC0
@@ -281343,7 +281343,7 @@ TwinProc FUN_0010A120, stdcall
 		OR dword ptr [ESP + 03Ch],010h
 	LAB_0x0010A199: 
 		PUSH EBX
-		TwinCall Direct3DCreate8@4
+		TwinCall ExWrapper_Direct3DCreate8@4
 		CMP EAX,EBX
 		MOV dword ptr [NUM_0x003ec51c],EAX
 		JNZ LAB_0x0010A1C3
@@ -281359,7 +281359,7 @@ TwinProc FUN_0010A120, stdcall
 		PUSH EBP
 		PUSH EBX
 		XOR EBP,EBP
-		TwinCall Direct3D_GetAdapterModeCount@4
+		TwinCall ExWrapper_Direct3D_GetAdapterModeCount@4
 		TEST EAX,EAX
 		JBE LAB_0x0010A1E7
 	LAB_0x0010A1D0: 
@@ -281367,16 +281367,16 @@ TwinProc FUN_0010A120, stdcall
 		PUSH EAX
 		PUSH EBP
 		PUSH EBX
-		TwinCall Direct3D_EnumAdapterModes@12
+		TwinCall ExWrapper_Direct3D_EnumAdapterModes@12
 		PUSH EBX
 		INC EBP
-		TwinCall Direct3D_GetAdapterModeCount@4
+		TwinCall ExWrapper_Direct3D_GetAdapterModeCount@4
 		CMP EBP,EAX
 		JC LAB_0x0010A1D0
 	LAB_0x0010A1E7: 
 		PUSH 020000h
 		PUSH 0100000h
-		TwinCall Direct3D_SetPushBufferSize@8
+		TwinCall ExWrapper_Direct3D_SetPushBufferSize@8
 		MOV EBP,032h
 		TwinCall XGetVideoStandard@0
 		CMP EAX,ESI
@@ -281413,25 +281413,25 @@ TwinProc FUN_0010A120, stdcall
 		PUSH EBP
 		PUSH EBX
 		FSTP dword ptr [FLOAT_0x003ea6f0]
-		TwinCall Direct3D_CreateDevice@24
+		TwinCall ExWrapper_Direct3D_CreateDevice@24
 		CMP EAX,EBX
 		JL LAB_0x0010A5AF
 		MOV EDX,dword ptr [PTR_0x003ec520]
 		PUSH EBP
 		MOV dword ptr [PTR_0x003eb6e8],EDX
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		MOV ECX,dword ptr [D3D__DirtyFlags]
 		OR ECX,01200h
 		PUSH 01B02h
 		MOV dword ptr [D3D__DirtyFlags],ECX
 		MOV dword ptr [D3D__RenderState + 408],EBX
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		PUSH EBX
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		PUSH EBP
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		PUSH EBX
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		MOV EAX,04h
 		MOV dword ptr [D3D__TextureState + 128],EDI
 		MOV dword ptr [D3D__TextureState + 176],EDI
@@ -281490,11 +281490,11 @@ TwinProc FUN_0010A120, stdcall
 		MOV dword ptr [D3D__TextureState + 304],EBP
 		MOV dword ptr [D3D__DirtyFlags],EDI
 		MOV dword ptr [D3D__TextureState + 208],EBP
-		TwinCall D3DDevice_SetPixelShader@4
+		TwinCall ExWrapper_D3DDevice_SetPixelShader@4
 		PUSH EBX
-		TwinCall D3DDevice_SetShaderConstantMode@4
+		TwinCall ExWrapper_D3DDevice_SetShaderConstantMode@4
 		PUSH 0FF000000h
-		TwinCall D3DDevice_SetRenderState_TextureFactor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TextureFactor@4
 		XOR EDI,EDI
 		LEA ESP,[ESP]
 	LAB_0x0010A420: 
@@ -281530,7 +281530,7 @@ TwinProc FUN_0010A120, stdcall
 		LEA EAX,[ESP + 070h]
 		PUSH EAX
 		PUSH ESI
-		TwinCall D3DDevice_SetGammaRamp@8
+		TwinCall ExWrapper_D3DDevice_SetGammaRamp@8
 		XOR EDX,EDX
 		MOV ECX,OFFSET ARRAY_0x000409f8
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -281849,7 +281849,7 @@ RETURN_LAB_0010a982::
 		LEA EAX,[ESP + 080h]
 		PUSH EAX
 		PUSH 06h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		JMP LAB_0x0010A9A0
 	LAB_0x0010A9A0: 
 		MOVSS XMM0,dword ptr [ESI + 044Ch]
@@ -281882,9 +281882,9 @@ RETURN_LAB_0010a982::
 		MOVSS dword ptr [ESP + 084h],XMM4
 		MOVSS dword ptr [ESP + 088h],XMM5
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0142h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		XOR EDI,EDI
 		CMP word ptr [ESI],DI
 		JLE LAB_0x0010ABB7
@@ -281954,7 +281954,7 @@ RETURN_LAB_0010a982::
 		MOV dword ptr [ESP + 06Ch],ECX
 		MOV dword ptr [ESP + 054h],ECX
 		MOV dword ptr [ESP + 03Ch],ECX
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		INC EDI
 		CMP DI,word ptr [ESI]
 		JL LAB_0x0010AA64
@@ -283195,7 +283195,7 @@ RETURN_LAB_0010bbc0::
 		MOV ECX,dword ptr [ESI + 054h]
 		PUSH ECX
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP EDI
 		POP ESI
 		POP EBP
@@ -283471,14 +283471,14 @@ TwinProcThiscall FUN_0010BEB0, stdcall
 		MOVSS dword ptr [ESP + 088h],XMM1
 		MOVSS dword ptr [ESP + 08Ch],XMM1
 		MOV dword ptr [ESP + 01Ch],ECX
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		PUSH EBP
 		PUSH EBP
 		PUSH EBP
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0144h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		TEST BL,BL
 		JZ LAB_0x0010C0EE
 		PUSH ESI
@@ -283557,7 +283557,7 @@ RETURN_LAB_0010c015::
 		MOVSS dword ptr [ESP + 020h],XMM3
 		INC EDI
 		ADD EBP,04h
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 	LAB_0x0010C0E5: 
 		TEST BL,BL
 		JNZ LAB_0x0010BFB6
@@ -283565,7 +283565,7 @@ RETURN_LAB_0010c015::
 	LAB_0x0010C0EE: 
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		POP EDI
 		MOV EAX,EBP
 		POP EBP
@@ -283932,9 +283932,9 @@ RETURN_LAB_0010c567::
 		MOV dword ptr [D3D__DirtyFlags],ESI
 		MOV dword ptr [D3D__TextureState + 4],EAX
 		MOV byte ptr [NUM_0x00402a08],BL
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0144h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOVSS XMM0,dword ptr [ESP + 07Ch]
 		MOVSS XMM1,dword ptr [ESP + 080h]
 		PUSH 01Ch
@@ -283952,7 +283952,7 @@ RETURN_LAB_0010c567::
 		MOVSS dword ptr [ESP + 054h],XMM1
 		MOVSS dword ptr [ESP + 06Ch],XMM0
 		MOVSS dword ptr [ESP + 070h],XMM1
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		MOV EDX,dword ptr [D3D__DirtyFlags]
 		MOV dword ptr [D3D__TextureState],EBX
 		PUSH 00h
@@ -283960,7 +283960,7 @@ RETURN_LAB_0010c567::
 		PUSH 00h
 		MOV dword ptr [D3D__DirtyFlags],EDX
 		MOV dword ptr [D3D__TextureState + 4],EBX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP ESI
 		POP EBX
 		ADD ESP,070h
@@ -284037,9 +284037,9 @@ RETURN_LAB_0010c720::
 		MOV dword ptr [D3D__DirtyFlags],ECX
 		MOV dword ptr [D3D__TextureState + 4],03h
 		MOV byte ptr [NUM_0x00402a08],BL
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 044h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [ESP + 04Ch]
 		ADD EAX,-02h
 		JZ LAB_0x0010C7D9
@@ -284067,7 +284067,7 @@ RETURN_LAB_0010c720::
 		MOVSS XMM0,dword ptr [ESI + 0Ch]
 		PUSH 05h
 		MOVSS dword ptr [ESP + 048h],XMM0
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		ADD ESI,08h
 		DEC EDI
 		JNZ LAB_0x0010C780
@@ -284081,7 +284081,7 @@ RETURN_LAB_0010c720::
 		MOV dword ptr [D3D__TextureState],EBX
 		MOV dword ptr [D3D__DirtyFlags],EDX
 		MOV dword ptr [D3D__TextureState + 4],EBX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP EBX
 		ADD ESP,03Ch
 		TwinProcExit, FUN_0010C6C0
@@ -284126,9 +284126,9 @@ RETURN_LAB_0010c870::
 		MOV dword ptr [D3D__DirtyFlags],ECX
 		MOV dword ptr [D3D__TextureState + 4],EAX
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0144h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [ESP + 068h]
 		ADD EAX,-02h
 		JZ LAB_0x0010C987
@@ -284172,7 +284172,7 @@ RETURN_LAB_0010c870::
 		MOVSS XMM0,dword ptr [ESI + 010h]
 		PUSH 05h
 		MOVSS dword ptr [ESP + 070h],XMM0
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		ADD EDI,08h
 		ADD ESI,08h
 		DEC EBX
@@ -284189,7 +284189,7 @@ RETURN_LAB_0010c870::
 		MOV dword ptr [D3D__TextureState],ESI
 		MOV dword ptr [D3D__DirtyFlags],EDX
 		MOV dword ptr [D3D__TextureState + 4],ESI
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP ESI
 		ADD ESP,054h
 		TwinProcExit, FUN_0010C810
@@ -284197,9 +284197,9 @@ TwinProcEnd FUN_0010C810
 
 TwinProc FUN_0010C9B0, stdcall
 	LAB_0x0010C9B0: 
-		TwinCall D3DDevice_GetRenderTarget2@0
+		TwinCall ExWrapper_D3DDevice_GetRenderTarget2@0
 		MOV dword ptr [PTR_0x003ec568],EAX
-		TwinCall D3DDevice_GetDepthStencilSurface2@0
+		TwinCall ExWrapper_D3DDevice_GetDepthStencilSurface2@0
 		MOV dword ptr [PTR_0x003ec56c],EAX
 		JMP FUN_00104CB0
 TwinProcEnd FUN_0010C9B0
@@ -284218,7 +284218,7 @@ TwinProc FUN_0010C9D0, stdcall
 		PUSH EDI
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderTarget@8
+		TwinCall ExWrapper_D3DDevice_SetRenderTarget@8
 		XORPS XMM0,XMM0
 		MOVSS XMM1,dword ptr [FLOAT_0x0038639c]
 		MOVSS XMM2,dword ptr [FLOAT_0x00391aa0]
@@ -284241,12 +284241,12 @@ TwinProc FUN_0010C9D0, stdcall
 		MOVSS dword ptr [ESP + 068h],XMM1
 		MOVSS dword ptr [ESP + 06Ch],XMM2
 		MOVSS dword ptr [ESP + 070h],XMM3
-		TwinCall D3DDevice_GetPalette2@4
+		TwinCall ExWrapper_D3DDevice_GetPalette2@4
 		MOV EDX,dword ptr [PTR_0x003ec55c]
 		PUSH EDX
 		PUSH EBX
 		MOV ESI,EAX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EDI,dword ptr [D3D__RenderState + 236]
 		XOR EDX,EDX
 		MOV ECX,040304h
@@ -284254,7 +284254,7 @@ TwinProc FUN_0010C9D0, stdcall
 		MOV EBP,dword ptr [D3D__RenderState + 572]
 		PUSH EBX
 		MOV dword ptr [D3D__RenderState + 236],EBX
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		MOV EDX,dword ptr [D3D__DirtyFlags]
 		PUSH 00h
 		MOV EAX,03h
@@ -284269,9 +284269,9 @@ TwinProc FUN_0010C9D0, stdcall
 		MOV dword ptr [D3D__DirtyFlags],EDX
 		MOV dword ptr [D3D__TextureState + 64],EAX
 		MOV byte ptr [NUM_0x00402a08],BL
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0104h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		XORPS XMM0,XMM0
 		MOVSS XMM1,dword ptr [FLOAT_0x00391a98]
 		PUSH 018h
@@ -284288,7 +284288,7 @@ TwinProc FUN_0010C9D0, stdcall
 		MOVSS dword ptr [ESP + 054h],XMM1
 		MOVSS dword ptr [ESP + 068h],XMM0
 		MOVSS dword ptr [ESP + 06Ch],XMM1
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		MOV dword ptr [D3D__TextureState],EBX
 		MOV dword ptr [D3D__TextureState + 4],EBX
 		MOV EDX,dword ptr [D3D__DirtyFlags]
@@ -284303,17 +284303,17 @@ TwinProc FUN_0010C9D0, stdcall
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH EBP
 		MOV dword ptr [D3D__RenderState + 236],EDI
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		PUSH ESI
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		PUSH ESI
 		TwinCall D3DResource_Release@4
 		MOV ECX,dword ptr [PTR_0x003ec56c]
 		MOV EDX,dword ptr [PTR_0x003ec568]
 		PUSH ECX
 		PUSH EDX
-		TwinCall D3DDevice_SetRenderTarget@8
+		TwinCall ExWrapper_D3DDevice_SetRenderTarget@8
 		POP EDI
 		POP ESI
 		POP EBP
@@ -284478,7 +284478,7 @@ TwinProc FUN_0010CD30, c
 		MOV EAX,dword ptr [EDX + 060h]
 		PUSH EAX
 		PUSH 02h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 014h]
 		SHR ECX,06h
 		MOV EBX,01h
@@ -284524,7 +284524,7 @@ RETURN_LAB_0010ce10::
 		MOV EAX,dword ptr [EDX + 060h]
 		PUSH EAX
 		PUSH 02h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOVSS XMM0,dword ptr [FLOAT_0x00386ab4]
 		MOV ESI,dword ptr [D3D__DirtyFlags]
 		MOVSS dword ptr [ESP + 010h],XMM0
@@ -284545,7 +284545,7 @@ RETURN_LAB_0010ce10::
 		MOV ECX,dword ptr [PTR_0x003ec558]
 		PUSH ECX
 		PUSH 03h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		POP ESI
 		POP EBX
 		MOV ESP,EBP
@@ -284556,7 +284556,7 @@ RETURN_LAB_0010ce10::
 		MOV EAX,dword ptr [EDX + 060h]
 		PUSH EAX
 		PUSH 02h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [D3D__DirtyFlags]
 		MOV ESI,0800h
 		OR ECX,ESI
@@ -284829,7 +284829,7 @@ TwinProc FUN_0010D200, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EAX,dword ptr [ESI + 08h]
 		XOR EDI,EDI
 		TEST EAX,EAX
@@ -284917,7 +284917,7 @@ TwinProc FUN_0010D2B0, stdcall
 		JNZ LAB_0x0010D304
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -288172,9 +288172,9 @@ TwinProcThiscall FUN_0010F930, stdcall
 		PUSH EDI
 		PUSH EDI
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		XOR EDX,EDX
 		MOV ECX,040304h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -288185,15 +288185,15 @@ TwinProcThiscall FUN_0010F930, stdcall
 		PUSH EDI
 		PUSH EDI
 		MOV dword ptr [D3D__RenderState + 240],EDI
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		XOR EDX,EDX
 		MOV ECX,040358h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 02h
 		MOV dword ptr [D3D__RenderState + 268],EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		PUSH 01h
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV EDX,0205h
 		MOV ECX,040364h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -288211,7 +288211,7 @@ TwinProcThiscall FUN_0010F930, stdcall
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 0901h
 		MOV dword ptr [D3D__RenderState + 256],EDI
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		MOV EDX,0201h
 		MOV ECX,040354h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -288227,7 +288227,7 @@ RETURN_LAB_0010fa4f::
 		PUSH 01Ch
 		PUSH EDX
 		PUSH EDI
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
 		CMP dword ptr [ECX + ESI*04h],EDI
@@ -288249,7 +288249,7 @@ RETURN_LAB_0010fa4f::
 		PUSH ECX
 		PUSH EBX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV EDX,dword ptr [EAX + 018h]
 		MOV ECX,dword ptr [EDX + ESI*04h]
@@ -288262,7 +288262,7 @@ RETURN_LAB_0010fa4f::
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 0900h
 		MOV dword ptr [D3D__RenderState + 276],08508h
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
 		MOV EDX,dword ptr [ECX + ESI*04h]
@@ -288287,7 +288287,7 @@ RETURN_LAB_0010fa4f::
 		PUSH ECX
 		PUSH EBX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV EDX,dword ptr [EAX + 018h]
 		MOV ECX,dword ptr [EDX + ESI*04h]
@@ -288316,7 +288316,7 @@ RETURN_LAB_0010fa4f::
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 01h
 		MOV dword ptr [D3D__RenderState + 252],08004h
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		MOV EDX,0201h
 		MOV ECX,040364h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -288330,7 +288330,7 @@ RETURN_LAB_0010fa4f::
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 00h
 		MOV dword ptr [D3D__RenderState + 276],01E01h
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
 		MOV EDX,dword ptr [ECX + ESI*04h]
@@ -288355,7 +288355,7 @@ RETURN_LAB_0010fa4f::
 		PUSH ECX
 		PUSH EBX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV EDX,dword ptr [EAX + 018h]
 		MOV ECX,dword ptr [EDX + ESI*04h]
@@ -288364,13 +288364,13 @@ RETURN_LAB_0010fa4f::
 		JC LAB_0x0010FC00
 	LAB_0x0010FC32: 
 		PUSH 00h
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV EDX,01h
 		MOV ECX,04035Ch
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 00h
 		MOV dword ptr [D3D__RenderState + 256],01h
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		MOV EDX,0302h
 		MOV ECX,040344h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -288380,7 +288380,7 @@ RETURN_LAB_0010fa4f::
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 00h
 		MOV dword ptr [D3D__RenderState + 252],0303h
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		POP EDI
 		POP ESI
 		POP EBP
@@ -288399,7 +288399,7 @@ RETURN_LAB_0010fcab::
 		PUSH 01Ch
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		PUSH 010h
 		LEA EDX,[ESI + 010h]
 		MOV ECX,060h
@@ -288479,24 +288479,24 @@ RETURN_LAB_0010fd95::
 		MOV EDI,OFFSET STRUCT_0x00402908
 		PUSH EAX
 		REP MOVSD
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [NUM_0x00402a08]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x0010FDDD
 		PUSH OFFSET STRUCT_0x00402908
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [NUM_0x00402a08],00h
 		JMP LAB_0x0010FDE4
 	LAB_0x0010FDDD: 
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 	LAB_0x0010FDE4: 
 		MOV EAX,dword ptr [ESP + 01Ch]
 		CMP EAX,-01h
 		JZ LAB_0x0010FDF3
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0010FDF3: 
 		MOV EAX,dword ptr [EBP + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
@@ -288513,7 +288513,7 @@ RETURN_LAB_0010fd95::
 		PUSH EAX
 		PUSH EDI
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV ECX,dword ptr [EBP + 010h]
 		MOV EDX,dword ptr [ECX + 01Ch]
 		MOV EAX,dword ptr [EDX + EBX*04h]
@@ -288573,14 +288573,14 @@ RETURN_LAB_0010fe8f::
 		PUSH ECX
 		PUSH 07h
 		MOV dword ptr [ESP + 024h],EDI
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		MOV AL,byte ptr [EBX + 019h]
 		TEST AL,AL
 		JZ LAB_0x0010FF75
 		LEA EDX,[ESP + 0F0h]
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		MOV ESI,dword ptr [EBP + 08h]
 		LEA EAX,[ESP + 030h]
 		PUSH EAX
@@ -288647,7 +288647,7 @@ RETURN_LAB_0010ff87::
 		LEA EAX,[ESP + 0F0h]
 		PUSH EAX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 030h]
 		PUSH ECX
 		LEA EDX,[ESP + 0F4h]
@@ -288682,7 +288682,7 @@ RETURN_LAB_0010fff4::
 		PUSH 01Ch
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		PUSH 010h
 		LEA EDX,[ESP + 074h]
 		MOV ECX,060h
@@ -288697,9 +288697,9 @@ RETURN_LAB_00110025::
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH EDI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [EBX + 010h]
 		MOV EDX,dword ptr [EAX + 018h]
 		MOV ECX,dword ptr [EDX + ESI*04h]
@@ -288715,7 +288715,7 @@ RETURN_LAB_00110025::
 		PUSH ECX
 		PUSH EDX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV ECX,dword ptr [EBX + 010h]
 		MOV EAX,dword ptr [ECX + 01Ch]
 		MOV EAX,dword ptr [EAX + ESI*04h]
@@ -288813,7 +288813,7 @@ TwinProcThiscall FUN_001101A0, stdcall
 		PUSH EAX
 		PUSH 07h
 		MOV EDI,ECX
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
 		MOV ECX,dword ptr [EBP + 010h]
@@ -288953,11 +288953,11 @@ RETURN_LAB_00110375::
 		MOVSS XMM0,dword ptr [ESP + 030h]
 		PUSH 00h
 		MOVSS dword ptr [ESP + 084h],XMM0
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA EAX,[ESP + 080h]
 		PUSH EAX
 		PUSH 01h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 0C0h]
 		PUSH ECX
 		LEA EDX,[ESP + 0104h]
@@ -288987,15 +288987,15 @@ RETURN_LAB_001103fb::
 		MOVSS dword ptr [ESP + 03Ch],XMM0
 		TwinCall @D3DDevice_SetVertexShaderConstant1Fast@8
 		PUSH 02h
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		MOV ESI,dword ptr [STRUCT_0x0039fb80]
 		PUSH 00h
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [EDI + 01Ch]
 		TEST EAX,EAX
 		MOV byte ptr [ESP + 01Bh],00h
@@ -289012,14 +289012,14 @@ RETURN_LAB_001103fb::
 		TwinCall FUN_00105840
 RETURN_LAB_00110499::
 		PUSH 01h
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		MOV EBX,0207h
 		MOV EDX,EBX
 		MOV ECX,040354h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
 		PUSH 01h
 		MOV dword ptr [D3D__RenderState + 228],EBX
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV EDX,EBX
 		MOV ECX,040364h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -289036,7 +289036,7 @@ RETURN_LAB_00110499::
 		MOV dword ptr [D3D__RenderState + 276],00h
 		MOV EDI,dword ptr [EDI + 010h]
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV ECX,dword ptr [EDI + 020h]
 		MOV EDX,dword ptr [ECX + ESI*04h]
 		MOV EAX,dword ptr [EDI + 010h]
@@ -289069,7 +289069,7 @@ RETURN_LAB_00110541::
 		PUSH 01Ch
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EAX,dword ptr [ESP + 01Ch]
 		MOV EAX,dword ptr [EAX + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
@@ -289085,7 +289085,7 @@ RETURN_LAB_00110541::
 		PUSH EAX
 		PUSH EBX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV ECX,dword ptr [ESP + 01Ch]
 		MOV ECX,dword ptr [ECX + 010h]
 		MOV EDX,dword ptr [ECX + 01Ch]
@@ -289107,7 +289107,7 @@ RETURN_LAB_00110541::
 		JC LAB_0x00110485
 	LAB_0x001105C8: 
 		PUSH 00h
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		POP EDI
 		POP ESI
 		POP EBX
@@ -289126,7 +289126,7 @@ TwinProc FUN_001105E0, stdcall
 		MOV ESI,ECX
 		PUSH 00h
 		MOV dword ptr [ESI],OFFSET FUNPTR_0x00390d1c
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EAX,dword ptr [ESI + 03Ch]
 		XOR EBX,EBX
 		TEST EAX,EAX
@@ -289293,7 +289293,7 @@ RETURN_LAB_00110765::
 		PUSH ECX
 		XOR EDI,EDI
 		PUSH EDI
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV ESI,dword ptr [ESP + 053Ch]
 		PUSH 010h
 		LEA EDX,[ESI + 010h]
@@ -289323,9 +289323,9 @@ RETURN_LAB_001107c1::
 		PUSH EDI
 		PUSH EDI
 		MOV byte ptr [NUM_0x00402a08],AL
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		JMP LAB_0x001108E7
 	LAB_0x001107F0: 
 		PUSH OFFSET STRUCT_0x003a0090
@@ -289391,24 +289391,24 @@ RETURN_LAB_00110889::
 		MOV EDI,OFFSET STRUCT_0x00402908
 		PUSH EAX
 		REP MOVSD
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [NUM_0x00402a08]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x001108D1
 		PUSH OFFSET STRUCT_0x00402908
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [NUM_0x00402a08],00h
 		JMP LAB_0x001108D8
 	LAB_0x001108D1: 
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 	LAB_0x001108D8: 
 		MOV EAX,dword ptr [ESP + 028h]
 		CMP EAX,-01h
 		JZ LAB_0x001108E7
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x001108E7: 
 		MOV ECX,dword ptr [EBP + 024h]
 		MOV EDX,dword ptr [ECX + EBX*04h]
@@ -289455,7 +289455,7 @@ RETURN_LAB_00110889::
 		PUSH EDX
 		PUSH EAX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV ECX,dword ptr [EBP + 030h]
 		MOV EDX,dword ptr [ECX + EBX*04h]
 		MOV EAX,dword ptr [ESP + 010h]
@@ -289547,7 +289547,7 @@ TwinProcThiscall FUN_00110A10, stdcall
 		PUSH EAX
 		PUSH 07h
 		MovApsHackMacro xmmword ptr [ESP + 058h],XMM0
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 060h]
 		PUSH ECX
 		LEA EDX,[ESP + 0E4h]
@@ -289562,7 +289562,7 @@ RETURN_LAB_00110a74::
 		LEA EAX,[ESP + 0120h]
 		PUSH EAX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 0A0h]
 		PUSH ECX
 		LEA EDX,[ESP + 0124h]
@@ -289744,7 +289744,7 @@ TwinProc FUN_00110D70, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EDI
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		INC EDI
 		CMP EDI,0Fh
 		JC LAB_0x00110D80
@@ -289973,7 +289973,7 @@ TwinProcThiscall FUN_00110F60, stdcall
 		PUSH EAX
 		PUSH 07h
 		MovApsHackMacro xmmword ptr [ESP + 058h],XMM0
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 060h]
 		PUSH ECX
 		LEA EDX,[ESP + 0E4h]
@@ -289988,7 +289988,7 @@ RETURN_LAB_00110fc8::
 		LEA EAX,[ESP + 0120h]
 		PUSH EAX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 0A0h]
 		PUSH ECX
 		LEA EDX,[ESP + 0124h]
@@ -290212,7 +290212,7 @@ RETURN_LAB_00111346::
 		PUSH 030h
 		PUSH ECX
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV ESI,dword ptr [EBP + 0Ch]
 		PUSH 010h
 		LEA EDX,[ESI + 060h]
@@ -290260,7 +290260,7 @@ RETURN_LAB_00111346::
 		PUSH 0Ch
 		PUSH ECX
 		PUSH EDI
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV EDX,dword ptr [EBP + 0Ch]
 		MOV ECX,dword ptr [EDX + 08h]
 		MOV EAX,EDI
@@ -290293,15 +290293,15 @@ RETURN_LAB_00111456::
 		PUSH 00h
 		JNZ LAB_0x00111491
 		MOV ESI,dword ptr [STRUCT_0x003a0ab0]
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		JMP LAB_0x001115CB
 	LAB_0x00111491: 
 		MOV ESI,dword ptr [STRUCT_0x003a05a0]
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		JMP LAB_0x001115CB
 	LAB_0x001114A7: 
 		MOV ECX,dword ptr [STRUCT_0x003a05a0 + 1284]
@@ -290380,24 +290380,24 @@ RETURN_LAB_0011156d::
 		PUSH 00h
 		LEA ECX,[ESP + 0178h]
 		PUSH ECX
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [NUM_0x00402a08]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x001115B5
 		PUSH OFFSET STRUCT_0x00402908
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [NUM_0x00402a08],00h
 		JMP LAB_0x001115BC
 	LAB_0x001115B5: 
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 	LAB_0x001115BC: 
 		MOV EAX,dword ptr [ESP + 070h]
 		CMP EAX,-01h
 		JZ LAB_0x001115CB
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x001115CB: 
 		MOVZX ESI,byte ptr [EBP + 08h]
 		MOV EDX,dword ptr [EBX + 030h]
@@ -290448,7 +290448,7 @@ RETURN_LAB_0011156d::
 		PUSH ECX
 		PUSH EDX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV EAX,dword ptr [EBX + 034h]
 		MOV ECX,dword ptr [EAX + ESI*04h]
 		MOV EAX,dword ptr [ESP + 014h]
@@ -290531,7 +290531,7 @@ RETURN_LAB_00111708::
 		PUSH 01Ch
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		MOV ESI,dword ptr [ESP + 0534h]
 		PUSH 010h
 		MOV EDX,ESI
@@ -290608,13 +290608,13 @@ RETURN_LAB_001117fa::
 		MOV EDI,OFFSET STRUCT_0x00402908
 		PUSH EAX
 		REP MOVSD
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [NUM_0x00402a08]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x001119D9
 		PUSH OFFSET STRUCT_0x00402908
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [NUM_0x00402a08],00h
 		JMP LAB_0x001119E0
 	LAB_0x00111849: 
@@ -290649,9 +290649,9 @@ RETURN_LAB_00111883::
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH ESI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		JMP LAB_0x001119EF
 	LAB_0x001118B0: 
 		XOR EAX,EAX
@@ -290737,24 +290737,24 @@ RETURN_LAB_00111991::
 		MOV EDI,OFFSET STRUCT_0x00402908
 		PUSH EAX
 		REP MOVSD
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		MOV AL,byte ptr [NUM_0x00402a08]
 		TEST AL,AL
 		PUSH 00h
 		JZ LAB_0x001119D9
 		PUSH OFFSET STRUCT_0x00402908
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		MOV byte ptr [NUM_0x00402a08],00h
 		JMP LAB_0x001119E0
 	LAB_0x001119D9: 
 		PUSH 00h
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 	LAB_0x001119E0: 
 		MOV EAX,dword ptr [ESP + 020h]
 		CMP EAX,-01h
 		JZ LAB_0x001119EF
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x001119EF: 
 		MOV EAX,dword ptr [EBX + 010h]
 		MOV ECX,dword ptr [EAX + 018h]
@@ -290770,7 +290770,7 @@ RETURN_LAB_00111991::
 		PUSH EAX
 		PUSH EDI
 		PUSH 06h
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		MOV ECX,dword ptr [EBX + 010h]
 		MOV EDX,dword ptr [ECX + 01Ch]
 		MOV EAX,dword ptr [EDX + EBP*04h]
@@ -290855,7 +290855,7 @@ RETURN_LAB_00111ac0::
 		LEA EDX,[ESP + 0B0h]
 		PUSH EDX
 		PUSH 07h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA EAX,[ESP + 070h]
 		PUSH EAX
 		LEA ECX,[ESP + 0B4h]
@@ -290870,7 +290870,7 @@ RETURN_LAB_00111ae3::
 		LEA EDX,[ESP + 0F0h]
 		PUSH EDX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA EAX,[ESP + 030h]
 		PUSH EAX
 		LEA ECX,[ESP + 0F4h]
@@ -291141,9 +291141,9 @@ RETURN_LAB_00111e66::
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH EDI
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		MOV EAX,dword ptr [ESI + 014h]
 		MOV EDX,dword ptr [ESI + 010h]
 		PUSH EAX
@@ -291151,7 +291151,7 @@ RETURN_LAB_00111e66::
 		PUSH ECX
 		PUSH EDX
 		PUSH 06h
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		POP EDI
 		POP ESI
 		TwinProcExit 010h, FUN_00111E60
@@ -291240,7 +291240,7 @@ RETURN_LAB_00111f43::
 		JNZ LAB_0x00111FB0
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -294256,7 +294256,7 @@ TwinProc FUN_001140C0, stdcall
 		PUSH 0F2h
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		MOV EDX,dword ptr [EDI]
 		MOV ECX,EDI
 		TwinCall dword ptr [EDX + 010h]
@@ -294293,7 +294293,7 @@ RETURN_LAB_0011410d::
 		PUSH EDX
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		MOV ECX,ESI
 		TwinCall FUN_00113FA0
 RETURN_LAB_0011415b::
@@ -294366,15 +294366,15 @@ RETURN_LAB_001141cd::
 RETURN_LAB_00114202::
 		PUSH EDI
 		PUSH 00h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		LEA ECX,[ESP + 020h]
 		PUSH ECX
 		PUSH 06h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		LEA EDX,[ESP + 060h]
 		PUSH EDX
 		PUSH 01h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA EAX,[ESP + 0A0h]
 		PUSH EAX
 		LEA ECX,[ESP + 064h]
@@ -294385,7 +294385,7 @@ RETURN_LAB_00114236::
 		LEA EDX,[ESP + 0A0h]
 		PUSH EDX
 		PUSH 07h
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		MOV ECX,OFFSET STRUCT_0x00402ae4
 		TwinCall FUN_001057C0
 RETURN_LAB_0011424f::
@@ -297012,13 +297012,13 @@ TwinProcEnd FUN_00115EB0
 
 TwinProc FUN_00115F10, stdcall
 		PUSH 00h
-		TwinCall D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_Swap@4
 		XOR EAX,EAX
 		TwinProcExit 010h, FUN_00115F10
 TwinProcEnd FUN_00115F10
 
 TwinProcThunk FUN_00115F20, stdcall
-		JMP D3DDevice_SetGammaRamp@8
+		JMP ExWrapper_D3DDevice_SetGammaRamp@8
 TwinProcEnd FUN_00115F20
 
 TwinProc FUN_00115F30, stdcall
@@ -297026,7 +297026,7 @@ TwinProc FUN_00115F30, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetRenderTarget@8
+		TwinCall ExWrapper_D3DDevice_SetRenderTarget@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_00115F30
 TwinProcEnd FUN_00115F30
@@ -297043,7 +297043,7 @@ TwinProcEnd FUN_00115F80
 TwinProc FUN_00115FA0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_GetPalette2@4
+		TwinCall ExWrapper_D3DDevice_GetPalette2@4
 		MOV ECX,dword ptr [ESP + 08h]
 		MOV dword ptr [ECX],EAX
 		XOR EAX,EAX
@@ -297055,7 +297055,7 @@ TwinProc FUN_00115FC0, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_00115FC0
 TwinProcEnd FUN_00115FC0
@@ -297097,7 +297097,7 @@ TwinProc FUN_00115FE0, stdcall
 		MOV EDX,dword ptr [ESP + 04h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall D3DDevice_SetTextureState_TexCoordIndex@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_TexCoordIndex@8
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_00115FE0
 	LAB_0x0011605D: 
@@ -297107,7 +297107,7 @@ TwinProc FUN_00115FE0, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SetTextureState_BorderColor@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_BorderColor@8
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_00115FE0
 	LAB_0x00116076: 
@@ -297117,7 +297117,7 @@ TwinProc FUN_00115FE0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall D3DDevice_SetTextureState_ColorKeyColor@8
+		TwinCall ExWrapper_D3DDevice_SetTextureState_ColorKeyColor@8
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_00115FE0
 	LAB_0x0011608F: 
@@ -297128,7 +297128,7 @@ TwinProc FUN_00115FE0, stdcall
 		PUSH ECX
 		PUSH EAX
 		PUSH EDX
-		TwinCall D3DDevice_SetTextureState_BumpEnv@12
+		TwinCall ExWrapper_D3DDevice_SetTextureState_BumpEnv@12
 	LAB_0x001160A4: 
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_00115FE0
@@ -297143,7 +297143,7 @@ TwinProc FUN_001160B0, stdcall
 		PUSH ECX
 		PUSH EDX
 		PUSH EAX
-		TwinCall D3DDevice_DrawVertices@12
+		TwinCall ExWrapper_D3DDevice_DrawVertices@12
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_001160B0
 TwinProcEnd FUN_001160B0
@@ -297159,7 +297159,7 @@ TwinProc FUN_001160E0, stdcall
 		ADD ECX,dword ptr [EAX*08h + ARRAY_0x0038632c]
 		PUSH ECX
 		PUSH EAX
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 		XOR EAX,EAX
 		TwinProcExit 010h, FUN_001160E0
 TwinProcEnd FUN_001160E0
@@ -297167,7 +297167,7 @@ TwinProcEnd FUN_001160E0
 TwinProc FUN_00116120, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		XOR EAX,EAX
 		TwinProcExit 04h, FUN_00116120
 TwinProcEnd FUN_00116120
@@ -297177,7 +297177,7 @@ TwinProc FUN_00116130, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_LoadVertexShaderProgram@8
+		TwinCall ExWrapper_D3DDevice_LoadVertexShaderProgram@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_00116130
 TwinProcEnd FUN_00116130
@@ -297187,7 +297187,7 @@ TwinProc FUN_00116150, stdcall
 		MOV ECX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_SelectVertexShaderDirect@8
+		TwinCall ExWrapper_D3DDevice_SelectVertexShaderDirect@8
 		XOR EAX,EAX
 		TwinProcExit 08h, FUN_00116150
 TwinProcEnd FUN_00116150
@@ -297195,7 +297195,7 @@ TwinProcEnd FUN_00116150
 TwinProc FUN_00116170, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 		XOR EAX,EAX
 		TwinProcExit 04h, FUN_00116170
 TwinProcEnd FUN_00116170
@@ -297225,7 +297225,7 @@ TwinProc FUN_001161B0, stdcall
 		PUSH EAX
 		PUSH ECX
 		PUSH EDX
-		TwinCall D3DDevice_SetStreamSource@12
+		TwinCall ExWrapper_D3DDevice_SetStreamSource@12
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_001161B0
 TwinProcEnd FUN_001161B0
@@ -297233,7 +297233,7 @@ TwinProcEnd FUN_001161B0
 TwinProc FUN_001161D0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_SetPixelShader@4
+		TwinCall ExWrapper_D3DDevice_SetPixelShader@4
 		XOR EAX,EAX
 		TwinProcExit 04h, FUN_001161D0
 TwinProcEnd FUN_001161D0
@@ -297245,7 +297245,7 @@ TwinProc FUN_001161E0, stdcall
 		PUSH EAX
 		PUSH ECX
 		PUSH EDX
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		XOR EAX,EAX
 		TwinProcExit 0Ch, FUN_001161E0
 TwinProcEnd FUN_001161E0
@@ -300318,8 +300318,8 @@ TwinProcThiscall FUN_001185C0, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV byte ptr [ECX + 0100h],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
-		JMP D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
+		JMP ExWrapper_D3DDevice_SetVertexShader@4
 TwinProcEnd FUN_001185C0
 
 TwinProc FUN_001185E0, stdcall
@@ -302943,7 +302943,7 @@ TwinProcThiscall FUN_0011A160, stdcall
 		PUSH 00h
 		PUSH 00h
 		MOV ESI,ECX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV ECX,dword ptr [ESI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -304376,7 +304376,7 @@ TwinProc FUN_0011AE30, stdcall
 		JZ LAB_0x0011AE8C
 		PUSH 00h
 		PUSH 00h
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EDX,dword ptr [EDI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -309491,7 +309491,7 @@ TwinProc FUN_0011E000, stdcall
 		AND ECX,0FFFCFFFFh
 		PUSH 00h
 		MOV dword ptr [ESI],ECX
-		TwinCall D3DDevice_SetTexture@8
+		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		MOV EDX,dword ptr [ESI + 060h]
 		PUSH 0A0h
 		PUSH 00h
@@ -329106,7 +329106,7 @@ TwinProc FUN_0012C070, c
 		LEA EAX,[ESP + 040h]
 		PUSH EAX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 040h]
 		TwinCall FUN_000D4180
 RETURN_LAB_0012c08c::
@@ -330081,181 +330081,181 @@ TwinProc FUN_0012CED0, stdcall
 	LAB_0x0012CF10: 
 		JNZ LAB_0x0012CF19
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_PSTextureModes@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF19: 
 		CMP ESI,089h
 		JNZ LAB_0x0012CF28
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_VertexBlend@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_VertexBlend@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF28: 
 		CMP ESI,08Ah
 		JNZ LAB_0x0012CF37
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FogColor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FogColor@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF37: 
 		CMP ESI,08Bh
 		JNZ LAB_0x0012CF46
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FillMode@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF46: 
 		CMP ESI,08Ch
 		JNZ LAB_0x0012CF55
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_BackFillMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_BackFillMode@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF55: 
 		CMP ESI,08Dh
 		JNZ LAB_0x0012CF64
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_TwoSidedLighting@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TwoSidedLighting@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF64: 
 		CMP ESI,08Eh
 		JNZ LAB_0x0012CF73
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_NormalizeNormals@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_NormalizeNormals@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF73: 
 		CMP ESI,08Fh
 		JNZ LAB_0x0012CF82
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ZEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF82: 
 		CMP ESI,090h
 		JNZ LAB_0x0012CF91
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CF91: 
 		CMP ESI,091h
 		JNZ LAB_0x0012CFA0
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilFail@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilFail@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFA0: 
 		CMP ESI,093h
 		JNZ LAB_0x0012CFAF
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_CullMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_CullMode@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFAF: 
 		CMP ESI,092h
 		JNZ LAB_0x0012CFBE
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_FrontFace@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_FrontFace@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFBE: 
 		CMP ESI,094h
 		JNZ LAB_0x0012CFCD
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_TextureFactor@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_TextureFactor@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFCD: 
 		CMP ESI,095h
 		JNZ LAB_0x0012CFDC
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ZBias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ZBias@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFDC: 
 		CMP ESI,096h
 		JNZ LAB_0x0012CFEB
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_LogicOp@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LogicOp@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFEB: 
 		CMP ESI,097h
 		JNZ LAB_0x0012CFFA
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_EdgeAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012CFFA: 
 		CMP ESI,098h
 		JNZ LAB_0x0012D009
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleAntiAlias@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleAntiAlias@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D009: 
 		CMP ESI,099h
 		JNZ LAB_0x0012D018
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleMask@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMask@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D018: 
 		CMP ESI,09Ah
 		JNZ LAB_0x0012D027
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D027: 
 		CMP ESI,09Bh
 		JNZ LAB_0x0012D036
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleRenderTargetMode@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D036: 
 		CMP ESI,09Ch
 		JNZ LAB_0x0012D045
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_ShadowFunc@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_ShadowFunc@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D045: 
 		CMP ESI,09Dh
 		JNZ LAB_0x0012D054
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_LineWidth@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_LineWidth@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D054: 
 		CMP ESI,09Eh
 		JNZ LAB_0x0012D063
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_SampleAlpha@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_SampleAlpha@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D063: 
 		CMP ESI,09Fh
 		JNZ LAB_0x0012D072
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_Dxt1NoiseEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_Dxt1NoiseEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D072: 
 		CMP ESI,0A0h
 		JNZ LAB_0x0012D081
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_YuvEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_YuvEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D081: 
 		CMP ESI,0A1h
 		JNZ LAB_0x0012D090
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D090: 
 		CMP ESI,0A2h
 		JNZ LAB_0x0012D09F
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_StencilCullEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilCullEnable@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D09F: 
 		CMP ESI,0A3h
 		JNZ LAB_0x0012D0AE
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZCmpAlwaysRead@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D0AE: 
 		CMP ESI,0A4h
 		JNZ LAB_0x0012D0BD
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_RopZRead@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_RopZRead@4
 		TwinProcExit, FUN_0012CED0
 	LAB_0x0012D0BD: 
 		CMP ESI,0A5h
 		JNZ LAB_0x0012D0CB
 		PUSH EDI
-		TwinCall D3DDevice_SetRenderState_DoNotCullUncompressed@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_DoNotCullUncompressed@4
 	LAB_0x0012D0CB: 
 		TwinProcExit, FUN_0012CED0
 TwinProcEnd FUN_0012CED0
@@ -330274,7 +330274,7 @@ TwinProc FUN_0012D0E0, c
 		LEA EAX,[ESP]
 		PUSH EAX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		MOV EAX,dword ptr [EBP + 08h]
 		XORPS XMM0,XMM0
 		MovApsHackMacro XMM1,XMM0
@@ -330341,7 +330341,7 @@ RETURN_LAB_0012d1c2::
 		MOVSS XMM0,dword ptr [FLOAT_0x0038639c]
 		PUSH 06h
 		MOVSS dword ptr [ESP + 0E4h],XMM0
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		PUSH OFFSET STRUCT_0x0044b730 + 254464
 		TwinCall FUN_0012D0E0
 RETURN_LAB_0012d219::
@@ -330366,11 +330366,11 @@ RETURN_LAB_0012d219::
 		PUSH 00h
 		MOVSS dword ptr [ESP + 034h],XMM0
 		MOV byte ptr [NUM_0x00402a08],01h
-		TwinCall D3DDevice_SetVertexShaderInput@12
+		TwinCall ExWrapper_D3DDevice_SetVertexShaderInput@12
 		PUSH 0142h
-		TwinCall D3DDevice_SetVertexShader@4
+		TwinCall ExWrapper_D3DDevice_SetVertexShader@4
 		PUSH 02h
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		MOV dword ptr [ESP + 018h],020h
 		JMP LAB_0x0012D2B0
 	LAB_0x0012D2B0: 
@@ -330555,7 +330555,7 @@ RETURN_LAB_0012d219::
 		PUSH 04h
 		PUSH 06h
 		MOV dword ptr [ESP + 08Ch],ECX
-		TwinCall D3DDevice_DrawVerticesUP@16
+		TwinCall ExWrapper_D3DDevice_DrawVerticesUP@16
 	LAB_0x0012D67A: 
 		MOV EAX,dword ptr [ESP + 018h]
 		ADD EDI,020h
@@ -330563,12 +330563,12 @@ RETURN_LAB_0012d219::
 		MOV dword ptr [ESP + 018h],EAX
 		JNZ LAB_0x0012D2B0
 		PUSH 00h
-		TwinCall D3DDevice_SetRenderState_MultiSampleMode@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_MultiSampleMode@4
 		PUSH 08h
 		ADD EDI,0400h
-		TwinCall D3DDevice_Begin@4
+		TwinCall ExWrapper_D3DDevice_Begin@4
 		ADD EDI,0400h
-		TwinCall D3DDevice_End@0
+		TwinCall ExWrapper_D3DDevice_End@0
 		MOV EAX,EDI
 		POP EDI
 		POP ESI
@@ -330584,7 +330584,7 @@ TwinProc FUN_0012D6C0, c
 		TwinCall FUN_00105840
 RETURN_LAB_0012d6c4::
 		PUSH 01h
-		TwinCall D3DDevice_SetRenderState_StencilEnable@4
+		TwinCall ExWrapper_D3DDevice_SetRenderState_StencilEnable@4
 		MOV EDX,0207h
 		MOV ECX,040364h
 		TwinCall @D3DDevice_SetRenderState_Simple@8
@@ -330618,13 +330618,13 @@ TwinProcEnd FUN_0012D6C0
 TwinProc FUN_0012D750, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_Begin@4
+		TwinCall ExWrapper_D3DDevice_Begin@4
 		XOR EAX,EAX
 		TwinProcExit 04h, FUN_0012D750
 TwinProcEnd FUN_0012D750
 
 TwinProc FUN_0012D760, stdcall
-		TwinCall D3DDevice_End@0
+		TwinCall ExWrapper_D3DDevice_End@0
 		XOR EAX,EAX
 		TwinProcExit, FUN_0012D760
 TwinProcEnd FUN_0012D760
@@ -385465,11 +385465,11 @@ TwinProc FUN_00154110, stdcall
 		PUSH EAX
 		PUSH 01h
 		MOV ESI,ECX
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 050h]
 		PUSH ECX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		ADD ESI,010h
 		PUSH ESI
 		LEA EDX,[ESP + 014h]
@@ -385833,11 +385833,11 @@ TwinProc FUN_00154580, stdcall
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
 		PUSH 01h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA ECX,[ESP + 050h]
 		PUSH ECX
 		PUSH 00h
-		TwinCall D3DDevice_GetTransform@8
+		TwinCall ExWrapper_D3DDevice_GetTransform@8
 		LEA EDX,[ESI + 010h]
 		PUSH EDX
 		LEA EAX,[ESP + 014h]
@@ -558235,7 +558235,7 @@ RETURN_LAB_001c6c2e::
 		MOVSS XMM3,dword ptr [FLOAT_0x0038639c]
 		MOVSS dword ptr [ESI + 02Ch],XMM3
 		MOVSS dword ptr [ESI + 038h],XMM1
-		TwinCall D3DDevice_SetTransform@8
+		TwinCall ExWrapper_D3DDevice_SetTransform@8
 		AND dword ptr [EDI + 018h],0FFFFFFFEh
 		POP EDI
 		POP ESI
@@ -650541,22 +650541,22 @@ TwinProc FUN_002091B0, stdcall
 		PUSH EDI
 		PUSH EDI
 		MOV ESI,ECX
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		PUSH EDI
-		TwinCall D3DDevice_Swap@4
-		TwinCall D3DDevice_BlockUntilVerticalBlank@0
+		TwinCall ExWrapper_D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_BlockUntilVerticalBlank@0
 		PUSH EDI
 		PUSH EDI
 		PUSH EDI
 		PUSH 0F0h
 		PUSH EDI
 		PUSH EDI
-		TwinCall D3DDevice_Clear@24
+		TwinCall ExWrapper_D3DDevice_Clear@24
 		PUSH EDI
-		TwinCall D3DDevice_Swap@4
-		TwinCall D3DDevice_BlockUntilVerticalBlank@0
+		TwinCall ExWrapper_D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_BlockUntilVerticalBlank@0
 		PUSH EDI
-		TwinCall D3DDevice_EnableOverlay@4
+		TwinCall ExWrapper_D3DDevice_EnableOverlay@4
 		MOV EAX,dword ptr [ESI + 01Ch]
 		CMP EAX,EDI
 		JZ LAB_0x002091FD
@@ -650638,7 +650638,7 @@ TwinProc FUN_00209290, stdcall
 		MOV EAX,dword ptr [ESI + 034h]
 		TEST EAX,EAX
 		JZ LAB_0x002092C7
-		TwinCall D3DDevice_GetOverlayUpdateStatus@0
+		TwinCall ExWrapper_D3DDevice_GetOverlayUpdateStatus@0
 		TEST EAX,EAX
 		JZ LAB_0x002092C7
 		MOV EAX,dword ptr [ESI + 02Ch]
@@ -650664,7 +650664,7 @@ TwinProc FUN_00209290, stdcall
 		LEA EDX,[ESI + 048h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall D3DDevice_UpdateOverlay@20
+		TwinCall ExWrapper_D3DDevice_UpdateOverlay@20
 		MOV ECX,dword ptr [ESI + 030h]
 		MOV dword ptr [ESI + 034h],ECX
 		MOV dword ptr [ESI + 030h],00h
@@ -650683,7 +650683,7 @@ TwinProcEnd FUN_00209290
 TwinProc FUN_00209310, stdcall
 	LAB_0x00209310: 
 		PUSH 00h
-		TwinCall D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_Swap@4
 		TwinProcExit, FUN_00209310
 TwinProcEnd FUN_00209310
 
@@ -650825,9 +650825,9 @@ RETURN_LAB_00209432::
 		PUSH ECX
 		TwinCall D3DResource_Register@8
 		PUSH EDI
-		TwinCall D3DDevice_Swap@4
+		TwinCall ExWrapper_D3DDevice_Swap@4
 		PUSH 01h
-		TwinCall D3DDevice_EnableOverlay@4
+		TwinCall ExWrapper_D3DDevice_EnableOverlay@4
 		MOV AL,byte ptr [BOOL_0x003ec3c0]
 		TEST AL,AL
 		MOV EDX,dword ptr [EBP]
@@ -650900,7 +650900,7 @@ TwinProc FUN_00209520, stdcall
 		PUSH EDX
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DDevice_UpdateOverlay@20
+		TwinCall ExWrapper_D3DDevice_UpdateOverlay@20
 		XOR EAX,EAX
 		TwinProcExit 014h, FUN_00209520
 TwinProcEnd FUN_00209520
@@ -650908,7 +650908,7 @@ TwinProcEnd FUN_00209520
 TwinProc FUN_00209550, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall D3DDevice_EnableOverlay@4
+		TwinCall ExWrapper_D3DDevice_EnableOverlay@4
 		XOR EAX,EAX
 		TwinProcExit 04h, FUN_00209550
 TwinProcEnd FUN_00209550
@@ -672904,7 +672904,7 @@ TwinProc FUN_0027D1F0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D200
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D200: 
 		TwinProcExit, FUN_0027D1F0
 TwinProcEnd FUN_0027D1F0
@@ -672915,7 +672915,7 @@ TwinProc FUN_0027D210, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D220
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D220: 
 		TwinProcExit, FUN_0027D210
 TwinProcEnd FUN_0027D210
@@ -672926,7 +672926,7 @@ TwinProc FUN_0027D230, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D240
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D240: 
 		TwinProcExit, FUN_0027D230
 TwinProcEnd FUN_0027D230
@@ -672937,7 +672937,7 @@ TwinProc FUN_0027D250, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D260
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D260: 
 		TwinProcExit, FUN_0027D250
 TwinProcEnd FUN_0027D250
@@ -672948,7 +672948,7 @@ TwinProc FUN_0027D270, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D280
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D280: 
 		TwinProcExit, FUN_0027D270
 TwinProcEnd FUN_0027D270
@@ -672959,7 +672959,7 @@ TwinProc FUN_0027D290, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D2A0
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D2A0: 
 		TwinProcExit, FUN_0027D290
 TwinProcEnd FUN_0027D290
@@ -672970,7 +672970,7 @@ TwinProc FUN_0027D2B0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D2C0
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D2C0: 
 		TwinProcExit, FUN_0027D2B0
 TwinProcEnd FUN_0027D2B0
@@ -673001,7 +673001,7 @@ TwinProc FUN_0027D310, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D320
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D320: 
 		TwinProcExit, FUN_0027D310
 TwinProcEnd FUN_0027D310
@@ -673012,7 +673012,7 @@ TwinProc FUN_0027D330, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D340
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D340: 
 		TwinProcExit, FUN_0027D330
 TwinProcEnd FUN_0027D330
@@ -673023,7 +673023,7 @@ TwinProc FUN_0027D350, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0027D360
 		PUSH EAX
-		TwinCall D3DDevice_DeleteVertexShader@4
+		TwinCall ExWrapper_D3DDevice_DeleteVertexShader@4
 	LAB_0x0027D360: 
 		TwinProcExit, FUN_0027D350
 TwinProcEnd FUN_0027D350

@@ -19,10 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="d3d8_port.cpp" />
     <ClCompile Include="libport.cpp" />
     <ClCompile Include="libtwindata.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="wrappers.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="d3d8_port.h" />
+    <ClInclude Include="libport.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="xbox.h" />
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +135,11 @@
       <MapExports>true</MapExports>
       <AssemblyDebug>true</AssemblyDebug>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <ForceFileOutput>MultiplyDefinedSymbolOnly</ForceFileOutput>
     </Link>
     <MASM>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PreprocessorDefinitions>WIN32</PreprocessorDefinitions>
     </MASM>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
