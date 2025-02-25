@@ -30,6 +30,15 @@
     <ClCompile Include="d3d8_port.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="convert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xboxapi_port.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dsound_port.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="xbox.h">
@@ -42,6 +51,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="d3d8_port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xboxapi_port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dsound_port.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

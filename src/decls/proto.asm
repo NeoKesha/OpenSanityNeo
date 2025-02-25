@@ -1,8 +1,8 @@
-EXTERN D3D__DirtyFlags : DWORD
-EXTERN D3D__RenderState : DWORD
+EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN D3D__TextureState : DWORD
 EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
-EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
+EXTERN D3D__RenderState : DWORD
+EXTERN D3D__DirtyFlags : DWORD
 EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
 EXTERN MmQueryAddressProtect@4 :PROC
 EXTERN MmSetAddressProtect@12 :PROC
@@ -10,65 +10,390 @@ EXTERN MmFreeContiguousMemory@4 :PROC
 EXTERN MmClaimGpuInstanceMemory@8 :PROC
 EXTERN TtfdDbgPrint :PROC
 EXTERN KeStallExecutionProcessor@4 :PROC
-EXTERN STDCALL XGetLanguage@0 :PROC
-EXTERN STDCALL lstrcpyW@8 :PROC
-EXTERN STDCALL XGetSectionHandleA@4 :PROC
-EXTERN STDCALL XLoadSectionByHandle@4 :PROC
-EXTERN STDCALL XFreeSectionByHandle@4 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetLanguage@0 :PROC
+    ExWrapper_XGetLanguage@0 EQU Wrapper_XGetLanguage@0
+ELSE
+    EXTERN STDCALL XGetLanguage@0 :PROC
+    ExWrapper_XGetLanguage@0 EQU XGetLanguage@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_lstrcpyW@8 :PROC
+    ExWrapper_lstrcpyW@8 EQU Wrapper_lstrcpyW@8
+ELSE
+    EXTERN STDCALL lstrcpyW@8 :PROC
+    ExWrapper_lstrcpyW@8 EQU lstrcpyW@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetSectionHandleA@4 :PROC
+    ExWrapper_XGetSectionHandleA@4 EQU Wrapper_XGetSectionHandleA@4
+ELSE
+    EXTERN STDCALL XGetSectionHandleA@4 :PROC
+    ExWrapper_XGetSectionHandleA@4 EQU XGetSectionHandleA@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XLoadSectionByHandle@4 :PROC
+    ExWrapper_XLoadSectionByHandle@4 EQU Wrapper_XLoadSectionByHandle@4
+ELSE
+    EXTERN STDCALL XLoadSectionByHandle@4 :PROC
+    ExWrapper_XLoadSectionByHandle@4 EQU XLoadSectionByHandle@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XFreeSectionByHandle@4 :PROC
+    ExWrapper_XFreeSectionByHandle@4 EQU Wrapper_XFreeSectionByHandle@4
+ELSE
+    EXTERN STDCALL XFreeSectionByHandle@4 :PROC
+    ExWrapper_XFreeSectionByHandle@4 EQU XFreeSectionByHandle@4
+ENDIF
 EXTERN STDCALL mainXapiStartup@4 :PROC
-EXTERN STDCALL GetLastError@0 :PROC
-EXTERN STDCALL GetOverlappedResult@16 :PROC
-EXTERN C XapiBootToDash@12 :PROC
-EXTERN STDCALL CloseHandle@4 :PROC
-EXTERN STDCALL CreateThread@24 :PROC
-EXTERN STDCALL XLaunchNewImageA@8 :PROC
-EXTERN STDCALL XGetLaunchInfo@8 :PROC
-EXTERN STDCALL GetDiskFreeSpaceExA@16 :PROC
-EXTERN STDCALL XGetDiskSectorSizeA@4 :PROC
-EXTERN STDCALL RtlSizeHeap@12 :PROC
-EXTERN STDCALL ReadFile@20 :PROC
-EXTERN STDCALL WriteFile@20 :PROC
-EXTERN STDCALL SetFilePointer@16 :PROC
-EXTERN STDCALL GetFileInformationByHandle@8 :PROC
-EXTERN STDCALL GetFileSize@8 :PROC
-EXTERN STDCALL CreateFileA@28 :PROC
-EXTERN STDCALL XMemFree@8 :PROC
-EXTERN STDCALL XCalculateSignatureBegin@4 :PROC
-EXTERN STDCALL XCalculateSignatureUpdate@12 :PROC
-EXTERN STDCALL XCalculateSignatureEnd@8 :PROC
-EXTERN STDCALL XSetFileCacheSize@4 :PROC
-EXTERN STDCALL XPhysicalAlloc@16 :PROC
-EXTERN STDCALL rand :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetLastError@0 :PROC
+    ExWrapper_GetLastError@0 EQU Wrapper_GetLastError@0
+ELSE
+    EXTERN STDCALL GetLastError@0 :PROC
+    ExWrapper_GetLastError@0 EQU GetLastError@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetOverlappedResult@16 :PROC
+    ExWrapper_GetOverlappedResult@16 EQU Wrapper_GetOverlappedResult@16
+ELSE
+    EXTERN STDCALL GetOverlappedResult@16 :PROC
+    ExWrapper_GetOverlappedResult@16 EQU GetOverlappedResult@16
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_XapiBootToDash@12 :PROC
+    ExWrapper_XapiBootToDash@12 EQU Wrapper_XapiBootToDash@12
+ELSE
+    EXTERN C XapiBootToDash@12 :PROC
+    ExWrapper_XapiBootToDash@12 EQU XapiBootToDash@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_CloseHandle@4 :PROC
+    ExWrapper_CloseHandle@4 EQU Wrapper_CloseHandle@4
+ELSE
+    EXTERN STDCALL CloseHandle@4 :PROC
+    ExWrapper_CloseHandle@4 EQU CloseHandle@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_CreateThread@24 :PROC
+    ExWrapper_CreateThread@24 EQU Wrapper_CreateThread@24
+ELSE
+    EXTERN STDCALL CreateThread@24 :PROC
+    ExWrapper_CreateThread@24 EQU CreateThread@24
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XLaunchNewImageA@8 :PROC
+    ExWrapper_XLaunchNewImageA@8 EQU Wrapper_XLaunchNewImageA@8
+ELSE
+    EXTERN STDCALL XLaunchNewImageA@8 :PROC
+    ExWrapper_XLaunchNewImageA@8 EQU XLaunchNewImageA@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetLaunchInfo@8 :PROC
+    ExWrapper_XGetLaunchInfo@8 EQU Wrapper_XGetLaunchInfo@8
+ELSE
+    EXTERN STDCALL XGetLaunchInfo@8 :PROC
+    ExWrapper_XGetLaunchInfo@8 EQU XGetLaunchInfo@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetDiskFreeSpaceExA@16 :PROC
+    ExWrapper_GetDiskFreeSpaceExA@16 EQU Wrapper_GetDiskFreeSpaceExA@16
+ELSE
+    EXTERN STDCALL GetDiskFreeSpaceExA@16 :PROC
+    ExWrapper_GetDiskFreeSpaceExA@16 EQU GetDiskFreeSpaceExA@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetDiskSectorSizeA@4 :PROC
+    ExWrapper_XGetDiskSectorSizeA@4 EQU Wrapper_XGetDiskSectorSizeA@4
+ELSE
+    EXTERN STDCALL XGetDiskSectorSizeA@4 :PROC
+    ExWrapper_XGetDiskSectorSizeA@4 EQU XGetDiskSectorSizeA@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_RtlSizeHeap@12 :PROC
+    ExWrapper_RtlSizeHeap@12 EQU Wrapper_RtlSizeHeap@12
+ELSE
+    EXTERN STDCALL RtlSizeHeap@12 :PROC
+    ExWrapper_RtlSizeHeap@12 EQU RtlSizeHeap@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_ReadFile@20 :PROC
+    ExWrapper_ReadFile@20 EQU Wrapper_ReadFile@20
+ELSE
+    EXTERN STDCALL ReadFile@20 :PROC
+    ExWrapper_ReadFile@20 EQU ReadFile@20
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_WriteFile@20 :PROC
+    ExWrapper_WriteFile@20 EQU Wrapper_WriteFile@20
+ELSE
+    EXTERN STDCALL WriteFile@20 :PROC
+    ExWrapper_WriteFile@20 EQU WriteFile@20
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_SetFilePointer@16 :PROC
+    ExWrapper_SetFilePointer@16 EQU Wrapper_SetFilePointer@16
+ELSE
+    EXTERN STDCALL SetFilePointer@16 :PROC
+    ExWrapper_SetFilePointer@16 EQU SetFilePointer@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetFileInformationByHandle@8 :PROC
+    ExWrapper_GetFileInformationByHandle@8 EQU Wrapper_GetFileInformationByHandle@8
+ELSE
+    EXTERN STDCALL GetFileInformationByHandle@8 :PROC
+    ExWrapper_GetFileInformationByHandle@8 EQU GetFileInformationByHandle@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetFileSize@8 :PROC
+    ExWrapper_GetFileSize@8 EQU Wrapper_GetFileSize@8
+ELSE
+    EXTERN STDCALL GetFileSize@8 :PROC
+    ExWrapper_GetFileSize@8 EQU GetFileSize@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_CreateFileA@28 :PROC
+    ExWrapper_CreateFileA@28 EQU Wrapper_CreateFileA@28
+ELSE
+    EXTERN STDCALL CreateFileA@28 :PROC
+    ExWrapper_CreateFileA@28 EQU CreateFileA@28
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMemFree@8 :PROC
+    ExWrapper_XMemFree@8 EQU Wrapper_XMemFree@8
+ELSE
+    EXTERN STDCALL XMemFree@8 :PROC
+    ExWrapper_XMemFree@8 EQU XMemFree@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XCalculateSignatureBegin@4 :PROC
+    ExWrapper_XCalculateSignatureBegin@4 EQU Wrapper_XCalculateSignatureBegin@4
+ELSE
+    EXTERN STDCALL XCalculateSignatureBegin@4 :PROC
+    ExWrapper_XCalculateSignatureBegin@4 EQU XCalculateSignatureBegin@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XCalculateSignatureUpdate@12 :PROC
+    ExWrapper_XCalculateSignatureUpdate@12 EQU Wrapper_XCalculateSignatureUpdate@12
+ELSE
+    EXTERN STDCALL XCalculateSignatureUpdate@12 :PROC
+    ExWrapper_XCalculateSignatureUpdate@12 EQU XCalculateSignatureUpdate@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XCalculateSignatureEnd@8 :PROC
+    ExWrapper_XCalculateSignatureEnd@8 EQU Wrapper_XCalculateSignatureEnd@8
+ELSE
+    EXTERN STDCALL XCalculateSignatureEnd@8 :PROC
+    ExWrapper_XCalculateSignatureEnd@8 EQU XCalculateSignatureEnd@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XSetFileCacheSize@4 :PROC
+    ExWrapper_XSetFileCacheSize@4 EQU Wrapper_XSetFileCacheSize@4
+ELSE
+    EXTERN STDCALL XSetFileCacheSize@4 :PROC
+    ExWrapper_XSetFileCacheSize@4 EQU XSetFileCacheSize@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XPhysicalAlloc@16 :PROC
+    ExWrapper_XPhysicalAlloc@16 EQU Wrapper_XPhysicalAlloc@16
+ELSE
+    EXTERN STDCALL XPhysicalAlloc@16 :PROC
+    ExWrapper_XPhysicalAlloc@16 EQU XPhysicalAlloc@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_rand :PROC
+    ExWrapper_rand EQU Wrapper_rand
+ELSE
+    EXTERN STDCALL rand :PROC
+    ExWrapper_rand EQU rand
+ENDIF
 EXTERN C _fpmath :PROC
 EXTERN STDCALL _purecall :PROC
-EXTERN STDCALL _ftol2 :PROC
-EXTERN C tolower :PROC
-EXTERN C atexit :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper__ftol2 :PROC
+    ExWrapper__ftol2 EQU Wrapper__ftol2
+ELSE
+    EXTERN STDCALL _ftol2 :PROC
+    ExWrapper__ftol2 EQU _ftol2
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_tolower :PROC
+    ExWrapper_tolower EQU Wrapper_tolower
+ELSE
+    EXTERN C tolower :PROC
+    ExWrapper_tolower EQU tolower
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_atexit :PROC
+    ExWrapper_atexit EQU Wrapper_atexit
+ELSE
+    EXTERN C atexit :PROC
+    ExWrapper_atexit EQU atexit
+ENDIF
 EXTERN SYSCALL @__security_check_cookie@4 :PROC
-EXTERN C qsort :PROC
-EXTERN C sprintf :PROC
-EXTERN C _stricmp :PROC
-EXTERN C strncpy :PROC
-EXTERN C _strnicmp :PROC
+IFDEF WIN32
+    EXTERN C Wrapper_qsort :PROC
+    ExWrapper_qsort EQU Wrapper_qsort
+ELSE
+    EXTERN C qsort :PROC
+    ExWrapper_qsort EQU qsort
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_sprintf :PROC
+    ExWrapper_sprintf EQU Wrapper_sprintf
+ELSE
+    EXTERN C sprintf :PROC
+    ExWrapper_sprintf EQU sprintf
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper__stricmp :PROC
+    ExWrapper__stricmp EQU Wrapper__stricmp
+ELSE
+    EXTERN C _stricmp :PROC
+    ExWrapper__stricmp EQU _stricmp
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_strncpy :PROC
+    ExWrapper_strncpy EQU Wrapper_strncpy
+ELSE
+    EXTERN C strncpy :PROC
+    ExWrapper_strncpy EQU strncpy
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper__strnicmp :PROC
+    ExWrapper__strnicmp EQU Wrapper__strnicmp
+ELSE
+    EXTERN C _strnicmp :PROC
+    ExWrapper__strnicmp EQU _strnicmp
+ENDIF
 EXTERN STDCALL _chkstk :PROC
-EXTERN C memmove :PROC
-EXTERN C toupper :PROC
+IFDEF WIN32
+    EXTERN C Wrapper_memmove :PROC
+    ExWrapper_memmove EQU Wrapper_memmove
+ELSE
+    EXTERN C memmove :PROC
+    ExWrapper_memmove EQU memmove
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_toupper :PROC
+    ExWrapper_toupper EQU Wrapper_toupper
+ELSE
+    EXTERN C toupper :PROC
+    ExWrapper_toupper EQU toupper
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_rand :PROC
+    ExWrapper_rand EQU Wrapper_rand
+ELSE
+    EXTERN STDCALL rand :PROC
+    ExWrapper_rand EQU rand
+ENDIF
 EXTERN STDCALL _aullshr :PROC
-EXTERN C strstr :PROC
-EXTERN C islower :PROC
-EXTERN C atol :PROC
-EXTERN C atof :PROC
-EXTERN STDCALL XGetVideoFlags@0 :PROC
-EXTERN STDCALL VirtualAlloc@16 :PROC
-EXTERN STDCALL QueryPerformanceCounter@4 :PROC
-EXTERN STDCALL QueryPerformanceFrequency@4 :PROC
-EXTERN STDCALL FileTimeToSystemTime@8 :PROC
-EXTERN STDCALL GetLocalTime@4 :PROC
-EXTERN STDCALL XGetVideoStandard@0 :PROC
-EXTERN STDCALL XCreateSaveGame@24 :PROC
-EXTERN STDCALL XFindFirstSaveGame@8 :PROC
-EXTERN STDCALL XFindNextSaveGame@8 :PROC
-EXTERN STDCALL XFindClose@4 :PROC
+IFDEF WIN32
+    EXTERN C Wrapper_strstr :PROC
+    ExWrapper_strstr EQU Wrapper_strstr
+ELSE
+    EXTERN C strstr :PROC
+    ExWrapper_strstr EQU strstr
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_islower :PROC
+    ExWrapper_islower EQU Wrapper_islower
+ELSE
+    EXTERN C islower :PROC
+    ExWrapper_islower EQU islower
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_atol :PROC
+    ExWrapper_atol EQU Wrapper_atol
+ELSE
+    EXTERN C atol :PROC
+    ExWrapper_atol EQU atol
+ENDIF
+IFDEF WIN32
+    EXTERN C Wrapper_atof :PROC
+    ExWrapper_atof EQU Wrapper_atof
+ELSE
+    EXTERN C atof :PROC
+    ExWrapper_atof EQU atof
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetVideoFlags@0 :PROC
+    ExWrapper_XGetVideoFlags@0 EQU Wrapper_XGetVideoFlags@0
+ELSE
+    EXTERN STDCALL XGetVideoFlags@0 :PROC
+    ExWrapper_XGetVideoFlags@0 EQU XGetVideoFlags@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_VirtualAlloc@16 :PROC
+    ExWrapper_VirtualAlloc@16 EQU Wrapper_VirtualAlloc@16
+ELSE
+    EXTERN STDCALL VirtualAlloc@16 :PROC
+    ExWrapper_VirtualAlloc@16 EQU VirtualAlloc@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_QueryPerformanceCounter@4 :PROC
+    ExWrapper_QueryPerformanceCounter@4 EQU Wrapper_QueryPerformanceCounter@4
+ELSE
+    EXTERN STDCALL QueryPerformanceCounter@4 :PROC
+    ExWrapper_QueryPerformanceCounter@4 EQU QueryPerformanceCounter@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_QueryPerformanceFrequency@4 :PROC
+    ExWrapper_QueryPerformanceFrequency@4 EQU Wrapper_QueryPerformanceFrequency@4
+ELSE
+    EXTERN STDCALL QueryPerformanceFrequency@4 :PROC
+    ExWrapper_QueryPerformanceFrequency@4 EQU QueryPerformanceFrequency@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_FileTimeToSystemTime@8 :PROC
+    ExWrapper_FileTimeToSystemTime@8 EQU Wrapper_FileTimeToSystemTime@8
+ELSE
+    EXTERN STDCALL FileTimeToSystemTime@8 :PROC
+    ExWrapper_FileTimeToSystemTime@8 EQU FileTimeToSystemTime@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_GetLocalTime@4 :PROC
+    ExWrapper_GetLocalTime@4 EQU Wrapper_GetLocalTime@4
+ELSE
+    EXTERN STDCALL GetLocalTime@4 :PROC
+    ExWrapper_GetLocalTime@4 EQU GetLocalTime@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetVideoStandard@0 :PROC
+    ExWrapper_XGetVideoStandard@0 EQU Wrapper_XGetVideoStandard@0
+ELSE
+    EXTERN STDCALL XGetVideoStandard@0 :PROC
+    ExWrapper_XGetVideoStandard@0 EQU XGetVideoStandard@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XCreateSaveGame@24 :PROC
+    ExWrapper_XCreateSaveGame@24 EQU Wrapper_XCreateSaveGame@24
+ELSE
+    EXTERN STDCALL XCreateSaveGame@24 :PROC
+    ExWrapper_XCreateSaveGame@24 EQU XCreateSaveGame@24
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XFindFirstSaveGame@8 :PROC
+    ExWrapper_XFindFirstSaveGame@8 EQU Wrapper_XFindFirstSaveGame@8
+ELSE
+    EXTERN STDCALL XFindFirstSaveGame@8 :PROC
+    ExWrapper_XFindFirstSaveGame@8 EQU XFindFirstSaveGame@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XFindNextSaveGame@8 :PROC
+    ExWrapper_XFindNextSaveGame@8 EQU Wrapper_XFindNextSaveGame@8
+ELSE
+    EXTERN STDCALL XFindNextSaveGame@8 :PROC
+    ExWrapper_XFindNextSaveGame@8 EQU XFindNextSaveGame@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XFindClose@4 :PROC
+    ExWrapper_XFindClose@4 EQU Wrapper_XFindClose@4
+ELSE
+    EXTERN STDCALL XFindClose@4 :PROC
+    ExWrapper_XFindClose@4 EQU XFindClose@4
+ENDIF
 EXTERN C __CxxFrameHandler :PROC
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_PSTextureModes@4 :PROC
@@ -437,8 +762,20 @@ ELSE
     EXTERN STDCALL D3DDevice_SetVertexShaderInput@12 :PROC
     ExWrapper_D3DDevice_SetVertexShaderInput@12 EQU D3DDevice_SetVertexShaderInput@12
 ENDIF
-EXTERN STDCALL D3DResource_Release@4 :PROC
-EXTERN STDCALL D3DResource_Register@8 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DResource_Release@4 :PROC
+    ExWrapper_D3DResource_Release@4 EQU Wrapper_D3DResource_Release@4
+ELSE
+    EXTERN STDCALL D3DResource_Release@4 :PROC
+    ExWrapper_D3DResource_Release@4 EQU D3DResource_Release@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DResource_Register@8 :PROC
+    ExWrapper_D3DResource_Register@8 EQU Wrapper_D3DResource_Register@8
+ELSE
+    EXTERN STDCALL D3DResource_Register@8 :PROC
+    ExWrapper_D3DResource_Register@8 EQU D3DResource_Register@8
+ENDIF
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_Clear@24 :PROC
     ExWrapper_D3DDevice_Clear@24 EQU Wrapper_D3DDevice_Clear@24
@@ -446,7 +783,13 @@ ELSE
     EXTERN STDCALL D3DDevice_Clear@24 :PROC
     ExWrapper_D3DDevice_Clear@24 EQU D3DDevice_Clear@24
 ENDIF
-EXTERN STDCALL D3DSurface_LockRect@16 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DSurface_LockRect@16 :PROC
+    ExWrapper_D3DSurface_LockRect@16 EQU Wrapper_D3DSurface_LockRect@16
+ELSE
+    EXTERN STDCALL D3DSurface_LockRect@16 :PROC
+    ExWrapper_D3DSurface_LockRect@16 EQU D3DSurface_LockRect@16
+ENDIF
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_DrawVerticesUP@16 :PROC
     ExWrapper_D3DDevice_DrawVerticesUP@16 EQU Wrapper_D3DDevice_DrawVerticesUP@16
@@ -524,9 +867,27 @@ ELSE
     EXTERN STDCALL D3DDevice_SetPixelShader@4 :PROC
     ExWrapper_D3DDevice_SetPixelShader@4 EQU D3DDevice_SetPixelShader@4
 ENDIF
-EXTERN STDCALL D3DTexture_GetSurfaceLevel2@8 :PROC
-EXTERN STDCALL D3DTexture_LockRect@20 :PROC
-EXTERN STDCALL D3D_AllocContiguousMemory@8 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DTexture_GetSurfaceLevel2@8 :PROC
+    ExWrapper_D3DTexture_GetSurfaceLevel2@8 EQU Wrapper_D3DTexture_GetSurfaceLevel2@8
+ELSE
+    EXTERN STDCALL D3DTexture_GetSurfaceLevel2@8 :PROC
+    ExWrapper_D3DTexture_GetSurfaceLevel2@8 EQU D3DTexture_GetSurfaceLevel2@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DTexture_LockRect@20 :PROC
+    ExWrapper_D3DTexture_LockRect@20 EQU Wrapper_D3DTexture_LockRect@20
+ELSE
+    EXTERN STDCALL D3DTexture_LockRect@20 :PROC
+    ExWrapper_D3DTexture_LockRect@20 EQU D3DTexture_LockRect@20
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3D_AllocContiguousMemory@8 :PROC
+    ExWrapper_D3D_AllocContiguousMemory@8 EQU Wrapper_D3D_AllocContiguousMemory@8
+ELSE
+    EXTERN STDCALL D3D_AllocContiguousMemory@8 :PROC
+    ExWrapper_D3D_AllocContiguousMemory@8 EQU D3D_AllocContiguousMemory@8
+ENDIF
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_GetOverlayUpdateStatus@0 :PROC
     ExWrapper_D3DDevice_GetOverlayUpdateStatus@0 EQU Wrapper_D3DDevice_GetOverlayUpdateStatus@0
@@ -548,57 +909,387 @@ ELSE
     EXTERN STDCALL D3DDevice_EnableOverlay@4 :PROC
     ExWrapper_D3DDevice_EnableOverlay@4 EQU D3DDevice_EnableOverlay@4
 ENDIF
-EXTERN STDCALL D3DXCreateTexture@32 :PROC
-EXTERN STDCALL XGSetSurfaceHeader@24 :PROC
-EXTERN STDCALL XGSetTextureHeader@36 :PROC
-EXTERN STDCALL XGSetVertexBufferHeader@24 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_D3DXCreateTexture@32 :PROC
+    ExWrapper_D3DXCreateTexture@32 EQU Wrapper_D3DXCreateTexture@32
+ELSE
+    EXTERN STDCALL D3DXCreateTexture@32 :PROC
+    ExWrapper_D3DXCreateTexture@32 EQU D3DXCreateTexture@32
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGSetSurfaceHeader@24 :PROC
+    ExWrapper_XGSetSurfaceHeader@24 EQU Wrapper_XGSetSurfaceHeader@24
+ELSE
+    EXTERN STDCALL XGSetSurfaceHeader@24 :PROC
+    ExWrapper_XGSetSurfaceHeader@24 EQU XGSetSurfaceHeader@24
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGSetTextureHeader@36 :PROC
+    ExWrapper_XGSetTextureHeader@36 EQU Wrapper_XGSetTextureHeader@36
+ELSE
+    EXTERN STDCALL XGSetTextureHeader@36 :PROC
+    ExWrapper_XGSetTextureHeader@36 EQU XGSetTextureHeader@36
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGSetVertexBufferHeader@24 :PROC
+    ExWrapper_XGSetVertexBufferHeader@24 EQU Wrapper_XGSetVertexBufferHeader@24
+ELSE
+    EXTERN STDCALL XGSetVertexBufferHeader@24 :PROC
+    ExWrapper_XGSetVertexBufferHeader@24 EQU XGSetVertexBufferHeader@24
+ENDIF
 EXTERN SYSCALL ?GetBufferPointer@XGBuffer@@QAGPAXXZ :PROC
 EXTERN SYSCALL ?GetBufferSize@XGBuffer@@QAGKXZ :PROC
-EXTERN STDCALL XGAssembleShader@44 :PROC
-EXTERN STDCALL XGSpliceVertexShaders@24 :PROC
-EXTERN STDCALL XGSwizzleRect@32 :PROC
-EXTERN STDCALL IDirectSound_Release@4 :PROC
-EXTERN STDCALL IDirectSoundBuffer_Release@4 :PROC
-EXTERN STDCALL XAudioCreatePcmFormat@16 :PROC
-EXTERN STDCALL XAudioCreateAdpcmFormat@12 :PROC
-EXTERN STDCALL IDirectSound_GetCaps@8 :PROC
-EXTERN STDCALL IDirectSound_EnableHeadphones@8 :PROC
-EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
-EXTERN STDCALL IDirectSoundBuffer_Play@16 :PROC
-EXTERN STDCALL IDirectSoundBuffer_PlayEx@16 :PROC
-EXTERN STDCALL IDirectSoundBuffer_GetStatus@8 :PROC
-EXTERN STDCALL IDirectSoundBuffer_SetCurrentPosition@8 :PROC
-EXTERN STDCALL IDirectSoundStream_SetVolume@8 :PROC
-EXTERN STDCALL IDirectSoundStream_SetHeadroom@8 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGAssembleShader@44 :PROC
+    ExWrapper_XGAssembleShader@44 EQU Wrapper_XGAssembleShader@44
+ELSE
+    EXTERN STDCALL XGAssembleShader@44 :PROC
+    ExWrapper_XGAssembleShader@44 EQU XGAssembleShader@44
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGSpliceVertexShaders@24 :PROC
+    ExWrapper_XGSpliceVertexShaders@24 EQU Wrapper_XGSpliceVertexShaders@24
+ELSE
+    EXTERN STDCALL XGSpliceVertexShaders@24 :PROC
+    ExWrapper_XGSpliceVertexShaders@24 EQU XGSpliceVertexShaders@24
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGSwizzleRect@32 :PROC
+    ExWrapper_XGSwizzleRect@32 EQU Wrapper_XGSwizzleRect@32
+ELSE
+    EXTERN STDCALL XGSwizzleRect@32 :PROC
+    ExWrapper_XGSwizzleRect@32 EQU XGSwizzleRect@32
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_Release@4 :PROC
+    ExWrapper_IDirectSound_Release@4 EQU Wrapper_IDirectSound_Release@4
+ELSE
+    EXTERN STDCALL IDirectSound_Release@4 :PROC
+    ExWrapper_IDirectSound_Release@4 EQU IDirectSound_Release@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_Release@4 :PROC
+    ExWrapper_IDirectSoundBuffer_Release@4 EQU Wrapper_IDirectSoundBuffer_Release@4
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_Release@4 :PROC
+    ExWrapper_IDirectSoundBuffer_Release@4 EQU IDirectSoundBuffer_Release@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XAudioCreatePcmFormat@16 :PROC
+    ExWrapper_XAudioCreatePcmFormat@16 EQU Wrapper_XAudioCreatePcmFormat@16
+ELSE
+    EXTERN STDCALL XAudioCreatePcmFormat@16 :PROC
+    ExWrapper_XAudioCreatePcmFormat@16 EQU XAudioCreatePcmFormat@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XAudioCreateAdpcmFormat@12 :PROC
+    ExWrapper_XAudioCreateAdpcmFormat@12 EQU Wrapper_XAudioCreateAdpcmFormat@12
+ELSE
+    EXTERN STDCALL XAudioCreateAdpcmFormat@12 :PROC
+    ExWrapper_XAudioCreateAdpcmFormat@12 EQU XAudioCreateAdpcmFormat@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_GetCaps@8 :PROC
+    ExWrapper_IDirectSound_GetCaps@8 EQU Wrapper_IDirectSound_GetCaps@8
+ELSE
+    EXTERN STDCALL IDirectSound_GetCaps@8 :PROC
+    ExWrapper_IDirectSound_GetCaps@8 EQU IDirectSound_GetCaps@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_EnableHeadphones@8 :PROC
+    ExWrapper_IDirectSound_EnableHeadphones@8 EQU Wrapper_IDirectSound_EnableHeadphones@8
+ELSE
+    EXTERN STDCALL IDirectSound_EnableHeadphones@8 :PROC
+    ExWrapper_IDirectSound_EnableHeadphones@8 EQU IDirectSound_EnableHeadphones@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_Play@16 :PROC
+    ExWrapper_IDirectSoundBuffer_Play@16 EQU Wrapper_IDirectSoundBuffer_Play@16
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_Play@16 :PROC
+    ExWrapper_IDirectSoundBuffer_Play@16 EQU IDirectSoundBuffer_Play@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_PlayEx@16 :PROC
+    ExWrapper_IDirectSoundBuffer_PlayEx@16 EQU Wrapper_IDirectSoundBuffer_PlayEx@16
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_PlayEx@16 :PROC
+    ExWrapper_IDirectSoundBuffer_PlayEx@16 EQU IDirectSoundBuffer_PlayEx@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_GetStatus@8 :PROC
+    ExWrapper_IDirectSoundBuffer_GetStatus@8 EQU Wrapper_IDirectSoundBuffer_GetStatus@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_GetStatus@8 :PROC
+    ExWrapper_IDirectSoundBuffer_GetStatus@8 EQU IDirectSoundBuffer_GetStatus@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetCurrentPosition@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8 EQU Wrapper_IDirectSoundBuffer_SetCurrentPosition@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetCurrentPosition@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8 EQU IDirectSoundBuffer_SetCurrentPosition@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_SetVolume@8 :PROC
+    ExWrapper_IDirectSoundStream_SetVolume@8 EQU Wrapper_IDirectSoundStream_SetVolume@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_SetVolume@8 :PROC
+    ExWrapper_IDirectSoundStream_SetVolume@8 EQU IDirectSoundStream_SetVolume@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_SetHeadroom@8 :PROC
+    ExWrapper_IDirectSoundStream_SetHeadroom@8 EQU Wrapper_IDirectSoundStream_SetHeadroom@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_SetHeadroom@8 :PROC
+    ExWrapper_IDirectSoundStream_SetHeadroom@8 EQU IDirectSoundStream_SetHeadroom@8
+ENDIF
 EXTERN SYSCALL ?SetMixBinVolumes@CDirectSoundStream@DirectSound@@QAGJPBU_DSMIXBINS@@@Z :PROC
-EXTERN STDCALL IDirectSoundStream_Pause@8 :PROC
-EXTERN STDCALL IDirectSoundStream_FlushEx@16 :PROC
-EXTERN STDCALL DirectSoundDoWork@0 :PROC
-EXTERN STDCALL XAudioDownloadEffectsImage@16 :PROC
-EXTERN STDCALL XFileCreateMediaObjectAsync@12 :PROC
-EXTERN STDCALL IDirectSoundBuffer_SetFrequency@8 :PROC
-EXTERN STDCALL IDirectSoundStream_SetFrequency@8 :PROC
-EXTERN STDCALL IDirectSoundStream_SetMixBins@8 :PROC
-EXTERN STDCALL IDirectSoundBuffer_SetBufferData@12 :PROC
-EXTERN STDCALL IDirectSoundStream_SetFormat@8 :PROC
-EXTERN STDCALL IDirectSound_CommitDeferredSettings@4 :PROC
-EXTERN STDCALL IDirectSound_CreateSoundBuffer@16 :PROC
-EXTERN STDCALL IDirectSound_SetI3DL2Listener@12 :PROC
-EXTERN STDCALL DirectSoundCreate@12 :PROC
-EXTERN STDCALL DirectSoundCreateBuffer@8 :PROC
-EXTERN STDCALL DirectSoundCreateStream@8 :PROC
-EXTERN STDCALL XMVDecoder_CreateDecoderForFile@12 :PROC
-EXTERN STDCALL XMVDecoder_CloseDecoder@4 :PROC
-EXTERN STDCALL XMVDecoder_GetVideoDescriptor@8 :PROC
-EXTERN STDCALL XMVDecoder_EnableAudioStream@20 :PROC
-EXTERN STDCALL XMVDecoder_GetNextFrame@16 :PROC
-EXTERN STDCALL XInputOpen@16 :PROC
-EXTERN STDCALL XInputClose@4 :PROC
-EXTERN STDCALL XInputGetState@8 :PROC
-EXTERN STDCALL XInputSetState@8 :PROC
-EXTERN STDCALL USBD_Init@8 :PROC
-EXTERN STDCALL XGetDevices@4 :PROC
-EXTERN STDCALL XGetDeviceChanges@12 :PROC
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_Pause@8 :PROC
+    ExWrapper_IDirectSoundStream_Pause@8 EQU Wrapper_IDirectSoundStream_Pause@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_Pause@8 :PROC
+    ExWrapper_IDirectSoundStream_Pause@8 EQU IDirectSoundStream_Pause@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_FlushEx@16 :PROC
+    ExWrapper_IDirectSoundStream_FlushEx@16 EQU Wrapper_IDirectSoundStream_FlushEx@16
+ELSE
+    EXTERN STDCALL IDirectSoundStream_FlushEx@16 :PROC
+    ExWrapper_IDirectSoundStream_FlushEx@16 EQU IDirectSoundStream_FlushEx@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_DirectSoundDoWork@0 :PROC
+    ExWrapper_DirectSoundDoWork@0 EQU Wrapper_DirectSoundDoWork@0
+ELSE
+    EXTERN STDCALL DirectSoundDoWork@0 :PROC
+    ExWrapper_DirectSoundDoWork@0 EQU DirectSoundDoWork@0
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XAudioDownloadEffectsImage@16 :PROC
+    ExWrapper_XAudioDownloadEffectsImage@16 EQU Wrapper_XAudioDownloadEffectsImage@16
+ELSE
+    EXTERN STDCALL XAudioDownloadEffectsImage@16 :PROC
+    ExWrapper_XAudioDownloadEffectsImage@16 EQU XAudioDownloadEffectsImage@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XFileCreateMediaObjectAsync@12 :PROC
+    ExWrapper_XFileCreateMediaObjectAsync@12 EQU Wrapper_XFileCreateMediaObjectAsync@12
+ELSE
+    EXTERN STDCALL XFileCreateMediaObjectAsync@12 :PROC
+    ExWrapper_XFileCreateMediaObjectAsync@12 EQU XFileCreateMediaObjectAsync@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFrequency@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFrequency@8 EQU Wrapper_IDirectSoundBuffer_SetFrequency@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFrequency@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFrequency@8 EQU IDirectSoundBuffer_SetFrequency@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_SetFrequency@8 :PROC
+    ExWrapper_IDirectSoundStream_SetFrequency@8 EQU Wrapper_IDirectSoundStream_SetFrequency@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_SetFrequency@8 :PROC
+    ExWrapper_IDirectSoundStream_SetFrequency@8 EQU IDirectSoundStream_SetFrequency@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_SetMixBins@8 :PROC
+    ExWrapper_IDirectSoundStream_SetMixBins@8 EQU Wrapper_IDirectSoundStream_SetMixBins@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_SetMixBins@8 :PROC
+    ExWrapper_IDirectSoundStream_SetMixBins@8 EQU IDirectSoundStream_SetMixBins@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU Wrapper_IDirectSoundBuffer_SetFilter@8
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetFilter@8 :PROC
+    ExWrapper_IDirectSoundBuffer_SetFilter@8 EQU IDirectSoundBuffer_SetFilter@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundBuffer_SetBufferData@12 :PROC
+    ExWrapper_IDirectSoundBuffer_SetBufferData@12 EQU Wrapper_IDirectSoundBuffer_SetBufferData@12
+ELSE
+    EXTERN STDCALL IDirectSoundBuffer_SetBufferData@12 :PROC
+    ExWrapper_IDirectSoundBuffer_SetBufferData@12 EQU IDirectSoundBuffer_SetBufferData@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSoundStream_SetFormat@8 :PROC
+    ExWrapper_IDirectSoundStream_SetFormat@8 EQU Wrapper_IDirectSoundStream_SetFormat@8
+ELSE
+    EXTERN STDCALL IDirectSoundStream_SetFormat@8 :PROC
+    ExWrapper_IDirectSoundStream_SetFormat@8 EQU IDirectSoundStream_SetFormat@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_CommitDeferredSettings@4 :PROC
+    ExWrapper_IDirectSound_CommitDeferredSettings@4 EQU Wrapper_IDirectSound_CommitDeferredSettings@4
+ELSE
+    EXTERN STDCALL IDirectSound_CommitDeferredSettings@4 :PROC
+    ExWrapper_IDirectSound_CommitDeferredSettings@4 EQU IDirectSound_CommitDeferredSettings@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_CreateSoundBuffer@16 :PROC
+    ExWrapper_IDirectSound_CreateSoundBuffer@16 EQU Wrapper_IDirectSound_CreateSoundBuffer@16
+ELSE
+    EXTERN STDCALL IDirectSound_CreateSoundBuffer@16 :PROC
+    ExWrapper_IDirectSound_CreateSoundBuffer@16 EQU IDirectSound_CreateSoundBuffer@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_IDirectSound_SetI3DL2Listener@12 :PROC
+    ExWrapper_IDirectSound_SetI3DL2Listener@12 EQU Wrapper_IDirectSound_SetI3DL2Listener@12
+ELSE
+    EXTERN STDCALL IDirectSound_SetI3DL2Listener@12 :PROC
+    ExWrapper_IDirectSound_SetI3DL2Listener@12 EQU IDirectSound_SetI3DL2Listener@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_DirectSoundCreate@12 :PROC
+    ExWrapper_DirectSoundCreate@12 EQU Wrapper_DirectSoundCreate@12
+ELSE
+    EXTERN STDCALL DirectSoundCreate@12 :PROC
+    ExWrapper_DirectSoundCreate@12 EQU DirectSoundCreate@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_DirectSoundCreateBuffer@8 :PROC
+    ExWrapper_DirectSoundCreateBuffer@8 EQU Wrapper_DirectSoundCreateBuffer@8
+ELSE
+    EXTERN STDCALL DirectSoundCreateBuffer@8 :PROC
+    ExWrapper_DirectSoundCreateBuffer@8 EQU DirectSoundCreateBuffer@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_DirectSoundCreateStream@8 :PROC
+    ExWrapper_DirectSoundCreateStream@8 EQU Wrapper_DirectSoundCreateStream@8
+ELSE
+    EXTERN STDCALL DirectSoundCreateStream@8 :PROC
+    ExWrapper_DirectSoundCreateStream@8 EQU DirectSoundCreateStream@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMVDecoder_CreateDecoderForFile@12 :PROC
+    ExWrapper_XMVDecoder_CreateDecoderForFile@12 EQU Wrapper_XMVDecoder_CreateDecoderForFile@12
+ELSE
+    EXTERN STDCALL XMVDecoder_CreateDecoderForFile@12 :PROC
+    ExWrapper_XMVDecoder_CreateDecoderForFile@12 EQU XMVDecoder_CreateDecoderForFile@12
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMVDecoder_CloseDecoder@4 :PROC
+    ExWrapper_XMVDecoder_CloseDecoder@4 EQU Wrapper_XMVDecoder_CloseDecoder@4
+ELSE
+    EXTERN STDCALL XMVDecoder_CloseDecoder@4 :PROC
+    ExWrapper_XMVDecoder_CloseDecoder@4 EQU XMVDecoder_CloseDecoder@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMVDecoder_GetVideoDescriptor@8 :PROC
+    ExWrapper_XMVDecoder_GetVideoDescriptor@8 EQU Wrapper_XMVDecoder_GetVideoDescriptor@8
+ELSE
+    EXTERN STDCALL XMVDecoder_GetVideoDescriptor@8 :PROC
+    ExWrapper_XMVDecoder_GetVideoDescriptor@8 EQU XMVDecoder_GetVideoDescriptor@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMVDecoder_EnableAudioStream@20 :PROC
+    ExWrapper_XMVDecoder_EnableAudioStream@20 EQU Wrapper_XMVDecoder_EnableAudioStream@20
+ELSE
+    EXTERN STDCALL XMVDecoder_EnableAudioStream@20 :PROC
+    ExWrapper_XMVDecoder_EnableAudioStream@20 EQU XMVDecoder_EnableAudioStream@20
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XMVDecoder_GetNextFrame@16 :PROC
+    ExWrapper_XMVDecoder_GetNextFrame@16 EQU Wrapper_XMVDecoder_GetNextFrame@16
+ELSE
+    EXTERN STDCALL XMVDecoder_GetNextFrame@16 :PROC
+    ExWrapper_XMVDecoder_GetNextFrame@16 EQU XMVDecoder_GetNextFrame@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XInputOpen@16 :PROC
+    ExWrapper_XInputOpen@16 EQU Wrapper_XInputOpen@16
+ELSE
+    EXTERN STDCALL XInputOpen@16 :PROC
+    ExWrapper_XInputOpen@16 EQU XInputOpen@16
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XInputClose@4 :PROC
+    ExWrapper_XInputClose@4 EQU Wrapper_XInputClose@4
+ELSE
+    EXTERN STDCALL XInputClose@4 :PROC
+    ExWrapper_XInputClose@4 EQU XInputClose@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XInputGetState@8 :PROC
+    ExWrapper_XInputGetState@8 EQU Wrapper_XInputGetState@8
+ELSE
+    EXTERN STDCALL XInputGetState@8 :PROC
+    ExWrapper_XInputGetState@8 EQU XInputGetState@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XInputSetState@8 :PROC
+    ExWrapper_XInputSetState@8 EQU Wrapper_XInputSetState@8
+ELSE
+    EXTERN STDCALL XInputSetState@8 :PROC
+    ExWrapper_XInputSetState@8 EQU XInputSetState@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_USBD_Init@8 :PROC
+    ExWrapper_USBD_Init@8 EQU Wrapper_USBD_Init@8
+ELSE
+    EXTERN STDCALL USBD_Init@8 :PROC
+    ExWrapper_USBD_Init@8 EQU USBD_Init@8
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetDevices@4 :PROC
+    ExWrapper_XGetDevices@4 EQU Wrapper_XGetDevices@4
+ELSE
+    EXTERN STDCALL XGetDevices@4 :PROC
+    ExWrapper_XGetDevices@4 EQU XGetDevices@4
+ENDIF
+IFDEF WIN32
+    EXTERN STDCALL Wrapper_XGetDeviceChanges@12 :PROC
+    ExWrapper_XGetDeviceChanges@12 EQU Wrapper_XGetDeviceChanges@12
+ELSE
+    EXTERN STDCALL XGetDeviceChanges@12 :PROC
+    ExWrapper_XGetDeviceChanges@12 EQU XGetDeviceChanges@12
+ENDIF
 FUN_00011005 PROTO stdcall
 FUN_0001100A PROTO stdcall
 FUN_0001100F PROTO stdcall

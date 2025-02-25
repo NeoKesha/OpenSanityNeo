@@ -27320,7 +27320,7 @@ RETURN_LAB_00021ee3::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x0038658c
 		PUSH ECX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		MOV EDI,dword ptr [ESI + 01Ch]
 		XOR EDX,EDX
 		ADD ESP,08h
@@ -27346,7 +27346,7 @@ RETURN_LAB_00021f29::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x0038658c
 		PUSH ECX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x00021F63
@@ -27359,7 +27359,7 @@ RETURN_LAB_00021f29::
 		MOV EAX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x0038657c
 		PUSH EAX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x00021F90
@@ -27372,7 +27372,7 @@ RETURN_LAB_00021f29::
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x00386574
 		PUSH EDX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x00021FBB
@@ -27385,7 +27385,7 @@ RETURN_LAB_00021f29::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x00386570
 		PUSH ECX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x00021FE8
@@ -27398,7 +27398,7 @@ RETURN_LAB_00021f29::
 		MOV EAX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x00386568
 		PUSH EAX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x00022015
@@ -27411,7 +27411,7 @@ RETURN_LAB_00021f29::
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH OFFSET STR_0x00386560
 		PUSH EDX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x000220FA
@@ -27800,7 +27800,7 @@ RETURN_LAB_00022499::
 		MOV EAX,dword ptr [EDI]
 		MOVSX ECX,byte ptr [EAX + EBX*01h]
 		PUSH ECX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV EDX,dword ptr [EDI]
 		ADD ESP,04h
 		MOV byte ptr [EBX + EDX*01h],AL
@@ -27866,7 +27866,7 @@ RETURN_LAB_0002253f::
 		MOV dword ptr [NUM_0x003a3368],01h
 		TwinCall FUN_00015C4F
 RETURN_LAB_00022559::
-		TwinCall XGetLanguage@0
+		TwinCall ExWrapper_XGetLanguage@0
 		SUB EAX,03h
 		POP EDI
 		POP ESI
@@ -28283,7 +28283,7 @@ TwinProcThiscall FUN_00022DC0, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		POP ESI
 		TwinProcExit 04h, FUN_00022DC0
@@ -28295,7 +28295,7 @@ TwinProcThiscall FUN_00022DE0, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI],AL
 		POP ESI
 		TwinProcExit 04h, FUN_00022DE0
@@ -28307,7 +28307,7 @@ TwinProcThiscall FUN_00022E00, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01h],AL
 		POP ESI
 		TwinProcExit 04h, FUN_00022E00
@@ -28319,7 +28319,7 @@ TwinProcThiscall FUN_00022E20, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 02h],AL
 		POP ESI
 		TwinProcExit 04h, FUN_00022E20
@@ -28382,7 +28382,7 @@ TwinProc FUN_00022EB0, stdcall
 		MOV EAX,dword ptr [EDI]
 		MOVSX ECX,byte ptr [EAX + ESI*01h]
 		PUSH ECX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV EDX,dword ptr [EDI]
 		ADD ESP,04h
 		MOV byte ptr [ESI + EDX*01h],AL
@@ -29683,19 +29683,19 @@ TwinProcThiscall FUN_00023C70, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 014h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 02h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		POP ESI
 		TwinProcExit 010h, FUN_00023C70
@@ -30357,19 +30357,19 @@ TwinProcThiscall FUN_00024350, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 014h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 02h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		MOV EAX,ESI
 		POP ESI
@@ -53548,7 +53548,7 @@ RETURN_LAB_00036da5::
 		MOVSS dword ptr [ESP + 014h],XMM0
 		MOVSS XMM0,dword ptr [EDI + 028h]
 		MOVSS dword ptr [ESP + 018h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		TEST AL,01h
 		JZ LAB_0x00036E09
 		XORPS XMM3,XMM3
@@ -68599,7 +68599,7 @@ RETURN_LAB_00041c8e::
 RETURN_LAB_00041c99::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV ESI,dword ptr [ESI + 0Ch]
 		MOV EDI,EAX
@@ -75920,7 +75920,7 @@ RETURN_LAB_00046853::
 RETURN_LAB_00046a4e::
 		MOV ESI,dword ptr [EBX + 0Ch]
 		ADD ESP,0Ch
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		TEST ESI,010000h
 		JZ LAB_0x00046A85
 		MOV ECX,dword ptr [EBP + 0Ch]
@@ -76681,7 +76681,7 @@ RETURN_LAB_0004737d::
 		FLD dword ptr [FLOAT_0x003863a8]
 		FDIV dword ptr [FLOAT_0x0039d7e8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		LEA ECX,[ESP + 01Ch]
 		MOV dword ptr [ESP + 01Ch],EAX
@@ -78249,15 +78249,15 @@ TwinProcThiscall FUN_00048950, stdcall
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV EDI,dword ptr [PTR_0x003cfe54]
 		ADD EDI,0610h
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 01Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 08h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 020h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 09h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESP + 0Ah],AL
 		MOV EAX,dword ptr [ESI + 0Ch]
 		AND EAX,07h
@@ -78324,15 +78324,15 @@ TwinProcThiscall FUN_00048A40, stdcall
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV EDI,dword ptr [PTR_0x003cfe54]
 		ADD EDI,017DCh
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 01Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 08h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 020h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 09h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [NUM_0x003e6c24]
 		MOV byte ptr [ESP + 0Ah],AL
 		MOV EAX,dword ptr [ESI + 0Ch]
@@ -78382,15 +78382,15 @@ RETURN_LAB_00048b00::
 	LAB_0x00048B10: 
 		FLD dword ptr [EDI + 014h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [EDI + 018h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 014h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [EDI + 01Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 015h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EDX,dword ptr [NUM_0x003e6c24]
 		MOV byte ptr [ESP + 016h],AL
 		MOV EAX,dword ptr [EDX + EBX*04h]
@@ -85131,15 +85131,15 @@ TwinProcThiscall FUN_000541C0, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 02h],AL
 		MOV byte ptr [ESI + 03h],0FFh
 		POP ESI
@@ -92886,15 +92886,15 @@ TwinProcThiscall FUN_00059920, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 02h],AL
 		MOV byte ptr [ESI + 03h],0FFh
 		MOV EAX,ESI
@@ -132110,7 +132110,7 @@ RETURN_LAB_0007d301::
 RETURN_LAB_0007d30a::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOVSS XMM0,dword ptr [FLOAT_0x0038a82c]
 		MOV dword ptr [ESI + 0Ch],EAX
@@ -132170,7 +132170,7 @@ RETURN_LAB_0007d3b1::
 RETURN_LAB_0007d3ba::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOVSS XMM0,dword ptr [ARRAY_0x0038b844]
 		MOV dword ptr [ESI + 0Ch],EAX
@@ -132238,7 +132238,7 @@ RETURN_LAB_0007d471::
 RETURN_LAB_0007d47a::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,dword ptr [ESP + 014h]
@@ -132292,7 +132292,7 @@ RETURN_LAB_0007d4fc::
 RETURN_LAB_0007d505::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,dword ptr [ESP + 014h]
@@ -140456,7 +140456,7 @@ RETURN_LAB_00083b29::
 		FSUBR dword ptr [ESP + 0Ch]
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDX,EAX
 		TEST EDX,EDX
@@ -140503,7 +140503,7 @@ RETURN_LAB_00083ba5::
 RETURN_LAB_00083bb7::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		TEST EAX,EAX
 		MOV dword ptr [ESI + 0Ch],EAX
@@ -140541,7 +140541,7 @@ TwinProcThiscall FUN_00083C00, stdcall
 RETURN_LAB_00083c10::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDI,dword ptr [ESP + 014h]
 		MOV EDX,dword ptr [ESI]
@@ -140576,7 +140576,7 @@ RETURN_LAB_00083c6d::
 RETURN_LAB_00083c76::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDX,dword ptr [ESP + 020h]
 		XORPS XMM0,XMM0
@@ -140596,7 +140596,7 @@ RETURN_LAB_00083c76::
 RETURN_LAB_00083cb6::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,dword ptr [ESP + 020h]
@@ -140735,7 +140735,7 @@ TwinProcThiscall FUN_00083E20, stdcall
 RETURN_LAB_00083e43::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV ECX,dword ptr [ESI]
@@ -140782,7 +140782,7 @@ RETURN_LAB_00083eb1::
 RETURN_LAB_00083eba::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDX,dword ptr [ESP + 01Ch]
 		MOVSS XMM0,dword ptr [ARRAY_0x0038b844]
@@ -142112,7 +142112,7 @@ TwinProcThiscall FUN_000850F0, stdcall
 RETURN_LAB_00085122::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		CMP EBX,02h
 		MOV dword ptr [ESI + 024h],EAX
@@ -142158,7 +142158,7 @@ RETURN_LAB_00085171::
 RETURN_LAB_00085184::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		CMP EBX,02h
 		MOV dword ptr [ESI + 024h],EAX
@@ -142185,7 +142185,7 @@ RETURN_LAB_000851af::
 RETURN_LAB_000851c4::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		TEST EAX,EAX
 		MOV dword ptr [ESI + 024h],EAX
@@ -147476,7 +147476,7 @@ RETURN_LAB_00089b7c::
 		FDIV dword ptr [NUM_0x0039db80]
 		MOV EBX,ESP
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		LEA ECX,[ESP + 064h]
 		MOV dword ptr [EBX],EAX
@@ -156799,7 +156799,7 @@ RETURN_LAB_00091f4f::
 RETURN_LAB_00091f58::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		TEST ESI,ESI
 		MOV dword ptr [EDI + 08h],EAX
@@ -160611,7 +160611,7 @@ RETURN_LAB_00095a43::
 RETURN_LAB_00095a61::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDI,dword ptr [ESI + 020h]
 		MOV EDX,dword ptr [ESI + 024h]
@@ -161082,7 +161082,7 @@ TwinProcThiscall FUN_00095EC0, stdcall
 RETURN_LAB_00095f62::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV ECX,dword ptr [ESI + 020h]
 		MOV EDI,dword ptr [ESI + 01Ch]
@@ -163054,7 +163054,7 @@ RETURN_LAB_000977ca::
 RETURN_LAB_000977d4::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		TEST EAX,EAX
 		POP ESI
@@ -164557,7 +164557,7 @@ RETURN_LAB_00098e2c::
 		FDIV dword ptr [NUM_0x0039db80]
 		MOV EBX,ESP
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		LEA ECX,[ESP + 0D4h]
 		MOV dword ptr [EBX],EAX
@@ -164977,7 +164977,7 @@ RETURN_LAB_0009951b::
 RETURN_LAB_00099578::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,049h
 		JMP LAB_0x000995C2
@@ -164994,7 +164994,7 @@ RETURN_LAB_00099578::
 RETURN_LAB_000995a8::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,06Bh
 	LAB_0x000995C2: 
@@ -165024,7 +165024,7 @@ RETURN_LAB_000995cd::
 RETURN_LAB_000995f2::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0Ch],EAX
 		MOV EAX,049h
 		JMP LAB_0x000995C2
@@ -165051,7 +165051,7 @@ RETURN_LAB_00099626::
 		MOV EAX,dword ptr [ESI + 010h]
 		MOV EDI,dword ptr [ECX + 04h]
 		SUB EDI,EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		CMP EDI,EAX
 		JL LAB_0x0009967E
@@ -165068,7 +165068,7 @@ RETURN_LAB_00099654::
 RETURN_LAB_0009965d::
 		FLD dword ptr [FLOAT_0x003ea6f8]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV EDX,dword ptr [ESP + 018h]
 		MOV dword ptr [ESI + 0Ch],EAX
@@ -166483,7 +166483,7 @@ RETURN_LAB_0009a8d0::
 		PUSH 08h
 		PUSH EAX
 		PUSH OFFSET ARRAY_0x003d3000
-		TwinCall qsort
+		TwinCall ExWrapper_qsort
 		ADD ESP,010h
 	LAB_0x0009A94D: 
 		MOV EAX,dword ptr [ARRAY_0x003d3000]
@@ -173609,14 +173609,14 @@ RETURN_LAB_000a7b78::
 		FMUL dword ptr [FLOAT_0x00387520]
 		ADD ESP,08h
 		FADD dword ptr [FLOAT_0x00386ab4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00387520]
 		MOV EBX,EAX
 		MOV EAX,dword ptr [EDI]
 		MOV dword ptr [ESP + 010h],EAX
 		FADD dword ptr [FLOAT_0x00386ab4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EBP,dword ptr [ESP + 018h]
 		PUSH EAX
 		MOV EAX,dword ptr [ESP + 014h]
@@ -181003,7 +181003,7 @@ RETURN_LAB_000adc13::
 		MOV dword ptr [ESP + 014h],EAX
 		FILD dword ptr [ESP + 014h]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		ADD EAX,EDI
 		POP EDI
 	LAB_0x000ADC44: 
@@ -186189,7 +186189,7 @@ RETURN_LAB_000b16d3::
 		PUSH OFFSET STR_0x0038d570
 		LEA ECX,[EBX + 011Ch]
 		PUSH ECX
-		TwinCall lstrcpyW@8
+		TwinCall ExWrapper_lstrcpyW@8
 		PUSH 010h
 		TwinCall FUN_000D06B0
 RETURN_LAB_000b16eb::
@@ -189699,7 +189699,7 @@ TwinProcThiscall FUN_000B4F10, stdcall
 		MOV ECX,dword ptr [ECX*04h + PTR_0x0039e0a8]
 		PUSH EAX
 		PUSH ECX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x000B4F7A
@@ -189840,7 +189840,7 @@ RETURN_LAB_000b50dc::
 		MOV EBX,OFFSET STR_0x0038d68c
 	LAB_0x000B510C: 
 		PUSH EBX
-		TwinCall XGetSectionHandleA@4
+		TwinCall ExWrapper_XGetSectionHandleA@4
 		MOV EBP,EAX
 		CMP EBP,-01h
 		JZ LAB_0x000B51D8
@@ -189850,7 +189850,7 @@ RETURN_LAB_000b50dc::
 		MOV EAX,dword ptr [ECX*04h + PTR_0x0039e0a8]
 		PUSH EAX
 		PUSH EBX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		MOV EAX,dword ptr [ESI + EDI*04h + 0314h]
@@ -189867,7 +189867,7 @@ RETURN_LAB_000b50dc::
 RETURN_LAB_000b5161::
 		PUSH EBP
 		MOV EBX,EAX
-		TwinCall XLoadSectionByHandle@4
+		TwinCall ExWrapper_XLoadSectionByHandle@4
 		PUSH 040h
 		PUSH 00h
 		PUSH EBX
@@ -189882,7 +189882,7 @@ RETURN_LAB_000b5178::
 		TwinCall FUN_0001894A
 RETURN_LAB_000b5185::
 		PUSH EBP
-		TwinCall XFreeSectionByHandle@4
+		TwinCall ExWrapper_XFreeSectionByHandle@4
 		LEA ECX,[ESP + 020h]
 		TwinCall FUN_0020D700
 RETURN_LAB_000b5194::
@@ -193531,7 +193531,7 @@ RETURN_LAB_000b7e49::
 		FLD dword ptr [FLOAT_0x003863a8]
 		FDIV dword ptr [FLOAT_0x0039e238]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		LEA ECX,[ESP + 030h]
 		MOV dword ptr [ESP + 030h],EAX
@@ -196095,7 +196095,7 @@ RETURN_LAB_000ba2da::
 		MOV dword ptr [ESI + 0314h],ECX
 	LAB_0x000BA314: 
 		PUSH OFFSET STR_0x0038d68c
-		TwinCall XGetSectionHandleA@4
+		TwinCall ExWrapper_XGetSectionHandleA@4
 		MOV EDI,EAX
 		CMP EDI,-01h
 		JZ LAB_0x000BA3D5
@@ -196105,7 +196105,7 @@ RETURN_LAB_000ba2da::
 		MOV EAX,dword ptr [EDX*04h + PTR_0x0039e0a8]
 		PUSH EAX
 		PUSH OFFSET STR_0x0038d68c
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		MOV EAX,dword ptr [ESI + 0314h]
@@ -196122,7 +196122,7 @@ RETURN_LAB_000ba2da::
 RETURN_LAB_000ba36f::
 		PUSH EDI
 		MOV EBX,EAX
-		TwinCall XLoadSectionByHandle@4
+		TwinCall ExWrapper_XLoadSectionByHandle@4
 		PUSH 040h
 		PUSH EBP
 		PUSH EBX
@@ -196139,7 +196139,7 @@ RETURN_LAB_000ba385::
 		PUSH EAX
 		TwinCall dword ptr [EDX + 020h]
 		PUSH EDI
-		TwinCall XFreeSectionByHandle@4
+		TwinCall ExWrapper_XFreeSectionByHandle@4
 		LEA ECX,[ESP + 028h]
 		TwinCall FUN_0020D700
 RETURN_LAB_000ba3b3::
@@ -206433,17 +206433,17 @@ TwinProc FUN_000C5761, stdcall
 		PUSH ESI
 		PUSH ESI
 		MOV dword ptr [ECX],EAX
-		TwinCall CreateThread@24
+		TwinCall ExWrapper_CreateThread@24
 		MOV EDI,EAX
 		CMP EDI,ESI
 		JNZ LAB_0x000C57CA
 		PUSH ESI
 		PUSH 01h
 		PUSH 01h
-		TwinCall XapiBootToDash@12
+		TwinCall ExWrapper_XapiBootToDash@12
 	LAB_0x000C57CA: 
 		PUSH EDI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_000C5761
@@ -206515,7 +206515,7 @@ TwinProc FUN_000C8F40, stdcall
 		PUSH dword ptr [ESP + 04h]
 		PUSH 00h
 		PUSH dword ptr [NUM_0x004a8090]
-		TwinCall RtlSizeHeap@12
+		TwinCall ExWrapper_RtlSizeHeap@12
 		TwinProcExit 04h, FUN_000C8F40
 TwinProcEnd FUN_000C8F40
 
@@ -206596,7 +206596,7 @@ RETURN_LAB_000cf355::
 		XOR EBX,EBX
 		PUSH ECX
 		MOV dword ptr [ESP + 01Ch],EBX
-		TwinCall XGetLaunchInfo@8
+		TwinCall ExWrapper_XGetLaunchInfo@8
 		CMP dword ptr [ESP + 014h],03h
 		JNZ LAB_0x000CF3B8
 		CMP byte ptr [ESP + 024h],BL
@@ -206632,7 +206632,7 @@ RETURN_LAB_000cf3cb::
 		TwinCall FUN_0010CBD0
 RETURN_LAB_000cf3d0::
 		PUSH 020000h
-		TwinCall XSetFileCacheSize@4
+		TwinCall ExWrapper_XSetFileCacheSize@4
 		MOV ECX,OFFSET STRUCT_0x003e63a0
 		TwinCall FUN_0012DFB0
 RETURN_LAB_000cf3e4::
@@ -206750,7 +206750,7 @@ RETURN_LAB_000cf4fd::
 		XOR EBP,EBP
 	LAB_0x000CF518: 
 		MOV byte ptr [BOOL_0x003ec3c0],BL
-		TwinCall XGetVideoFlags@0
+		TwinCall ExWrapper_XGetVideoFlags@0
 		TEST AL,01h
 		JZ LAB_0x000CF52E
 		MOV byte ptr [BOOL_0x003ec3c0],01h
@@ -206761,7 +206761,7 @@ RETURN_LAB_000cf530::
 		CMP dword ptr [NUM_0x003e6bd8],05h
 		JZ LAB_0x000CF5F6
 	LAB_0x000CF542: 
-		TwinCall DirectSoundDoWork@0
+		TwinCall ExWrapper_DirectSoundDoWork@0
 		MOV ESI,dword ptr [PTR_0x003e6be0]
 		MOV byte ptr [NUM_0x003ead50],BL
 		TwinCall FUN_0010C9B0
@@ -206995,7 +206995,7 @@ TwinProc FUN_000CF780, stdcall
 		MOV EAX,dword ptr [EDI]
 		MOVSX ECX,byte ptr [EAX + ESI*01h]
 		PUSH ECX
-		TwinCall toupper
+		TwinCall ExWrapper_toupper
 		MOV EDX,dword ptr [EDI]
 		ADD ESP,04h
 		MOV byte ptr [ESI + EDX*01h],AL
@@ -207249,7 +207249,7 @@ TwinProc FUN_000CFA20, stdcall
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EDX
 		PUSH EAX
-		TwinCall _strnicmp
+		TwinCall ExWrapper__strnicmp
 		ADD ESP,0Ch
 		NEG EAX
 		SBB AL,AL
@@ -207277,7 +207277,7 @@ TwinProc FUN_000CFA60, stdcall
 		PUSH ESI
 		PUSH EDX
 		PUSH EDI
-		TwinCall _strnicmp
+		TwinCall ExWrapper__strnicmp
 		ADD ESP,0Ch
 		TEST EAX,EAX
 		JNZ LAB_0x000CFAB6
@@ -207326,7 +207326,7 @@ TwinProc FUN_000CFAC0, stdcall
 		PUSH ESI
 		PUSH EDX
 		PUSH EDI
-		TwinCall _strnicmp
+		TwinCall ExWrapper__strnicmp
 		ADD ESP,0Ch
 		TEST EAX,EAX
 		JNZ LAB_0x000CFB27
@@ -207381,7 +207381,7 @@ TwinProc FUN_000CFB40, stdcall
 		PUSH ESI
 		PUSH EDX
 		PUSH EDI
-		TwinCall _strnicmp
+		TwinCall ExWrapper__strnicmp
 		ADD ESP,0Ch
 		TEST EAX,EAX
 		JNZ LAB_0x000CFBA7
@@ -207431,7 +207431,7 @@ TwinProcThiscall FUN_000CFBC0, stdcall
 		MOV dword ptr [ESP + 01Ch],EBX
 		MOV dword ptr [ESP + 020h],EBX
 		MOV dword ptr [ESP + 024h],EBX
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x000CFC22
@@ -207450,7 +207450,7 @@ RETURN_LAB_000cfc10::
 	LAB_0x000CFC22: 
 		PUSH OFFSET STR_0x0038dfb0
 		PUSH EDI
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x000CFC64
@@ -207555,7 +207555,7 @@ RETURN_LAB_000cfd51::
 		JNZ LAB_0x000CFDD7
 		PUSH OFFSET STR_0x0038dfa0
 		PUSH EDI
-		TwinCall _stricmp
+		TwinCall ExWrapper__stricmp
 		ADD ESP,08h
 		TEST EAX,EAX
 		JNZ LAB_0x000CFD86
@@ -207608,7 +207608,7 @@ RETURN_LAB_000cfdc7::
 		FLD dword ptr [ESP + 024h]
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		LEA ECX,[ESP + 014h]
 		MOV byte ptr [ESI + 0Eh],AL
 		TwinCall FUN_00157330
@@ -207623,7 +207623,7 @@ RETURN_LAB_000cfdf3::
 		FLD dword ptr [ESP + 024h]
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		LEA ECX,[ESP + 014h]
 		MOV byte ptr [ESI + 0Dh],AL
 		TwinCall FUN_00157330
@@ -207638,7 +207638,7 @@ RETURN_LAB_000cfe21::
 		FLD dword ptr [ESP + 024h]
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 0Ch],AL
 	LAB_0x000CFE4B: 
 		LEA ECX,[ESP + 014h]
@@ -208107,7 +208107,7 @@ TwinProc FUN_000D0370, stdcall
 		TwinCall FUN_00158B80
 RETURN_LAB_000d038d::
 		PUSH OFFSET FUN_0027D030
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x000D039F: 
 		MOV AL,byte ptr [NUM_0x003e6c50]
@@ -208118,7 +208118,7 @@ RETURN_LAB_000d038d::
 		PUSH -01h
 		PUSH 01200000h
 		MOV byte ptr [NUM_0x003e6c50],01h
-		TwinCall XPhysicalAlloc@16
+		TwinCall ExWrapper_XPhysicalAlloc@16
 		PUSH 01200000h
 		PUSH EAX
 		MOV ECX,OFFSET STRUCT_0x003e6c58
@@ -208144,7 +208144,7 @@ RETURN_LAB_000d03fd::
 		TwinCall FUN_00159740
 RETURN_LAB_000d0407::
 		PUSH OFFSET FUN_0027D040
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x000D0419: 
 		MOV AL,byte ptr [NUM_0x003e8cc4]
@@ -208155,7 +208155,7 @@ RETURN_LAB_000d0407::
 		PUSH 01500000h
 		PUSH 00h
 		MOV byte ptr [NUM_0x003e8cc4],01h
-		TwinCall VirtualAlloc@16
+		TwinCall ExWrapper_VirtualAlloc@16
 		PUSH 01500000h
 		PUSH EAX
 		MOV ECX,OFFSET STRUCT_0x003e8cc8
@@ -210833,12 +210833,12 @@ TwinProc FUN_000D24D0, stdcall
 		FCOS
 		FMUL dword ptr [FLOAT_0x0038e024]
 		FADD dword ptr [FLOAT_0x00386ab4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSIN
 		MOV word ptr [ESI*04h + ARRAY_0x003e8e50],AX
 		FMUL dword ptr [FLOAT_0x0038e024]
 		FADD dword ptr [FLOAT_0x00386ab4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV word ptr [ESI*04h + ARRAY_0x003e8e50 + 2],AX
 		INC ESI
 		CMP ESI,0401h
@@ -213026,7 +213026,7 @@ TwinProc FUN_000D4360, c
 		POP ESI
 		TwinProcExit, FUN_000D4360
 	LAB_0x000D436E: 
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CDQ
 		IDIV ESI
 		POP ESI
@@ -213046,7 +213046,7 @@ TwinProc FUN_000D4380, c
 		POP ESI
 		TwinProcExit, FUN_000D4380
 	LAB_0x000D4394: 
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CDQ
 		IDIV ESI
 		MOV EAX,dword ptr [ESP + 08h]
@@ -213058,7 +213058,7 @@ TwinProcEnd FUN_000D4380
 TwinProc FUN_000D43E0, stdcall
 	LAB_0x000D43E0: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FMUL dword ptr [FLOAT_0x0038e054]
@@ -213069,7 +213069,7 @@ TwinProcEnd FUN_000D43E0
 TwinProc FUN_000D4400, stdcall
 	LAB_0x000D4400: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FSUB dword ptr [FLOAT_0x0038e05c]
@@ -213081,7 +213081,7 @@ TwinProcEnd FUN_000D4400
 TwinProc FUN_000D4420, c
 	LAB_0x000D4420: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FSUB dword ptr [FLOAT_0x0038e05c]
@@ -213094,7 +213094,7 @@ TwinProcEnd FUN_000D4420
 TwinProc FUN_000D4440, c
 	LAB_0x000D4440: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FMUL dword ptr [FLOAT_0x0038e054]
@@ -213106,7 +213106,7 @@ TwinProcEnd FUN_000D4440
 TwinProc FUN_000D4460, c
 	LAB_0x000D4460: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FMUL dword ptr [FLOAT_0x0038e054]
@@ -213119,7 +213119,7 @@ TwinProcEnd FUN_000D4460
 TwinProc FUN_000D4480, c
 	LAB_0x000D4480: 
 		PUSH ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP],EAX
 		FILD dword ptr [ESP]
 		FSUB dword ptr [FLOAT_0x0038e05c]
@@ -225698,7 +225698,7 @@ TwinProcThiscall FUN_000DF710, stdcall
 		MOV EDI,ECX
 		JGE LAB_0x000DF73D
 	LAB_0x000DF721: 
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [FLOAT_0x0038e054]
 		MOVSS dword ptr [EDI + ESI*04h + 010h],XMM0
@@ -225723,7 +225723,7 @@ TwinProc FUN_000DF750, stdcall
 		LEA ESI,[EBX + 010h]
 		JLE LAB_0x000DF787
 	LAB_0x000DF760: 
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		SUBSS XMM0,dword ptr [FLOAT_0x0038e05c]
 		MULSS XMM0,dword ptr [FLOAT_0x0038e058]
@@ -239707,7 +239707,7 @@ RETURN_LAB_000ebb42::
 RETURN_LAB_000ebc76::
 		FIMUL dword ptr [ESP + 0Ch]
 		ADD ESP,04h
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [EBP + 08h]
 		MOV dword ptr [ECX],EAX
 		MOV EAX,ECX
@@ -240137,7 +240137,7 @@ TwinProc FUN_000EC1D0, stdcall
 		PUSH ESI
 		PUSH EDI
 		MOV ESI,ECX
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOVSS XMM5,dword ptr [FLOAT_0x0038639c]
 		MOVSS XMM1,dword ptr [FLOAT_0x003863a8]
 		DIVSS XMM1,dword ptr [FLOAT_0x0039eec0]
@@ -251840,7 +251840,7 @@ TwinProcThiscall FUN_000F5430, stdcall
 		JBE LAB_0x000F5474
 		FLD dword ptr [ESP + 028h]
 		FMUL dword ptr [FLOAT_0x0038e260]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		IMUL ESI,EAX
 	LAB_0x000F5474: 
 		TEST ESI,ESI
@@ -253252,7 +253252,7 @@ TwinProc FUN_000F6580, stdcall
 		SUB ESP,08h
 		LEA EAX,[ESP]
 		PUSH EAX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F659B
 		MOV EAX,dword ptr [ESP]
@@ -253277,7 +253277,7 @@ TwinProcThiscall FUN_000F65D0, stdcall
 		LEA EAX,[ESP + 04h]
 		PUSH EAX
 		MOV ESI,ECX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F65EE
 		MOV EAX,dword ptr [ESP + 04h]
@@ -253304,7 +253304,7 @@ TwinProc FUN_000F6620, stdcall
 		SUB ESP,08h
 		LEA EAX,[ESP]
 		PUSH EAX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		INC dword ptr [NUM_0x003ea6f4]
 		ADD ESP,08h
 		TwinProcExit, FUN_000F6620
@@ -253332,7 +253332,7 @@ TwinProcThiscall FUN_000F6640, stdcall
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
 		MOV EBP,EDX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F6684
 		MOV ECX,dword ptr [ESP + 010h]
@@ -253392,7 +253392,7 @@ TwinProc FUN_000F66F0, c
 		SUB ESP,010h
 		LEA EAX,[ESP]
 		PUSH EAX
-		TwinCall GetLocalTime@4
+		TwinCall ExWrapper_GetLocalTime@4
 		MOV EAX,dword ptr [ESP + 014h]
 		MOV CL,byte ptr [ESP + 06h]
 		MOV DL,byte ptr [ESP + 02h]
@@ -255399,7 +255399,7 @@ RETURN_LAB_000f7a62::
 		MOV dword ptr [ESI + 084h],EBX
 		MOV dword ptr [ESI + 088h],EBX
 		MOV dword ptr [ESI + 08Ch],EBX
-		TwinCall QueryPerformanceFrequency@4
+		TwinCall ExWrapper_QueryPerformanceFrequency@4
 		MOV ECX,dword ptr [ESP + 018h]
 		MOV EDI,EAX
 		NEG EDI
@@ -255407,7 +255407,7 @@ RETURN_LAB_000f7a62::
 		SBB EDI,EDI
 		PUSH EDX
 		AND EDI,ECX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F7AB4
 		MOV EAX,dword ptr [ESP + 010h]
@@ -255491,7 +255491,7 @@ TwinProc FUN_000F7BC0, stdcall
 		LEA EAX,[ESP + 08h]
 		PUSH EAX
 		MOV ESI,ECX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F7BDF
 		MOV EAX,dword ptr [ESP + 08h]
@@ -255510,7 +255510,7 @@ TwinProc FUN_000F7BC0, stdcall
 		LEA ECX,[ESP + 08h]
 		PUSH ECX
 		MOV EDI,EAX
-		TwinCall QueryPerformanceCounter@4
+		TwinCall ExWrapper_QueryPerformanceCounter@4
 		TEST EAX,EAX
 		JZ LAB_0x000F7C15
 		MOV EAX,dword ptr [ESP + 08h]
@@ -266110,12 +266110,12 @@ RETURN_LAB_000fec21::
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 020h]
 		MOV EDX,dword ptr [EDI + ECX*01h]
 		PUSH EBP
 		PUSH EDX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV ECX,dword ptr [ESI + 014h]
 		MOV EAX,dword ptr [EBX]
 		ADD ECX,EDI
@@ -266286,7 +266286,7 @@ TwinProcThiscall FUN_000FEDB0, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 024h]
 		ADD ECX,EDI
 		PUSH ECX
@@ -266299,7 +266299,7 @@ RETURN_LAB_000fedee::
 		PUSH EAX
 		MOV EAX,dword ptr [EDI + EDX*01h]
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		POP EDI
 		POP ESI
 		TwinProcExit 04h, FUN_000FEDB0
@@ -267375,7 +267375,7 @@ TwinProc FUN_000FFCE0, stdcall
 		PUSH ESI
 		MOV ESI,ECX
 		FLD dword ptr [ESI + 040h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01Dh],AL
 		XOR AL,AL
 		MOV byte ptr [ESI + 01Eh],AL
@@ -268034,7 +268034,7 @@ TwinProcThiscall FUN_00100460, stdcall
 		MOV dword ptr [ESI + 018h],EAX
 		MOV dword ptr [ESI + 01Ch],EAX
 		MOV dword ptr [ESI + 08h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 08h]
 		XOR EAX,ECX
 		AND EAX,03FFh
@@ -268069,7 +268069,7 @@ TwinProcThiscall FUN_001004C0, stdcall
 		MOV dword ptr [ESI + 018h],EAX
 		MOV dword ptr [ESI + 01Ch],EAX
 		MOV dword ptr [ESI + 08h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 08h]
 		XOR EAX,ECX
 		AND EAX,03FFh
@@ -268103,7 +268103,7 @@ TwinProcThiscall FUN_00100520, stdcall
 		MOV dword ptr [ESI + 018h],EAX
 		MOV dword ptr [ESI + 01Ch],EAX
 		MOV dword ptr [ESI + 08h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 08h]
 		XOR EAX,ECX
 		AND EAX,03FFh
@@ -268137,7 +268137,7 @@ TwinProcThiscall FUN_00100580, stdcall
 		MOV dword ptr [ESI + 018h],ECX
 		MOV dword ptr [ESI + 01Ch],EAX
 		MOV dword ptr [ESI + 08h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 08h]
 		XOR EAX,ECX
 		AND EAX,03FFh
@@ -270109,7 +270109,7 @@ TwinProcThiscall FUN_00101EA0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX ECX,byte ptr [ESI + 01h]
 		MOV dword ptr [ESP + 04h],ECX
 		MOV byte ptr [ESI],AL
@@ -270117,7 +270117,7 @@ TwinProcThiscall FUN_00101EA0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX EDX,byte ptr [ESI + 02h]
 		MOV dword ptr [ESP + 04h],EDX
 		MOV byte ptr [ESI + 01h],AL
@@ -270125,7 +270125,7 @@ TwinProcThiscall FUN_00101EA0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 02h],AL
 		MOV ECX,dword ptr [ESI]
 		MOV EAX,dword ptr [ESP + 0Ch]
@@ -271114,7 +271114,7 @@ TwinProc FUN_00102880, stdcall
 		LEA ECX,[ESP + 02Ch]
 		PUSH ECX
 		MOV dword ptr [ESP + 024h],00h
-		TwinCall XGSpliceVertexShaders@24
+		TwinCall ExWrapper_XGSpliceVertexShaders@24
 		PUSH 00h
 		PUSH 02h
 		LEA EDX,[ESP + 018h]
@@ -271123,7 +271123,7 @@ TwinProc FUN_00102880, stdcall
 		PUSH 00h
 		LEA EAX,[ESP + 02Ch]
 		PUSH EAX
-		TwinCall XGSpliceVertexShaders@24
+		TwinCall ExWrapper_XGSpliceVertexShaders@24
 		MOV EAX,dword ptr [ESP + 0Ch]
 		MOV EDX,dword ptr [ESP + 0424h]
 		MOV ECX,EAX
@@ -271889,13 +271889,13 @@ RETURN_LAB_001032d2::
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESP + 014h]
 		MOV EDX,dword ptr [ESI + 020h]
 		MOV EAX,dword ptr [EDI + EDX*01h]
 		PUSH ECX
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESI + 03Ch]
 		INC EBP
 		CMP EBP,EAX
@@ -272021,7 +272021,7 @@ TwinProcThiscall FUN_00103430, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 01Ch]
 		ADD ECX,EDI
 		PUSH ECX
@@ -272034,7 +272034,7 @@ RETURN_LAB_0010346e::
 		PUSH EAX
 		MOV EAX,dword ptr [EDI + EDX*01h]
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		POP EDI
 		POP ESI
 		TwinProcExit 04h, FUN_00103430
@@ -272356,12 +272356,12 @@ RETURN_LAB_0010376f::
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 020h]
 		MOV EDX,dword ptr [EDI + ECX*01h]
 		PUSH EBP
 		PUSH EDX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESI + 028h]
 		MOV EAX,dword ptr [EDI + EAX*01h]
 		MOV ECX,dword ptr [ESI + 04Ch]
@@ -272426,14 +272426,14 @@ RETURN_LAB_00103822::
 		PUSH 00h
 		PUSH 00h
 		PUSH EDX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 024h]
 		MOV EAX,dword ptr [ESP + 020h]
 		MOV EDX,dword ptr [ECX + EDI*01h]
 		PUSH EAX
 		MOV EAX,dword ptr [EDX + EBP*01h]
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESP + 018h]
 		MOV ECX,dword ptr [ESI + 04Ch]
 		INC EAX
@@ -272571,7 +272571,7 @@ TwinProcThiscall FUN_00103990, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV ECX,dword ptr [ESI + 018h]
 		ADD ECX,EDI
 		PUSH ECX
@@ -272584,7 +272584,7 @@ RETURN_LAB_001039d6::
 		PUSH EAX
 		MOV EAX,dword ptr [EDX + EDI*01h]
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESI + 04Ch]
 		XOR EBP,EBP
 		TEST EAX,EAX
@@ -272603,7 +272603,7 @@ RETURN_LAB_001039d6::
 		PUSH 00h
 		PUSH 00h
 		PUSH EDX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV EAX,dword ptr [ESI + 01Ch]
 		MOV ECX,dword ptr [EAX + EDI*01h]
 		ADD ECX,EBX
@@ -272618,7 +272618,7 @@ RETURN_LAB_00103a27::
 		MOV EAX,dword ptr [EDI + EDX*01h]
 		MOV ECX,dword ptr [EAX + EBX*01h]
 		PUSH ECX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESI + 04Ch]
 		INC EBP
 		CMP EBP,EAX
@@ -272918,7 +272918,7 @@ TwinProc FUN_00103D70, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EDX,dword ptr [ESP + 08h]
 		PUSH EDX
 		TwinCall FUN_00293FD0
@@ -272953,7 +272953,7 @@ TwinProcThiscall FUN_00103DC0, stdcall
 		PUSH ECX
 		PUSH 00h
 		PUSH EDX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV ECX,dword ptr [ESP + 018h]
 		MOV EDX,dword ptr [ESP + 0Ch]
 		MOV EAX,dword ptr [ESI]
@@ -272982,7 +272982,7 @@ TwinProc FUN_00103E70, stdcall
 		PUSH 01h
 		PUSH 0100h
 		PUSH EAX
-		TwinCall D3DXCreateTexture@32
+		TwinCall ExWrapper_D3DXCreateTexture@32
 		MOV ECX,dword ptr [NUM_0x003eb3c8]
 		PUSH ECX
 		PUSH 01h
@@ -273035,7 +273035,7 @@ TwinProc FUN_00103F50, c
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		XOR EDX,EDX
 		MOV dword ptr [ESP + 024h],EDX
 		MOV dword ptr [ESP + 028h],EDX
@@ -273092,7 +273092,7 @@ TwinProc FUN_00103F50, c
 		FLD dword ptr [ESP + 014h]
 		FMUL dword ptr [FLOAT_0x0038d850]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX EDX,byte ptr [ESP + 010h]
 		MOV BL,byte ptr [ESP + 012h]
 		MOV dword ptr [ESP + 018h],EDX
@@ -273100,13 +273100,13 @@ TwinProc FUN_00103F50, c
 		FILD dword ptr [ESP + 018h]
 		FMUL dword ptr [FLOAT_0x00390648]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESP + 012h],AL
 		MOVZX EAX,BL
 		MOV dword ptr [ESP + 018h],EAX
 		FILD dword ptr [ESP + 018h]
 		FMUL dword ptr [FLOAT_0x00390644]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESP + 010h],AL
 		MOV ECX,dword ptr [ESP + 010h]
 		MOV dword ptr [EBP + ESI*04h],ECX
@@ -273924,20 +273924,20 @@ RETURN_LAB_00104b9e::
 		PUSH 01h
 		PUSH 0F0h
 		PUSH 0140h
-		TwinCall XGSetTextureHeader@36
+		TwinCall ExWrapper_XGSetTextureHeader@36
 		PUSH 080h
 		PUSH EAX
 		MOV dword ptr [PTR_0x003ec560],EAX
-		TwinCall D3D_AllocContiguousMemory@8
+		TwinCall ExWrapper_D3D_AllocContiguousMemory@8
 		MOV EDX,dword ptr [PTR_0x003ec558]
 		PUSH EAX
 		PUSH EDX
 		MOV dword ptr [PTR_0x003ec564],EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [PTR_0x003ec558]
 		PUSH 00h
 		PUSH EAX
-		TwinCall D3DTexture_GetSurfaceLevel2@8
+		TwinCall ExWrapper_D3DTexture_GetSurfaceLevel2@8
 		MOV dword ptr [PTR_0x003ec570],EAX
 		TwinProcExit, FUN_00104B90
 TwinProcEnd FUN_00104B90
@@ -273946,10 +273946,10 @@ TwinProc FUN_00104C30, stdcall
 	LAB_0x00104C30: 
 		MOV EAX,dword ptr [PTR_0x003ec568]
 		PUSH EAX
-		TwinCall D3DResource_Release@4
+		TwinCall ExWrapper_D3DResource_Release@4
 		MOV ECX,dword ptr [PTR_0x003ec56c]
 		PUSH ECX
-		TwinCall D3DResource_Release@4
+		TwinCall ExWrapper_D3DResource_Release@4
 		TwinProcExit, FUN_00104C30
 TwinProcEnd FUN_00104C30
 
@@ -273980,7 +273980,7 @@ TwinProc FUN_00104CB0, stdcall
 		LEA EAX,[ESP + 08h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DSurface_LockRect@16
+		TwinCall ExWrapper_D3DSurface_LockRect@16
 		MOV EAX,dword ptr [PTR_0x003ec55c]
 		XOR EDX,EDX
 		MOV dword ptr [EAX],EDX
@@ -273998,12 +273998,12 @@ TwinProc FUN_00104CB0, stdcall
 		PUSH 01h
 		PUSH 01E0h
 		PUSH 0280h
-		TwinCall XGSetTextureHeader@36
+		TwinCall ExWrapper_XGSetTextureHeader@36
 		MOV EDX,dword ptr [ESP + 04h]
 		MOV EAX,dword ptr [PTR_0x003ec55c]
 		PUSH EDX
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESP + 04h]
 		ADD ESP,08h
 		TwinProcExit, FUN_00104CB0
@@ -275469,7 +275469,7 @@ TwinProc FUN_00105EC0, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EDX,dword ptr [ESP + 08h]
 		PUSH EDX
 		TwinCall FUN_00293FD0
@@ -275543,7 +275543,7 @@ TwinProcThiscall FUN_00105F50, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EAX,dword ptr [ESP + 010h]
 		MOV EDX,dword ptr [ESI]
 		PUSH EBX
@@ -276216,7 +276216,7 @@ RETURN_LAB_001065f1::
 		MOVSS XMM0,dword ptr [EAX + 03Ch]
 		MULSS XMM0,dword ptr [FLOAT_0x00390958]
 		MOVSS dword ptr [ESI + 04Ch],XMM0
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01Dh],AL
 		MOV byte ptr [ESI + 01Eh],00h
 		MOV byte ptr [ESI + 01Fh],00h
@@ -279023,7 +279023,7 @@ RETURN_LAB_00108708::
 		FMUL dword ptr [FLOAT_0x0038abf8]
 		FADD dword ptr [FLOAT_0x00390a40]
 		FMUL dword ptr [FLOAT_0x003863a4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESP + 010h],EAX
 		LEA EBP,[ESI + 08h]
 		LEA EAX,[ESI + 04h]
@@ -279693,15 +279693,15 @@ TwinProc FUN_00108D80, stdcall
 		ADDSS XMM2,XMM6
 		MOVSS dword ptr [ESP + 014h],XMM1
 		MOVSS dword ptr [ESP + 018h],XMM2
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 014h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 018h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [FLOAT_0x0038639c]
 		FSUB dword ptr [EBP + 0Ch]
 		MOV byte ptr [ESI + 02h],AL
@@ -279710,7 +279710,7 @@ TwinProc FUN_00108D80, stdcall
 		FMUL dword ptr [EBP + 0Ch]
 		FADDP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		POP ESI
 		MOV ESP,EBP
@@ -279772,15 +279772,15 @@ TwinProc FUN_00108EA0, stdcall
 		ADDSS XMM2,XMM6
 		MOVSS dword ptr [ESP + 014h],XMM1
 		MOVSS dword ptr [ESP + 018h],XMM2
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 014h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 018h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [FLOAT_0x0038639c]
 		FSUB dword ptr [EBP + 08h]
 		MOV byte ptr [ESI + 02h],AL
@@ -279789,7 +279789,7 @@ TwinProc FUN_00108EA0, stdcall
 		FMUL dword ptr [EBP + 08h]
 		FADDP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		POP ESI
 		MOV ESP,EBP
@@ -279814,7 +279814,7 @@ TwinProcThiscall FUN_00108FC0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMULP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX EDX,byte ptr [ESI + 01h]
 		MOV dword ptr [ESP + 08h],EDX
 		MOV byte ptr [ESI],AL
@@ -279826,7 +279826,7 @@ TwinProcThiscall FUN_00108FC0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMULP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX ECX,byte ptr [ESI + 02h]
 		MOV BX,word ptr [ESP + 016h]
 		MOV dword ptr [ESP + 08h],ECX
@@ -279839,7 +279839,7 @@ TwinProcThiscall FUN_00108FC0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMULP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 02h],AL
 		MOVZX EAX,byte ptr [ESI + 03h]
 		MOV dword ptr [ESP + 014h],EAX
@@ -279851,7 +279851,7 @@ TwinProcThiscall FUN_00108FC0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMULP
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 03h],AL
 		MOV EDX,dword ptr [ESI]
 		MOV EAX,dword ptr [ESP + 010h]
@@ -279917,21 +279917,21 @@ TwinProcThiscall FUN_001090B0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FMUL dword ptr [ESP + 010h]
 		MOV byte ptr [ESI + -02h],AL
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 024h]
 		FMUL dword ptr [ESP + 014h]
 		MOV byte ptr [ESI + -01h],AL
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 018h]
 		FMUL dword ptr [ESP + 01Ch]
 		MOV byte ptr [ESI],AL
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01h],AL
 		MOV EAX,dword ptr [EBX + 010h]
 		INC EDI
@@ -281091,7 +281091,7 @@ TwinProcThiscall FUN_00109E90, stdcall
 		PUSH EAX
 		PUSH EDX
 		PUSH OFFSET STR_0x00390ac0
-		TwinCall XGAssembleShader@44
+		TwinCall ExWrapper_XGAssembleShader@44
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH EDX
 		TwinCall ?GetBufferSize@XGBuffer@@QAGKXZ
@@ -281146,7 +281146,7 @@ TwinProcThiscall FUN_00109F30, stdcall
 		PUSH EAX
 		PUSH EDX
 		PUSH OFFSET STR_0x00390ac0
-		TwinCall XGAssembleShader@44
+		TwinCall ExWrapper_XGAssembleShader@44
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH EDX
 		TwinCall ?GetBufferSize@XGBuffer@@QAGKXZ
@@ -281197,7 +281197,7 @@ TwinProcThiscall FUN_00109FC0, stdcall
 		ADD ECX,0104h
 		PUSH EAX
 		MOV dword ptr [ESP + 020h],ECX
-		TwinCall XGSpliceVertexShaders@24
+		TwinCall ExWrapper_XGSpliceVertexShaders@24
 		PUSH 00h
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
@@ -281332,7 +281332,7 @@ TwinProc FUN_0010A120, stdcall
 		MOV dword ptr [ESP + 038h],02Ah
 		MOV dword ptr [ESP + 028h],EDI
 		MOV dword ptr [ESP + 044h],EBX
-		TwinCall XGetVideoFlags@0
+		TwinCall ExWrapper_XGetVideoFlags@0
 		TEST AL,08h
 		MOV dword ptr [ESP + 0Ch],EAX
 		JZ LAB_0x0010A190
@@ -281378,16 +281378,16 @@ TwinProc FUN_0010A120, stdcall
 		PUSH 0100000h
 		TwinCall ExWrapper_Direct3D_SetPushBufferSize@8
 		MOV EBP,032h
-		TwinCall XGetVideoStandard@0
+		TwinCall ExWrapper_XGetVideoStandard@0
 		CMP EAX,ESI
 		JZ LAB_0x0010A20D
-		TwinCall XGetVideoStandard@0
+		TwinCall ExWrapper_XGetVideoStandard@0
 		CMP EAX,EDI
 		JNZ LAB_0x0010A212
 	LAB_0x0010A20D: 
 		MOV EBP,03Ch
 	LAB_0x0010A212: 
-		TwinCall XGetVideoStandard@0
+		TwinCall ExWrapper_XGetVideoStandard@0
 		MOV EDI,03h
 		CMP EAX,EDI
 		JNZ LAB_0x0010A22C
@@ -281519,7 +281519,7 @@ TwinProc FUN_0010A120, stdcall
 		JMP LAB_0x0010A462
 	LAB_0x0010A459: 
 		FLD dword ptr [ESP + 010h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 	LAB_0x0010A462: 
 		MOV byte ptr [ESP + EDI*01h + 0270h],AL
 		MOV byte ptr [ESP + EDI*01h + 0170h],AL
@@ -283124,15 +283124,15 @@ RETURN_LAB_0010baaf::
 		PUSH EDI
 		PUSH EBX
 		MOV dword ptr [ESP + 038h],EAX
-		TwinCall XGSetTextureHeader@36
+		TwinCall ExWrapper_XGSetTextureHeader@36
 		PUSH 080h
 		PUSH EAX
-		TwinCall D3D_AllocContiguousMemory@8
+		TwinCall ExWrapper_D3D_AllocContiguousMemory@8
 		PUSH EAX
 		MOV dword ptr [ESP + 024h],EAX
 		MOV EAX,dword ptr [ESI + 054h]
 		PUSH EAX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESP + 010h]
 		SUB EAX,00h
 		JZ LAB_0x0010BB7D
@@ -283166,7 +283166,7 @@ RETURN_LAB_0010baaf::
 		MOV EDX,dword ptr [ESP + 024h]
 		PUSH 080h
 		PUSH EDX
-		TwinCall D3D_AllocContiguousMemory@8
+		TwinCall ExWrapper_D3D_AllocContiguousMemory@8
 		MOV ECX,dword ptr [ESP + 024h]
 		MOV EDX,dword ptr [EBP]
 		PUSH 01h
@@ -283187,7 +283187,7 @@ RETURN_LAB_0010baaf::
 		PUSH 00h
 		PUSH EAX
 		PUSH EDI
-		TwinCall XGSwizzleRect@32
+		TwinCall ExWrapper_XGSwizzleRect@32
 		PUSH EDI
 		TwinCall FUN_00293FD0
 RETURN_LAB_0010bbc0::
@@ -284308,7 +284308,7 @@ TwinProc FUN_0010C9D0, stdcall
 		PUSH 00h
 		TwinCall ExWrapper_D3DDevice_SetTexture@8
 		PUSH ESI
-		TwinCall D3DResource_Release@4
+		TwinCall ExWrapper_D3DResource_Release@4
 		MOV ECX,dword ptr [PTR_0x003ec56c]
 		MOV EDX,dword ptr [PTR_0x003ec568]
 		PUSH ECX
@@ -284352,7 +284352,7 @@ TwinProc FUN_0010CBD0, stdcall
 		PUSH EAX
 		PUSH OFFSET STR_0x0039f288
 		PUSH OFFSET STR_0x00390ac0
-		TwinCall XGAssembleShader@44
+		TwinCall ExWrapper_XGAssembleShader@44
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
 		TwinCall ?GetBufferSize@XGBuffer@@QAGKXZ
@@ -284391,7 +284391,7 @@ TwinProc FUN_0010CBD0, stdcall
 		PUSH EAX
 		PUSH OFFSET STR_0x0039f378
 		PUSH OFFSET STR_0x00390ac0
-		TwinCall XGAssembleShader@44
+		TwinCall ExWrapper_XGAssembleShader@44
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
 		TwinCall ?GetBufferSize@XGBuffer@@QAGKXZ
@@ -284431,7 +284431,7 @@ TwinProc FUN_0010CBD0, stdcall
 		PUSH EAX
 		PUSH OFFSET STR_0x0039f474
 		PUSH OFFSET STR_0x00390ac0
-		TwinCall XGAssembleShader@44
+		TwinCall ExWrapper_XGAssembleShader@44
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
 		TwinCall ?GetBufferSize@XGBuffer@@QAGKXZ
@@ -284925,7 +284925,7 @@ TwinProc FUN_0010D2B0, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EDX,dword ptr [ESP + 08h]
 		PUSH EDX
 		TwinCall FUN_00293FD0
@@ -285889,7 +285889,7 @@ RETURN_LAB_0010dd07::
 		MOV dword ptr [ESI + 024h],EAX
 	LAB_0x0010DD2F: 
 		FLD dword ptr [EBX]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01Dh],AL
 		POP EDI
 		MOV byte ptr [ESI + 01Eh],00h
@@ -285926,7 +285926,7 @@ TwinProcThiscall FUN_0010DD70, stdcall
 		PUSH EDI
 		MOV EDI,ECX
 		MOV ESI,dword ptr [EDI + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM3,dword ptr [EDI]
 		XOR EDX,EDX
 		TEST ESI,ESI
@@ -287830,19 +287830,19 @@ RETURN_LAB_0010f48e::
 RETURN_LAB_0010f4ab::
 		FLD dword ptr [ESP + 0B0h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0B4h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 08h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0B8h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 09h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0BCh]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 0Ah],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 030h]
 		MOV EDX,dword ptr [ECX]
 		MOV byte ptr [ESP + 0Bh],AL
@@ -288092,19 +288092,19 @@ RETURN_LAB_0010f811::
 RETURN_LAB_0010f857::
 		FLD dword ptr [ESI + 050h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 054h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 0Ch],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 058h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 0Dh],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESI + 05Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESP + 0Eh],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 030h]
 		MOV EDX,dword ptr [ECX]
 		MOV byte ptr [ESP + 0Fh],AL
@@ -288144,7 +288144,7 @@ TwinProc FUN_0010F8E0, stdcall
 		TwinCall FUN_0010A050
 RETURN_LAB_0010f90c::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x0010F91E: 
 		MOV EAX,OFFSET STRUCT_0x00402c8c
@@ -288755,7 +288755,7 @@ RETURN_LAB_00110025::
 		TwinCall FUN_0010A050
 RETURN_LAB_001100d7::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		MOV EDX,dword ptr [ESP + 01Ch]
 		ADD ESP,04h
 	LAB_0x001100ED: 
@@ -288839,7 +288839,7 @@ RETURN_LAB_001101ca::
 		TwinCall FUN_0010A050
 RETURN_LAB_00110205::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00110217: 
 		MOV EAX,dword ptr [STRUCT_0x00402c8c + 4]
@@ -288861,7 +288861,7 @@ RETURN_LAB_00110205::
 		TwinCall FUN_0010A050
 RETURN_LAB_0011025a::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x0011026C: 
 		MOV ECX,dword ptr [STRUCT_0x00402c8c + 12]
@@ -289048,7 +289048,7 @@ RETURN_LAB_00110499::
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall XGSetVertexBufferHeader@24
+		TwinCall ExWrapper_XGSetVertexBufferHeader@24
 		MOV EDX,dword ptr [EDI + 024h]
 		ADD EDX,EBX
 		PUSH EDX
@@ -289061,7 +289061,7 @@ RETURN_LAB_00110541::
 		MOV EAX,dword ptr [EDI + 020h]
 		MOV ECX,dword ptr [EAX + EBX*01h]
 		PUSH ECX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EDX,dword ptr [ESP + 01Ch]
 		MOV EAX,dword ptr [EDX + 010h]
 		MOV ECX,dword ptr [EAX + 020h]
@@ -289592,7 +289592,7 @@ RETURN_LAB_00110aa7::
 		TwinCall FUN_0010A050
 RETURN_LAB_00110af2::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00110B04: 
 		MOV EAX,dword ptr [STRUCT_0x00402c8c + 4]
@@ -289614,7 +289614,7 @@ RETURN_LAB_00110af2::
 		TwinCall FUN_0010A050
 RETURN_LAB_00110b47::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00110B59: 
 		MOV ECX,dword ptr [STRUCT_0x00402c8c + 12]
@@ -290023,7 +290023,7 @@ RETURN_LAB_00110ffb::
 		TwinCall FUN_0010A050
 RETURN_LAB_00111052::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00111064: 
 		MOV EAX,dword ptr [STRUCT_0x00402c8c + 4]
@@ -290047,7 +290047,7 @@ RETURN_LAB_00111052::
 		TwinCall FUN_0010A050
 RETURN_LAB_001110ad::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x001110BF: 
 		MOV ECX,dword ptr [STRUCT_0x00402c8c + 12]
@@ -290909,7 +290909,7 @@ RETURN_LAB_00111b11::
 		TwinCall FUN_0010A050
 RETURN_LAB_00111b72::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00111B84: 
 		MOV EAX,dword ptr [STRUCT_0x00402c8c + 4]
@@ -290933,7 +290933,7 @@ RETURN_LAB_00111b72::
 		TwinCall FUN_0010A050
 RETURN_LAB_00111bcf::
 		PUSH OFFSET FUN_0027D390
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00111BE1: 
 		MOV EAX,dword ptr [STRUCT_0x00402c8c + 12]
@@ -291248,7 +291248,7 @@ RETURN_LAB_00111f43::
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EDX,dword ptr [ESP + 01Ch]
 		PUSH EDX
 		TwinCall FUN_00293FD0
@@ -297261,7 +297261,7 @@ TwinProc FUN_00116250, stdcall
 		PUSH EDX
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		XOR EAX,EAX
 		TwinProcExit 014h, FUN_00116250
 TwinProcEnd FUN_00116250
@@ -297275,7 +297275,7 @@ TwinProc FUN_00116280, stdcall
 		PUSH ECX
 		PUSH EDX
 		PUSH EAX
-		TwinCall D3DSurface_LockRect@16
+		TwinCall ExWrapper_D3DSurface_LockRect@16
 		XOR EAX,EAX
 		TwinProcExit 010h, FUN_00116280
 TwinProcEnd FUN_00116280
@@ -298020,7 +298020,7 @@ TwinProc FUN_00116B10, stdcall
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x00116B3B: 
 		FMUL dword ptr [ECX + 04h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,EAX
 		INC ECX
 		MOV EDX,01h
@@ -302951,7 +302951,7 @@ TwinProcThiscall FUN_0011A160, stdcall
 		PUSH EAX
 		PUSH 00h
 		PUSH ECX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EDX,dword ptr [ESP + 08h]
 		PUSH EDX
 		TwinCall FUN_00293FD0
@@ -304384,7 +304384,7 @@ TwinProc FUN_0011AE30, stdcall
 		PUSH ECX
 		PUSH 00h
 		PUSH EDX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EAX,dword ptr [ESP + 0Ch]
 		PUSH EAX
 		TwinCall FUN_00293FD0
@@ -309166,7 +309166,7 @@ RETURN_LAB_0011dcdd::
 		MOV EDX,dword ptr [ESP + 014h]
 		MOVSX EAX,byte ptr [EDI + EDX*01h]
 		PUSH EAX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV ECX,dword ptr [ESP + 018h]
 		ADD ESP,04h
 		MOV byte ptr [EDI + ECX*01h],AL
@@ -309320,7 +309320,7 @@ RETURN_LAB_0011de6d::
 		MOV EDX,dword ptr [ESP + 014h]
 		MOVSX EAX,byte ptr [EDI + EDX*01h]
 		PUSH EAX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV ECX,dword ptr [ESP + 018h]
 		ADD ESP,04h
 		MOV byte ptr [EDI + ECX*01h],AL
@@ -309499,7 +309499,7 @@ TwinProc FUN_0011E000, stdcall
 		PUSH ECX
 		PUSH 00h
 		PUSH EDX
-		TwinCall D3DTexture_LockRect@20
+		TwinCall ExWrapper_D3DTexture_LockRect@20
 		MOV EAX,dword ptr [ESP + 010h]
 		PUSH EAX
 		TwinCall FUN_00293FD0
@@ -320492,7 +320492,7 @@ TwinProc FUN_00124B80, c
 		MOV EDI,dword ptr [ESI + 02D0h]
 		MOV dword ptr [EDI + 014h],EDX
 		FLD dword ptr [ESI + 02C0h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		AND EAX,0FFFFh
 		TEST EAX,EAX
 		MOV dword ptr [ESP + 050h],EAX
@@ -320507,7 +320507,7 @@ TwinProc FUN_00124B80, c
 		MOV EDX,dword ptr [ECX + 050h]
 		MOV dword ptr [EDI + 040h],EDX
 		FLD dword ptr [ESI + 02C8h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		AND EAX,0FFFFh
 		TEST EAX,EAX
 		MOV dword ptr [ESP + 050h],EAX
@@ -320522,7 +320522,7 @@ TwinProc FUN_00124B80, c
 		MOV EDX,dword ptr [ECX + 058h]
 		MOV dword ptr [EDI + 048h],EDX
 		FLD dword ptr [ESI + 02C4h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		AND EAX,0FFFFh
 		TEST EAX,EAX
 		MOV dword ptr [ESP + 050h],EAX
@@ -320537,7 +320537,7 @@ TwinProc FUN_00124B80, c
 		MOV EDX,dword ptr [ECX + 04Ch]
 		MOV dword ptr [EDI + 044h],EDX
 		FLD dword ptr [ESI + 02CCh]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		AND EAX,0FFFFh
 		TEST EAX,EAX
 		MOV dword ptr [ESP + 050h],EAX
@@ -321221,7 +321221,7 @@ RETURN_LAB_001255c8::
 		FADD ST(0),ST(0)
 		FSUB dword ptr [EBP + 044h]
 		FADD dword ptr [EBP + 050h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EDI,EAX
 		PUSH OFFSET NUM_0x003a2ec4
 		MOV dword ptr [ESP + 018h],EDI
@@ -321232,7 +321232,7 @@ RETURN_LAB_001255e8::
 		FADD ST(0),ST(0)
 		FSUB dword ptr [EBP + 048h]
 		FADD dword ptr [EBP + 054h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM0,dword ptr [EBP + 0328h]
 		XORPS XMM1,XMM1
 		MOV ECX,EAX
@@ -321719,7 +321719,7 @@ TwinProc FUN_00125BB0, c
 		TwinCall FUN_000120A4
 RETURN_LAB_00125c48::
 		FMUL dword ptr [FLOAT_0x0039290c]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM0,dword ptr [EBP + 054h]
 		ADDSS XMM0,dword ptr [EBP + 048h]
 		LEA ECX,[ESP + 024h]
@@ -321992,7 +321992,7 @@ RETURN_LAB_00125fcb::
 		MOVSS dword ptr [ESP + 020h],XMM0
 		TwinCall FUN_000120A4
 RETURN_LAB_00125fe8::
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		SHL EAX,010h
 		PUSH OFFSET NUM_0x003a2ec4
 		MOV dword ptr [ESP + 01Ch],EAX
@@ -322251,7 +322251,7 @@ RETURN_LAB_00126328::
 		FADD ST(0),ST(0)
 		FSUB dword ptr [EBX + 044h]
 		FADD dword ptr [EBX + 050h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		PUSH OFFSET NUM_0x003a2ec4
 		MOV EDI,EAX
 		TwinCall FUN_000120A4
@@ -322261,7 +322261,7 @@ RETURN_LAB_00126344::
 		FADD ST(0),ST(0)
 		FSUB dword ptr [EBX + 048h]
 		FADD dword ptr [EBX + 054h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM0,dword ptr [EBX + 0328h]
 		UCOMISS XMM0,dword ptr [FLOAT_0x00386394]
 		MOV dword ptr [ESP + 028h],EAX
@@ -322506,32 +322506,32 @@ TwinProc FUN_00126650, c
 		MOVSS XMM0,dword ptr [FLOAT_0x00392908]
 		DIVSS XMM0,dword ptr [ESI + 08Ch]
 		MOVSS dword ptr [EDI + 01Ch],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 058h]
 		ADDSS XMM0,dword ptr [ESI + 064h]
 		MOVSS dword ptr [EDI],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 05Ch]
 		ADDSS XMM0,dword ptr [ESI + 068h]
 		MOVSS dword ptr [EDI + 04h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 060h]
 		ADDSS XMM0,dword ptr [ESI + 06Ch]
 		MOVSS dword ptr [EDI + 08h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 070h]
 		ADDSS XMM0,dword ptr [ESI + 07Ch]
 		MOVSS dword ptr [EDI + 010h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 074h]
 		ADDSS XMM0,dword ptr [ESI + 080h]
 		MOVSS dword ptr [EDI + 014h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 078h]
 		ADDSS XMM0,dword ptr [ESI + 084h]
@@ -322597,7 +322597,7 @@ TwinProc FUN_001267A0, c
 		MOV word ptr [EBX + 010Ah],CX
 		MOVSS XMM0,dword ptr [NUM_0x0044b6c0]
 		MOVSS dword ptr [EDI + 0Ch],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOVSS XMM1,dword ptr [FLOAT_0x00392908]
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 08Ch]
@@ -322605,32 +322605,32 @@ TwinProc FUN_001267A0, c
 		ADDSS XMM0,dword ptr [ESI + 08Ch]
 		DIVSS XMM1,XMM0
 		MOVSS dword ptr [EDI + 01Ch],XMM1
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 058h]
 		ADDSS XMM0,dword ptr [ESI + 064h]
 		MOVSS dword ptr [EDI],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 05Ch]
 		ADDSS XMM0,dword ptr [ESI + 068h]
 		MOVSS dword ptr [EDI + 04h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 060h]
 		ADDSS XMM0,dword ptr [ESI + 06Ch]
 		MOVSS dword ptr [EDI + 08h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 070h]
 		ADDSS XMM0,dword ptr [ESI + 07Ch]
 		MOVSS dword ptr [EDI + 010h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 074h]
 		ADDSS XMM0,dword ptr [ESI + 080h]
 		MOVSS dword ptr [EDI + 014h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [ESI + 078h]
 		ADDSS XMM0,dword ptr [ESI + 084h]
@@ -322695,7 +322695,7 @@ TwinProc FUN_00126900, c
 		MOVSS XMM0,dword ptr [FLOAT_0x00392908]
 		DIVSS XMM0,dword ptr [EDI + 08Ch]
 		MOVSS dword ptr [ESI + 01Ch],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP + 010h],EAX
 		FILD dword ptr [ESP + 010h]
 		PUSH 036B0h
@@ -322711,7 +322711,7 @@ RETURN_LAB_0012699b::
 RETURN_LAB_001269ab::
 		FMUL dword ptr [ESP + 018h]
 		FSTP dword ptr [ESI + 08h]
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOV dword ptr [ESP + 018h],EAX
 		FILD dword ptr [ESP + 018h]
 		PUSH 07530h
@@ -322734,12 +322734,12 @@ RETURN_LAB_001269f4::
 		FMUL dword ptr [FLOAT_0x00392918]
 		FADDP
 		FSTP dword ptr [ESI + 018h]
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [EDI + 05Ch]
 		ADDSS XMM0,dword ptr [EDI + 068h]
 		MOVSS dword ptr [ESI + 04h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [EDI + 074h]
 		ADDSS XMM0,dword ptr [EDI + 080h]
@@ -322804,9 +322804,9 @@ TwinProc FUN_00126A70, c
 		MOVSS XMM0,dword ptr [FLOAT_0x00392908]
 		DIVSS XMM0,dword ptr [EDI + 08Ch]
 		MOVSS dword ptr [ESI + 01Ch],XMM0
-		TwinCall rand
-		TwinCall rand
-		TwinCall rand
+		TwinCall ExWrapper_rand
+		TwinCall ExWrapper_rand
+		TwinCall ExWrapper_rand
 		MOVSS XMM0,dword ptr [FLOAT_0x003865d4]
 		MOVSS XMM1,dword ptr [ESI]
 		MULSS XMM1,XMM0
@@ -322814,12 +322814,12 @@ TwinProc FUN_00126A70, c
 		MOVSS XMM1,dword ptr [ESI + 08h]
 		MULSS XMM1,XMM0
 		MOVSS dword ptr [ESI + 018h],XMM1
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [EDI + 05Ch]
 		ADDSS XMM0,dword ptr [EDI + 068h]
 		MOVSS dword ptr [ESI + 04h],XMM0
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [EDI + 074h]
 		ADDSS XMM0,dword ptr [EDI + 080h]
@@ -322947,7 +322947,7 @@ RETURN_LAB_00126ccc::
 		ADD ESP,04h
 		FSUBR dword ptr [ESI + 04h]
 		FSTP dword ptr [ESI + 04h]
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		MOVSS XMM1,dword ptr [FLOAT_0x00392908]
 		CVTSI2SS XMM0,EAX
 		MULSS XMM0,dword ptr [EDI + 08Ch]
@@ -329649,7 +329649,7 @@ TwinProc FUN_0012C840, c
 		LEA EAX,[ESP + 014h]
 		PUSH OFFSET STR_0x00392980
 		PUSH EAX
-		TwinCall sprintf
+		TwinCall ExWrapper_sprintf
 		ADD ESP,010h
 		PUSH 00h
 		LEA ECX,[ESP + 010h]
@@ -330638,7 +330638,7 @@ TwinProc FUN_0012D870, stdcall
 		PUSH ECX
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_PlayEx@16
+		TwinCall ExWrapper_IDirectSoundBuffer_PlayEx@16
 		TwinProcExit 010h, FUN_0012D870
 TwinProcEnd FUN_0012D870
 
@@ -330651,7 +330651,7 @@ TwinProc FUN_0012D920, stdcall
 		PUSH ECX
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundStream_FlushEx@16
+		TwinCall ExWrapper_IDirectSoundStream_FlushEx@16
 		TwinProcExit 010h, FUN_0012D920
 TwinProcEnd FUN_0012D920
 
@@ -331209,7 +331209,7 @@ TwinProcThiscall FUN_0012DF90, stdcall
 		MOVZX EAX,AL
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSound_EnableHeadphones@8
+		TwinCall ExWrapper_IDirectSound_EnableHeadphones@8
 		TwinProcExit 04h, FUN_0012DF90
 TwinProcEnd FUN_0012DF90
 
@@ -331224,7 +331224,7 @@ TwinProc FUN_0012DFB0, stdcall
 		PUSH EDI
 		PUSH 00h
 		MOV byte ptr [ESI + 018h],01h
-		TwinCall DirectSoundCreate@12
+		TwinCall ExWrapper_DirectSoundCreate@12
 		TEST EAX,EAX
 		JGE LAB_0x0012DFD8
 		MOV dword ptr [EDI],00h
@@ -331235,7 +331235,7 @@ TwinProc FUN_0012DFB0, stdcall
 		LEA EAX,[ESI + 08h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSound_GetCaps@8
+		TwinCall ExWrapper_IDirectSound_GetCaps@8
 	LAB_0x0012DFE4: 
 		PUSH 00h
 		PUSH 00h
@@ -331244,7 +331244,7 @@ TwinProc FUN_0012DFB0, stdcall
 		PUSH OFFSET STR_0x00392f44
 		MOV dword ptr [ESP + 018h],03h
 		MOV dword ptr [ESP + 01Ch],04h
-		TwinCall XAudioDownloadEffectsImage@16
+		TwinCall ExWrapper_XAudioDownloadEffectsImage@16
 		MOV ESI,dword ptr [ESI + 01Ch]
 		MOV ECX,dword ptr [EDI]
 		LEA EAX,[ESI + ESI*02h]
@@ -331253,7 +331253,7 @@ TwinProc FUN_0012DFB0, stdcall
 		ADD EAX,OFFSET ARRAY_0x00392a10
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSound_SetI3DL2Listener@12
+		TwinCall ExWrapper_IDirectSound_SetI3DL2Listener@12
 		POP EDI
 		POP ESI
 		ADD ESP,08h
@@ -331268,7 +331268,7 @@ TwinProc FUN_0012E030, stdcall
 		TEST EAX,EAX
 		JZ LAB_0x0012E047
 		PUSH EAX
-		TwinCall IDirectSound_Release@4
+		TwinCall ExWrapper_IDirectSound_Release@4
 		MOV dword ptr [ESI + 04h],00h
 	LAB_0x0012E047: 
 		MOV byte ptr [ESI + 018h],00h
@@ -331279,7 +331279,7 @@ TwinProcEnd FUN_0012E030
 TwinProc FUN_0012E050, stdcall
 		MOV EAX,dword ptr [ECX + 04h]
 		PUSH EAX
-		TwinCall IDirectSound_CommitDeferredSettings@4
+		TwinCall ExWrapper_IDirectSound_CommitDeferredSettings@4
 		TwinProcExit, FUN_0012E050
 TwinProcEnd FUN_0012E050
 
@@ -331298,7 +331298,7 @@ TwinProcThiscall FUN_0012E060, stdcall
 		ADD EAX,OFFSET ARRAY_0x00392a10
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSound_SetI3DL2Listener@12
+		TwinCall ExWrapper_IDirectSound_SetI3DL2Listener@12
 		MOV dword ptr [ESI + 01Ch],EDI
 	LAB_0x0012E089: 
 		POP EDI
@@ -331343,7 +331343,7 @@ RETURN_LAB_0012e10f::
 		LEA ECX,[ESP + 020h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSound_CreateSoundBuffer@16
+		TwinCall ExWrapper_IDirectSound_CreateSoundBuffer@16
 		XOR EAX,EAX
 		POP ESI
 		ADD ESP,02Ch
@@ -331357,17 +331357,17 @@ TwinProcThiscall FUN_0012E130, stdcall
 RETURN_LAB_0012e133::
 		MOV EAX,dword ptr [EAX + 04h]
 		PUSH EAX
-		TwinCall IDirectSound_CommitDeferredSettings@4
+		TwinCall ExWrapper_IDirectSound_CommitDeferredSettings@4
 		MOV ECX,dword ptr [ESP + 08h]
 		MOV EDX,dword ptr [ESI]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV EAX,dword ptr [ESP + 0Ch]
 		MOV ECX,dword ptr [ESI]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		POP ESI
 		TwinProcExit 08h, FUN_0012E130
 TwinProcEnd FUN_0012E130
@@ -331400,17 +331400,17 @@ TwinProcThiscall FUN_0012E160, stdcall
 		MOV ECX,08FF5h
 		MOV dword ptr [ESI + 034h],ECX
 		MOV dword ptr [ESI + 03Ch],ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV ECX,dword ptr [ESI]
 		LEA EAX,[ESI + 040h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		LEA EDX,[ESI + 068h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP ESI
 		TwinProcExit 08h, FUN_0012E160
 TwinProcEnd FUN_0012E160
@@ -331451,14 +331451,14 @@ TwinProc FUN_0012E200, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_PlayEx@16
+		TwinCall ExWrapper_IDirectSoundBuffer_PlayEx@16
 		LEA ESP,[ESP]
 	LAB_0x0012E220: 
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESP + 04h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 04h],01h
 		JNZ LAB_0x0012E220
 		MOV dword ptr [ESI + 08h],00h
@@ -331484,13 +331484,13 @@ TwinProc FUN_0012E250, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_PlayEx@16
+		TwinCall ExWrapper_IDirectSoundBuffer_PlayEx@16
 	LAB_0x0012E270: 
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESP + 04h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 04h],01h
 		JNZ LAB_0x0012E270
 		MOV dword ptr [ESI + 0Ch],01h
@@ -331515,7 +331515,7 @@ TwinProc FUN_0012E290, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 0Ch],00h
 	LAB_0x0012E2BB: 
 		POP ESI
@@ -331563,11 +331563,11 @@ TwinProcThiscall FUN_0012E2E0, stdcall
 		MOVSS dword ptr [ESP + 08h],XMM0
 	LAB_0x0012E32E: 
 		FLD dword ptr [ESP + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		POP ESI
 		TwinProcExit 04h, FUN_0012E2E0
 TwinProcEnd FUN_0012E2E0
@@ -331588,7 +331588,7 @@ TwinProc FUN_0012E350, stdcall
 		LEA EAX,[ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		MOV CL,byte ptr [ESP + 04h]
 		MOV EAX,01h
 		TEST AL,CL
@@ -331633,7 +331633,7 @@ TwinProcThiscall FUN_0012E3A0, stdcall
 		PUSH ESI
 		LEA EDX,[ESI + 010h]
 		PUSH EDX
-		TwinCall DirectSoundCreateBuffer@8
+		TwinCall ExWrapper_DirectSoundCreateBuffer@8
 		TEST EAX,EAX
 		JL LAB_0x0012E3F3
 		TEST EBX,EBX
@@ -331642,7 +331642,7 @@ TwinProcThiscall FUN_0012E3A0, stdcall
 		PUSH EDI
 		PUSH EBX
 		PUSH ESI
-		TwinCall IDirectSoundBuffer_SetBufferData@12
+		TwinCall ExWrapper_IDirectSoundBuffer_SetBufferData@12
 		TEST EAX,EAX
 		JL LAB_0x0012E3F3
 	LAB_0x0012E3F1: 
@@ -331680,7 +331680,7 @@ RETURN_LAB_0012e441::
 		LEA ECX,[ESP + 0Ch]
 		PUSH ECX
 		PUSH EAX
-		TwinCall IDirectSound_CreateSoundBuffer@16
+		TwinCall ExWrapper_IDirectSound_CreateSoundBuffer@16
 		MOV EDX,dword ptr [ESP + 08h]
 		MOV dword ptr [ESI + 0DCh],EDX
 		POP ESI
@@ -331729,7 +331729,7 @@ RETURN_LAB_0012e4fc::
 		LEA ECX,[ESP + 020h]
 		PUSH ECX
 		PUSH EAX
-		TwinCall IDirectSound_CreateSoundBuffer@16
+		TwinCall ExWrapper_IDirectSound_CreateSoundBuffer@16
 		MOV EDX,dword ptr [ESP + 01Ch]
 		MOV dword ptr [ESI + 0DCh],EDX
 		POP ESI
@@ -331780,15 +331780,15 @@ TwinProc FUN_0012E530, stdcall
 		MOV dword ptr [ESI + 0B8h],05h
 		MOV dword ptr [ESI + 0BCh],ECX
 		MOV dword ptr [ESI + 0280h],06h
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV ECX,dword ptr [ESI]
 		PUSH 02EEh
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP EDI
 		POP ESI
 		POP EBX
@@ -331850,7 +331850,7 @@ RETURN_LAB_0012e665::
 		LEA EAX,[ESI + 0D0h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP EDI
 		POP ESI
 		TwinProcExit, FUN_0012E610
@@ -331951,15 +331951,15 @@ TwinProc FUN_0012E6C0, stdcall
 		MOV ECX,dword ptr [ESI]
 		PUSH EDI
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EDX,dword ptr [ESI]
 		PUSH 00h
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		PUSH 02EEh
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP EDI
 		POP ESI
 		POP EBX
@@ -331976,7 +331976,7 @@ RETURN_LAB_0012e938::
 		LEA EAX,[EDX + 0D0h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		TwinProcExit 04h, FUN_0012E930
 TwinProcEnd FUN_0012E930
 
@@ -332134,7 +332134,7 @@ RETURN_LAB_0012eb73::
 		LEA ECX,[ESI + 0D0h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP ESI
 		POP ECX
 		TwinProcExit 04h, FUN_0012EA90
@@ -332147,7 +332147,7 @@ RETURN_LAB_0012eb73::
 		CVTTSS2SI EAX,XMM1
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		POP ESI
 		POP ECX
 		TwinProcExit 04h, FUN_0012EA90
@@ -332216,7 +332216,7 @@ TwinProc FUN_0012ECA0, stdcall
 		MOV ECX,dword ptr [ECX]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		TwinProcExit, FUN_0012ECA0
 TwinProcEnd FUN_0012ECA0
 
@@ -332389,7 +332389,7 @@ TwinProc FUN_0012EF50, stdcall
 		LEA EAX,[ESP + 014h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 014h],01h
 		JNZ LAB_0x0012EFCB
 		MOV dword ptr [ESI],00h
@@ -332473,11 +332473,11 @@ TwinProcThiscall FUN_0012F030, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00392f70]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00392f70]
 		MOV dword ptr [ESI + 08h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0Ch],EAX
 		POP ESI
 		TwinProcExit 08h, FUN_0012F030
@@ -332488,11 +332488,11 @@ TwinProcThiscall FUN_0012F060, stdcall
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x00392f70]
 		MOV ESI,ECX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 0Ch]
 		FMUL dword ptr [FLOAT_0x00392f70]
 		MOV dword ptr [ESI + 010h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 014h],EAX
 		POP ESI
 		TwinProcExit 08h, FUN_0012F060
@@ -332534,19 +332534,19 @@ RETURN_LAB_0012f0e2::
 		FMUL dword ptr [FLOAT_0x00390958]
 		ADD ESP,04h
 		MOV dword ptr [ESP + 014h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [EBX + 08h]
 		FMUL dword ptr [FLOAT_0x00390958]
 		MOV EBP,EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [EBX + 0Ch]
 		FLD dword ptr [EBX + 0Ch]
 		MOV ESI,EAX
 		FMUL dword ptr [FLOAT_0x00392f70]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FMUL dword ptr [FLOAT_0x00392f70]
 		MOV dword ptr [EDI + 010h],EAX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [EDI + 014h],EAX
 		MOV EAX,dword ptr [ESP + 014h]
 		TEST EAX,EAX
@@ -332591,13 +332591,13 @@ RETURN_LAB_0012f170::
 	LAB_0x0012F185: 
 		FLD dword ptr [EDI + 0Ch]
 		FMUL dword ptr [FLOAT_0x00392f70]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP EAX,dword ptr [ESI + 010h]
 		JNZ LAB_0x0012F17E
 		FLD dword ptr [EDI + 04h]
 		MOV ESI,dword ptr [ESI + 04h]
 		FMUL dword ptr [FLOAT_0x00390958]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,ESI
 		SHR ECX,010h
 		AND ECX,07Fh
@@ -332605,7 +332605,7 @@ RETURN_LAB_0012f170::
 		JNZ LAB_0x0012F17E
 		FLD dword ptr [EDI + 08h]
 		FMUL dword ptr [FLOAT_0x00390958]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		SHR ESI,017h
 		AND ESI,07Fh
 		CMP EAX,ESI
@@ -332643,7 +332643,7 @@ TwinProc FUN_0012F230, stdcall
 		LEA EAX,[ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 04h],01h
 		JNZ LAB_0x0012F264
 		MOV dword ptr [ESI + 028h],00h
@@ -332677,7 +332677,7 @@ TwinProcThiscall FUN_0012F290, stdcall
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x0012F2A3: 
 		FMUL dword ptr [ECX + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP EAX,0BCh
 		MOV dword ptr [ESI],EAX
 		JGE LAB_0x0012F2BF
@@ -332762,7 +332762,7 @@ RETURN_LAB_0012f3a5::
 		LEA EAX,[EDX + 0F0h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 	LAB_0x0012F3C0: 
 		TwinProcExit 04h, FUN_0012F370
 TwinProcEnd FUN_0012F370
@@ -333234,7 +333234,7 @@ RETURN_LAB_0012f919::
 		ADD EDX,OFFSET ARRAY_0x00392a10
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSound_SetI3DL2Listener@12
+		TwinCall ExWrapper_IDirectSound_SetI3DL2Listener@12
 		MOV dword ptr [EDI + 01Ch],ESI
 	LAB_0x0012F940: 
 		POP EDI
@@ -333491,7 +333491,7 @@ TwinProc FUN_0012FB90, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundStream_FlushEx@16
+		TwinCall ExWrapper_IDirectSoundStream_FlushEx@16
 		OR dword ptr [ESI],02000h
 	LAB_0x0012FBB0: 
 		MOV EAX,dword ptr [ESI + 034h]
@@ -333636,11 +333636,11 @@ TwinProc FUN_0012FD10, stdcall
 		MOVSS dword ptr [ESP + 04h],XMM0
 	LAB_0x0012FD6E: 
 		FLD dword ptr [ESP + 04h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EDX,dword ptr [ESI + 034h]
 		PUSH EAX
 		PUSH EDX
-		TwinCall IDirectSoundStream_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundStream_SetFrequency@8
 		POP ESI
 		POP ECX
 		TwinProcExit, FUN_0012FD10
@@ -333659,7 +333659,7 @@ TwinProcThiscall FUN_0012FD90, stdcall
 		MOV EAX,dword ptr [EDI + 08h]
 		PUSH 02h
 		PUSH EAX
-		TwinCall XFileCreateMediaObjectAsync@12
+		TwinCall ExWrapper_XFileCreateMediaObjectAsync@12
 	LAB_0x0012FDAE: 
 		MOV EAX,dword ptr [ESI + 044h]
 		TEST EAX,EAX
@@ -333670,7 +333670,7 @@ TwinProcThiscall FUN_0012FD90, stdcall
 		PUSH -01h
 		LEA ECX,[EAX + EAX*01h]
 		PUSH ECX
-		TwinCall XPhysicalAlloc@16
+		TwinCall ExWrapper_XPhysicalAlloc@16
 		MOV dword ptr [ESI + 044h],EAX
 	LAB_0x0012FDCC: 
 		POP EDI
@@ -333687,7 +333687,7 @@ TwinProcThiscall FUN_0012FDE0, stdcall
 		MOV ECX,dword ptr [EAX + 08h]
 		PUSH 02h
 		PUSH ECX
-		TwinCall XFileCreateMediaObjectAsync@12
+		TwinCall ExWrapper_XFileCreateMediaObjectAsync@12
 	LAB_0x0012FDF8: 
 		TwinProcExit 04h, FUN_0012FDE0
 TwinProcEnd FUN_0012FDE0
@@ -333778,11 +333778,11 @@ TwinProcThiscall FUN_0012FEF0, stdcall
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x0012FF04: 
 		FMUL dword ptr [ESP + 0Ch]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 034h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundStream_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundStream_SetFrequency@8
 		POP ESI
 		POP ECX
 		TwinProcExit 04h, FUN_0012FEF0
@@ -333876,7 +333876,7 @@ TwinProcThiscall FUN_0012FFE0, stdcall
 		PUSH 00h
 	LAB_0x00130005: 
 		PUSH EAX
-		TwinCall IDirectSoundStream_Pause@8
+		TwinCall ExWrapper_IDirectSoundStream_Pause@8
 	LAB_0x0013000B: 
 		MOVZX EAX,BL
 		MOV EBX,dword ptr [ESI]
@@ -333939,7 +333939,7 @@ TwinProcThiscall FUN_00130030, stdcall
 		LEA EDI,[ESI + 0C4h]
 		PUSH EDI
 		PUSH EAX
-		TwinCall IDirectSoundStream_SetMixBins@8
+		TwinCall ExWrapper_IDirectSoundStream_SetMixBins@8
 		MOV EAX,dword ptr [ESP + 014h]
 		SUB EAX,EBX
 		JNZ LAB_0x0013015E
@@ -334728,7 +334728,7 @@ TwinProcThiscall FUN_00130950, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 0Ch],00h
 		XOR EAX,EAX
 		POP ESI
@@ -334741,7 +334741,7 @@ TwinProcThiscall FUN_00130950, stdcall
 		LEA EDX,[ESP + 04h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 04h],01h
 		JNZ LAB_0x00130A49
 	LAB_0x001309A8: 
@@ -334766,28 +334766,28 @@ TwinProcThiscall FUN_00130950, stdcall
 		PUSH EAX
 		PUSH ECX
 		MOV dword ptr [ESP + 010h],EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		LEA EDX,[ESI + 040h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESI + 068h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESP + 028h]
 		MOV ECX,dword ptr [ESP + 024h]
 		MOV EDX,dword ptr [ESI]
 		PUSH EAX
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetBufferData@12
+		TwinCall ExWrapper_IDirectSoundBuffer_SetBufferData@12
 		MOV EAX,dword ptr [ESI]
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		MOV EDX,dword ptr [ESP + 02Ch]
 		XOR ECX,ECX
 		TEST EDX,EDX
@@ -334797,7 +334797,7 @@ TwinProcThiscall FUN_00130950, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 08h],01h
 	LAB_0x00130A49: 
 		XOR EAX,EAX
@@ -334825,7 +334825,7 @@ TwinProcThiscall FUN_00130A60, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 0Ch],00h
 		XOR EAX,EAX
 		POP ESI
@@ -334838,7 +334838,7 @@ TwinProcThiscall FUN_00130A60, stdcall
 		LEA EDX,[ESP + 04h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 04h],01h
 		JNZ LAB_0x00130B47
 	LAB_0x00130AB8: 
@@ -334863,21 +334863,21 @@ TwinProcThiscall FUN_00130A60, stdcall
 		PUSH EAX
 		PUSH ECX
 		MOV dword ptr [ESP + 010h],EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		LEA EDX,[ESI + 040h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESI + 068h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV EAX,dword ptr [ESI]
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		MOV EDX,dword ptr [ESP + 024h]
 		XOR ECX,ECX
 		TEST EDX,EDX
@@ -334887,7 +334887,7 @@ TwinProcThiscall FUN_00130A60, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 08h],01h
 	LAB_0x00130B47: 
 		XOR EAX,EAX
@@ -334913,7 +334913,7 @@ TwinProcThiscall FUN_00130B50, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 0Ch],00h
 	LAB_0x00130B7F: 
 		XOR EAX,EAX
@@ -334926,7 +334926,7 @@ TwinProcThiscall FUN_00130B50, stdcall
 		LEA ECX,[ESP + 08h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 08h],01h
 		JNZ LAB_0x00130B7F
 	LAB_0x00130B9D: 
@@ -334934,14 +334934,14 @@ TwinProcThiscall FUN_00130B50, stdcall
 		MOV ECX,dword ptr [ESI]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		MOV EAX,dword ptr [ESI + 01D8h]
 		MOV ECX,dword ptr [ESI]
 		PUSH EAX
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI + 08h],01h
 		POP ESI
 		TwinProcExit 08h, FUN_00130B50
@@ -334964,7 +334964,7 @@ TwinProcThiscall FUN_00130BD0, stdcall
 		MOV dword ptr [ESI + 0D8h],0FFFFFFFFh
 		MOV dword ptr [ESI + 01D8h],EBX
 		MOV dword ptr [ESI + 0280h],EBX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV ECX,ESI
 		TwinCall FUN_0012E6C0
 RETURN_LAB_00130c05::
@@ -334984,11 +334984,11 @@ RETURN_LAB_00130c05::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetBufferData@12
+		TwinCall ExWrapper_IDirectSoundBuffer_SetBufferData@12
 		MOV EAX,dword ptr [ESI]
 		PUSH EBX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		POP EDI
 		POP ESI
 		XOR EAX,EAX
@@ -335009,7 +335009,7 @@ TwinProcThiscall FUN_00130C50, stdcall
 		CMP EAX,EDI
 		JZ LAB_0x00130C6F
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_Release@4
+		TwinCall ExWrapper_IDirectSoundBuffer_Release@4
 		MOV dword ptr [ESI],EDI
 	LAB_0x00130C6F: 
 		PUSH 010h
@@ -335027,7 +335027,7 @@ RETURN_LAB_00130c73::
 		MOV dword ptr [ESI + 0D8h],0FFFFFFFFh
 		MOV dword ptr [ESI + 01D8h],EDI
 		MOV dword ptr [ESI + 0280h],EDI
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV ECX,dword ptr [ESP + 018h]
 		MOV dword ptr [ESI + 0280h],EDI
 		MOV AX,word ptr [EBX + 0Ch]
@@ -335045,11 +335045,11 @@ RETURN_LAB_00130c73::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetBufferData@12
+		TwinCall ExWrapper_IDirectSoundBuffer_SetBufferData@12
 		MOV EAX,dword ptr [ESI]
 		PUSH EDI
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		POP EDI
 		POP ESI
 		XOR EAX,EAX
@@ -335074,7 +335074,7 @@ TwinProcThiscall FUN_00130CF0, stdcall
 		MOV dword ptr [ESI + 0D8h],0FFFFFFFFh
 		MOV dword ptr [ESI + 01D8h],EBX
 		MOV dword ptr [ESI + 0280h],EBX
-		TwinCall IDirectSoundBuffer_SetFilter@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFilter@8
 		MOV ECX,ESI
 		TwinCall FUN_0012E530
 RETURN_LAB_00130d25::
@@ -335094,11 +335094,11 @@ RETURN_LAB_00130d25::
 		MOV ECX,dword ptr [ESP + 018h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetBufferData@12
+		TwinCall ExWrapper_IDirectSoundBuffer_SetBufferData@12
 		MOV EAX,dword ptr [ESI]
 		PUSH EBX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetCurrentPosition@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetCurrentPosition@8
 		POP EDI
 		POP ESI
 		XOR EAX,EAX
@@ -335120,7 +335120,7 @@ RETURN_LAB_00130d7f::
 		MOV EAX,dword ptr [ESI]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
 		MOV ECX,ESI
@@ -335144,7 +335144,7 @@ RETURN_LAB_00130dbf::
 		MOV EAX,dword ptr [ESI]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV ECX,dword ptr [ESP + 0Ch]
 		PUSH ECX
 		MOV ECX,ESI
@@ -335385,7 +335385,7 @@ TwinProc FUN_001310E0, stdcall
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 010h],01h
 		JNZ LAB_0x0013114C
 		MOV dword ptr [ESI],00h
@@ -335509,7 +335509,7 @@ TwinProc FUN_00131230, stdcall
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 010h],01h
 		JNZ LAB_0x00131277
 		MOV dword ptr [ESI],00h
@@ -335583,11 +335583,11 @@ TwinProc FUN_001312C0, stdcall
 		MOVSS dword ptr [ESP + 08h],XMM0
 	LAB_0x00131321: 
 		FLD dword ptr [ESP + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,dword ptr [ESI + 01Ch]
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 	LAB_0x00131334: 
 		ADD ESI,02B0h
 		DEC EDI
@@ -335857,7 +335857,7 @@ TwinProcThiscall FUN_001316A0, stdcall
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x001316FD: 
 		FMUL dword ptr [EDI + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP EAX,0BCh
 		JGE LAB_0x00131713
 		MOV EAX,0BCh
@@ -335920,7 +335920,7 @@ RETURN_LAB_001317ab::
 		MOV ECX,dword ptr [ESI]
 		PUSH EBX
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH EDX
 		MOV ECX,ESI
@@ -335984,7 +335984,7 @@ RETURN_LAB_00131832::
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x00131859: 
 		FMUL dword ptr [ESI + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP EAX,0BCh
 		JGE LAB_0x0013186F
 		MOV EAX,0BCh
@@ -336091,7 +336091,7 @@ RETURN_LAB_001319f3::
 		MOV EDX,dword ptr [EDI]
 		PUSH EBP
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV EAX,dword ptr [ESP + 01Ch]
 		PUSH EAX
 		MOV ECX,EDI
@@ -336166,7 +336166,7 @@ RETURN_LAB_00131a9a::
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x00131AC2: 
 		FMUL dword ptr [ESI + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP EAX,0BCh
 		JGE LAB_0x00131AD8
 		MOV EAX,0BCh
@@ -336239,7 +336239,7 @@ RETURN_LAB_00131ba0::
 		MOV EDX,dword ptr [EDI]
 		PUSH EBP
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundBuffer_SetFrequency@8
 		MOV EAX,dword ptr [ESP + 014h]
 		PUSH EAX
 		MOV ECX,EDI
@@ -336370,13 +336370,13 @@ TwinProc FUN_00131D00, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_PlayEx@16
+		TwinCall ExWrapper_IDirectSoundBuffer_PlayEx@16
 	LAB_0x00131D33: 
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 010h],BL
 		JNZ LAB_0x00131D33
 		MOV dword ptr [ESI + 0Ch],EBX
@@ -336399,7 +336399,7 @@ TwinProc FUN_00131D00, stdcall
 		JNZ LAB_0x00131D80
 		PUSH EBX
 		PUSH EAX
-		TwinCall IDirectSoundStream_Pause@8
+		TwinCall ExWrapper_IDirectSoundStream_Pause@8
 	LAB_0x00131D80: 
 		MOV EDX,dword ptr [ESI]
 		OR EDX,01000h
@@ -336438,7 +336438,7 @@ TwinProc FUN_00131DB0, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH ECX
-		TwinCall IDirectSoundBuffer_Play@16
+		TwinCall ExWrapper_IDirectSoundBuffer_Play@16
 		MOV dword ptr [ESI],00h
 	LAB_0x00131DED: 
 		ADD ESI,02B0h
@@ -336460,7 +336460,7 @@ TwinProc FUN_00131DB0, stdcall
 		JZ LAB_0x00131E31
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundStream_Pause@8
+		TwinCall ExWrapper_IDirectSoundStream_Pause@8
 	LAB_0x00131E31: 
 		MOV EDX,dword ptr [ESI]
 		AND EDX,0FFFFEFFFh
@@ -336568,7 +336568,7 @@ RETURN_LAB_00131f0e::
 		PUSH EAX
 		PUSH 02h
 		PUSH EDX
-		TwinCall XFileCreateMediaObjectAsync@12
+		TwinCall ExWrapper_XFileCreateMediaObjectAsync@12
 	LAB_0x00131F43: 
 		MOV EAX,dword ptr [ESI + 044h]
 		TEST EAX,EAX
@@ -336579,7 +336579,7 @@ RETURN_LAB_00131f0e::
 		PUSH -01h
 		LEA ECX,[EAX + EAX*01h]
 		PUSH ECX
-		TwinCall XPhysicalAlloc@16
+		TwinCall ExWrapper_XPhysicalAlloc@16
 		MOV dword ptr [ESI + 044h],EAX
 	LAB_0x00131F64: 
 		ADD EDI,0CCh
@@ -336610,7 +336610,7 @@ RETURN_LAB_00131f8d::
 		PUSH EAX
 		PUSH 02h
 		PUSH EDX
-		TwinCall XFileCreateMediaObjectAsync@12
+		TwinCall ExWrapper_XFileCreateMediaObjectAsync@12
 	LAB_0x00131FBE: 
 		ADD ESI,0CCh
 		CMP ESI,0330h
@@ -337045,7 +337045,7 @@ RETURN_LAB_001323b6::
 		PUSH EAX
 		AND ECX,07h
 		PUSH ECX
-		TwinCall XAudioCreatePcmFormat@16
+		TwinCall ExWrapper_XAudioCreatePcmFormat@16
 		JMP LAB_0x00132448
 	LAB_0x00132431: 
 		MOV EAX,ECX
@@ -337055,7 +337055,7 @@ RETURN_LAB_001323b6::
 		PUSH EAX
 		AND ECX,07h
 		PUSH ECX
-		TwinCall XAudioCreateAdpcmFormat@12
+		TwinCall ExWrapper_XAudioCreateAdpcmFormat@12
 	LAB_0x00132448: 
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
@@ -337081,13 +337081,13 @@ RETURN_LAB_0013244d::
 		MOV dword ptr [ESP + 040h],EDX
 		MOV dword ptr [ESP + 030h],05h
 		MOV dword ptr [ESP + 034h],EAX
-		TwinCall DirectSoundCreateStream@8
+		TwinCall ExWrapper_DirectSoundCreateStream@8
 		JMP LAB_0x001324A6
 	LAB_0x0013249B: 
 		LEA EDX,[ESP + 010h]
 		PUSH EDX
 		PUSH EAX
-		TwinCall IDirectSoundStream_SetFormat@8
+		TwinCall ExWrapper_IDirectSoundStream_SetFormat@8
 	LAB_0x001324A6: 
 		MOV EAX,dword ptr [ESI + 040h]
 		MOV ECX,dword ptr [EAX + 04h]
@@ -337100,7 +337100,7 @@ RETURN_LAB_001324b5::
 		MOV EDX,dword ptr [EBP]
 		PUSH 02EEh
 		PUSH EDX
-		TwinCall IDirectSoundStream_SetHeadroom@8
+		TwinCall ExWrapper_IDirectSoundStream_SetHeadroom@8
 		MOV EAX,dword ptr [ESP + 040h]
 		CMP byte ptr [EAX + 024h],BL
 		JZ LAB_0x001324D9
@@ -337179,7 +337179,7 @@ RETURN_LAB_001324b5::
 		MOV EDX,dword ptr [EBP]
 		PUSH EBX
 		PUSH EDX
-		TwinCall IDirectSoundStream_Pause@8
+		TwinCall ExWrapper_IDirectSoundStream_Pause@8
 	LAB_0x001325A9: 
 		AND dword ptr [ESI],0FFFFEFFFh
 		MOV dword ptr [ESI + 080h],0FFFFFFFFh
@@ -337832,11 +337832,11 @@ RETURN_LAB_00132c12::
 		MOVSS dword ptr [ESP + 08h],XMM0
 	LAB_0x00132C8A: 
 		FLD dword ptr [ESP + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EDX,dword ptr [ESI + EDI*01h + 054h]
 		PUSH EAX
 		PUSH EDX
-		TwinCall IDirectSoundStream_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundStream_SetFrequency@8
 		MOV EDI,dword ptr [STRUCT_0x0044b730 + 254680]
 	LAB_0x00132CA4: 
 		ADD ESI,0CCh
@@ -337968,14 +337968,14 @@ RETURN_LAB_00132df7::
 		PUSH EDI
 		PUSH EDI
 		PUSH EAX
-		TwinCall IDirectSoundBuffer_PlayEx@16
+		TwinCall ExWrapper_IDirectSoundBuffer_PlayEx@16
 		JMP LAB_0x00132E30
 	LAB_0x00132E30: 
 		MOV EDX,dword ptr [ESI]
 		LEA ECX,[ESP + 010h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 010h],BL
 		JNZ LAB_0x00132E30
 		MOV dword ptr [ESI + 08h],EDI
@@ -338015,7 +338015,7 @@ TwinProc FUN_00132E60, c
 		LEA EDI,[ESI + 010h]
 		PUSH ECX
 		PUSH EDX
-		TwinCall IDirectSoundBuffer_GetStatus@8
+		TwinCall ExWrapper_IDirectSoundBuffer_GetStatus@8
 		TEST byte ptr [ESP + 018h],01h
 		JNZ LAB_0x00132EB5
 		MOV dword ptr [ESI + 018h],EBX
@@ -339114,7 +339114,7 @@ RETURN_LAB_00133baa::
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x00133BC2: 
 		FMUL dword ptr [ESP + 024h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		PUSH EAX
 		MOV EAX,dword ptr [ESI + 034h]
 		JMP LAB_0x00133CC8
@@ -339190,12 +339190,12 @@ RETURN_LAB_00133c9c::
 		FADD dword ptr [FLOAT_0x00386458]
 	LAB_0x00133CBB: 
 		FMUL dword ptr [ESP + 024h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		PUSH EAX
 		MOV EAX,dword ptr [EDI + 034h]
 	LAB_0x00133CC8: 
 		PUSH EAX
-		TwinCall IDirectSoundStream_SetFrequency@8
+		TwinCall ExWrapper_IDirectSoundStream_SetFrequency@8
 	LAB_0x00133CCE: 
 		LEA ECX,[ESP + 010h]
 		TwinCall FUN_00134E20
@@ -339287,11 +339287,11 @@ TwinProc FUN_00133D90, c
 		PUSH ESI
 		FMUL dword ptr [FLOAT_0x0038e024]
 		MOV ESI,dword ptr [ESP + 08h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x0038e024]
 		MOV word ptr [ESI*04h + STRUCT_0x0044b730 + 254578],AX
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		CMP ESI,03h
 		MOV word ptr [ESI*04h + STRUCT_0x0044b730 + 254576],AX
 		JA LAB_0x00133DFF
@@ -358842,7 +358842,7 @@ TwinProc FUN_00140950, stdcall
 		MOV dword ptr [STRUCT_0x00491cb0 + 8],EDX
 		MOV dword ptr [STRUCT_0x00491cb0],EAX
 		MOV dword ptr [STRUCT_0x00491cb0 + 4],EAX
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 	LAB_0x00140986: 
 		MOV EAX,OFFSET STRUCT_0x00491cb0
@@ -382026,7 +382026,7 @@ TwinProcThiscall FUN_001518A0, stdcall
 		MOVSS dword ptr [EDI + 024h],XMM1
 	LAB_0x0015191B: 
 		FLD dword ptr [ESP + 010h]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM0,dword ptr [ESP + 010h]
 		MOVZX ECX,AX
 		CVTSI2SS XMM1,ECX
@@ -384655,7 +384655,7 @@ TwinProcThiscall FUN_00153590, stdcall
 		FLD ST(3)
 		FMUL  ST, ST(4)
 		FADDP
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		CMP EAX,0FFFFFFh
 		FSTP ST(0)
@@ -387582,7 +387582,7 @@ RETURN_LAB_001557ca::
 		PUSH EAX
 		LEA EAX,[EDI + 04h]
 		PUSH EAX
-		TwinCall qsort
+		TwinCall ExWrapper_qsort
 		ADD ESP,010h
 	LAB_0x00155846: 
 		MOV EAX,EDI
@@ -389107,7 +389107,7 @@ RETURN_LAB_001567fd::
 		MOV EDX,dword ptr [ESP + 014h]
 		MOVSX EAX,byte ptr [EDI + EDX*01h]
 		PUSH EAX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV ECX,dword ptr [ESP + 018h]
 		ADD ESP,04h
 		MOV byte ptr [EDI + ECX*01h],AL
@@ -389879,7 +389879,7 @@ TwinProc FUN_00156FD0, c
 		MOV ESI,dword ptr [ESP + 0Ch]
 		PUSH ESI
 		PUSH EAX
-		TwinCall strstr
+		TwinCall ExWrapper_strstr
 		ADD ESP,08h
 		TEST EAX,EAX
 		JZ LAB_0x00156FFB
@@ -390113,7 +390113,7 @@ TwinProc FUN_00157180, c
 	LAB_0x00157190: 
 		MOVSX EAX,AL
 		PUSH EAX
-		TwinCall islower
+		TwinCall ExWrapper_islower
 		ADD ESP,04h
 		TEST EAX,EAX
 		JZ LAB_0x001571AD
@@ -390154,7 +390154,7 @@ TwinProc FUN_001571C0, c
 	LAB_0x001571E1: 
 		MOVSX EAX,byte ptr [ESI + EBX*01h]
 		PUSH EAX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		ADD ESP,04h
 		MOV byte ptr [ESI + EBX*01h],AL
 		INC ESI
@@ -390793,7 +390793,7 @@ TwinProcThiscall FUN_00157830, stdcall
 		MOV ESI,dword ptr [ECX]
 		ADD ESI,dword ptr [ESP + 08h]
 		PUSH ESI
-		TwinCall atof
+		TwinCall ExWrapper_atof
 		FLD qword ptr [DOUBLE_0x00393ac0]
 		ADD ESP,04h
 		FLD ST(1)
@@ -390804,7 +390804,7 @@ TwinProcThiscall FUN_00157830, stdcall
 		JP LAB_0x0015789B
 		PUSH ESI
 		FSTP ST(0)
-		TwinCall atol
+		TwinCall ExWrapper_atol
 		ADD ESP,04h
 		TEST EAX,EAX
 		MOV dword ptr [ESP + 08h],EAX
@@ -390905,7 +390905,7 @@ TwinProcThiscall FUN_00157910, stdcall
 		PUSH ECX
 		PUSH EAX
 		MOV dword ptr [ESI + 04h],EDX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV EDX,dword ptr [ESI + 04h]
 		MOV EAX,dword ptr [ESI]
 		ADD ESP,0Ch
@@ -392636,7 +392636,7 @@ TwinProc FUN_001588A0, stdcall
 		MOV EDX,dword ptr [ECX + 04h]
 		PUSH EAX
 		PUSH EDX
-		TwinCall memmove
+		TwinCall ExWrapper_memmove
 		ADD ESP,0Ch
 		TwinProcExit, FUN_001588A0
 TwinProcEnd FUN_001588A0
@@ -393664,7 +393664,7 @@ RETURN_LAB_0015923a::
 		PUSH EDX
 		PUSH ESI
 		MOV dword ptr [EDI + 04h],EAX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV EAX,dword ptr [EDI + 04h]
 		MOV ECX,dword ptr [EDI]
 		ADD ESP,0Ch
@@ -395085,7 +395085,7 @@ RETURN_LAB_00159f90::
 		PUSH EBP
 		PUSH EDI
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		PUSH ESI
 		LEA ECX,[ESP + 024h]
@@ -395390,7 +395390,7 @@ RETURN_LAB_0015a22e::
 		PUSH ESI
 		PUSH EBP
 		PUSH EDI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV ECX,dword ptr [ESP + 034h]
 		ADD ESP,0Ch
 		PUSH EDI
@@ -395457,7 +395457,7 @@ RETURN_LAB_0015a2bf::
 		MOV ESI,EAX
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV ECX,dword ptr [ESP + 024h]
 		ADD ESP,010h
 		PUSH ESI
@@ -395560,7 +395560,7 @@ RETURN_LAB_0015a383::
 		MOV ESI,EAX
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV ECX,dword ptr [ESP + 02Ch]
 		ADD ESP,010h
 		PUSH ESI
@@ -395693,7 +395693,7 @@ RETURN_LAB_0015a47b::
 		PUSH ECX
 		ADD EDX,EAX
 		PUSH EDX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV EAX,dword ptr [ESI + 04h]
 		MOV EDX,dword ptr [ESI]
 		ADD ESP,0Ch
@@ -397227,7 +397227,7 @@ RETURN_LAB_0015b2c7::
 		PUSH ESI
 		PUSH EBX
 		PUSH EBP
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		PUSH EBP
 		LEA ECX,[ESP + 02Ch]
@@ -397299,7 +397299,7 @@ RETURN_LAB_0015b37b::
 		MOV ESI,EAX
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,010h
 		MOV byte ptr [ESI + 01h],00h
 	LAB_0x0015B392: 
@@ -397350,7 +397350,7 @@ RETURN_LAB_0015b3ed::
 		PUSH EDI
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		MOV byte ptr [ESI + EDI*01h],00h
 		JMP LAB_0x0015B392
@@ -397443,7 +397443,7 @@ RETURN_LAB_0015b4da::
 		PUSH ESI
 		PUSH EBX
 		PUSH EDI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		PUSH EDI
 		LEA ECX,[ESP + 02Ch]
@@ -397515,7 +397515,7 @@ RETURN_LAB_0015b590::
 		MOV ESI,EAX
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,010h
 		PUSH ESI
 		LEA ECX,[ESP + 020h]
@@ -397571,7 +397571,7 @@ RETURN_LAB_0015b60e::
 		PUSH EDI
 		PUSH EBX
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		PUSH ESI
 		LEA ECX,[ESP + 020h]
@@ -397678,7 +397678,7 @@ RETURN_LAB_0015b723::
 		PUSH ESI
 		PUSH EBP
 		PUSH EBX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		PUSH EBX
 		LEA ECX,[ESP + 02Ch]
@@ -397751,7 +397751,7 @@ RETURN_LAB_0015b7da::
 		MOV ESI,EAX
 		PUSH EBP
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,010h
 		MOV byte ptr [ESI + 01h],00h
 	LAB_0x0015B7F1: 
@@ -397802,7 +397802,7 @@ RETURN_LAB_0015b84c::
 		PUSH EDI
 		PUSH EBP
 		PUSH ESI
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		ADD ESP,0Ch
 		MOV byte ptr [ESI + EDI*01h],00h
 		JMP LAB_0x0015B7F1
@@ -398151,12 +398151,12 @@ TwinProc FUN_0015BB50, stdcall
 		TEST ECX,ECX
 		JNZ LAB_0x0015BB70
 	LAB_0x0015BB99: 
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CDQ
 		IDIV EDI
 		MOV EDI,EDX
 		INC EDI
-		TwinCall rand
+		TwinCall ExWrapper_rand
 		CDQ
 		IDIV ESI
 		MOV ECX,dword ptr [EBX + 014h]
@@ -398598,7 +398598,7 @@ RETURN_LAB_0015bf4a::
 		MOV ECX,dword ptr [EAX + 04h]
 		PUSH EDX
 		PUSH ECX
-		TwinCall memmove
+		TwinCall ExWrapper_memmove
 		ADD ESP,0Ch
 		MOV ECX,ESI
 		TwinCall FUN_0015BD90
@@ -399572,7 +399572,7 @@ RETURN_LAB_0015c9d9::
 		PUSH EDI
 		PUSH EAX
 		PUSH ECX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV EAX,dword ptr [ESI]
 		MOV EDX,dword ptr [ESI + 04h]
 		ADD ESP,0Ch
@@ -418630,7 +418630,7 @@ RETURN_LAB_0016af64::
 		TwinCall FUN_000D49C0
 RETURN_LAB_0016af7d::
 		ADD ESP,08h
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		DEC EAX
 		AND EBX,EAX
 		TEST dword ptr [EBP + 018h],01Fh
@@ -431955,7 +431955,7 @@ RETURN_LAB_001756c3::
 		FDIV dword ptr [FLOAT_0x003a3614]
 		ADD ESP,04h
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 	LAB_0x001756E0: 
 		MOV ECX,dword ptr [ESP + 08h]
@@ -439618,7 +439618,7 @@ RETURN_LAB_0017b5f3::
 RETURN_LAB_0017b677::
 		FMUL dword ptr [FLOAT_0x003ea6f8]
 		ADD ESP,04h
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		SUB dword ptr [EDI],EAX
 		JMP LAB_0x0017B6BF
 	LAB_0x0017B68E: 
@@ -460883,7 +460883,7 @@ RETURN_LAB_00189d29::
 RETURN_LAB_00189d32::
 		FMUL dword ptr [ESP + 044h]
 		FMUL dword ptr [FLOAT_0x003ea6f8]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		ADD dword ptr [ESI + 054h],EAX
 		JMP LAB_0x00189D7E
 	LAB_0x00189D4B: 
@@ -465442,7 +465442,7 @@ RETURN_LAB_0018d10e::
 		PUSH ECX
 		PUSH ECX
 		MOV ESI,ESP
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV ECX,EDI
 		MOV dword ptr [ESI],EAX
@@ -467492,7 +467492,7 @@ RETURN_LAB_0018e782::
 		TwinCall FUN_00180490
 RETURN_LAB_0018e79b::
 		FMUL dword ptr [FLOAT_0x003863a4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0F0h],EAX
 	LAB_0x0018E7B1: 
 		TEST byte ptr [EBX + 018h],02h
@@ -467502,7 +467502,7 @@ RETURN_LAB_0018e79b::
 		TwinCall FUN_00180490
 RETURN_LAB_0018e7bb::
 		FMUL dword ptr [FLOAT_0x003863a4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0F4h],EAX
 	LAB_0x0018E7D1: 
 		TEST byte ptr [EBX + 018h],04h
@@ -467512,7 +467512,7 @@ RETURN_LAB_0018e7bb::
 		TwinCall FUN_00180490
 RETURN_LAB_0018e7db::
 		FMUL dword ptr [FLOAT_0x003863a4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV dword ptr [ESI + 0F8h],EAX
 	LAB_0x0018E7F1: 
 		POP EDI
@@ -472147,7 +472147,7 @@ RETURN_LAB_0019123a::
 		PUSH 0FFh
 		PUSH ECX
 		MOV EDI,ESP
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV ECX,ESI
 		MOV dword ptr [EDI],EAX
 		TwinCall FUN_001FD740
@@ -496031,7 +496031,7 @@ TwinProcThiscall FUN_001A1200, stdcall
 		PUSH ECX
 		PUSH OFFSET STR_0x00394448
 		PUSH EDX
-		TwinCall sprintf
+		TwinCall ExWrapper_sprintf
 		ADD ESP,0Ch
 		MOV AL,01h
 		TwinProcExit 08h, FUN_001A1200
@@ -500959,7 +500959,7 @@ RETURN_LAB_001a4956::
 		FLD dword ptr [FLOAT_0x003863a8]
 		FDIV dword ptr [FLOAT_0x003a3890]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV ECX,dword ptr [ESI + 04h]
 		PUSH 07h
@@ -500970,7 +500970,7 @@ RETURN_LAB_001a497a::
 		FLD dword ptr [FLOAT_0x003863a8]
 		FDIV dword ptr [FLOAT_0x003a3890]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		FLD dword ptr [FLOAT_0x00386394]
 		MOV dword ptr [ESP + 01Ch],EAX
@@ -502345,7 +502345,7 @@ TwinProcThiscall FUN_001A58B0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 018h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX EDX,byte ptr [EDI]
 		MOV dword ptr [ESP + 014h],EDX
 		MOV byte ptr [ESI + -02h],AL
@@ -502353,7 +502353,7 @@ TwinProcThiscall FUN_001A58B0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 010h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + -01h],AL
 		MOVZX EAX,byte ptr [EDI + 01h]
 		MOV dword ptr [ESP + 014h],EAX
@@ -502361,7 +502361,7 @@ TwinProcThiscall FUN_001A58B0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 034h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVZX ECX,byte ptr [EDI + 02h]
 		MOV dword ptr [ESP + 014h],ECX
 		MOV byte ptr [ESI],AL
@@ -502369,7 +502369,7 @@ TwinProcThiscall FUN_001A58B0, stdcall
 		FMUL dword ptr [FLOAT_0x0038dedc]
 		FMUL dword ptr [ESP + 024h]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI + 01h],AL
 		ADD ESI,04h
 		ADD EDI,04h
@@ -554387,7 +554387,7 @@ RETURN_LAB_001c4733::
 	LAB_0x001C4748: 
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
-		TwinCall atol
+		TwinCall ExWrapper_atol
 		ADD ESP,04h
 		MOV word ptr [EDI + ESI*02h],AX
 	LAB_0x001C4759: 
@@ -558864,7 +558864,7 @@ TwinProc FUN_001C72A0, stdcall
 		FMUL  ST, ST(1)
 		AND EDI,0FFC00000h
 		AND ESI,0FFFF0000h
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		AND EAX,0FFFFh
 		SHL EAX,06h
 		AND EDI,0FFC00021h
@@ -558879,7 +558879,7 @@ TwinProc FUN_001C72A0, stdcall
 		OR EAX,0FFFC0h
 		MOV dword ptr [ESP + 08h],EAX
 	LAB_0x001C7305: 
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		XOR EAX,ESI
 		AND EAX,0FFFFh
 		XOR ESI,EAX
@@ -559499,7 +559499,7 @@ RETURN_LAB_001c7950::
 		FILD dword ptr [ESI + 018h]
 		ADD ESP,04h
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		MOV dword ptr [ESI + 018h],EAX
 		MOV EAX,dword ptr [ESP + 010h]
@@ -563370,7 +563370,7 @@ TwinProcThiscall FUN_001CA620, stdcall
 		FSUB dword ptr [FLOAT_0x003955d8]
 		MOV ESI,ECX
 		FMUL dword ptr [FLOAT_0x0049d2d4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [ESI],AL
 		POP ESI
 		TwinProcExit 04h, FUN_001CA620
@@ -572802,7 +572802,7 @@ RETURN_LAB_001d2472::
 		FLD dword ptr [FLOAT_0x003863a8]
 		FDIV dword ptr [FLOAT_0x003a3c58]
 		FMUL  ST, ST(1)
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FSTP ST(0)
 		LEA ECX,[ESP + 08h]
 		MOV dword ptr [ESP + 08h],EAX
@@ -577394,7 +577394,7 @@ RETURN_LAB_001d5f68::
 		FLD dword ptr [ESI + 03Ch]
 		FSUB dword ptr [FLOAT_0x003955d8]
 		FMUL dword ptr [FLOAT_0x0049d2d4]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV byte ptr [EDI],AL
 		MOVSS XMM0,dword ptr [ESI + 050h]
 		SUBSS XMM0,dword ptr [FLOAT_0x003955e4]
@@ -613251,7 +613251,7 @@ TwinProcThiscall FUN_001F1AE0, stdcall
 		FLD dword ptr [FLOAT_0x00395bb8]
 		FDIV dword ptr [EBP + 01Ch]
 		FDIVR dword ptr [ESP + 01Ch]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV EBX,EAX
 		INC EBX
 		CMP EBX,06h
@@ -614503,7 +614503,7 @@ TwinProc FUN_001F29D0, stdcall
 		LEA ECX,[ESP + 08h]
 		PUSH OFFSET STR_0x00395c70
 		PUSH ECX
-		TwinCall sprintf
+		TwinCall ExWrapper_sprintf
 		MOV ESI,dword ptr [ESP + 028h]
 		ADD ESP,0Ch
 		PUSH OFFSET STR_0x00395c64
@@ -614528,7 +614528,7 @@ RETURN_LAB_001f2a23::
 		LEA ECX,[ESP + 08h]
 		PUSH OFFSET STR_0x00395c70
 		PUSH ECX
-		TwinCall sprintf
+		TwinCall ExWrapper_sprintf
 		ADD ESP,0Ch
 		LEA EDX,[ESP + 04h]
 		PUSH EDX
@@ -619155,7 +619155,7 @@ TwinProcThiscall FUN_001F5C90, stdcall
 		MULSS XMM0,dword ptr [FLOAT_0x003a3fb4]
 		MOVSS dword ptr [ESP + 0Ch],XMM0
 		FLD dword ptr [ESP + 0Ch]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOV word ptr [ESI + 01522h],AX
 		MOVZX EAX,AX
 		XOR EDX,EDX
@@ -627105,7 +627105,7 @@ RETURN_LAB_001fb036::
 	LAB_0x001FB07F: 
 		FDIVP
 		FMUL dword ptr [FLOAT_0x003ea6f8]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		POP EDI
 		POP ESI
 		POP EBP
@@ -636206,7 +636206,7 @@ RETURN_LAB_0020090e::
 		SHR EAX,0Eh
 		PUSH 00h
 		MOV dword ptr [ESP + 020h],EAX
-		TwinCall XLaunchNewImageA@8
+		TwinCall ExWrapper_XLaunchNewImageA@8
 		POP EDI
 		POP ESI
 		POP EBP
@@ -637985,7 +637985,7 @@ TwinProc FUN_002019C0, stdcall
 		LEA EAX,[ESP + 08h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall GetDiskFreeSpaceExA@16
+		TwinCall ExWrapper_GetDiskFreeSpaceExA@16
 		MOV ECX,dword ptr [ESP]
 		NEG EAX
 		SBB EAX,EAX
@@ -639640,7 +639640,7 @@ TwinProc FUN_002029B0, c
 		LEA EAX,[ESP + 01A8h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall XFindFirstSaveGame@8
+		TwinCall ExWrapper_XFindFirstSaveGame@8
 		MOV ESI,EAX
 		CMP ESI,-01h
 		JZ LAB_0x00202A4E
@@ -639653,18 +639653,18 @@ RETURN_LAB_00202a05::
 		PUSH EAX
 		LEA ECX,[EBX + 03Ch]
 		PUSH ECX
-		TwinCall lstrcpyW@8
+		TwinCall ExWrapper_lstrcpyW@8
 		JMP LAB_0x00202A20
 		LEA ECX,[ECX]
 	LAB_0x00202A20: 
 		LEA EDX,[ESP + 01A8h]
 		PUSH EDX
 		PUSH ESI
-		TwinCall XFindNextSaveGame@8
+		TwinCall ExWrapper_XFindNextSaveGame@8
 		TEST EAX,EAX
 		JNZ LAB_0x00202A20
 		PUSH ESI
-		TwinCall XFindClose@4
+		TwinCall ExWrapper_XFindClose@4
 		MOV EAX,dword ptr [ESP + 04F8h]
 		MOV dword ptr [EBX + 013Ch],01h
 		JMP LAB_0x00202D8D
@@ -639686,7 +639686,7 @@ RETURN_LAB_00202a05::
 		LEA ECX,[EBX + 03Ch]
 		PUSH ECX
 		PUSH EDX
-		TwinCall XCreateSaveGame@24
+		TwinCall ExWrapper_XCreateSaveGame@24
 		TEST EAX,EAX
 		JNZ LAB_0x00202C16
 		LEA EAX,[ESP + 0A4h]
@@ -639725,7 +639725,7 @@ RETURN_LAB_00202aea::
 		PUSH 00h
 		PUSH 080000000h
 		PUSH EAX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		LEA ECX,[ESP + 030h]
 		MOV ESI,EAX
 		TwinCall FUN_00157330
@@ -639739,17 +639739,17 @@ RETURN_LAB_00202b0f::
 		LEA ECX,[ESP + 05Ch]
 		PUSH ECX
 		PUSH ESI
-		TwinCall GetFileInformationByHandle@8
+		TwinCall ExWrapper_GetFileInformationByHandle@8
 		LEA EDX,[EBX + 0144h]
 		PUSH EDX
 		LEA EAX,[ESP + 074h]
 		PUSH EAX
-		TwinCall FileTimeToSystemTime@8
+		TwinCall ExWrapper_FileTimeToSystemTime@8
 		MOV ECX,dword ptr [ESP + 080h]
 		MOV dword ptr [EBX + 0140h],ECX
 		PUSH ESI
 	LAB_0x00202B50: 
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x00202B55: 
 		MOV EAX,dword ptr [ESP + 04F8h]
 		JMP LAB_0x00202D8D
@@ -639787,7 +639787,7 @@ RETURN_LAB_00202ba6::
 		PUSH 00h
 		PUSH 040000000h
 		PUSH EAX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		LEA ECX,[ESP + 024h]
 		MOV ESI,EAX
 		TwinCall FUN_00157330
@@ -639809,11 +639809,11 @@ RETURN_LAB_00202bcb::
 		PUSH 014h
 		PUSH ECX
 		PUSH ESI
-		TwinCall WriteFile@20
+		TwinCall ExWrapper_WriteFile@20
 		TEST EAX,EAX
 		JNZ LAB_0x00202C2D
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x00202C16: 
 		MOV EDX,dword ptr [EBX + 04h]
 		AND EDX,0FFF1FFFFh
@@ -639822,7 +639822,7 @@ RETURN_LAB_00202bcb::
 		JMP LAB_0x00202D88
 	LAB_0x00202C2D: 
 		PUSH 00h
-		TwinCall XCalculateSignatureBegin@4
+		TwinCall ExWrapper_XCalculateSignatureBegin@4
 		MOV EDI,EAX
 		CMP EDI,-01h
 		JZ LAB_0x00202C59
@@ -639833,12 +639833,12 @@ RETURN_LAB_00202bcb::
 		PUSH EBP
 		PUSH EDX
 		PUSH ESI
-		TwinCall WriteFile@20
+		TwinCall ExWrapper_WriteFile@20
 		TEST EAX,EAX
 		JNZ LAB_0x00202C5F
 		PUSH EAX
 		PUSH EDI
-		TwinCall XCalculateSignatureEnd@8
+		TwinCall ExWrapper_XCalculateSignatureEnd@8
 	LAB_0x00202C59: 
 		PUSH ESI
 		JMP LAB_0x00202DDB
@@ -639847,16 +639847,16 @@ RETURN_LAB_00202bcb::
 		PUSH EBP
 		PUSH ECX
 		PUSH EDI
-		TwinCall XCalculateSignatureUpdate@12
+		TwinCall ExWrapper_XCalculateSignatureUpdate@12
 		LEA EDX,[ESP + 048h]
 		PUSH EDX
 		PUSH EDI
-		TwinCall XCalculateSignatureEnd@8
+		TwinCall ExWrapper_XCalculateSignatureEnd@8
 		PUSH 00h
 		PUSH 00h
 		PUSH 00h
 		PUSH ESI
-		TwinCall SetFilePointer@16
+		TwinCall ExWrapper_SetFilePointer@16
 		PUSH 00h
 		LEA EAX,[ESP + 018h]
 		PUSH EAX
@@ -639864,9 +639864,9 @@ RETURN_LAB_00202bcb::
 		LEA ECX,[ESP + 054h]
 		PUSH ECX
 		PUSH ESI
-		TwinCall WriteFile@20
+		TwinCall ExWrapper_WriteFile@20
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		MOV EAX,dword ptr [ESP + 04F8h]
 		JMP LAB_0x00202D8D
 	LAB_0x00202CA8: 
@@ -639899,7 +639899,7 @@ RETURN_LAB_00202cd7::
 		PUSH 00h
 		PUSH 080000000h
 		PUSH EAX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		LEA ECX,[ESP + 018h]
 		MOV EBP,EAX
 		TwinCall FUN_00157330
@@ -639909,7 +639909,7 @@ RETURN_LAB_00202cfc::
 		LEA EDX,[ESP + 05Ch]
 		PUSH EDX
 		PUSH EBP
-		TwinCall GetFileInformationByHandle@8
+		TwinCall ExWrapper_GetFileInformationByHandle@8
 		MOV EAX,dword ptr [ESP + 080h]
 		SUB EAX,014h
 		CMP EAX,ESI
@@ -639926,11 +639926,11 @@ RETURN_LAB_00202cfc::
 		LEA EDX,[ESP + 054h]
 		PUSH EDX
 		PUSH EBP
-		TwinCall ReadFile@20
+		TwinCall ExWrapper_ReadFile@20
 		TEST EAX,EAX
 		JZ LAB_0x00202D26
 		PUSH 00h
-		TwinCall XCalculateSignatureBegin@4
+		TwinCall ExWrapper_XCalculateSignatureBegin@4
 		MOV EDI,EAX
 		CMP EDI,-01h
 		JZ LAB_0x00202D70
@@ -639941,15 +639941,15 @@ RETURN_LAB_00202cfc::
 		PUSH ESI
 		PUSH EAX
 		PUSH EBP
-		TwinCall ReadFile@20
+		TwinCall ExWrapper_ReadFile@20
 		TEST EAX,EAX
 		JNZ LAB_0x00202DA6
 		PUSH EAX
 		PUSH EDI
-		TwinCall XCalculateSignatureEnd@8
+		TwinCall ExWrapper_XCalculateSignatureEnd@8
 	LAB_0x00202D70: 
 		PUSH EBP
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x00202D76: 
 		MOV ECX,dword ptr [EBX + 04h]
 		AND ECX,0FFF1FFFFh
@@ -639971,11 +639971,11 @@ RETURN_LAB_00202cfc::
 		PUSH ESI
 		PUSH EDX
 		PUSH EDI
-		TwinCall XCalculateSignatureUpdate@12
+		TwinCall ExWrapper_XCalculateSignatureUpdate@12
 		LEA EAX,[ESP + 090h]
 		PUSH EAX
 		PUSH EDI
-		TwinCall XCalculateSignatureEnd@8
+		TwinCall ExWrapper_XCalculateSignatureEnd@8
 		MOV ECX,05h
 		LEA EDI,[ESP + 048h]
 		LEA ESI,[ESP + 090h]
@@ -639984,7 +639984,7 @@ RETURN_LAB_00202cfc::
 		PUSH EBP
 		JZ LAB_0x00202B50
 	LAB_0x00202DDB: 
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		MOV EAX,dword ptr [EBX + 04h]
 		AND EAX,0FFF1FFFFh
 		OR EAX,010000h
@@ -641202,14 +641202,14 @@ TwinProcEnd FUN_00203A50
 
 TwinProc FUN_00203A60, stdcall
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		DEC EAX
 		TwinProcExit, FUN_00203A60
 TwinProcEnd FUN_00203A60
 
 TwinProc FUN_00203A70, stdcall
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		DEC EAX
 		NOT EAX
 		TwinProcExit, FUN_00203A70
@@ -641218,12 +641218,12 @@ TwinProcEnd FUN_00203A70
 TwinProc FUN_00203A80, c
 		PUSH ESI
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV ESI,EAX
 		DEC ESI
 		PUSH OFFSET STR_0x0038df24
 		NOT ESI
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV ECX,dword ptr [ESP + 08h]
 		LEA EAX,[EAX + ECX*01h + -01h]
 		AND EAX,ESI
@@ -641233,7 +641233,7 @@ TwinProcEnd FUN_00203A80
 
 TwinProc FUN_00203AB0, c
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV ECX,dword ptr [ESP + 04h]
 		DEC EAX
 		NOT EAX
@@ -642410,7 +642410,7 @@ TwinProcThiscall FUN_002044A0, stdcall
 		PUSH 040h
 		PUSH EAX
 		PUSH EDI
-		TwinCall _strnicmp
+		TwinCall ExWrapper__strnicmp
 		ADD ESP,0Ch
 		TEST EAX,EAX
 		JZ LAB_0x0020450B
@@ -642467,10 +642467,10 @@ TwinProc FUN_00204520, c
 		PUSH EDX
 		PUSH EAX
 		PUSH EBP
-		TwinCall ReadFile@20
+		TwinCall ExWrapper_ReadFile@20
 		TEST EAX,EAX
 		JNZ LAB_0x00204599
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		CMP EAX,03E5h
 		JNZ LAB_0x00204585
 		XOR ESI,ESI
@@ -642492,13 +642492,13 @@ TwinProc FUN_00204520, c
 		PUSH ECX
 		PUSH EDI
 		PUSH EBP
-		TwinCall GetOverlappedResult@16
+		TwinCall ExWrapper_GetOverlappedResult@16
 		TEST EAX,EAX
 		JNZ LAB_0x002045DC
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		TEST EAX,EAX
 		JG LAB_0x002045C5
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		POP EDI
 		POP ESI
 		POP EBP
@@ -642506,7 +642506,7 @@ TwinProc FUN_00204520, c
 		ADD ESP,014h
 		TwinProcExit, FUN_00204520
 	LAB_0x002045C5: 
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		POP EDI
 		POP ESI
 		AND EAX,0FFFFh
@@ -642626,7 +642626,7 @@ RETURN_LAB_002046aa::
 		PUSH 01h
 		PUSH 080000000h
 		PUSH ECX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV ESI,EAX
 		CMP ESI,-01h
 		JNZ LAB_0x0020470C
@@ -642668,11 +642668,11 @@ TwinProc FUN_00204720, c
 		PUSH EDX
 		PUSH EAX
 		PUSH ECX
-		TwinCall ReadFile@20
+		TwinCall ExWrapper_ReadFile@20
 		TEST EAX,EAX
 		POP ESI
 		JNZ LAB_0x00204785
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		CMP EAX,026h
 		JZ LAB_0x00204785
 		CMP EAX,03E5h
@@ -642698,7 +642698,7 @@ TwinProc FUN_00204790, c
 		PUSH EAX
 		PUSH ESI
 		PUSH ECX
-		TwinCall GetOverlappedResult@16
+		TwinCall ExWrapper_GetOverlappedResult@16
 		CMP dword ptr [ESI],0103h
 		JZ LAB_0x002047A3
 	LAB_0x002047BC: 
@@ -642718,10 +642718,10 @@ TwinProc FUN_002047D0, c
 		PUSH ECX
 		PUSH ESI
 		PUSH EAX
-		TwinCall GetOverlappedResult@16
+		TwinCall ExWrapper_GetOverlappedResult@16
 		TEST EAX,EAX
 		JNZ LAB_0x00204816
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		CMP EAX,026h
 		JZ LAB_0x00204816
 		CMP EAX,03E3h
@@ -642744,7 +642744,7 @@ TwinProcEnd FUN_002047D0
 TwinProc FUN_00204860, c
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		TwinProcExit, FUN_00204860
 TwinProcEnd FUN_00204860
 
@@ -644044,7 +644044,7 @@ RETURN_LAB_0020551c::
 		MOV EDX,dword ptr [ESP + 0Ch]
 		MOVSX EAX,byte ptr [ESI + EDX*01h]
 		PUSH EAX
-		TwinCall tolower
+		TwinCall ExWrapper_tolower
 		MOV ECX,dword ptr [ESP + 010h]
 		ADD ESP,04h
 		MOV byte ptr [ESI + ECX*01h],AL
@@ -644231,7 +644231,7 @@ TwinProc FUN_002056A0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x002056CB
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		MOV dword ptr [ESI + 028h],0FFFFFFFFh
 	LAB_0x002056CB: 
 		MOV ECX,dword ptr [ESI + 014h]
@@ -644283,7 +644283,7 @@ TwinProc FUN_00205730, stdcall
 		JNZ LAB_0x00205759
 		MOV EAX,dword ptr [ESI + 054h]
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		PUSH OFFSET STR_0x003963d8
 		LEA ECX,[ESI + 048h]
 		MOV dword ptr [ESI + 054h],0FFFFFFFFh
@@ -644296,7 +644296,7 @@ RETURN_LAB_00205752::
 		JZ LAB_0x0020576D
 		MOV ECX,dword ptr [ESI + 028h]
 		PUSH ECX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		MOV dword ptr [ESI + 028h],0FFFFFFFFh
 	LAB_0x0020576D: 
 		MOV EDX,dword ptr [ESI]
@@ -644372,10 +644372,10 @@ TwinProc FUN_002057F0, stdcall
 		LEA EDI,[ESI + 034h]
 		PUSH EDI
 		PUSH EAX
-		TwinCall GetOverlappedResult@16
+		TwinCall ExWrapper_GetOverlappedResult@16
 		TEST EAX,EAX
 		JNZ LAB_0x00205848
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		CMP EAX,026h
 		JZ LAB_0x00205848
 		CMP EAX,03E3h
@@ -644417,7 +644417,7 @@ TwinProc FUN_002057F0, stdcall
 		PUSH EAX
 		PUSH EDI
 		PUSH ECX
-		TwinCall GetOverlappedResult@16
+		TwinCall ExWrapper_GetOverlappedResult@16
 		CMP dword ptr [EDI],0103h
 		JZ LAB_0x00205890
 		JMP LAB_0x00205800
@@ -644512,11 +644512,11 @@ RETURN_LAB_00205972::
 		PUSH 01h
 		PUSH 080000000h
 		PUSH EAX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV ESI,EAX
 		PUSH 00h
 		PUSH ESI
-		TwinCall GetFileSize@8
+		TwinCall ExWrapper_GetFileSize@8
 		MOV EDI,EAX
 		PUSH EDI
 		TwinCall FUN_000D06B0
@@ -644530,9 +644530,9 @@ RETURN_LAB_002059a0::
 		PUSH ESI
 		MOV dword ptr [PTR_0x004a71f4],EAX
 		MOV dword ptr [ESP + 01Ch],00h
-		TwinCall ReadFile@20
+		TwinCall ExWrapper_ReadFile@20
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		LEA ECX,[ESP + 0Ch]
 		TwinCall FUN_00157330
 RETURN_LAB_002059ce::
@@ -644597,7 +644597,7 @@ RETURN_LAB_00205a4e::
 		PUSH 01h
 		PUSH 080000000h
 		PUSH EAX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		PUSH 0800h
 		MOV dword ptr [ESI + 08h],EAX
 		TwinCall FUN_000D06B0
@@ -644696,7 +644696,7 @@ RETURN_LAB_00205b39::
 		LEA ECX,[EAX*04h + 00h]
 		PUSH ECX
 		MOV dword ptr [ESI + 04h],EAX
-		TwinCall XPhysicalAlloc@16
+		TwinCall ExWrapper_XPhysicalAlloc@16
 		MOV dword ptr [ESI + 020h],EAX
 		MOV EAX,dword ptr [ESP + 040h]
 		TEST EAX,EAX
@@ -644735,7 +644735,7 @@ RETURN_LAB_00205b39::
 		PUSH EDX
 		AND EAX,07h
 		PUSH EAX
-		TwinCall XAudioCreatePcmFormat@16
+		TwinCall ExWrapper_XAudioCreatePcmFormat@16
 		JMP LAB_0x00205C0E
 	LAB_0x00205BF1: 
 		MOV EDX,EAX
@@ -644747,7 +644747,7 @@ RETURN_LAB_00205b39::
 		PUSH EDX
 		AND EAX,07h
 		PUSH EAX
-		TwinCall XAudioCreateAdpcmFormat@12
+		TwinCall ExWrapper_XAudioCreateAdpcmFormat@12
 	LAB_0x00205C0E: 
 		CMP word ptr [ESP + 02Ah],06h
 		MOV ECX,0800h
@@ -644778,7 +644778,7 @@ RETURN_LAB_00205b39::
 		PUSH 00h
 		PUSH -01h
 		PUSH EBX
-		TwinCall XPhysicalAlloc@16
+		TwinCall ExWrapper_XPhysicalAlloc@16
 		MOV ECX,dword ptr [ESI + 020h]
 		MOV dword ptr [ECX + EBP*04h],EAX
 		MOV EDX,dword ptr [ESI + 020h]
@@ -645325,7 +645325,7 @@ TwinProc FUN_002060E0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0020610B
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 		MOV dword ptr [ESI + 028h],0FFFFFFFFh
 	LAB_0x0020610B: 
 		MOV ECX,dword ptr [ESI + 014h]
@@ -645404,7 +645404,7 @@ RETURN_LAB_002061ad::
 		LEA EDX,[ESP + 0Ch]
 		PUSH EDX
 		PUSH EAX
-		TwinCall GetFileInformationByHandle@8
+		TwinCall ExWrapper_GetFileInformationByHandle@8
 		MOV EAX,dword ptr [ESP + 030h]
 		JMP LAB_0x002061CD
 	LAB_0x002061CB: 
@@ -645670,12 +645670,12 @@ TwinProcThiscall FUN_00206360, stdcall
 		JMP LAB_0x002065AA
 	LAB_0x0020641F: 
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		DEC EAX
 		NOT EAX
 		PUSH OFFSET STR_0x0038df24
 		MOV dword ptr [ESP + 01Ch],EAX
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV EDX,dword ptr [ESP + 018h]
 		MOV ECX,dword ptr [ESI + 014h]
 		SUB EDI,EBX
@@ -645748,7 +645748,7 @@ RETURN_LAB_002064b5::
 		MOV EAX,dword ptr [ECX]
 		TwinCall dword ptr [EAX + 024h]
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV ECX,dword ptr [ESI + 014h]
 		DEC EAX
 		NOT EAX
@@ -645760,12 +645760,12 @@ RETURN_LAB_002064b5::
 		TwinCall dword ptr [EDX + 02Ch]
 		MOV EBP,dword ptr [ESI + 0Ch]
 		PUSH OFFSET STR_0x0038df24
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV EBX,EAX
 		DEC EBX
 		PUSH OFFSET STR_0x0038df24
 		NOT EBX
-		TwinCall XGetDiskSectorSizeA@4
+		TwinCall ExWrapper_XGetDiskSectorSizeA@4
 		MOV ECX,dword ptr [ESI + 014h]
 		SUB EDI,EBP
 		LEA EDI,[EAX + EDI*01h + -01h]
@@ -650473,11 +650473,11 @@ RETURN_LAB_00209083::
 		MOV dword ptr [EDX + 08h],ECX
 		PUSH 012C000h
 		MOV dword ptr [EDX + 0Ch],ECX
-		TwinCall D3D_AllocContiguousMemory@8
+		TwinCall ExWrapper_D3D_AllocContiguousMemory@8
 		PUSH 040h
 		PUSH 012C000h
 		MOV dword ptr [ESI + 06Ch],EAX
-		TwinCall D3D_AllocContiguousMemory@8
+		TwinCall ExWrapper_D3D_AllocContiguousMemory@8
 		MOV dword ptr [ESI + 070h],EAX
 		MOV EAX,ESI
 		POP ESI
@@ -650561,7 +650561,7 @@ TwinProc FUN_002091B0, stdcall
 		CMP EAX,EDI
 		JZ LAB_0x002091FD
 		PUSH EAX
-		TwinCall XMVDecoder_CloseDecoder@4
+		TwinCall ExWrapper_XMVDecoder_CloseDecoder@4
 	LAB_0x002091FD: 
 		MOV EAX,dword ptr [ESI + 02Ch]
 		CMP EAX,EDI
@@ -650653,7 +650653,7 @@ TwinProc FUN_00209290, stdcall
 		PUSH EDI
 		PUSH EDX
 		PUSH EAX
-		TwinCall XMVDecoder_GetNextFrame@16
+		TwinCall ExWrapper_XMVDecoder_GetNextFrame@16
 		CMP dword ptr [EDI],01h
 		JNZ LAB_0x002092FE
 		MOV EAX,dword ptr [ESI + 030h]
@@ -650722,7 +650722,7 @@ RETURN_LAB_00209361::
 		PUSH EBX
 		PUSH EDX
 		PUSH EDI
-		TwinCall XMVDecoder_CreateDecoderForFile@12
+		TwinCall ExWrapper_XMVDecoder_CreateDecoderForFile@12
 		MOV EAX,dword ptr [EBX]
 		CMP EAX,EDI
 		JZ LAB_0x002094E9
@@ -650730,10 +650730,10 @@ RETURN_LAB_00209361::
 		LEA EBP,[ESI + 038h]
 		PUSH EBP
 		PUSH EAX
-		TwinCall XMVDecoder_GetVideoDescriptor@8
+		TwinCall ExWrapper_XMVDecoder_GetVideoDescriptor@8
 		CMP dword ptr [ESI + 044h],EDI
 		JBE LAB_0x0020940A
-		TwinCall XGetLanguage@0
+		TwinCall ExWrapper_XGetLanguage@0
 		DEC EAX
 		CMP EAX,05h
 		JA LAB_0x002093B6
@@ -650762,7 +650762,7 @@ RETURN_LAB_00209361::
 		PUSH EAX
 		PUSH EDX
 		MOV dword ptr [EDI],00h
-		TwinCall XMVDecoder_EnableAudioStream@20
+		TwinCall ExWrapper_XMVDecoder_EnableAudioStream@20
 		PUSH 00h
 		TwinCall FUN_0012F750
 RETURN_LAB_002093da::
@@ -650776,11 +650776,11 @@ RETURN_LAB_002093ec::
 		JZ LAB_0x00209408
 		PUSH EAX
 		PUSH ECX
-		TwinCall IDirectSoundStream_SetVolume@8
+		TwinCall ExWrapper_IDirectSoundStream_SetVolume@8
 		MOV EAX,dword ptr [EDI]
 		PUSH 00h
 		PUSH EAX
-		TwinCall IDirectSoundStream_SetHeadroom@8
+		TwinCall ExWrapper_IDirectSoundStream_SetHeadroom@8
 	LAB_0x00209408: 
 		XOR EDI,EDI
 	LAB_0x0020940A: 
@@ -650798,7 +650798,7 @@ RETURN_LAB_0020940c::
 		PUSH 024h
 		PUSH EAX
 		PUSH ECX
-		TwinCall XGSetSurfaceHeader@24
+		TwinCall ExWrapper_XGSetSurfaceHeader@24
 		PUSH 018h
 		TwinCall FUN_000D06B0
 RETURN_LAB_00209432::
@@ -650813,17 +650813,17 @@ RETURN_LAB_00209432::
 		PUSH 024h
 		PUSH EAX
 		PUSH ECX
-		TwinCall XGSetSurfaceHeader@24
+		TwinCall ExWrapper_XGSetSurfaceHeader@24
 		MOV ECX,dword ptr [ESI + 06Ch]
 		MOV EDX,dword ptr [ESI + 02Ch]
 		PUSH ECX
 		PUSH EDX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		MOV EAX,dword ptr [ESI + 070h]
 		MOV ECX,dword ptr [ESI + 030h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall D3DResource_Register@8
+		TwinCall ExWrapper_D3DResource_Register@8
 		PUSH EDI
 		TwinCall ExWrapper_D3DDevice_Swap@4
 		PUSH 01h
@@ -650915,7 +650915,7 @@ TwinProcEnd FUN_00209550
 
 TwinProc FUN_002095A0, stdcall
 		PUSH ECX
-		TwinCall XMVDecoder_CloseDecoder@4
+		TwinCall ExWrapper_XMVDecoder_CloseDecoder@4
 		TwinProcExit, FUN_002095A0
 TwinProcEnd FUN_002095A0
 
@@ -650923,7 +650923,7 @@ TwinProcThiscall FUN_002095B0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall XMVDecoder_GetVideoDescriptor@8
+		TwinCall ExWrapper_XMVDecoder_GetVideoDescriptor@8
 		TwinProcExit 04h, FUN_002095B0
 TwinProcEnd FUN_002095B0
 
@@ -650937,7 +650937,7 @@ TwinProcThiscall FUN_002095C0, stdcall
 		PUSH EAX
 		PUSH EDX
 		PUSH ECX
-		TwinCall XMVDecoder_EnableAudioStream@20
+		TwinCall ExWrapper_XMVDecoder_EnableAudioStream@20
 		TwinProcExit 010h, FUN_002095C0
 TwinProcEnd FUN_002095C0
 
@@ -650949,7 +650949,7 @@ TwinProcThiscall FUN_002095E0, stdcall
 		PUSH EDX
 		PUSH EAX
 		PUSH ECX
-		TwinCall XMVDecoder_GetNextFrame@16
+		TwinCall ExWrapper_XMVDecoder_GetNextFrame@16
 		TwinProcExit 0Ch, FUN_002095E0
 TwinProcEnd FUN_002095E0
 
@@ -651190,7 +651190,7 @@ TwinProc FUN_00209860, stdcall
 		MOV dword ptr [ECX + 010h],EDI
 		PUSH EDX
 		MOV word ptr [ECX + 014h],SI
-		TwinCall XInputGetState@8
+		TwinCall ExWrapper_XInputGetState@8
 		POP EDI
 		XOR AL,AL
 		POP ESI
@@ -651833,7 +651833,7 @@ TwinProcThiscall FUN_0020A050, stdcall
 		POP ESI
 		MOV dword ptr [ESP + 08h],EAX
 		MOV dword ptr [ESP + 04h],EDX
-		JMP XInputSetState@8
+		JMP ExWrapper_XInputSetState@8
 	LAB_0x0020A082: 
 		POP ESI
 	LAB_0x0020A083: 
@@ -651849,7 +651849,7 @@ TwinProc FUN_0020A090, stdcall
 		JZ LAB_0x0020A0DD
 		PUSH EDI
 		PUSH EAX
-		TwinCall XInputClose@4
+		TwinCall ExWrapper_XInputClose@4
 		XOR EAX,EAX
 		LEA ECX,[ESI + 04Ah]
 		MOV dword ptr [ECX],EAX
@@ -651890,7 +651890,7 @@ TwinProcThiscall FUN_0020A0F0, stdcall
 		PUSH EBX
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
 		MOV ESI,ECX
-		TwinCall XInputOpen@16
+		TwinCall ExWrapper_XInputOpen@16
 		MOV dword ptr [ESI],EAX
 		XOR EAX,EAX
 		LEA ECX,[ESI + 04Ah]
@@ -651947,7 +651947,7 @@ TwinProc FUN_0020A150, stdcall
 		PUSH EDX
 		MOV word ptr [EAX + 046h],BX
 		MOV word ptr [EAX + 048h],BX
-		TwinCall XInputSetState@8
+		TwinCall ExWrapper_XInputSetState@8
 	LAB_0x0020A18E: 
 		ADD ESI,0Ch
 		ADD EDI,04h
@@ -652073,7 +652073,7 @@ RETURN_LAB_0020a2b8::
 		PUSH 00h
 		PUSH EBX
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
-		TwinCall XInputOpen@16
+		TwinCall ExWrapper_XInputOpen@16
 		MOV dword ptr [ESI],EAX
 		XOR EDX,EDX
 		LEA EAX,[ESI + 04Ah]
@@ -652118,7 +652118,7 @@ TwinProc FUN_0020A330, stdcall
 		LEA ECX,[ESP + 0Ch]
 		PUSH ECX
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
-		TwinCall XGetDeviceChanges@12
+		TwinCall ExWrapper_XGetDeviceChanges@12
 		TEST EAX,EAX
 		JZ LAB_0x0020A373
 		MOV EDX,dword ptr [ESP + 04h]
@@ -652902,7 +652902,7 @@ TwinProcThiscall FUN_0020AA90, stdcall
 		MOV dword ptr [EDI + 018h],EAX
 		MOV dword ptr [ESP + 020h],OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
 		MOV dword ptr [ESP + 024h],04h
-		TwinCall USBD_Init@8
+		TwinCall ExWrapper_USBD_Init@8
 		LEA EDX,[EDI + 04h]
 		MOV EBX,OFFSET NUM_0x004a7238
 		MOV dword ptr [ESP + 010h],EDX
@@ -652920,7 +652920,7 @@ RETURN_LAB_0020aae5::
 		PUSH EBP
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
 		MOV dword ptr [ESI],00h
-		TwinCall XInputOpen@16
+		TwinCall ExWrapper_XInputOpen@16
 		MOV dword ptr [ESI],EAX
 		XOR EAX,EAX
 		LEA ECX,[ESI + 04Ah]
@@ -652961,7 +652961,7 @@ RETURN_LAB_0020aae5::
 		MOV dword ptr [ESP + 010h],EAX
 		JL LAB_0x0020AAE0
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
-		TwinCall XGetDevices@4
+		TwinCall ExWrapper_XGetDevices@4
 		MOV dword ptr [EDI + 014h],EAX
 		AND dword ptr [EDI + 018h],0FFFFFFFDh
 		MOV EAX,EDI
@@ -652988,7 +652988,7 @@ TwinProcThiscall FUN_0020ABA0, stdcall
 		PUSH OFFSET XDEVICE_TYPE_GAMEPAD_TABLE
 		MOV dword ptr [ESP + 028h],EBX
 		MOV byte ptr [ESP + 01Fh],00h
-		TwinCall XGetDeviceChanges@12
+		TwinCall ExWrapper_XGetDeviceChanges@12
 		TEST EAX,EAX
 		JZ LAB_0x0020ABEF
 		MOV EDX,dword ptr [ESP + 014h]
@@ -653035,7 +653035,7 @@ RETURN_LAB_0020abd6::
 		MOV dword ptr [EDX + 010h],EBP
 		PUSH ECX
 		MOV word ptr [EDX + 014h],BX
-		TwinCall XInputGetState@8
+		TwinCall ExWrapper_XInputGetState@8
 		MOV EBX,dword ptr [ESP + 01Ch]
 		XOR AL,AL
 		JMP LAB_0x0020AC51
@@ -653243,7 +653243,7 @@ TwinProc FUN_0020AE10, stdcall
 		TEST EAX,EAX
 		JZ LAB_0x0020AE70
 		PUSH EAX
-		TwinCall XInputClose@4
+		TwinCall ExWrapper_XInputClose@4
 		XOR EAX,EAX
 		LEA ECX,[ESI + 04Ah]
 		MOV dword ptr [ECX],EAX
@@ -658017,9 +658017,9 @@ RETURN_LAB_0020dc2a::
 		PUSH EBX
 		LEA EDX,[ESP + 038h]
 		PUSH EDX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV dword ptr [EBP + 04h],EAX
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		MOV ESI,dword ptr [EBP + 04h]
 		LEA ECX,[ESP + 014h]
 		MOV dword ptr [EBP + 08h],EAX
@@ -658049,7 +658049,7 @@ TwinProc FUN_0020DCE0, stdcall
 		CMP EAX,-01h
 		JZ LAB_0x0020DCF1
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020DCF1: 
 		MOV dword ptr [ESI + 04h],0FFFFFFFFh
 		POP ESI
@@ -658071,8 +658071,8 @@ TwinProcThiscall FUN_0020DD00, stdcall
 		PUSH EDX
 		PUSH EAX
 		MOV dword ptr [ESP + 018h],00h
-		TwinCall ReadFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_ReadFile@20
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		MOV EAX,dword ptr [ESP + 04h]
 		POP ESI
@@ -658096,8 +658096,8 @@ TwinProcThiscall FUN_0020DD40, stdcall
 		PUSH ECX
 		PUSH EDX
 		MOV dword ptr [ESP + 01Ch],00h
-		TwinCall ReadFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_ReadFile@20
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		MOV EAX,dword ptr [ESP + 08h]
 		CMP EAX,EDI
@@ -658130,8 +658130,8 @@ TwinProcThiscall FUN_0020DD90, stdcall
 		PUSH EDX
 		PUSH EAX
 		MOV dword ptr [ESP + 018h],00h
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		MOV EAX,dword ptr [ESP + 04h]
 		POP ESI
@@ -658154,7 +658154,7 @@ TwinProc FUN_0020DDF0, stdcall
 		MOV EAX,dword ptr [ECX + 04h]
 		PUSH 00h
 		PUSH EAX
-		TwinCall GetFileSize@8
+		TwinCall ExWrapper_GetFileSize@8
 		TwinProcExit, FUN_0020DDF0
 TwinProcEnd FUN_0020DDF0
 
@@ -658165,7 +658165,7 @@ TwinProc FUN_0020DE00, stdcall
 		PUSH 00h
 		PUSH 00h
 		PUSH EAX
-		TwinCall SetFilePointer@16
+		TwinCall ExWrapper_SetFilePointer@16
 		TwinProcExit, FUN_0020DE00
 TwinProcEnd FUN_0020DE00
 
@@ -658197,8 +658197,8 @@ TwinProc FUN_0020DE30, stdcall
 		MOV EAX,dword ptr [ESI + 04h]
 		PUSH 00h
 		PUSH EAX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		POP ESI
 		TwinProcExit, FUN_0020DE30
@@ -658213,8 +658213,8 @@ TwinProc FUN_0020DE50, stdcall
 		MOV EAX,dword ptr [ESI + 04h]
 		PUSH 00h
 		PUSH EAX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		POP ESI
 		TwinProcExit, FUN_0020DE50
@@ -658230,8 +658230,8 @@ TwinProcThiscall FUN_0020DE70, stdcall
 		MOV ECX,dword ptr [ESI + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		POP ESI
 		TwinProcExit 04h, FUN_0020DE70
@@ -658247,8 +658247,8 @@ TwinProcThiscall FUN_0020DEA0, stdcall
 		MOV ECX,dword ptr [ESI + 04h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV dword ptr [ESI + 08h],EAX
 		POP ESI
 		TwinProcExit 04h, FUN_0020DEA0
@@ -660195,7 +660195,7 @@ TwinProc FUN_0020F110, stdcall
 		MOV dword ptr [ESI],OFFSET FUNPTR_0x003967a0
 		JZ LAB_0x0020F127
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020F127: 
 		MOV dword ptr [ESI + 04h],0FFFFFFFFh
 		MOV dword ptr [ESI],OFFSET FUNPTR_0x00396570
@@ -660373,9 +660373,9 @@ RETURN_LAB_0020f295::
 		AND ECX,03h
 		PUSH EDX
 		REP MOVSB
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV EDI,EAX
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		LEA ECX,[ESP + 024h]
 		TwinCall FUN_00157330
 RETURN_LAB_0020f308::
@@ -660399,8 +660399,8 @@ RETURN_LAB_0020f308::
 		PUSH EAX
 		PUSH EDI
 		MOV dword ptr [ESP + 024h],EBX
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		MOV ECX,dword ptr [ESP + 034h]
 		MOV EDX,dword ptr [ESP + 030h]
 		PUSH EBX
@@ -660410,8 +660410,8 @@ RETURN_LAB_0020f308::
 		PUSH EDX
 		PUSH EDI
 		MOV dword ptr [ESP + 024h],EBX
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		ADD ESI,0Ch
 		DEC EBP
 		JNZ LAB_0x0020F313
@@ -660419,7 +660419,7 @@ RETURN_LAB_0020f308::
 		CMP EDI,-01h
 		JZ LAB_0x0020F372
 		PUSH EDI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020F372: 
 		MOV EAX,dword ptr [ESP + 014h]
 		LEA ECX,[ESP + 018h]
@@ -661119,20 +661119,20 @@ RETURN_LAB_0020fa74::
 		PUSH 080000000h
 		LEA ECX,[ESP + 02Ch]
 		PUSH ECX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV ESI,EAX
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		LEA ECX,[ESP + 08h]
 		TwinCall FUN_00157330
 RETURN_LAB_0020faed::
 		PUSH 00h
 		PUSH ESI
-		TwinCall GetFileSize@8
+		TwinCall ExWrapper_GetFileSize@8
 		CMP ESI,-01h
 		MOV EDI,EAX
 		JZ LAB_0x0020FB07
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FB07: 
 		MOV ECX,dword ptr [ESP + 0418h]
 		MOV EAX,EDI
@@ -661177,15 +661177,15 @@ RETURN_LAB_0020fb57::
 		PUSH 00h
 		PUSH ECX
 		MOV EDI,EAX
-		TwinCall GetFileSize@8
+		TwinCall ExWrapper_GetFileSize@8
 		MOV EDX,dword ptr [ESP + 028h]
 		PUSH 02h
 		PUSH 00h
 		PUSH 00h
 		PUSH EDX
 		MOV EBP,EAX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV ECX,dword ptr [ESI + 08h]
 		MOV EDX,dword ptr [ESP + 028h]
 		PUSH 00h
@@ -661196,16 +661196,16 @@ RETURN_LAB_0020fb57::
 		PUSH ECX
 		PUSH EDX
 		MOV dword ptr [ESP + 028h],00h
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		PUSH 02h
 		PUSH 00h
 		MOV dword ptr [ESP + 034h],EAX
 		MOV EAX,dword ptr [ESP + 024h]
 		PUSH 00h
 		PUSH EAX
-		TwinCall SetFilePointer@16
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_SetFilePointer@16
+		TwinCall ExWrapper_GetLastError@0
 		MOV ESI,dword ptr [ESP + 038h]
 		MOV ECX,dword ptr [ESI + 04h]
 		MOV EDX,dword ptr [ESP + 018h]
@@ -661227,8 +661227,8 @@ RETURN_LAB_0020fb57::
 		MOV EAX,dword ptr [ESP + 02Ch]
 		PUSH EAX
 		MOV dword ptr [ESP + 028h],00h
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		MOV EDX,dword ptr [ESP + 018h]
 		PUSH EBP
 		LEA ECX,[ESP + 01Ch]
@@ -661244,14 +661244,14 @@ RETURN_LAB_0020fb57::
 		POP EBP
 		JZ LAB_0x0020FC4B
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FC4B: 
 		MOV EAX,dword ptr [ESP + 024h]
 		CMP EAX,EDI
 		MOV dword ptr [ESP + 018h],EDI
 		JZ LAB_0x0020FC5D
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FC5D: 
 		PUSH OFFSET STR_0x00396984
 		MOV ECX,EBX
@@ -661294,7 +661294,7 @@ RETURN_LAB_0020fcab::
 		MOV dword ptr [ESP + 020h],ESI
 		JZ LAB_0x0020FCCA
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FCCA: 
 		MOV EAX,dword ptr [ESP + 018h]
 		MOV dword ptr [ESP + 024h],EDI
@@ -661306,7 +661306,7 @@ RETURN_LAB_0020fcab::
 		POP EBX
 		JZ LAB_0x0020FCEB
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FCEB: 
 		MOV AL,byte ptr [ESP + 03h]
 		ADD ESP,020h
@@ -661375,7 +661375,7 @@ RETURN_LAB_0020fdaa::
 		POP ESI
 		JZ LAB_0x0020FDC8
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FDC8: 
 		MOV ECX,dword ptr [ESP + 03Ch]
 		TwinCall @__security_check_cookie@4
@@ -661445,9 +661445,9 @@ RETURN_LAB_0020fe0f::
 		PUSH 040000000h
 		LEA ECX,[ESP + 038h]
 		PUSH ECX
-		TwinCall CreateFileA@28
+		TwinCall ExWrapper_CreateFileA@28
 		MOV ESI,EAX
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_GetLastError@0
 		LEA ECX,[ESP + 010h]
 		TwinCall FUN_00157330
 RETURN_LAB_0020fe7f::
@@ -661465,12 +661465,12 @@ RETURN_LAB_0020fe7f::
 		PUSH EDX
 		PUSH ESI
 		MOV dword ptr [ESP + 02Ch],EBX
-		TwinCall WriteFile@20
-		TwinCall GetLastError@0
+		TwinCall ExWrapper_WriteFile@20
+		TwinCall ExWrapper_GetLastError@0
 		CMP ESI,-01h
 		JZ LAB_0x0020FEB6
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FEB6: 
 		POP ESI
 		POP EBP
@@ -661484,7 +661484,7 @@ RETURN_LAB_0020fe7f::
 		CMP ESI,-01h
 		JZ LAB_0x0020FEDB
 		PUSH ESI
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x0020FEDB: 
 		MOV ECX,dword ptr [ESP + 0420h]
 		POP ESI
@@ -661964,7 +661964,7 @@ RETURN_LAB_002103be::
 		LEA EAX,[ESP + 044h]
 		PUSH EAX
 		PUSH ECX
-		TwinCall strncpy
+		TwinCall ExWrapper_strncpy
 		MOV EAX,dword ptr [ESP + 02Ch]
 		MOV EDX,dword ptr [ESP + 030h]
 		MOV byte ptr [EDX + EAX*01h],BL
@@ -661978,7 +661978,7 @@ RETURN_LAB_002103be::
 		MOV ECX,dword ptr [ESP + 020h]
 		MOVSX EDX,byte ptr [ESI + ECX*01h]
 		PUSH EDX
-		TwinCall toupper
+		TwinCall ExWrapper_toupper
 		MOV ECX,dword ptr [ESP + 024h]
 		ADD ESP,04h
 		MOV byte ptr [ESI + ECX*01h],AL
@@ -662084,7 +662084,7 @@ RETURN_LAB_002104f2::
 		MOV EAX,dword ptr [ESP + 01Ch]
 		MOVSX ECX,byte ptr [EBX + EAX*01h]
 		PUSH ECX
-		TwinCall toupper
+		TwinCall ExWrapper_toupper
 		MOV EDX,dword ptr [ESP + 020h]
 		ADD ESP,04h
 		MOV byte ptr [EBX + EDX*01h],AL
@@ -665052,7 +665052,7 @@ TwinProcThiscall FUN_00212140, stdcall
 		MOV dword ptr [ESI],OFFSET FUNPTR_0x003967a0
 		JZ LAB_0x00212157
 		PUSH EAX
-		TwinCall CloseHandle@4
+		TwinCall ExWrapper_CloseHandle@4
 	LAB_0x00212157: 
 		TEST byte ptr [ESP + 08h],01h
 		MOV dword ptr [ESI + 04h],0FFFFFFFFh
@@ -665609,19 +665609,19 @@ RETURN_LAB_0021accd::
 		FMUL dword ptr [ESP + 028h]
 		FSTP dword ptr [ESP + 03Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 034h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 038h]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 01h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		FLD dword ptr [ESP + 03Ch]
 		FMUL dword ptr [FLOAT_0x00386448]
 		MOV byte ptr [ESI + 02h],AL
-		TwinCall _ftol2
+		TwinCall ExWrapper__ftol2
 		MOVSS XMM0,dword ptr [ESP + 02Ch]
 		ADDSS XMM0,dword ptr [ESP + 014h]
 		MOV byte ptr [ESI + 03h],AL
@@ -666293,7 +666293,7 @@ TwinProc FUN_002745D0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002745da::
 		PUSH OFFSET FUN_0027CEB0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002745D0
 TwinProcEnd FUN_002745D0
@@ -666378,7 +666378,7 @@ TwinProc FUN_00274730, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027473a::
 		PUSH OFFSET FUN_0027CEC0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274730
 TwinProcEnd FUN_00274730
@@ -666471,7 +666471,7 @@ TwinProc FUN_002748C0, stdcall
 		TwinCall FUN_00149610
 RETURN_LAB_002748c5::
 		PUSH OFFSET FUN_0027CED0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002748C0
 TwinProcEnd FUN_002748C0
@@ -666483,7 +666483,7 @@ TwinProc FUN_002748E0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002748ea::
 		PUSH OFFSET FUN_0027CEE0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002748E0
 TwinProcEnd FUN_002748E0
@@ -666585,7 +666585,7 @@ TwinProc FUN_00274A90, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00274a9a::
 		PUSH OFFSET FUN_0027CEF0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274A90
 TwinProcEnd FUN_00274A90
@@ -666700,7 +666700,7 @@ TwinProc FUN_00274C80, stdcall
 		TwinCall FUN_00149610
 RETURN_LAB_00274c85::
 		PUSH OFFSET FUN_0027CF00
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274C80
 TwinProcEnd FUN_00274C80
@@ -666712,7 +666712,7 @@ TwinProc FUN_00274CA0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00274caa::
 		PUSH OFFSET FUN_0027CF10
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274CA0
 TwinProcEnd FUN_00274CA0
@@ -666787,7 +666787,7 @@ TwinProc FUN_00274DC0, c
 		DEC ECX
 		JNZ LAB_0x00274DD0
 		PUSH OFFSET FUN_0027CF20
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274DC0
 TwinProcEnd FUN_00274DC0
@@ -666799,7 +666799,7 @@ TwinProc FUN_00274E00, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00274e0a::
 		PUSH OFFSET FUN_0027CFB0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274E00
 TwinProcEnd FUN_00274E00
@@ -666896,7 +666896,7 @@ TwinProc FUN_00274F90, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00274f9a::
 		PUSH OFFSET FUN_0027CFC0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00274F90
 TwinProcEnd FUN_00274F90
@@ -666988,7 +666988,7 @@ TwinProc FUN_00275110, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027511a::
 		PUSH OFFSET FUN_0027CFD0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275110
 TwinProcEnd FUN_00275110
@@ -667000,7 +667000,7 @@ TwinProc FUN_00275140, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027514a::
 		PUSH OFFSET FUN_0027CFE0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275140
 TwinProcEnd FUN_00275140
@@ -667032,7 +667032,7 @@ TwinProc FUN_002751C0, stdcall
 		TwinCall FUN_000FDC60
 RETURN_LAB_002751c5::
 		PUSH OFFSET FUN_0027CFF0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002751C0
 TwinProcEnd FUN_002751C0
@@ -667143,7 +667143,7 @@ TwinProc FUN_00275360, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027536a::
 		PUSH OFFSET FUN_0027D010
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275360
 TwinProcEnd FUN_00275360
@@ -667160,7 +667160,7 @@ TwinProc FUN_00275390, stdcall
 		TwinCall FUN_0012DF60
 RETURN_LAB_00275395::
 		PUSH OFFSET FUN_0027D000
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275390
 TwinProcEnd FUN_00275390
@@ -667172,7 +667172,7 @@ TwinProc FUN_002753B0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002753ba::
 		PUSH OFFSET FUN_0027D020
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002753B0
 TwinProcEnd FUN_002753B0
@@ -667234,7 +667234,7 @@ TwinProc FUN_00275470, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027547a::
 		PUSH OFFSET FUN_0027D060
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275470
 TwinProcEnd FUN_00275470
@@ -667247,7 +667247,7 @@ TwinProc FUN_00275490, stdcall
 		PUSH OFFSET FUN_0027D070
 		MOV dword ptr [STRUCT_0x0039f0b8 + 4],EAX
 		MOV dword ptr [NUM_0x0039f0c0],EAX
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275490
 TwinProcEnd FUN_00275490
@@ -667619,7 +667619,7 @@ TwinProc FUN_00275AE0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00275aea::
 		PUSH OFFSET FUN_0027D080
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275AE0
 TwinProcEnd FUN_00275AE0
@@ -667686,7 +667686,7 @@ RETURN_LAB_00275ba2::
 		MOV dword ptr [EDX + 024h],ECX
 		PUSH OFFSET FUN_0027D090
 		MOV dword ptr [PTR_0x0039f0c4],EAX
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275BA0
 TwinProcEnd FUN_00275BA0
@@ -667695,7 +667695,7 @@ TwinProc FUN_00275BE9, stdcall
 	LAB_0x00275BE9: 
 		PUSH OFFSET FUN_0027D090
 		MOV dword ptr [PTR_0x0039f0c4],00h
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275BE9
 TwinProcEnd FUN_00275BE9
@@ -667724,7 +667724,7 @@ RETURN_LAB_00275c02::
 		MOV dword ptr [EDX + 024h],ECX
 		PUSH OFFSET FUN_0027D0B0
 		MOV dword ptr [PTR_0x0039f0d4],EAX
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275C00
 TwinProcEnd FUN_00275C00
@@ -667733,7 +667733,7 @@ TwinProc FUN_00275C49, stdcall
 	LAB_0x00275C49: 
 		PUSH OFFSET FUN_0027D0B0
 		MOV dword ptr [PTR_0x0039f0d4],00h
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275C49
 TwinProcEnd FUN_00275C49
@@ -667745,7 +667745,7 @@ TwinProc FUN_00275C60, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00275c6a::
 		PUSH OFFSET FUN_0027D0D0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275C60
 TwinProcEnd FUN_00275C60
@@ -667756,7 +667756,7 @@ TwinProc FUN_00275C80, stdcall
 		TwinCall FUN_00105940
 RETURN_LAB_00275c85::
 		PUSH OFFSET FUN_0027D0E0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275C80
 TwinProcEnd FUN_00275C80
@@ -667764,7 +667764,7 @@ TwinProcEnd FUN_00275C80
 TwinProc FUN_00275CA0, stdcall
 	LAB_0x00275CA0: 
 		PUSH OFFSET FUN_0027D0F0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00275CA0
 TwinProcEnd FUN_00275CA0
@@ -667797,7 +667797,7 @@ RETURN_LAB_00275d09::
 RETURN_LAB_00275d11::
 		PUSH OFFSET FUN_0027D6D0
 		MOV dword ptr [STRUCT_0x00402a30],OFFSET FUNPTR_0x003927fc
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275CB0
 TwinProcEnd FUN_00275CB0
@@ -667830,7 +667830,7 @@ RETURN_LAB_00275d89::
 RETURN_LAB_00275d91::
 		PUSH OFFSET FUN_0027D5B0
 		MOV dword ptr [STRUCT_0x004028e0],OFFSET FUNPTR_0x0039273c
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275D30
 TwinProcEnd FUN_00275D30
@@ -667863,7 +667863,7 @@ RETURN_LAB_00275e09::
 RETURN_LAB_00275e11::
 		PUSH OFFSET FUN_0027D490
 		MOV dword ptr [STRUCT_0x00402c2c],OFFSET FUNPTR_0x0039261c
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275DB0
 TwinProcEnd FUN_00275DB0
@@ -667896,7 +667896,7 @@ RETURN_LAB_00275e89::
 RETURN_LAB_00275e91::
 		PUSH OFFSET FUN_0027D4F0
 		MOV dword ptr [STRUCT_0x00402a0c],OFFSET FUNPTR_0x00392648
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275E30
 TwinProcEnd FUN_00275E30
@@ -667929,7 +667929,7 @@ RETURN_LAB_00275f09::
 RETURN_LAB_00275f11::
 		PUSH OFFSET FUN_0027D610
 		MOV dword ptr [STRUCT_0x003ec598],OFFSET FUNPTR_0x00392770
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275EB0
 TwinProcEnd FUN_00275EB0
@@ -667962,7 +667962,7 @@ RETURN_LAB_00275f89::
 RETURN_LAB_00275f91::
 		PUSH OFFSET FUN_0027D550
 		MOV dword ptr [STRUCT_0x00402ab0],OFFSET FUNPTR_0x00392678
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275F30
 TwinProcEnd FUN_00275F30
@@ -667995,7 +667995,7 @@ RETURN_LAB_00276009::
 RETURN_LAB_00276011::
 		PUSH OFFSET FUN_0027D3D0
 		MOV dword ptr [STRUCT_0x00402c60],OFFSET FUNPTR_0x0039255c
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00275FB0
 TwinProcEnd FUN_00275FB0
@@ -668049,7 +668049,7 @@ RETURN_LAB_002760e9::
 RETURN_LAB_002760f1::
 		PUSH OFFSET FUN_0027D430
 		MOV dword ptr [STRUCT_0x00402ba4],OFFSET FUNPTR_0x0039258c
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276090
 TwinProcEnd FUN_00276090
@@ -668057,7 +668057,7 @@ TwinProcEnd FUN_00276090
 TwinProc FUN_00276110, stdcall
 	LAB_0x00276110: 
 		PUSH OFFSET FUN_0027D100
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276110
 TwinProcEnd FUN_00276110
@@ -668078,7 +668078,7 @@ RETURN_LAB_0027613a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276142::
 		PUSH OFFSET FUN_0027D370
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276120
 TwinProcEnd FUN_00276120
@@ -668099,7 +668099,7 @@ RETURN_LAB_0027617a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276182::
 		PUSH OFFSET FUN_0027D110
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276160
 TwinProcEnd FUN_00276160
@@ -668120,7 +668120,7 @@ RETURN_LAB_002761ba::
 		TwinCall FUN_00157330
 RETURN_LAB_002761c2::
 		PUSH OFFSET FUN_0027D120
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002761A0
 TwinProcEnd FUN_002761A0
@@ -668141,7 +668141,7 @@ RETURN_LAB_002761fa::
 		TwinCall FUN_00157330
 RETURN_LAB_00276202::
 		PUSH OFFSET FUN_0027D130
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002761E0
 TwinProcEnd FUN_002761E0
@@ -668162,7 +668162,7 @@ RETURN_LAB_0027623a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276242::
 		PUSH OFFSET FUN_0027D140
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276220
 TwinProcEnd FUN_00276220
@@ -668183,7 +668183,7 @@ RETURN_LAB_0027627a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276282::
 		PUSH OFFSET FUN_0027D150
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276260
 TwinProcEnd FUN_00276260
@@ -668204,7 +668204,7 @@ RETURN_LAB_002762ba::
 		TwinCall FUN_00157330
 RETURN_LAB_002762c2::
 		PUSH OFFSET FUN_0027D160
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002762A0
 TwinProcEnd FUN_002762A0
@@ -668216,7 +668216,7 @@ TwinProc FUN_002762E0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002762ea::
 		PUSH OFFSET FUN_0027D170
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002762E0
 TwinProcEnd FUN_002762E0
@@ -668237,7 +668237,7 @@ RETURN_LAB_0027631a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276322::
 		PUSH OFFSET FUN_0027D180
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276300
 TwinProcEnd FUN_00276300
@@ -668258,7 +668258,7 @@ RETURN_LAB_0027635a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276362::
 		PUSH OFFSET FUN_0027D190
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276340
 TwinProcEnd FUN_00276340
@@ -668279,7 +668279,7 @@ RETURN_LAB_0027639a::
 		TwinCall FUN_00157330
 RETURN_LAB_002763a2::
 		PUSH OFFSET FUN_0027D1A0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276380
 TwinProcEnd FUN_00276380
@@ -668300,7 +668300,7 @@ RETURN_LAB_002763da::
 		TwinCall FUN_00157330
 RETURN_LAB_002763e2::
 		PUSH OFFSET FUN_0027D1B0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002763C0
 TwinProcEnd FUN_002763C0
@@ -668321,7 +668321,7 @@ RETURN_LAB_0027641a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276422::
 		PUSH OFFSET FUN_0027D1C0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276400
 TwinProcEnd FUN_00276400
@@ -668342,7 +668342,7 @@ RETURN_LAB_0027645a::
 		TwinCall FUN_00157330
 RETURN_LAB_00276462::
 		PUSH OFFSET FUN_0027D1D0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276440
 TwinProcEnd FUN_00276440
@@ -668375,7 +668375,7 @@ RETURN_LAB_002764d9::
 RETURN_LAB_002764e1::
 		PUSH OFFSET FUN_0027D670
 		MOV dword ptr [STRUCT_0x00402b80],OFFSET FUNPTR_0x003927b0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00276480
 TwinProcEnd FUN_00276480
@@ -668383,7 +668383,7 @@ TwinProcEnd FUN_00276480
 TwinProc FUN_00276500, stdcall
 	LAB_0x00276500: 
 		PUSH OFFSET FUN_0027D1E0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276500
 TwinProcEnd FUN_00276500
@@ -668394,7 +668394,7 @@ TwinProc FUN_00276510, stdcall
 		TwinCall FUN_00102750
 RETURN_LAB_00276515::
 		PUSH OFFSET FUN_0027D380
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276510
 TwinProcEnd FUN_00276510
@@ -668409,7 +668409,7 @@ TwinProcEnd FUN_00276530
 TwinProc FUN_00276540, stdcall
 	LAB_0x00276540: 
 		PUSH OFFSET FUN_0027D1F0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276540
 TwinProcEnd FUN_00276540
@@ -668417,7 +668417,7 @@ TwinProcEnd FUN_00276540
 TwinProc FUN_00276550, stdcall
 	LAB_0x00276550: 
 		PUSH OFFSET FUN_0027D210
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276550
 TwinProcEnd FUN_00276550
@@ -668425,7 +668425,7 @@ TwinProcEnd FUN_00276550
 TwinProc FUN_00276560, stdcall
 	LAB_0x00276560: 
 		PUSH OFFSET FUN_0027D230
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276560
 TwinProcEnd FUN_00276560
@@ -668433,7 +668433,7 @@ TwinProcEnd FUN_00276560
 TwinProc FUN_00276570, stdcall
 	LAB_0x00276570: 
 		PUSH OFFSET FUN_0027D250
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276570
 TwinProcEnd FUN_00276570
@@ -668441,7 +668441,7 @@ TwinProcEnd FUN_00276570
 TwinProc FUN_00276580, stdcall
 	LAB_0x00276580: 
 		PUSH OFFSET FUN_0027D270
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276580
 TwinProcEnd FUN_00276580
@@ -668449,7 +668449,7 @@ TwinProcEnd FUN_00276580
 TwinProc FUN_00276590, stdcall
 	LAB_0x00276590: 
 		PUSH OFFSET FUN_0027D290
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276590
 TwinProcEnd FUN_00276590
@@ -668457,7 +668457,7 @@ TwinProcEnd FUN_00276590
 TwinProc FUN_002765A0, stdcall
 	LAB_0x002765A0: 
 		PUSH OFFSET FUN_0027D2B0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002765A0
 TwinProcEnd FUN_002765A0
@@ -668470,7 +668470,7 @@ TwinProc FUN_002765B0, stdcall
 		TwinCall FUN_001056E0
 RETURN_LAB_002765bc::
 		PUSH OFFSET FUN_0027D3C0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002765B0
 TwinProcEnd FUN_002765B0
@@ -668478,7 +668478,7 @@ TwinProcEnd FUN_002765B0
 TwinProc FUN_002765D0, stdcall
 	LAB_0x002765D0: 
 		PUSH OFFSET FUN_0027D2D0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002765D0
 TwinProcEnd FUN_002765D0
@@ -668486,7 +668486,7 @@ TwinProcEnd FUN_002765D0
 TwinProc FUN_002765E0, stdcall
 	LAB_0x002765E0: 
 		PUSH OFFSET FUN_0027D2E0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002765E0
 TwinProcEnd FUN_002765E0
@@ -668494,7 +668494,7 @@ TwinProcEnd FUN_002765E0
 TwinProc FUN_002765F0, stdcall
 	LAB_0x002765F0: 
 		PUSH OFFSET FUN_0027D2F0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002765F0
 TwinProcEnd FUN_002765F0
@@ -668502,7 +668502,7 @@ TwinProcEnd FUN_002765F0
 TwinProc FUN_00276600, stdcall
 	LAB_0x00276600: 
 		PUSH OFFSET FUN_0027D300
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276600
 TwinProcEnd FUN_00276600
@@ -668510,7 +668510,7 @@ TwinProcEnd FUN_00276600
 TwinProc FUN_00276610, stdcall
 	LAB_0x00276610: 
 		PUSH OFFSET FUN_0027D310
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276610
 TwinProcEnd FUN_00276610
@@ -668518,7 +668518,7 @@ TwinProcEnd FUN_00276610
 TwinProc FUN_00276620, stdcall
 	LAB_0x00276620: 
 		PUSH OFFSET FUN_0027D330
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276620
 TwinProcEnd FUN_00276620
@@ -668526,7 +668526,7 @@ TwinProcEnd FUN_00276620
 TwinProc FUN_00276630, stdcall
 	LAB_0x00276630: 
 		PUSH OFFSET FUN_0027D350
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276630
 TwinProcEnd FUN_00276630
@@ -668538,7 +668538,7 @@ TwinProc FUN_00276640, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027664a::
 		PUSH OFFSET FUN_0027D730
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276640
 TwinProcEnd FUN_00276640
@@ -668550,7 +668550,7 @@ TwinProc FUN_00276660, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027666a::
 		PUSH OFFSET FUN_0027D750
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276660
 TwinProcEnd FUN_00276660
@@ -668807,7 +668807,7 @@ TwinProc FUN_00276DA0, stdcall
 		TwinCall FUN_000FDC60
 RETURN_LAB_00276da5::
 		PUSH OFFSET FUN_0027D740
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276DA0
 TwinProcEnd FUN_00276DA0
@@ -668819,7 +668819,7 @@ TwinProc FUN_00276DC0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00276dca::
 		PUSH OFFSET FUN_0027D760
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276DC0
 TwinProcEnd FUN_00276DC0
@@ -668845,7 +668845,7 @@ RETURN_LAB_00276e02::
 		DEC EDI
 		JNZ LAB_0x00276E00
 		PUSH OFFSET FUN_0027D790
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 		POP EDI
 		POP ESI
@@ -668855,7 +668855,7 @@ TwinProcEnd FUN_00276DF0
 TwinProc FUN_00276E20, stdcall
 	LAB_0x00276E20: 
 		PUSH OFFSET FUN_0027D7C0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E20
 TwinProcEnd FUN_00276E20
@@ -668867,7 +668867,7 @@ TwinProc FUN_00276E30, stdcall
 		TwinCall FUN_00135520
 RETURN_LAB_00276e3a::
 		PUSH OFFSET FUN_0027D7D0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E30
 TwinProcEnd FUN_00276E30
@@ -668879,7 +668879,7 @@ TwinProc FUN_00276E50, stdcall
 		TwinCall FUN_00135600
 RETURN_LAB_00276e57::
 		PUSH OFFSET FUN_0027D800
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E50
 TwinProcEnd FUN_00276E50
@@ -668887,7 +668887,7 @@ TwinProcEnd FUN_00276E50
 TwinProc FUN_00276E70, stdcall
 	LAB_0x00276E70: 
 		PUSH OFFSET FUN_0027D770
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E70
 TwinProcEnd FUN_00276E70
@@ -668895,7 +668895,7 @@ TwinProcEnd FUN_00276E70
 TwinProc FUN_00276E80, stdcall
 	LAB_0x00276E80: 
 		PUSH OFFSET FUN_0027D780
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E80
 TwinProcEnd FUN_00276E80
@@ -668907,7 +668907,7 @@ TwinProc FUN_00276E90, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00276e9a::
 		PUSH OFFSET FUN_0027D830
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276E90
 TwinProcEnd FUN_00276E90
@@ -668919,7 +668919,7 @@ TwinProc FUN_00276EB0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00276eba::
 		PUSH OFFSET FUN_0027D840
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276EB0
 TwinProcEnd FUN_00276EB0
@@ -668927,7 +668927,7 @@ TwinProcEnd FUN_00276EB0
 TwinProc FUN_00276ED0, stdcall
 	LAB_0x00276ED0: 
 		PUSH OFFSET FUN_0027D850
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276ED0
 TwinProcEnd FUN_00276ED0
@@ -668935,7 +668935,7 @@ TwinProcEnd FUN_00276ED0
 TwinProc FUN_00276EE0, stdcall
 	LAB_0x00276EE0: 
 		PUSH OFFSET FUN_0027D860
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276EE0
 TwinProcEnd FUN_00276EE0
@@ -668985,7 +668985,7 @@ TwinProc FUN_00276F90, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00276f9a::
 		PUSH OFFSET FUN_0027D880
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276F90
 TwinProcEnd FUN_00276F90
@@ -669011,7 +669011,7 @@ TwinProc FUN_00276FF0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00276ffa::
 		PUSH OFFSET FUN_0027D890
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00276FF0
 TwinProcEnd FUN_00276FF0
@@ -669023,7 +669023,7 @@ TwinProc FUN_00277010, stdcall
 		TwinCall FUN_00158100
 RETURN_LAB_0027701a::
 		PUSH OFFSET FUN_0027D8A0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277010
 TwinProcEnd FUN_00277010
@@ -669035,7 +669035,7 @@ TwinProc FUN_00277030, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027703a::
 		PUSH OFFSET FUN_0027D8C0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277030
 TwinProcEnd FUN_00277030
@@ -669079,7 +669079,7 @@ TwinProc FUN_002770D0, stdcall
 		MOV EDI,OFFSET ARRAY_0x004958c0
 		PUSH OFFSET FUN_0027D8D0
 		REP STOSD
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 		POP EDI
 		TwinProcExit, FUN_002770D0
@@ -669101,7 +669101,7 @@ TwinProc FUN_00277110, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027711a::
 		PUSH OFFSET FUN_0027D940
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277110
 TwinProcEnd FUN_00277110
@@ -669123,7 +669123,7 @@ TwinProcEnd FUN_00277150
 TwinProc FUN_00277160, stdcall
 	LAB_0x00277160: 
 		PUSH OFFSET FUN_0027D950
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277160
 TwinProcEnd FUN_00277160
@@ -669151,7 +669151,7 @@ TwinProc FUN_002771A0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002771aa::
 		PUSH OFFSET FUN_0027D960
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002771A0
 TwinProcEnd FUN_002771A0
@@ -669177,7 +669177,7 @@ TwinProc FUN_00277200, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027720a::
 		PUSH OFFSET FUN_0027D970
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277200
 TwinProcEnd FUN_00277200
@@ -669226,7 +669226,7 @@ TwinProc FUN_002772B0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002772ba::
 		PUSH OFFSET FUN_0027D980
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002772B0
 TwinProcEnd FUN_002772B0
@@ -669625,7 +669625,7 @@ TwinProcEnd FUN_00277950
 TwinProc FUN_00277970, stdcall
 	LAB_0x00277970: 
 		PUSH OFFSET FUN_0027D990
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277970
 TwinProcEnd FUN_00277970
@@ -669633,7 +669633,7 @@ TwinProcEnd FUN_00277970
 TwinProc FUN_00277980, stdcall
 	LAB_0x00277980: 
 		PUSH OFFSET FUN_0027D9A0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277980
 TwinProcEnd FUN_00277980
@@ -669679,7 +669679,7 @@ TwinProc FUN_00277A20, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00277a2a::
 		PUSH OFFSET FUN_0027D9B0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00277A20
 TwinProcEnd FUN_00277A20
@@ -670103,7 +670103,7 @@ TwinProc FUN_00278140, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027814a::
 		PUSH OFFSET FUN_0027D9C0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278140
 TwinProcEnd FUN_00278140
@@ -670156,7 +670156,7 @@ RETURN_LAB_002781e1::
 		TwinCall FUN_001A13E0
 RETURN_LAB_002781f3::
 		PUSH OFFSET FUN_0027D9D0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278190
 TwinProcEnd FUN_00278190
@@ -670175,7 +670175,7 @@ TwinProc FUN_00278230, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027823a::
 		PUSH OFFSET FUN_0027DA10
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278230
 TwinProcEnd FUN_00278230
@@ -670218,7 +670218,7 @@ TwinProc FUN_002782D0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002782da::
 		PUSH OFFSET FUN_0027DA20
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002782D0
 TwinProcEnd FUN_002782D0
@@ -670264,7 +670264,7 @@ TwinProcEnd FUN_00278370
 TwinProc FUN_00278390, stdcall
 	LAB_0x00278390: 
 		PUSH OFFSET FUN_0027DA30
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278390
 TwinProcEnd FUN_00278390
@@ -670272,7 +670272,7 @@ TwinProcEnd FUN_00278390
 TwinProc FUN_002783A0, stdcall
 	LAB_0x002783A0: 
 		PUSH OFFSET FUN_0027DA40
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783A0
 TwinProcEnd FUN_002783A0
@@ -670280,7 +670280,7 @@ TwinProcEnd FUN_002783A0
 TwinProc FUN_002783B0, stdcall
 	LAB_0x002783B0: 
 		PUSH OFFSET FUN_0027DA50
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783B0
 TwinProcEnd FUN_002783B0
@@ -670288,7 +670288,7 @@ TwinProcEnd FUN_002783B0
 TwinProc FUN_002783C0, stdcall
 	LAB_0x002783C0: 
 		PUSH OFFSET FUN_0027DA60
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783C0
 TwinProcEnd FUN_002783C0
@@ -670296,7 +670296,7 @@ TwinProcEnd FUN_002783C0
 TwinProc FUN_002783D0, stdcall
 	LAB_0x002783D0: 
 		PUSH OFFSET FUN_0027DA70
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783D0
 TwinProcEnd FUN_002783D0
@@ -670304,7 +670304,7 @@ TwinProcEnd FUN_002783D0
 TwinProc FUN_002783E0, stdcall
 	LAB_0x002783E0: 
 		PUSH OFFSET FUN_0027DA80
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783E0
 TwinProcEnd FUN_002783E0
@@ -670312,7 +670312,7 @@ TwinProcEnd FUN_002783E0
 TwinProc FUN_002783F0, stdcall
 	LAB_0x002783F0: 
 		PUSH OFFSET FUN_0027DA90
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002783F0
 TwinProcEnd FUN_002783F0
@@ -670320,7 +670320,7 @@ TwinProcEnd FUN_002783F0
 TwinProc FUN_00278400, stdcall
 	LAB_0x00278400: 
 		PUSH OFFSET FUN_0027DAA0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278400
 TwinProcEnd FUN_00278400
@@ -670328,7 +670328,7 @@ TwinProcEnd FUN_00278400
 TwinProc FUN_00278410, stdcall
 	LAB_0x00278410: 
 		PUSH OFFSET FUN_0027DAB0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278410
 TwinProcEnd FUN_00278410
@@ -670340,7 +670340,7 @@ TwinProc FUN_00278420, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027842a::
 		PUSH OFFSET FUN_0027DAC0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278420
 TwinProcEnd FUN_00278420
@@ -670361,7 +670361,7 @@ RETURN_LAB_0027845a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278462::
 		PUSH OFFSET FUN_0027DBA0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278440
 TwinProcEnd FUN_00278440
@@ -670382,7 +670382,7 @@ RETURN_LAB_0027849a::
 		TwinCall FUN_00157330
 RETURN_LAB_002784a2::
 		PUSH OFFSET FUN_0027DAD0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278480
 TwinProcEnd FUN_00278480
@@ -670403,7 +670403,7 @@ RETURN_LAB_002784da::
 		TwinCall FUN_00157330
 RETURN_LAB_002784e2::
 		PUSH OFFSET FUN_0027DAE0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002784C0
 TwinProcEnd FUN_002784C0
@@ -670424,7 +670424,7 @@ RETURN_LAB_0027851a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278522::
 		PUSH OFFSET FUN_0027DAF0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278500
 TwinProcEnd FUN_00278500
@@ -670445,7 +670445,7 @@ RETURN_LAB_0027855a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278562::
 		PUSH OFFSET FUN_0027DB00
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278540
 TwinProcEnd FUN_00278540
@@ -670466,7 +670466,7 @@ RETURN_LAB_0027859a::
 		TwinCall FUN_00157330
 RETURN_LAB_002785a2::
 		PUSH OFFSET FUN_0027DB10
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278580
 TwinProcEnd FUN_00278580
@@ -670487,7 +670487,7 @@ RETURN_LAB_002785da::
 		TwinCall FUN_00157330
 RETURN_LAB_002785e2::
 		PUSH OFFSET FUN_0027DB20
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002785C0
 TwinProcEnd FUN_002785C0
@@ -670499,7 +670499,7 @@ TwinProc FUN_00278600, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027860a::
 		PUSH OFFSET FUN_0027DB30
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278600
 TwinProcEnd FUN_00278600
@@ -670520,7 +670520,7 @@ RETURN_LAB_0027863a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278642::
 		PUSH OFFSET FUN_0027DB40
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278620
 TwinProcEnd FUN_00278620
@@ -670541,7 +670541,7 @@ RETURN_LAB_0027867a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278682::
 		PUSH OFFSET FUN_0027DB50
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278660
 TwinProcEnd FUN_00278660
@@ -670562,7 +670562,7 @@ RETURN_LAB_002786ba::
 		TwinCall FUN_00157330
 RETURN_LAB_002786c2::
 		PUSH OFFSET FUN_0027DB60
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002786A0
 TwinProcEnd FUN_002786A0
@@ -670583,7 +670583,7 @@ RETURN_LAB_002786fa::
 		TwinCall FUN_00157330
 RETURN_LAB_00278702::
 		PUSH OFFSET FUN_0027DB70
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_002786E0
 TwinProcEnd FUN_002786E0
@@ -670604,7 +670604,7 @@ RETURN_LAB_0027873a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278742::
 		PUSH OFFSET FUN_0027DB80
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278720
 TwinProcEnd FUN_00278720
@@ -670625,7 +670625,7 @@ RETURN_LAB_0027877a::
 		TwinCall FUN_00157330
 RETURN_LAB_00278782::
 		PUSH OFFSET FUN_0027DB90
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,010h
 		TwinProcExit, FUN_00278760
 TwinProcEnd FUN_00278760
@@ -670637,7 +670637,7 @@ TwinProc FUN_002787A0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002787aa::
 		PUSH OFFSET FUN_0027DBB0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002787A0
 TwinProcEnd FUN_002787A0
@@ -670648,7 +670648,7 @@ TwinProc FUN_002787C0, stdcall
 		TwinCall FUN_001D7A40
 RETURN_LAB_002787c5::
 		PUSH OFFSET FUN_0027DBC0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002787C0
 TwinProcEnd FUN_002787C0
@@ -670735,7 +670735,7 @@ TwinProc FUN_00278930, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027893a::
 		PUSH OFFSET FUN_0027DBD0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00278930
 TwinProcEnd FUN_00278930
@@ -671145,7 +671145,7 @@ TwinProc FUN_00279010, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027901a::
 		PUSH OFFSET FUN_0027DBE0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279010
 TwinProcEnd FUN_00279010
@@ -671584,7 +671584,7 @@ TwinProc FUN_00279050, stdcall
 		JNZ LAB_0x00279088
 		PUSH OFFSET FUN_0027DC00
 		MOV dword ptr [NUM_0x004a2020],EDX
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		ADD ESP,04h
 		POP EDI
 		POP ESI
@@ -671599,7 +671599,7 @@ TwinProc FUN_002798D0, stdcall
 		TwinCall FUN_001F15D0
 RETURN_LAB_002798d5::
 		PUSH OFFSET FUN_0027DBF0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002798D0
 TwinProcEnd FUN_002798D0
@@ -671611,7 +671611,7 @@ TwinProc FUN_002798F0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_002798fa::
 		PUSH OFFSET FUN_0027DC10
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_002798F0
 TwinProcEnd FUN_002798F0
@@ -671625,7 +671625,7 @@ TwinProcEnd FUN_00279910
 TwinProc FUN_00279920, stdcall
 	LAB_0x00279920: 
 		PUSH OFFSET FUN_0027DC20
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279920
 TwinProcEnd FUN_00279920
@@ -671654,7 +671654,7 @@ TwinProc FUN_00279930, c
 		TwinCall FUN_001F2810
 RETURN_LAB_00279965::
 		PUSH OFFSET FUN_0027DC30
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279930
 TwinProcEnd FUN_00279930
@@ -671666,7 +671666,7 @@ TwinProc FUN_00279980, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027998a::
 		PUSH OFFSET FUN_0027DC40
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279980
 TwinProcEnd FUN_00279980
@@ -671722,7 +671722,7 @@ TwinProc FUN_00279A50, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00279a5a::
 		PUSH OFFSET FUN_0027DC50
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279A50
 TwinProcEnd FUN_00279A50
@@ -671734,7 +671734,7 @@ TwinProc FUN_00279A70, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_00279a7a::
 		PUSH OFFSET FUN_0027DC60
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_00279A70
 TwinProcEnd FUN_00279A70
@@ -672110,7 +672110,7 @@ TwinProc FUN_0027A0B0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a0ba::
 		PUSH OFFSET FUN_0027DC70
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A0B0
 TwinProcEnd FUN_0027A0B0
@@ -672149,7 +672149,7 @@ TwinProc FUN_0027A140, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a14a::
 		PUSH OFFSET FUN_0027DC80
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A140
 TwinProcEnd FUN_0027A140
@@ -672167,7 +672167,7 @@ TwinProc FUN_0027A170, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a17a::
 		PUSH OFFSET FUN_0027DC90
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A170
 TwinProcEnd FUN_0027A170
@@ -672202,7 +672202,7 @@ TwinProc FUN_0027A1E0, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a1ea::
 		PUSH OFFSET FUN_0027DCA0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A1E0
 TwinProcEnd FUN_0027A1E0
@@ -672214,7 +672214,7 @@ TwinProc FUN_0027A200, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a20a::
 		PUSH OFFSET FUN_0027DCB0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A200
 TwinProcEnd FUN_0027A200
@@ -672222,7 +672222,7 @@ TwinProcEnd FUN_0027A200
 TwinProc FUN_0027A220, stdcall
 	LAB_0x0027A220: 
 		PUSH OFFSET FUN_0027DCC0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A220
 TwinProcEnd FUN_0027A220
@@ -672594,7 +672594,7 @@ TwinProc FUN_0027A850, stdcall
 		TwinCall FUN_001591C0
 RETURN_LAB_0027a85a::
 		PUSH OFFSET FUN_0027DCD0
-		TwinCall atexit
+		TwinCall ExWrapper_atexit
 		POP ECX
 		TwinProcExit, FUN_0027A850
 TwinProcEnd FUN_0027A850
@@ -673840,7 +673840,7 @@ TwinProc FUN_00293FD0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
 		PUSH 0A1800000h
 		PUSH EAX
-		TwinCall XMemFree@8
+		TwinCall ExWrapper_XMemFree@8
 		TwinProcExit 04h, FUN_00293FD0
 TwinProcEnd FUN_00293FD0
 

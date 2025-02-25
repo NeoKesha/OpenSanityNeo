@@ -1,0 +1,59 @@
+#pragma once
+#include <Windows.h>
+#include <d3d8.h>
+
+DWORD ConvertBehaviourFlags(DWORD Flags);
+
+DWORD ConvertSetGammaRampFlags(DWORD Flags);
+
+DWORD ConvertClearFlags(DWORD Flags);
+
+D3DPRIMITIVETYPE ConvertPrimitiveType(D3DPRIMITIVETYPE type);
+
+D3DTRANSFORMSTATETYPE ConvertTransformState(D3DTRANSFORMSTATETYPE state);
+
+D3DSHADEMODE ConvertShadeMode(D3DSHADEMODE mode);
+
+D3DFILLMODE ConvertFillMode(D3DFILLMODE mode);
+
+D3DBLEND ConvertBlend(D3DBLEND blend);
+
+D3DBLENDOP ConvertBlendOp(D3DBLENDOP op);
+
+D3DCULL ConvertCull(D3DCULL value);
+
+D3DCMPFUNC ConvertCmpFunc(D3DCMPFUNC value);
+
+D3DSTENCILOP ConvertStencilOp(D3DSTENCILOP value);
+
+D3DFOGMODE ConvertFogMode(D3DFOGMODE value);
+
+D3DZBUFFERTYPE ConvertZBufferType(D3DZBUFFERTYPE value);
+
+D3DVERTEXBLENDFLAGS ConvertVertexBlendFlags(D3DVERTEXBLENDFLAGS value);
+
+D3DMATERIALCOLORSOURCE ConvertMaterialColorSource(D3DMATERIALCOLORSOURCE value);
+
+D3DRENDERSTATETYPE ConvertRenderStateType(D3DRENDERSTATETYPE type);
+
+DWORD ConvertColorWriteEnable(DWORD Flags);
+
+DWORD ConvertWrap(DWORD flags);
+
+DWORD ConvertWrapCoord(DWORD flags);
+
+D3DTEXTUREOP ConvertTextureOp(D3DTEXTUREOP value);
+
+D3DTEXTUREADDRESS ConvertTextureAddress(D3DTEXTUREADDRESS value);
+
+D3DTEXTURETRANSFORMFLAGS ConvertTextureTransformFlags(D3DTEXTURETRANSFORMFLAGS value);
+
+D3DTEXTUREFILTERTYPE ConvertTextureFilterType(D3DTEXTUREFILTERTYPE value);
+
+D3DTEXTURESTAGESTATETYPE ConvertTextureStageType(D3DTEXTURESTAGESTATETYPE type);
+
+D3DFORMAT ConvertD3DFormat(D3DFORMAT fmt);
+
+D3DSWAPEFFECT ConvertSwapEffect(D3DSWAPEFFECT val);
+
+D3DDEVTYPE ConvertDeviceType(D3DDEVTYPE type);

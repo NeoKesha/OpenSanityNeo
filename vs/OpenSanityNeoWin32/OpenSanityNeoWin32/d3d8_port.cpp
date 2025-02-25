@@ -30,9 +30,6 @@ void WINAPI D3DDevice_SetFlickerFilter(DWORD Filter) {
 void WINAPI D3DDevice_SetSoftDisplayFilter(BOOL Enable) {
 	return; //MOCK
 }
-void WINAPI D3DDevice_SetGammaRamp(DWORD Flags, CONST D3DGAMMARAMP* pRamp) {
-	return; //MOCK
-}
 void WINAPI D3DDevice_GetGammaRamp(D3DGAMMARAMP* pRamp) {
 	return; //MOCK
 }
@@ -43,18 +40,6 @@ void WINAPI D3DDevice_SetCopyRectsState(CONST D3DCOPYRECTSTATE* pCopyRectState, 
 	return; //MOCK
 }
 void WINAPI D3DDevice_GetCopyRectsState(D3DCOPYRECTSTATE* pCopyRectState, D3DCOPYRECTROPSTATE* pCopyRectRopState) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderTarget(IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_Clear(DWORD Count, CONST D3DRECT* pRects, DWORD Flags, D3DCOLOR Color, float Z, DWORD Stencil) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetTransform(D3DTRANSFORMSTATETYPE State, CONST D3DMATRIX* pMatrix) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_GetTransform(D3DTRANSFORMSTATETYPE State, D3DMATRIX* pMatrix) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_MultiplyTransform(D3DTRANSFORMSTATETYPE State, CONST D3DMATRIX* pMatrix) {
@@ -102,55 +87,16 @@ void D3DFASTCALL D3DDevice_SetRenderState_Simple(DWORD Method, DWORD Value) {
 void WINAPI D3DDevice_SetRenderState_PSTextureModes(DWORD Value) {
 	return; //MOCK
 }
-void WINAPI D3DDevice_SetRenderState_VertexBlend(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_FogColor(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_FillMode(DWORD Value) {
-	return; //MOCK
-}
 void WINAPI D3DDevice_SetRenderState_BackFillMode(DWORD Value) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_SetRenderState_TwoSidedLighting(DWORD Value) {
 	return; //MOCK
 }
-void WINAPI D3DDevice_SetRenderState_NormalizeNormals(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_ZEnable(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_StencilEnable(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_StencilFail(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_CullMode(DWORD Value) {
-	return; //MOCK
-}
 void WINAPI D3DDevice_SetRenderState_FrontFace(DWORD Value) {
 	return; //MOCK
 }
-void WINAPI D3DDevice_SetRenderState_TextureFactor(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_ZBias(DWORD Value) {
-	return; //MOCK
-}
 void WINAPI D3DDevice_SetRenderState_LogicOp(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_EdgeAntiAlias(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_MultiSampleAntiAlias(DWORD Value) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetRenderState_MultiSampleMask(DWORD Value) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_SetRenderState_MultiSampleMode(DWORD Value) {
@@ -212,28 +158,13 @@ void WINAPI D3DDevice_BlockUntilVerticalBlank() {
 	return;
 }
 
-IDirect3DSurface8* WINAPI D3DDevice_GetRenderTarget2() {
-	return (IDirect3DSurface8*)0; //MOCK
-}
-IDirect3DSurface8* WINAPI D3DDevice_GetDepthStencilSurface2() {
-	return (IDirect3DSurface8*)0; //MOCK
-}
 IDirect3DSurface8* WINAPI D3DDevice_GetPalette2(DWORD Stage) {
 	return (IDirect3DSurface8*)0; //MOCK
-}
-void WINAPI D3DDevice_SetTexture(DWORD Stage, IDirect3DBaseTexture8* pTexture) {
-	return; //MOCK
 }
 void WINAPI D3DDevice_SetOverscanColor(D3DCOLOR Color) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_SelectVertexShaderDirect(D3DVERTEXATTRIBUTEFORMAT* pVAF, DWORD Address) {
-	return; //MOCK
-}
-HRESULT WINAPI D3DDevice_CreateVertexShader(CONST DWORD* pDeclaration, CONST DWORD* pFunction, DWORD* pHandle, DWORD Usage) {
-	return S_OK; //MOCK
-}
-void WINAPI D3DDevice_SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_LoadVertexShaderProgram(CONST DWORD* pFunction, DWORD Address) {
@@ -242,28 +173,10 @@ void WINAPI D3DDevice_LoadVertexShaderProgram(CONST DWORD* pFunction, DWORD Addr
 void WINAPI D3DDevice_SetShaderConstantMode(D3DSHADERCONSTANTMODE Mode) {
 	return; //MOCK
 }
-void WINAPI D3DDevice_DeleteVertexShader(DWORD Handle) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_SetVertexShader(DWORD Handle) {
-	return; //MOCK
-}
 void WINAPI D3DDevice_SetVertexShaderInput(DWORD Handle, UINT StreamCount, CONST D3DSTREAM_INPUT* pStreamInputs) {
 	return; //MOCK
 }
-ULONG WINAPI D3DResource_Release(IDirect3DResource8* pThis) {
-	return 0; //MOCK
-}
 void WINAPI D3DResource_Register(IDirect3DResource8* pThis, void* pBase) {
-	return; //MOCK
-}
-void WINAPI D3DSurface_LockRect(IDirect3DSurface8* pThis, D3DLOCKED_RECT* pLockedRect, CONST RECT* pRect, DWORD Flags) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_DrawVerticesUP(D3DPRIMITIVETYPE PrimitiveType, UINT VertexCount, CONST void* pVertexStreamZeroData, UINT VertexStreamZeroStride) {
-	return; //MOCK
-}
-void WINAPI D3DDevice_DrawVertices(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT VertexCount) {
 	return; //MOCK
 }
 void WINAPI D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
@@ -272,38 +185,9 @@ void WINAPI D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
 void WINAPI D3DDevice_End() {
 	return; //MOCK
 }
-UINT WINAPI Direct3D_GetAdapterModeCount(UINT Adapter) {
-	return 0; //MOCK
-}
-HRESULT WINAPI Direct3D_EnumAdapterModes(UINT Adapter, UINT Mode, D3DDISPLAYMODE* pMode) {
-	return S_OK; //MOCK
-}
+
+
 void WINAPI Direct3D_SetPushBufferSize(DWORD PushBufferSize, DWORD KickOffSize) {
-	return; //MOCK
-}
-HRESULT WINAPI Direct3D_CreateDevice(UINT Adapter, D3DDEVTYPE DeviceType, void* pUnused, DWORD BehaviorFlags, D3DPRESENT_PARAMETERS* pPresentationParameters, IDirect3DDevice8** ppReturnedDeviceInterface) {
-	//TODO: Smart convert
-
-	pPresentationParameters->BackBufferWidth = 640;
-	pPresentationParameters->BackBufferHeight = 480;
-	pPresentationParameters->BackBufferFormat = D3DFORMAT::D3DFMT_X8R8G8B8;
-	pPresentationParameters->BackBufferCount = 2;
-	pPresentationParameters->EnableAutoDepthStencil = true;
-	pPresentationParameters->AutoDepthStencilFormat = D3DFORMAT::D3DFMT_D24S8;
-	pPresentationParameters->SwapEffect = D3DSWAPEFFECT::D3DSWAPEFFECT_DISCARD;
-	pPresentationParameters->FullScreen_PresentationInterval = 0;
-	pPresentationParameters->FullScreen_RefreshRateInHz = 0;
-	pPresentationParameters->Flags = 0;
-	pPresentationParameters->Windowed = true;
-
-	HRESULT result = _applicationSystem->D3D8->CreateDevice(D3DADAPTER_DEFAULT, DeviceType, _applicationSystem->MainWindow, D3DCREATE_SOFTWARE_VERTEXPROCESSING, pPresentationParameters, ppReturnedDeviceInterface);
-	_applicationSystem->D3DDevice = *ppReturnedDeviceInterface;
-	return result;
-}
-extern "C" DWORD WINAPI D3DDevice_Swap(DWORD Flags) {
-	return 0; //MOCK
-}
-extern "C" void WINAPI D3DDevice_SetPixelShader(DWORD Handle) {
 	return; //MOCK
 }
 
@@ -314,5 +198,16 @@ extern "C" void WINAPI D3DDevice_UpdateOverlay(IDirect3DSurface8* pSurface, CONS
 	return; //MOCK
 }
 extern "C" void WINAPI D3DDevice_EnableOverlay(BOOL Enable) {
+	return; //MOCK
+}
+
+extern "C" void* WINAPI D3D_AllocContiguousMemory(DWORD Size, DWORD Alignment) {
+	return (void*)0; //MOCK
+}
+
+extern "C" void D3DFASTCALL D3DDevice_SetVertexShaderConstant1Fast(INT Register, CONST void* pConstantData) {
+	return; //MOCK
+}
+extern "C" void D3DFASTCALL D3DDevice_SetVertexShaderConstantNotInlineFast(INT Register, CONST void* pConstantData, DWORD ConstantCount) {
 	return; //MOCK
 }

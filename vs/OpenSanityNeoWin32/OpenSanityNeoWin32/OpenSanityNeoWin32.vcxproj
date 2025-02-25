@@ -19,17 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="convert.cpp" />
     <ClCompile Include="d3d8_port.cpp" />
+    <ClCompile Include="dsound_port.cpp" />
     <ClCompile Include="libport.cpp" />
     <ClCompile Include="libtwindata.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="wrappers.cpp" />
+    <ClCompile Include="xboxapi_port.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="convert.h" />
     <ClInclude Include="d3d8_port.h" />
+    <ClInclude Include="dsound_port.h" />
     <ClInclude Include="libport.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="xbox.h" />
+    <ClInclude Include="xboxapi_port.h" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="twinCore\mainRelease.asm" />
@@ -115,7 +121,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
