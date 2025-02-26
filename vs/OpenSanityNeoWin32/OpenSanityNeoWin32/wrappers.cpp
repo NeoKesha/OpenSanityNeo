@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include <d3d8.h>
+#include <d3dx8core.h>
 #include <dsound.h>
 #include <stdio.h>
 #include "xbox.h"
@@ -40,6 +41,11 @@ extern "C" HRESULT WINAPI Wrapper_Direct3D_CreateDevice(UINT Adapter, D3DDEVTYPE
 
 	HRESULT result = _applicationSystem->D3D8->CreateDevice(Adapter, ConvertDeviceType(DeviceType), _applicationSystem->MainWindow, BehaviorFlags, pPresentationParameters, ppReturnedDeviceInterface);
 	_applicationSystem->D3DDevice = *ppReturnedDeviceInterface;
+
+	IDirect3DTexture8* tmp;
+	D3DXCreateTexture(_applicationSystem->D3DDevice, 64, 64, 1, 0, D3DFMT_A8R8G8B8, D3DPOOL_DEFAULT, &tmp);
+	_applicationSystem->d3dtexturevft = *((void**)tmp);
+
 	return result;
 }
 
@@ -165,20 +171,30 @@ extern "C" void WINAPI Wrapper_D3DDevice_SetRenderTarget(IDirect3DSurface8* pRen
 	_applicationSystem->D3DDevice->SetRenderTarget(pRenderTarget, pNewZStencil);
 }
 extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DDevice_GetRenderTarget2() {
-	IDirect3DSurface8* result;
-	_applicationSystem->D3DDevice->GetRenderTarget(&result);
-	return result;
+	IDirect3DSurface8* surf;
+	HRESULT result = _applicationSystem->D3DDevice->GetRenderTarget(&surf);
+	return surf;
 }
 extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DDevice_GetDepthStencilSurface2() {
-	IDirect3DSurface8* result;
-	_applicationSystem->D3DDevice->GetDepthStencilSurface(&result);
-	return result;
+	IDirect3DSurface8* surf;
+	HRESULT result = _applicationSystem->D3DDevice->GetDepthStencilSurface(&surf);
+	return surf;
 }
 extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DDevice_GetPalette2(DWORD Stage) {
 	return D3DDevice_GetPalette2(Stage);
 }
-extern "C" void WINAPI Wrapper_D3DDevice_SetTexture(D3DTEXTURESTAGESTATETYPE Stage, IDirect3DBaseTexture8* pTexture) {
-	_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), pTexture);
+extern "C" void WINAPI Wrapper_D3DDevice_SetTexture(D3DTEXTURESTAGESTATETYPE Stage, IDirect3DTexture8* pTexture) {
+	if (pTexture == NULL) {
+		return;
+	}
+	if (*((void**)pTexture) == _applicationSystem->d3dtexturevft) {
+		_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), pTexture);
+	}
+	else {
+		D3DTextureBase* texture = (D3DTextureBase*)pTexture;
+		IDirect3DTexture8* texIterface = GetTextureInterface(texture);
+		_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), texIterface);
+	}
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetOverscanColor(D3DCOLOR Color) {
 	D3DDevice_SetOverscanColor(Color);
@@ -188,7 +204,8 @@ extern "C" void WINAPI Wrapper_D3DDevice_SelectVertexShaderDirect(D3DVERTEXATTRI
 }
 
 extern "C" HRESULT WINAPI Wrapper_D3DDevice_CreateVertexShader(CONST DWORD* pDeclaration, CONST DWORD* pFunction, DWORD* pHandle, DWORD Usage) {
-	return _applicationSystem->D3DDevice->CreateVertexShader(pDeclaration, pFunction, pHandle, Usage);
+	HRESULT result = _applicationSystem->D3DDevice->CreateVertexShader(ConvertShaderDecl(pDeclaration), pFunction, pHandle, 0);
+	return result;
 }
 
 extern "C" void WINAPI Wrapper_D3DDevice_SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride) {
@@ -229,6 +246,7 @@ extern "C" void WINAPI Wrapper_D3DDevice_End() {
 }
 
 extern "C" DWORD WINAPI Wrapper_D3DDevice_Swap(DWORD Flags) {
+	HandleWinApiUpdates();
 	return _applicationSystem->D3DDevice->Present(NULL, NULL, NULL, NULL);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetPixelShader(DWORD Handle) {
@@ -245,19 +263,23 @@ extern "C" void WINAPI Wrapper_D3DDevice_EnableOverlay(BOOL Enable) {
 }
 
 extern "C" ULONG WINAPI Wrapper_D3DResource_Release(IDirect3DResource8* pThis) {
+	UnregisterTexture((IDirect3DTexture8*)pThis);
 	return pThis->Release();
 }
 extern "C" void WINAPI Wrapper_D3DResource_Register(IDirect3DResource8* pThis, void* pBase) {
 	D3DResource_Register(pThis, pBase);
 }
 extern "C" void WINAPI Wrapper_D3DSurface_LockRect(IDirect3DSurface8* pThis, D3DLOCKED_RECT* pLockedRect, CONST RECT* pRect, DWORD Flags) {
-	pThis->LockRect(pLockedRect, pRect, Flags);
+	pThis->LockRect(pLockedRect, pRect, ConvertLockFlags(Flags));
 }
 
 extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DTexture_GetSurfaceLevel2(IDirect3DTexture8* pThis, UINT Level) {
-	IDirect3DSurface8* result;
-	pThis->GetSurfaceLevel(Level, &result);
-	return result;
+	IDirect3DTexture8* pTexture;
+	IDirect3DSurface8* pSurface;
+	HRESULT texResult = _applicationSystem->D3DDevice->CreateTexture(320, 240, 1, 0, D3DFMT_X8R8G8B8, D3DPOOL_DEFAULT, &pTexture);
+	RegisterTexture(pTexture);
+	HRESULT surfResult = pTexture->GetSurfaceLevel(0, &pSurface);
+	return pSurface;
 }
 extern "C" HRESULT WINAPI Wrapper_D3DTexture_LockRect(IDirect3DTexture8* pThis, UINT Level, D3DLOCKED_RECT* pLockedRect, CONST RECT* pRect, DWORD Flags) {
 	return pThis->LockRect(Level, pLockedRect, pRect, Flags);
@@ -267,7 +289,9 @@ extern "C" void* WINAPI Wrapper_D3D_AllocContiguousMemory(DWORD Size, DWORD Alig
 }
 
 extern "C" HRESULT  __stdcall Wrapper_D3DXCreateTexture(IDirect3DDevice8* pThis,UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8** ppTexture) {
-	return _applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, ppTexture);
+	HRESULT result = _applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, ppTexture);
+	RegisterTexture(*ppTexture);
+	return result;
 }
 
 //xapi wrappers
@@ -337,7 +361,7 @@ extern "C" XBOXAPI DWORD __stdcall Wrapper_XCalculateSignatureEnd(IN HANDLE hCal
 }
 
 extern "C" XBOXAPI BOOL __stdcall Wrapper_XSetFileCacheSize(IN SIZE_T dwCacheSize) {
-	return XSetFileCacheSize(dwCacheSize);
+	return SetSystemFileCacheSize(dwCacheSize, dwCacheSize, 0);
 }
 
 extern "C" XBOXAPI LPVOID __stdcall Wrapper_XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect) {
@@ -396,7 +420,7 @@ extern "C" DWORD __stdcall Wrapper_XGSetSurfaceHeader(UINT Width, UINT Height, D
 	return XGSetSurfaceHeader(Width, Height, Format, pSurface, Data, Pitch);
 }
 
-extern "C" DWORD __stdcall Wrapper_XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8** pTexture, UINT Data, UINT Pitch) {
+extern "C" DWORD __stdcall Wrapper_XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, D3DTextureBase* pTexture, UINT Data, UINT Pitch) {
 	return XGSetTextureHeader(Width, Height, Levels, Usage, Format, Pool, pTexture, Data, Pitch);
 }
 
@@ -405,7 +429,10 @@ extern "C" void __stdcall Wrapper_XGSetVertexBufferHeader(UINT Length, DWORD Usa
 }
 
 extern "C" HRESULT __stdcall Wrapper_XGAssembleShader(LPCSTR pSourceFileName, LPCVOID pSrcData, UINT SrcDataLen, DWORD Flags, LPXGBUFFER* pConstants, LPXGBUFFER* pCompiledShader, LPXGBUFFER* pErrorLog, LPXGBUFFER* pListing, SASM_ResolverCallback pResolver, LPVOID pResolverUserData, LPDWORD pShaderType) {
-	return XGAssembleShader(pSourceFileName, pSrcData, SrcDataLen, Flags, pConstants, pCompiledShader,  pErrorLog, pListing, pResolver, pResolverUserData, pShaderType);
+	const char* listing = (const char*)pSrcData;
+	const char* converted = ConvertShaderListing(listing);
+	HRESULT result = D3DXAssembleShader(converted, strlen(converted), Flags, pConstants, pCompiledShader, pErrorLog);
+	return result;
 }
 
 extern "C" HRESULT __stdcall Wrapper_XGSpliceVertexShaders(DWORD* pNewShader, DWORD* pcbNewShaderBufferSize, DWORD* pNewInstructionCount, const DWORD* const* ppShaderArray, DWORD NumShaders, BOOL bOptimizeResults) {
@@ -413,7 +440,7 @@ extern "C" HRESULT __stdcall Wrapper_XGSpliceVertexShaders(DWORD* pNewShader, DW
 }
 
 extern "C" void __stdcall Wrapper_XGSwizzleRect(LPCVOID pSource, DWORD Pitch, LPCRECT pRect, LPVOID pDest, DWORD Width, DWORD Height, const LPPOINT pPoint, DWORD BytesPerPixel) {
-	XGSwizzleRect(pSource, Pitch, pRect, pDest, Width, Height, pPoint, BytesPerPixel);
+	//XGSwizzleRect(pSource, Pitch, pRect, pDest, Width, Height, pPoint, BytesPerPixel);
 }
 
 extern "C" void  __stdcall Wrapper_XAudioCreatePcmFormat(WORD nChannels, DWORD nSamplesPerSec, WORD wBitsPerSample, LPWAVEFORMATEX pwfx) {
@@ -902,11 +929,13 @@ extern "C" BOOL  __stdcall Wrapper_GetFileInformationByHandle(HANDLE hFile, LPBY
 	return GetFileInformationByHandle(hFile, lpFileInformation);
 }
 extern "C" DWORD  __stdcall Wrapper_GetFileSize(HANDLE hFile, LPDWORD lpFileSizeHigh) {
-	return GetFileSize(hFile, lpFileSizeHigh);
-
+	DWORD fSize = GetFileSize(hFile, lpFileSizeHigh);
+	return fSize;
 }
 extern "C" HANDLE  __stdcall Wrapper_CreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) {
-	return CreateFileA(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+	LPCSTR fixedPath = ConvertFilePath(lpFileName);
+	HANDLE handle = CreateFileA(fixedPath, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
+	return handle;
 }
 extern "C" LPVOID  __stdcall Wrapper_VirtualAlloc(LPVOID lpAddress, SIZE_T dwSize, DWORD flAllocationType, DWORD flProtect) {
 	return VirtualAlloc(lpAddress, dwSize, flAllocationType, flProtect);

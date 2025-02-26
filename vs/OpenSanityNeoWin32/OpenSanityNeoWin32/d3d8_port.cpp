@@ -1,4 +1,5 @@
 #include "d3d8_port.h"
+#include "xboxapi_port.h"
 
 ULONG WINAPI D3DDevice_AddRef() {
 	return 0; //MOCK
@@ -202,7 +203,7 @@ extern "C" void WINAPI D3DDevice_EnableOverlay(BOOL Enable) {
 }
 
 extern "C" void* WINAPI D3D_AllocContiguousMemory(DWORD Size, DWORD Alignment) {
-	return (void*)0; //MOCK
+	return XMemAlloc(Size, Alignment);
 }
 
 extern "C" void D3DFASTCALL D3DDevice_SetVertexShaderConstant1Fast(INT Register, CONST void* pConstantData) {

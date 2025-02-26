@@ -369,3 +369,38 @@ D3DSWAPEFFECT ConvertSwapEffect(D3DSWAPEFFECT val) {
 D3DDEVTYPE ConvertDeviceType(D3DDEVTYPE type) {
     return type;
 }
+
+char* ConvertFilePath(const char* path) {
+    char currentDirectory[256];
+    ZeroMemory(currentDirectory, sizeof(currentDirectory));
+    char* fixedPath;
+    GetCurrentDirectoryA(256, currentDirectory);
+    if (CompareStringA(LOCALE_USER_DEFAULT, LINGUISTIC_IGNORECASE, "D:\\", 3, path, 3) == CSTR_EQUAL) {
+        lstrcatA(currentDirectory, path + 2);
+    }
+    else {
+        lstrcatA(currentDirectory, path);
+    }
+    fixedPath = new char[strlen(currentDirectory)];
+    strcpy(fixedPath, currentDirectory);
+    return fixedPath;
+}
+
+const char* ConvertShaderListing(const char* input) {
+    static int idx = 0;
+    return shaders[idx++];
+}
+
+const DWORD* ConvertShaderDecl(const DWORD* input) {
+    static int idx = 0;
+    return decls[idx++];
+}
+
+DWORD ConvertLockFlags(DWORD flags) {
+    DWORD newFlags = 0;
+    //if ((flags & 0x00000010L) != 0) newFlags |= D3DLOCK_NOFLUSH;
+    if ((flags & 0x00000020L) != 0) newFlags |= D3DLOCK_NOOVERWRITE;
+    //if ((flags & 0x00000040L) != 0) newFlags |= D3DLOCK_TILED;
+    if ((flags & 0x00000080L) != 0) newFlags |= D3DLOCK_READONLY;
+    return newFlags;
+}

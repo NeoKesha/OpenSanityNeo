@@ -26,3 +26,15 @@ extern "C" XPP_DEVICE_TYPE XDEVICE_TYPE_GAMEPAD_TABLE = {};
 extern "C" const DWORD D3DDIRTYFROMRENDERSTATE[46] = {};
 
 extern "C" void __stdcall RtlSizeHeap(int arg1, int arg2, int arg3) { return; }
+
+extern "C" void __cdecl _snprintf(char* buffer, size_t count, const char* format, va_list argptr) {
+	return;
+}
+
+extern "C" void __cdecl _vsnprintf(char* buffer, size_t count, const char* format, va_list argptr) {
+	return;
+}
+
+extern "C" void __cdecl sscanf(const char* buffer, const char* format, va_list argptr) {
+	return;
+}

@@ -44,7 +44,10 @@ extern "C" XBOXAPI DWORD WINAPI XGetLaunchInfo(OUT PDWORD pdwLaunchDataType, OUT
 	return ERROR_SUCCESS;
 }
 extern "C" XBOXAPI DWORD WINAPI XGetDiskSectorSizeA(IN LPCSTR lpRootPathName) {
-	return 0;  //MOCK
+	char* fixedPath = ConvertFilePath(lpRootPathName);
+	HANDLE hFile = CreateFileA(fixedPath, GENERIC_READ, FILE_SHARE_READ, 0, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, 0);
+	DWORD sz = GetFileSize(hFile, 0);
+	return sz;
 }
 extern "C" XBOXAPI HANDLE WINAPI XCalculateSignatureBegin(IN DWORD dwFlags) {
 	return INVALID_HANDLE_VALUE; //MOCK
@@ -54,9 +57,6 @@ extern "C" XBOXAPI DWORD WINAPI XCalculateSignatureUpdate(IN HANDLE hCalcSig, IN
 }
 extern "C" XBOXAPI DWORD WINAPI XCalculateSignatureEnd(IN HANDLE hCalcSig, OUT PVOID pSignature) {
 	return 0;  //MOCK
-}
-extern "C" XBOXAPI BOOL WINAPI XSetFileCacheSize(IN SIZE_T dwCacheSize) {
-	return SetSystemFileCacheSize(dwCacheSize, dwCacheSize, 0);
 }
 extern "C" XBOXAPI LPVOID WINAPI XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect) {
 	return malloc(dwSize);
@@ -79,21 +79,25 @@ extern "C" XBOXAPI BOOL WINAPI XFindNextSaveGame(IN HANDLE hFindGame, OUT PXGAME
 extern "C" XBOXAPI BOOL WINAPI XFindClose(IN HANDLE hFind) {
 	return FALSE; //MOCK
 }
-extern "C" LPVOID WINAPI XMemAlloc(SIZE_T dwSize, DWORD dwAllocAttributes) { return malloc(dwSize); }
-extern "C" VOID WINAPI XMemFree(PVOID pAddress, DWORD dwAllocAttributes) { free(pAddress); }
+extern "C" LPVOID WINAPI XMemAlloc(SIZE_T dwSize, DWORD dwAllocAttributes) { 
+	return malloc(dwSize); 
+}
+extern "C" VOID WINAPI XMemFree(PVOID pAddress, DWORD dwAllocAttributes) { 
+	free(pAddress); 
+}
 
 
 extern "C" ULONG WINAPI XGBuffer_AddRef(XGBuffer* pThis) {
-	return 0; //MOCK
+	return ((ID3DXBuffer*)pThis)->AddRef();
 }
 extern "C" ULONG WINAPI XGBuffer_Release(XGBuffer* pThis) {
-	return 0; //MOCK
+	return ((ID3DXBuffer*)pThis)->Release();
 }
 extern "C" LPVOID WINAPI XGBuffer_GetBufferPointer(XGBuffer* pThis) {
-	return (LPVOID)0; //MOCK
+	return ((ID3DXBuffer*)pThis)->GetBufferPointer();
 }
 extern "C" DWORD WINAPI XGBuffer_GetBufferSize(XGBuffer* pThis) {
-	return 0; //MOCK
+	return ((ID3DXBuffer*)pThis)->GetBufferSize();
 }
 
 
@@ -110,37 +114,33 @@ DWORD  WINAPI XGBuffer::GetBufferSize() {
 	return XGBuffer_GetBufferSize(this);
 }
 
-struct D3DResource {
-	int lock;
-	int data;
-	int common;
-};
-typedef struct D3DResource D3DResource;
-
-struct D3DTextureBase {
-	D3DResource resource;
-	int format;
-	int size;
-};
-
 extern "C" DWORD WINAPI XGSetSurfaceHeader(UINT Width, UINT Height, D3DFORMAT Format, IDirect3DSurface8* pSurface, UINT Data, UINT Pitch) {
 	return 0; //MOCK
 }
 
-extern "C" HRESULT WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8** pTexture, UINT Data, UINT Pitch) {
-	return _applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, pTexture);
+extern "C" HRESULT WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, D3DTextureBase* pTexture, UINT Data, UINT Pitch) {
+	IDirect3DTexture8* tmp;
+	_applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, &tmp);
+	HackTextureReflection* obs = (HackTextureReflection*)tmp;
+	pTexture->resource.data = obs->dataPtr;
+	pTexture->resource.common = obs->baseptr;
+	pTexture->resource.lock = 0;
+	pTexture->format = obs->format;
+	pTexture->size = obs->byteLength;
+
+	RegisterTexture(tmp);
+
+	return S_OK; //WTF
 }
 extern "C" void WINAPI XGSetVertexBufferHeader(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8* ppVertexBuffer, UINT Data) {
 	return; //MOCK
-}
-
-extern "C" HRESULT WINAPI XGAssembleShader(LPCSTR pSourceFileName, LPCVOID pSrcData, UINT SrcDataLen, DWORD Flags, LPXGBUFFER* pConstants, LPXGBUFFER* pCompiledShader, LPXGBUFFER* pErrorLog, LPXGBUFFER* pListing, SASM_ResolverCallback pResolver, LPVOID pResolverUserData, LPDWORD pShaderType) {
-	return S_OK; //MOCK
 }
 extern "C" HRESULT WINAPI XGSpliceVertexShaders(DWORD* pNewShader, DWORD* pcbNewShaderBufferSize, DWORD* pNewInstructionCount, CONST DWORD* CONST* ppShaderArray, DWORD NumShaders, BOOL bOptimizeResults) {
 	return S_OK; //MOCK
 }
 extern "C" void WINAPI XGSwizzleRect(LPCVOID pSource, DWORD Pitch, LPCRECT  pRect, LPVOID pDest, DWORD Width, DWORD Height, CONST LPPOINT pPoint, DWORD BytesPerPixel) {
+	//TODO REAL UNSWIZZLE!
+	memcpy(pDest, pSource, Width * Height * BytesPerPixel);
 	return; //MOCK
 }
 extern "C" void XAudioCreatePcmFormat(WORD nChannels, DWORD nSamplesPerSec, WORD wBitsPerSample, LPWAVEFORMATEX pwfx) {

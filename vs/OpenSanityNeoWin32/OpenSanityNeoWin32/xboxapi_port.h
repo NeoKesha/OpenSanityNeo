@@ -39,8 +39,6 @@ extern "C" XBOXAPI DWORD __stdcall XCalculateSignatureUpdate(IN HANDLE hCalcSig,
 
 extern "C" XBOXAPI DWORD __stdcall XCalculateSignatureEnd(IN HANDLE hCalcSig, OUT PVOID pSignature);
 
-extern "C" XBOXAPI BOOL __stdcall XSetFileCacheSize(IN SIZE_T dwCacheSize);
-
 extern "C" XBOXAPI LPVOID __stdcall XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect);
 
 extern "C" XBOXAPI DWORD __stdcall XGetVideoFlags(VOID);
@@ -69,11 +67,9 @@ extern "C" DWORD __stdcall XGBuffer_GetBufferSize(XGBuffer* pThis);
 
 extern "C" DWORD __stdcall XGSetSurfaceHeader(UINT Width, UINT Height, D3DFORMAT Format, IDirect3DSurface8* pSurface, UINT Data, UINT Pitch);
 
-extern "C" HRESULT __stdcall XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8** pTexture, UINT Data, UINT Pitch);
+extern "C" HRESULT __stdcall XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, D3DTextureBase* pTexture, UINT Data, UINT Pitch);
 
 extern "C" void __stdcall XGSetVertexBufferHeader(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8* ppVertexBuffer, UINT Data);
-
-extern "C" HRESULT __stdcall XGAssembleShader(LPCSTR pSourceFileName, LPCVOID pSrcData, UINT SrcDataLen, DWORD Flags, LPXGBUFFER* pConstants, LPXGBUFFER* pCompiledShader, LPXGBUFFER* pErrorLog, LPXGBUFFER* pListing, SASM_ResolverCallback pResolver, LPVOID pResolverUserData, LPDWORD pShaderType);
 
 extern "C" HRESULT __stdcall XGSpliceVertexShaders(DWORD* pNewShader, DWORD* pcbNewShaderBufferSize, DWORD* pNewInstructionCount, const DWORD* const* ppShaderArray, DWORD NumShaders, BOOL bOptimizeResults);
 

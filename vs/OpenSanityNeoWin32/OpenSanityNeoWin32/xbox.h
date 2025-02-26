@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <d3d8.h>
 #include <dsound.h>
+#include <d3dx8core.h>
 #pragma once
 #define XBOXAPI
 typedef struct _XPP_DEVICE_TYPE
@@ -92,7 +93,7 @@ typedef enum _XMVRESULT
 XMVRESULT;
 
 typedef struct XGBuffer XGBuffer;
-typedef XGBuffer* LPXGBUFFER, * PXGBUFFER;
+typedef ID3DXBuffer* LPXGBUFFER, * PXGBUFFER;
 
 struct XGBuffer
 {

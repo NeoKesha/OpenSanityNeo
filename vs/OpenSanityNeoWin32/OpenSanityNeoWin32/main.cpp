@@ -3,6 +3,7 @@
 ApplicationSystem* _applicationSystem;
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 	_applicationSystem = new ApplicationSystem();
+	
 	CreateGameWindow();
 	main(0, 0);
 	DestroyGameWindow();
@@ -50,4 +51,18 @@ void CreateGameWindow() {
 
 void DestroyGameWindow() {
 	UnregisterClass(L"Crash Twinsanity", GetModuleHandle(NULL));
+}
+
+void RegisterTexture(IDirect3DTexture8* texture) {
+	_applicationSystem->textureRegistry.insert(std::make_pair(((HackTextureReflection*)texture)->dataPtr, texture));
+}
+
+void UnregisterTexture(IDirect3DTexture8* texture) {
+	if (_applicationSystem->textureRegistry.find(((HackTextureReflection*)texture)->dataPtr) != _applicationSystem->textureRegistry.end()) {
+		_applicationSystem->textureRegistry.erase(((HackTextureReflection*)texture)->dataPtr);
+	}
+}
+
+IDirect3DTexture8* GetTextureInterface(D3DTextureBase* texture) {
+	return _applicationSystem->textureRegistry[texture->resource.data];
 }
