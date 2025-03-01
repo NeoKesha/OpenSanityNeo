@@ -115,6 +115,7 @@ extern "C" DWORD WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels,
 	RegisterTexture(tmp);
 
 	_applicationSystem->lastTexture = pTexture;
+	_applicationSystem->textureTaken = FALSE;
 	return pTexture->size; //WTF
 }
 extern "C" void WINAPI XGSetVertexBufferHeader(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8* ppVertexBuffer, UINT Data) {

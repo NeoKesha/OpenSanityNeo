@@ -61,6 +61,7 @@ struct ApplicationSystem {
 	void* d3dtexturevft;
 	std::map<void*, IDirect3DTexture8*> textureRegistry;
 	D3DTextureBase* lastTexture;
+	BOOL textureTaken;
 	HANDLE logFile;
 	LPDIRECTSOUND DSDevice;
 	LPDIRECTSOUNDBUFFER DSPrimaryBuffer;

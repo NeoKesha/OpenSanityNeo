@@ -227,18 +227,20 @@ extern "C" void WINAPI Wrapper_D3DDevice_Clear(DWORD Count, CONST D3DRECT* pRect
 }
 extern "C" void WINAPI Wrapper_D3DDevice_DrawVerticesUP(D3DPRIMITIVETYPE PrimitiveType, UINT VertexCount, CONST void* pVertexStreamZeroData, UINT VertexStreamZeroStride) {
 	//TODO: Mite mite!
-	_applicationSystem->D3DDevice->DrawPrimitiveUP(ConvertPrimitiveType(PrimitiveType), VertexCount, pVertexStreamZeroData, VertexStreamZeroStride);
+	_applicationSystem->D3DDevice->DrawPrimitiveUP(ConvertPrimitiveType(PrimitiveType), VertexCount-2, pVertexStreamZeroData, VertexStreamZeroStride);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_DrawVertices(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT VertexCount) {
 	//TODO: Mite mite!
-	_applicationSystem->D3DDevice->DrawPrimitive(ConvertPrimitiveType(PrimitiveType), StartVertex, VertexCount);
+	_applicationSystem->D3DDevice->DrawPrimitive(ConvertPrimitiveType(PrimitiveType), StartVertex, VertexCount - 2);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
-	D3DDevice_Begin(ConvertPrimitiveType(PrimitiveType));
+	_applicationSystem->D3DDevice->BeginScene();
+	//D3DDevice_Begin(ConvertPrimitiveType(PrimitiveType));
 }
 
 extern "C" void WINAPI Wrapper_D3DDevice_End() {
-	D3DDevice_End();
+	_applicationSystem->D3DDevice->EndScene();
+	//D3DDevice_End();
 }
 
 extern "C" DWORD WINAPI Wrapper_D3DDevice_Swap(DWORD Flags) {
@@ -448,24 +450,20 @@ extern "C" HRESULT __stdcall Wrapper_XGSpliceVertexShaders(DWORD* pNewShader, DW
 }
 
 extern "C" void __stdcall Wrapper_XGSwizzleRect(LPCVOID pSource, DWORD Pitch, LPCRECT pRect, LPVOID pDest, DWORD Width, DWORD Height, const LPPOINT pPoint, DWORD BytesPerPixel) {
-	//TODO pSource is system pool texture pDest is default pool texture
-	// Use Texture Update from device
-	// later unswizzle
-	//XGSwizzleRect(pSource, Pitch, pRect, pDest, Width, Height, pPoint, BytesPerPixel);
-	/*IDirect3DTexture8* tmp;
-	if (BytesPerPixel != 4) {
-		int a = 0;
-	}
-	_applicationSystem->D3DDevice->CreateTexture(Width, Height, 1, 0, (BytesPerPixel == 4) ? D3DFMT_X8R8G8B8 : D3DFMT_DXT4, D3DPOOL_SYSTEMMEM, &tmp);
-	D3DLOCKED_RECT rect;
-	tmp->LockRect(0, &rect, 0, 0);
-	memcpy(rect.pBits, pSource, Width * Height * BytesPerPixel);
-	tmp->UnlockRect(0);
-	D3DTextureBase tex;
-	tex.resource.data = pDest;
-	IDirect3DTexture8* dst = GetTextureInterface(&tex);
-	_applicationSystem->D3DDevice->UpdateTexture(tmp, dst);
-	*/
+	D3DTextureBase* texture = _applicationSystem->lastTexture;
+	IDirect3DTexture8* texInterface = GetTextureInterface(_applicationSystem->lastTexture);
+	D3DSURFACE_DESC desc;
+	ZeroMemory(&desc, sizeof(desc));
+	texInterface->GetLevelDesc(0, &desc);
+	IDirect3DTexture8* tmpTexture;
+	_applicationSystem->D3DDevice->CreateTexture(desc.Width, desc.Height,1,0,desc.Format, D3DPOOL_SYSTEMMEM, &tmpTexture);
+	D3DLOCKED_RECT locked;
+	ZeroMemory(&locked, sizeof(locked));
+	tmpTexture->LockRect(0, &locked, NULL, 0);
+	memcpy(locked.pBits, pSource, texture->size);
+	tmpTexture->UnlockRect(0);
+	HRESULT result = _applicationSystem->D3DDevice->UpdateTexture(tmpTexture, texInterface);
+	tmpTexture->Release();
 }
 
 extern "C" void  __stdcall Wrapper_XAudioCreatePcmFormat(WORD nChannels, DWORD nSamplesPerSec, WORD wBitsPerSample, LPWAVEFORMATEX pwfx) {
