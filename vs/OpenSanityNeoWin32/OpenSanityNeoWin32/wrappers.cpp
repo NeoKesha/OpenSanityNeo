@@ -1,7 +1,9 @@
 #include <Windows.h>
+#include <xinput.h>
 #include <d3d8.h>
 #include <d3dx8core.h>
 #include <dsound.h>
+#include <dinput.h>
 #include <stdio.h>
 #include "xbox.h"
 #include "main.h"
@@ -289,28 +291,40 @@ extern "C" HRESULT  __stdcall Wrapper_D3DXCreateTexture(IDirect3DDevice8* pThis,
 
 //xapi wrappers
 
+extern "C" void __stdcall Wrapper_USBD_Init(DWORD dwPreallocTypeCount, void* PreallocTypes) { //XInitDevices
+	return;
+}
+
 extern "C" XBOXAPI HANDLE __stdcall Wrapper_XInputOpen(IN PXPP_DEVICE_TYPE DeviceType, IN DWORD dwPort, IN DWORD dwSlot, IN PXINPUT_POLLING_PARAMETERS pPollingParameters OPTIONAL) {
-	return XInputOpen(DeviceType, dwPort, dwSlot, pPollingParameters);
+	if (dwPort == 0 && dwSlot == 0) {
+		_applicationSystem->input = (void*)1;
+		return _applicationSystem->input;
+	}
+	return INVALID_HANDLE_VALUE;
 }
 
 extern "C" XBOXAPI VOID __stdcall Wrapper_XInputClose(IN HANDLE hDevice) {
-	XInputClose(hDevice);
+	return;
 }
 
 extern "C" XBOXAPI DWORD __stdcall Wrapper_XInputGetState(IN HANDLE hDevice, OUT PXINPUT_STATE pState) {
-	return XInputGetState(hDevice, pState);
+	if (hDevice == _applicationSystem->input) {
+		return XInputGetState(0, pState);
+	}
+	return 0;
 }
 
-extern "C" XBOXAPI DWORD __stdcall Wrapper_XInputSetState(IN HANDLE hDevice, IN OUT PXINPUT_FEEDBACK pFeedback) {
-	return XInputSetState(hDevice, pFeedback);
+extern "C" XBOXAPI DWORD __stdcall Wrapper_XInputSetState(IN HANDLE hDevice, IN OUT XINPUT_VIBRATION* pFeedback) {
+	return 0; //Vibrations are not supported
+	return XInputSetState(0, pFeedback);
 }
 
 extern "C" XBOXAPI DWORD __stdcall Wrapper_XGetDevices(IN PXPP_DEVICE_TYPE DeviceType) {
-	return XGetDevices(DeviceType);
+	return (1 << 0); // XDEVICE_PORT0_MASK
 }
 
 extern "C" XBOXAPI BOOL __stdcall Wrapper_XGetDeviceChanges(IN PXPP_DEVICE_TYPE DeviceType, OUT PDWORD pdwInsertions, OUT PDWORD pdwRemovals) {
-	return XGetDeviceChanges(DeviceType,pdwInsertions, pdwRemovals);
+	return FALSE; //Do not support dynamic device changes
 }
 
 extern "C" XBOXAPI DWORD __stdcall Wrapper_XGetLanguage(VOID) {
@@ -744,7 +758,7 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetI3DL2Source(LPDIRECTS
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_Play(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwReserved1, DWORD dwReserved2, DWORD dwFlags) {
-	return IDirectSoundBuffer_Play(pBuffer, dwReserved1, dwReserved2, dwFlags);
+	return pBuffer->Play(dwReserved1, dwReserved2, dwFlags);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_PlayEx(LPDIRECTSOUNDBUFFER pBuffer, REFERENCE_TIME rtTimeStamp, DWORD dwFlags) {
@@ -752,7 +766,7 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_PlayEx(LPDIRECTSOUNDBUFF
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_Stop(LPDIRECTSOUNDBUFFER pBuffer) {
-	return IDirectSoundBuffer_Stop(pBuffer);
+	return pBuffer->Stop();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_StopEx(LPDIRECTSOUNDBUFFER pBuffer, REFERENCE_TIME rtTimeStamp, DWORD dwFlags) {
@@ -776,15 +790,15 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetLoopRegion(LPDIRECTSO
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_GetStatus(LPDIRECTSOUNDBUFFER pBuffer, LPDWORD pdwStatus) {
-	return IDirectSoundBuffer_GetStatus(pBuffer, pdwStatus);
+	return pBuffer->GetStatus(pdwStatus);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_GetCurrentPosition(LPDIRECTSOUNDBUFFER pBuffer, LPDWORD pdwPlayCursor, LPDWORD pdwWriteCursor) {
-	return IDirectSoundBuffer_GetCurrentPosition(pBuffer, pdwPlayCursor, pdwWriteCursor);
+	return pBuffer->GetCurrentPosition(pdwPlayCursor, pdwWriteCursor);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetCurrentPosition(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwPlayCursor) {
-	return IDirectSoundBuffer_SetCurrentPosition(pBuffer, dwPlayCursor);
+	return pBuffer->SetCurrentPosition(dwPlayCursor);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetBufferData(LPDIRECTSOUNDBUFFER pBuffer, LPVOID pvBufferData, DWORD dwBufferBytes) {
@@ -792,15 +806,15 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetBufferData(LPDIRECTSO
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_Lock(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwOffset, DWORD dwBytes, LPVOID* ppvAudioPtr1, LPDWORD pdwAudioBytes1, LPVOID* ppvAudioPtr2, LPDWORD pdwAudioBytes2, DWORD dwFlags) {
-	return IDirectSoundBuffer_Lock(pBuffer, dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags);
+	return pBuffer->Lock(dwOffset, dwBytes, ppvAudioPtr1, pdwAudioBytes1, ppvAudioPtr2, pdwAudioBytes2, dwFlags);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_Unlock(LPDIRECTSOUNDBUFFER pBuffer, LPVOID pvLock1, DWORD dwLockSize1, LPVOID pvLock2, DWORD dwLockSize2) {
-	return IDirectSoundBuffer_Unlock(pBuffer, pvLock1, dwLockSize1, pvLock2, dwLockSize2);
+	return pBuffer->Unlock(pvLock1, dwLockSize1, pvLock2, dwLockSize2);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_Restore(LPDIRECTSOUNDBUFFER pBuffer) {
-	return IDirectSoundBuffer_Restore(pBuffer);
+	return pBuffer->Restore();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetNotificationPositions(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwNotifyCount, LPCDSBPOSITIONNOTIFY paNotifies) {
@@ -1044,4 +1058,3 @@ extern "C" double __cdecl Wrapper_atof(const char* str) {
 
 //
 
-extern "C" void __stdcall Wrapper_USBD_Init(int arg1, int arg2) { return; }

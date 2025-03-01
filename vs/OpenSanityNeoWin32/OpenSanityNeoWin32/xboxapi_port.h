@@ -7,18 +7,6 @@
 
 typedef HRESULT(*SASM_ResolverCallback)(LPVOID pResolverUserData, BOOL isSystemInclude, LPCSTR sourceFilePath, LPCSTR includeFileName, LPSTR resolvedFilePath, DWORD resolvedFilePathSize, LPXGBUFFER* ppResolvedFile);
 
-extern "C" XBOXAPI HANDLE __stdcall XInputOpen(IN PXPP_DEVICE_TYPE DeviceType, IN DWORD dwPort, IN DWORD dwSlot, IN PXINPUT_POLLING_PARAMETERS pPollingParameters OPTIONAL);
-
-extern "C" XBOXAPI VOID __stdcall XInputClose(IN HANDLE hDevice);
-
-extern "C" XBOXAPI DWORD __stdcall XInputGetState(IN HANDLE hDevice, OUT PXINPUT_STATE pState);
-
-extern "C" XBOXAPI DWORD __stdcall XInputSetState(IN HANDLE hDevice, IN OUT PXINPUT_FEEDBACK pFeedback);
-
-extern "C" XBOXAPI DWORD __stdcall XGetDevices(IN PXPP_DEVICE_TYPE DeviceType);
-
-extern "C" XBOXAPI BOOL __stdcall XGetDeviceChanges(IN PXPP_DEVICE_TYPE DeviceType, OUT PDWORD pdwInsertions, OUT PDWORD pdwRemovals);
-
 extern "C" XBOXAPI DWORD __stdcall XGetLanguage(VOID);
 
 extern "C" XBOXAPI HANDLE __stdcall XGetSectionHandleA(IN LPCSTR pSectionName);

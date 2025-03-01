@@ -1,25 +1,6 @@
 #include "xboxapi_port.h"
 #include "convert.h"
 
-extern "C" XBOXAPI HANDLE WINAPI XInputOpen(IN PXPP_DEVICE_TYPE DeviceType, IN DWORD dwPort, IN DWORD dwSlot, IN PXINPUT_POLLING_PARAMETERS pPollingParameters OPTIONAL) {
-	return INVALID_HANDLE_VALUE; //MOCK
-}
-extern "C" XBOXAPI VOID WINAPI XInputClose(IN HANDLE hDevice) {
-	return; //MOCK
-}
-extern "C" XBOXAPI DWORD WINAPI XInputGetState(IN HANDLE hDevice, OUT PXINPUT_STATE  pState) {
-	return 0; //MOCK
-}
-extern "C" XBOXAPI DWORD WINAPI XInputSetState(IN HANDLE hDevice, IN OUT PXINPUT_FEEDBACK pFeedback) {
-	return 0; //MOCK
-}
-extern "C" XBOXAPI DWORD WINAPI XGetDevices(IN PXPP_DEVICE_TYPE DeviceType) {
-	return 0; //MOCK
-}
-extern "C" XBOXAPI BOOL WINAPI XGetDeviceChanges(IN PXPP_DEVICE_TYPE DeviceType, OUT PDWORD pdwInsertions, OUT PDWORD pdwRemovals) {
-	return FALSE; //MOCK
-}
-
 extern "C" XBOXAPI DWORD WINAPI XGetLanguage(VOID) {
 	return XC_LANGUAGE_ENGLISH;
 }

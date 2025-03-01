@@ -65,6 +65,7 @@ struct ApplicationSystem {
 	LPDIRECTSOUND DSDevice;
 	LPDIRECTSOUNDBUFFER DSPrimaryBuffer;
 	LPDIRECTSOUND3DLISTENER DSListener;
+	HANDLE input;
 };
 typedef struct ApplicationSystem ApplicationSystem;
 extern ApplicationSystem* _applicationSystem;

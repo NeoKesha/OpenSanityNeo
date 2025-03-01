@@ -78,13 +78,7 @@ extern "C" HRESULT __stdcall IDirectSoundBuffer_SetI3DL2Source(LPDIRECTSOUNDBUFF
 }
 
 
-extern "C" HRESULT __stdcall IDirectSoundBuffer_Play(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwReserved1, DWORD dwReserved2, DWORD dwFlags) {
-	return S_OK; //MOCK
-}
 extern "C" HRESULT __stdcall IDirectSoundBuffer_PlayEx(LPDIRECTSOUNDBUFFER pBuffer, REFERENCE_TIME rtTimeStamp, DWORD dwFlags) {
-	return S_OK; //MOCK
-}
-extern "C" HRESULT __stdcall IDirectSoundBuffer_Stop(LPDIRECTSOUNDBUFFER pBuffer) {
 	return S_OK; //MOCK
 }
 extern "C" HRESULT __stdcall IDirectSoundBuffer_StopEx(LPDIRECTSOUNDBUFFER pBuffer, REFERENCE_TIME rtTimeStamp, DWORD dwFlags) {
@@ -104,26 +98,7 @@ extern "C" HRESULT __stdcall IDirectSoundBuffer_SetLoopRegion(LPDIRECTSOUNDBUFFE
 }
 
 
-extern "C" HRESULT __stdcall IDirectSoundBuffer_GetStatus(LPDIRECTSOUNDBUFFER pBuffer, LPDWORD pdwStatus) {
-	return S_OK; //MOCK
-}
-extern "C" HRESULT __stdcall IDirectSoundBuffer_GetCurrentPosition(LPDIRECTSOUNDBUFFER pBuffer, LPDWORD pdwPlayCursor, LPDWORD pdwWriteCursor) {
-	return S_OK; //MOCK
-}
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetCurrentPosition(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwPlayCursor) {
-	return S_OK; //MOCK
-}
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetBufferData(LPDIRECTSOUNDBUFFER pBuffer, LPVOID pvBufferData, DWORD dwBufferBytes) {
-	return S_OK; //MOCK
-}
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_Lock(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwOffset, DWORD dwBytes, LPVOID* ppvAudioPtr1, LPDWORD pdwAudioBytes1, LPVOID* ppvAudioPtr2, LPDWORD pdwAudioBytes2, DWORD dwFlags) {
-	return S_OK; //MOCK
-}
-extern "C" HRESULT __stdcall IDirectSoundBuffer_Unlock(LPDIRECTSOUNDBUFFER pBuffer, LPVOID pvLock1, DWORD dwLockSize1, LPVOID pvLock2, DWORD dwLockSize2) {
-	return S_OK; //MOCK
-}
-extern "C" HRESULT __stdcall IDirectSoundBuffer_Restore(LPDIRECTSOUNDBUFFER pBuffer) {
 	return S_OK; //MOCK
 }
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetNotificationPositions(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwNotifyCount, LPCDSBPOSITIONNOTIFY paNotifies) {

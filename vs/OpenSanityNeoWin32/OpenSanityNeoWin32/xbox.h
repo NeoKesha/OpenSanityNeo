@@ -141,27 +141,6 @@ typedef struct _XINPUT_POLLING_PARAMETERS
     BYTE       ReservedMBZ2;
 } XINPUT_POLLING_PARAMETERS, * PXINPUT_POLLING_PARAMETERS;
 
-typedef struct _XINPUT_GAMEPAD
-{
-    WORD    wButtons;
-    BYTE    bAnalogButtons[8];
-    SHORT   sThumbLX;
-    SHORT   sThumbLY;
-    SHORT   sThumbRX;
-    SHORT   sThumbRY;
-} XINPUT_GAMEPAD, * PXINPUT_GAMEPAD;
-
-typedef struct _XINPUT_STATE
-{
-    DWORD dwPacketNumber;
-    union
-    {
-        XINPUT_GAMEPAD Gamepad;
-#ifdef DEBUG_MOUSE
-        XINPUT_MOUSE   DebugMouse;
-#endif //DEBUG_MOUSE
-    };
-} XINPUT_STATE, * PXINPUT_STATE;
 
 #define XINPUT_FEEDBACK_HEADER_INTERNAL_SIZE 58
 typedef struct _XINPUT_FEEDBACK_HEADER
