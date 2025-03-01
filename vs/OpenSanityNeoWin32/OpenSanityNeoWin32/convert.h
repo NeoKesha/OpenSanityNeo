@@ -66,6 +66,8 @@ const DWORD* ConvertShaderDecl(const DWORD* input);
 
 DWORD ConvertLockFlags(DWORD flags);
 
+IDirect3DTexture8* ConvertToInterface(void* data);
+
 
 static const char* staticGeomShader1 =		"vs.1.1\n"
 											"mul r2, c[0], v0.x\n"

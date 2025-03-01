@@ -83,6 +83,9 @@ extern "C" LPVOID WINAPI XMemAlloc(SIZE_T dwSize, DWORD dwAllocAttributes) {
 	return malloc(dwSize); 
 }
 extern "C" VOID WINAPI XMemFree(PVOID pAddress, DWORD dwAllocAttributes) { 
+	if (pAddress == 0) {
+		int a = 0;
+	}
 	free(pAddress); 
 }
 
@@ -118,7 +121,7 @@ extern "C" DWORD WINAPI XGSetSurfaceHeader(UINT Width, UINT Height, D3DFORMAT Fo
 	return 0; //MOCK
 }
 
-extern "C" HRESULT WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, D3DTextureBase* pTexture, UINT Data, UINT Pitch) {
+extern "C" DWORD WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, D3DTextureBase* pTexture, UINT Data, UINT Pitch) {
 	IDirect3DTexture8* tmp;
 	_applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, &tmp);
 	HackTextureReflection* obs = (HackTextureReflection*)tmp;
@@ -130,7 +133,8 @@ extern "C" HRESULT WINAPI XGSetTextureHeader(UINT Width, UINT Height, UINT Level
 
 	RegisterTexture(tmp);
 
-	return S_OK; //WTF
+	_applicationSystem->lastTexture = pTexture;
+	return pTexture->size; //WTF
 }
 extern "C" void WINAPI XGSetVertexBufferHeader(UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8* ppVertexBuffer, UINT Data) {
 	return; //MOCK

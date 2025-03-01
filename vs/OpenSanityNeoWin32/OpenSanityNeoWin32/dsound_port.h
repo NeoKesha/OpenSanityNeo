@@ -32,28 +32,9 @@ namespace DirectSound {
 	};
 }
 
-HRESULT __stdcall DirectSoundCreate(LPGUID pguidDeviceId, LPDIRECTSOUND* ppDirectSound, LPUNKNOWN pUnkOuter);
-
-extern "C" HRESULT __stdcall DirectSoundCreateBuffer(LPCDSBUFFERDESC pdsbd, LPDIRECTSOUNDBUFFER* ppBuffer);
-
 extern "C" HRESULT __stdcall DirectSoundCreateStream(LPCDSSTREAMDESC pdssd, LPDIRECTSOUNDSTREAM* ppStream);
 
-extern "C" ULONG __stdcall IDirectSound_AddRef(LPDIRECTSOUND pDirectSound);
-
-extern "C" ULONG __stdcall IDirectSound_Release(LPDIRECTSOUND pDirectSound);
-
-extern "C" HRESULT __stdcall IDirectSound_GetCaps(LPDIRECTSOUND pDirectSound, LPDSCAPS pdsc);
-
-extern "C" HRESULT __stdcall IDirectSound_CreateSoundBuffer(LPDIRECTSOUND pDirectSound, LPCDSBUFFERDESC pdsbd, LPDIRECTSOUNDBUFFER* ppBuffer, LPUNKNOWN pUnkOuter);
-
 extern "C" HRESULT __stdcall IDirectSound_CreateSoundStream(LPDIRECTSOUND pDirectSound, LPCDSSTREAMDESC pdssd, LPDIRECTSOUNDSTREAM* ppStream, LPUNKNOWN pUnkOuter);
-
-extern "C" HRESULT __stdcall IDirectSound_GetSpeakerConfig(LPDIRECTSOUND pDirectSound, LPDWORD pdwSpeakerConfig);
-
-extern "C" HRESULT __stdcall IDirectSound_SetCooperativeLevel(LPDIRECTSOUND pDirectSound, HWND hWnd, DWORD dwLevel);
-
-extern "C" HRESULT __stdcall IDirectSound_Compact(LPDIRECTSOUND pDirectSound);
-
 extern "C" HRESULT __stdcall IDirectSound_DownloadEffectsImage(LPDIRECTSOUND pDirectSound, LPCVOID pvImageBuffer, DWORD dwImageSize, LPCDSEFFECTIMAGELOC pImageLoc, LPDSEFFECTIMAGEDESC* ppImageDesc);
 
 extern "C" HRESULT __stdcall IDirectSound_GetEffectData(LPDIRECTSOUND pDirectSound, DWORD dwEffectIndex, DWORD dwOffset, LPVOID pvData, DWORD dwDataSize);
@@ -68,39 +49,11 @@ extern "C" HRESULT __stdcall IDirectSound_SetMixBinHeadroom(LPDIRECTSOUND pDirec
 
 extern "C" HRESULT __stdcall IDirectSound_SetAllParameters(LPDIRECTSOUND pDirectSound, LPCDS3DLISTENER pds3dl, DWORD dwApply);
 
-extern "C" HRESULT __stdcall IDirectSound_SetOrientation(LPDIRECTSOUND pDirectSound, FLOAT xFront, FLOAT yFront, FLOAT zFront, FLOAT xTop, FLOAT yTop, FLOAT zTop, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetPosition(LPDIRECTSOUND pDirectSound, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetVelocity(LPDIRECTSOUND pDirectSound, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetDistanceFactor(LPDIRECTSOUND pDirectSound, FLOAT flDistanceFactor, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetDopplerFactor(LPDIRECTSOUND pDirectSound, FLOAT flDopplerFactor, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetRolloffFactor(LPDIRECTSOUND pDirectSound, FLOAT flRolloffFactor, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_SetI3DL2Listener(LPDIRECTSOUND pDirectSound, LPCDSI3DL2LISTENER pds3dl, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSound_CommitDeferredSettings(LPDIRECTSOUND pDirectSound);
-
 extern "C" HRESULT __stdcall IDirectSound_GetTime(LPDIRECTSOUND pDirectSound, REFERENCE_TIME* prtCurrent);
 
 extern "C" HRESULT __stdcall IDirectSound_GetOutputLevels(LPDIRECTSOUND pDirectSound, LPDSOUTPUTLEVELS pOutputLevels, BOOL fResetPeakValues);
 
 extern "C" HRESULT __stdcall IDirectSound_SynchPlayback(LPDIRECTSOUND pDirectSound);
-
-extern "C" ULONG __stdcall IDirectSoundBuffer_AddRef(LPDIRECTSOUNDBUFFER pBuffer);
-
-extern "C" ULONG __stdcall IDirectSoundBuffer_Release(LPDIRECTSOUNDBUFFER pBuffer);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetFormat(LPDIRECTSOUNDBUFFER pBuffer, LPCWAVEFORMATEX pwfxFormat);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetFrequency(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwFrequency);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetVolume(LPDIRECTSOUNDBUFFER pBuffer, LONG lVolume);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetPitch(LPDIRECTSOUNDBUFFER pBuffer, LONG lPitch);
 
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetLFO(LPDIRECTSOUNDBUFFER pBuffer, LPCDSLFODESC pLFODesc);
 
@@ -115,24 +68,6 @@ extern "C" HRESULT __stdcall IDirectSoundBuffer_SetOutputBuffer(LPDIRECTSOUNDBUF
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetMixBins(LPDIRECTSOUNDBUFFER pBuffer, LPCDSMIXBINS pMixBins);
 
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetMixBinVolumes(LPDIRECTSOUNDBUFFER pBuffer, LPCDSMIXBINS pMixBins);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetAllParameters(LPDIRECTSOUNDBUFFER pBuffer, LPCDS3DBUFFER pds3db, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetConeAngles(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwInsideConeAngle, DWORD dwOutsideConeAngle, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetConeOrientation(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetConeOutsideVolume(LPDIRECTSOUNDBUFFER pBuffer, LONG lConeOutsideVolume, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetMaxDistance(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flMaxDistance, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetMinDistance(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flMinDistance, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetMode(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwMode, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetPosition(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply);
-
-extern "C" HRESULT __stdcall IDirectSoundBuffer_SetVelocity(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply);
 
 extern "C" HRESULT __stdcall IDirectSoundBuffer_SetDistanceFactor(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flDistanceFactor, DWORD dwApply);
 

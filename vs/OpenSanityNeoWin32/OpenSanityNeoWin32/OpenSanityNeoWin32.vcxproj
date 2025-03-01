@@ -25,6 +25,7 @@
     <ClCompile Include="libport.cpp" />
     <ClCompile Include="libtwindata.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="patcher.cpp" />
     <ClCompile Include="wrappers.cpp" />
     <ClCompile Include="xboxapi_port.cpp" />
   </ItemGroup>
@@ -34,6 +35,7 @@
     <ClInclude Include="dsound_port.h" />
     <ClInclude Include="libport.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="patcher.h" />
     <ClInclude Include="xbox.h" />
     <ClInclude Include="xboxapi_port.h" />
   </ItemGroup>
@@ -66,6 +68,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <VCToolsVersion>14.40.33807</VCToolsVersion>
+    <EnableASAN>false</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -132,7 +135,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d8.lib;d3dx8.lib;dsound.lib;dinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d8.lib;d3dx8.lib;dsound.lib;dinput.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>libc.lib</IgnoreSpecificDefaultLibraries>
       <AddModuleNamesToAssembly>%(AddModuleNamesToAssembly)</AddModuleNamesToAssembly>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>

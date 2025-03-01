@@ -39,6 +39,9 @@
     <ClCompile Include="dsound_port.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="patcher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="xbox.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dsound_port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="patcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

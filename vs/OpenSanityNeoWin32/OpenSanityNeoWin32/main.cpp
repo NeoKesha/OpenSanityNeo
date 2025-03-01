@@ -1,15 +1,23 @@
 #include "main.h"
+#include "patcher.h"
+#include <io.h>
+#include <fcntl.h>
+#include <iostream>
 
 ApplicationSystem* _applicationSystem;
+
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd) {
 	_applicationSystem = new ApplicationSystem();
-	
+	ApplyExePatches();
+	AllocConsole();
+	_applicationSystem->logFile = GetStdHandle(STD_OUTPUT_HANDLE);
 	CreateGameWindow();
 	main(0, 0);
 	DestroyGameWindow();
 };
 
 void HandleWinApiUpdates() {
+	return;
 	UpdateWindow(_applicationSystem->MainWindow);
 	MSG msg;
 	while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
@@ -65,4 +73,11 @@ void UnregisterTexture(IDirect3DTexture8* texture) {
 
 IDirect3DTexture8* GetTextureInterface(D3DTextureBase* texture) {
 	return _applicationSystem->textureRegistry[texture->resource.data];
+}
+
+
+void Log(const char* caller, const char* msg) {
+	static char buffer[1024];
+	snprintf(buffer, sizeof(buffer), "%s %s\n", caller, msg);
+	WriteFile(_applicationSystem->logFile, buffer, strlen(buffer), 0, 0);
 }

@@ -1,4 +1,5 @@
 #include "convert.h"
+#include "main.h"
 
 DWORD ConvertBehaviourFlags(DWORD Flags) {
 	return Flags;
@@ -403,4 +404,13 @@ DWORD ConvertLockFlags(DWORD flags) {
     //if ((flags & 0x00000040L) != 0) newFlags |= D3DLOCK_TILED;
     if ((flags & 0x00000080L) != 0) newFlags |= D3DLOCK_READONLY;
     return newFlags;
+}
+
+IDirect3DTexture8* ConvertToInterface(void* data) {
+    if (*((void**)data) == _applicationSystem->d3dtexturevft) {
+        return (IDirect3DTexture8*)data;
+    } else {
+        D3DTextureBase* texture = (D3DTextureBase*)data;
+        return GetTextureInterface(texture);
+    }
 }

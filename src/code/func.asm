@@ -183268,7 +183268,7 @@ TwinProcThiscall FUN_000AF3C0, stdcall
 		TwinProcExit, FUN_000AF3C0
 	LAB_0x000AF3D6: 
 		AND EAX,0FF47FFFFh
-		OR EAX,OFFSET NUM_0x00440000
+		OR EAX,0440000h
 		MOV dword ptr [ECX + 0Ch],EAX
 		MOV AL,01h
 		TwinProcExit, FUN_000AF3C0
@@ -191997,7 +191997,7 @@ TwinProcThiscall FUN_000B6A20, stdcall
 		CMP EDX,011000h
 		JZ LAB_0x000B6A5D
 		AND EAX,0FF47FFFFh
-		OR EAX,OFFSET NUM_0x00440000
+		OR EAX,0440000h
 		MOV dword ptr [ECX + 0Ch],EAX
 		MOV AL,01h
 		TwinProcExit, FUN_000B6A20
@@ -273939,43 +273939,6 @@ RETURN_LAB_00104b9e::
 		PUSH EAX
 		TwinCall ExWrapper_D3DTexture_GetSurfaceLevel2@8
 		MOV dword ptr [PTR_0x003ec570],EAX
-		
-DEBUG_PROLOGUE_MACRO
-MOV EAX, OFFSET PTR_0x003ec55c
-ADD EAX, 0
-MOV EAX, [EAX]
-MOV [?debugPrintValue@@3HA], EAX
-CALL DBG_PRINT_VALUE
-
-MOV EAX, OFFSET PTR_0x003ec55c
-ADD EAX, 4
-MOV EAX, [EAX]
-MOV [?debugPrintValue@@3HA], EAX
-CALL DBG_PRINT_VALUE
-
-MOV EAX, OFFSET PTR_0x003ec55c
-ADD EAX, 8
-MOV EAX, [EAX]
-MOV [?debugPrintValue@@3HA], EAX
-CALL DBG_PRINT_VALUE
-
-MOV EAX, OFFSET PTR_0x003ec55c
-ADD EAX, 12
-MOV EAX, [EAX]
-MOV [?debugPrintValue@@3HA], EAX
-CALL DBG_PRINT_VALUE
-
-MOV EAX, OFFSET PTR_0x003ec55c
-ADD EAX, 16
-MOV EAX, [EAX]
-MOV [?debugPrintValue@@3HA], EAX
-CALL DBG_PRINT_VALUE
-
-HALTT:
-JMP HALT
-
-DEBUG_EPILOGUE_MACRO
-		
 		TwinProcExit, FUN_00104B90
 TwinProcEnd FUN_00104B90
 
@@ -318414,7 +318377,7 @@ RETURN_LAB_001233ab::
 		CMP byte ptr [EAX + 011h],CL
 		JNZ LAB_0x0012347D
 		XOR EDI,EDI
-		MOV ESI,OFFSET NUM_0x004121c2
+		MOV ESI,OFFSET ARRAY_0x004121c2
 	LAB_0x00123403: 
 		MOVSX EDX,word ptr [ESI]
 		CMP EDX,EBP
@@ -318446,10 +318409,10 @@ RETURN_LAB_00123432::
 		MOV dword ptr [ECX*04h + NUM_0x0044b188],EDX
 		MOV dword ptr [EAX + 02D0h],EBX
 	LAB_0x0012346B: 
-		MOV EAX,dword ptr [NUM_0x003a2eb0]
+		MOV EAX,dword ptr [ARRAY_0x003a2a04 + 1196]
 		DEC EAX
 		MOV dword ptr [EBP*04h + PTR_0x003a2a00],EBX
-		MOV dword ptr [NUM_0x003a2eb0],EAX
+		MOV dword ptr [ARRAY_0x003a2a04 + 1196],EAX
 	LAB_0x0012347D: 
 		INC EBP
 		CMP EBP,012Ch
@@ -318567,7 +318530,7 @@ TwinProc FUN_001234D0, stdcall
 		CMP EAX,01869Fh
 		JZ LAB_0x001235BD
 		IMUL EAX,EAX,0260h
-		MOVSX EDX,word ptr [EAX + NUM_0x004121c2]
+		MOVSX EDX,word ptr [EAX + ARRAY_0x004121c2]
 		CMP dword ptr [EDX*04h + PTR_0x003a2a00],ESI
 		JNZ LAB_0x001235BD
 		MOVSX ECX,word ptr [ESI + 014h]
@@ -318733,7 +318696,7 @@ TwinProc FUN_00123720, stdcall
 		PUSH ESI
 		PUSH EDI
 		XOR EBX,EBX
-		MOV ESI,OFFSET NUM_0x004121c2
+		MOV ESI,OFFSET ARRAY_0x004121c2
 		JMP LAB_0x00123730
 	LAB_0x00123730: 
 		MOV AX,word ptr [ESI]
@@ -319449,7 +319412,7 @@ TwinProc FUN_00123F50, c
 	LAB_0x00123F8E: 
 		ADD EAX,04h
 		ADD ECX,0350h
-		CMP EAX,OFFSET NUM_0x003a2eb0
+		CMP EAX,OFFSET ARRAY_0x003a2a04 + 1196
 		JL LAB_0x00123F73
 		JMP LAB_0x00123FD3
 	LAB_0x00123FA0: 
@@ -319470,7 +319433,7 @@ TwinProc FUN_00123F50, c
 	LAB_0x00123FC3: 
 		ADD EAX,04h
 		ADD ECX,0350h
-		CMP EAX,OFFSET NUM_0x003a2eb0
+		CMP EAX,OFFSET ARRAY_0x003a2a04 + 1196
 		JL LAB_0x00123FB0
 	LAB_0x00123FD3: 
 		PUSH 01Eh
@@ -319889,7 +319852,7 @@ RETURN_LAB_001243ec::
 	LAB_0x001243FF: 
 		ADD EBX,04h
 		ADD ESI,0350h
-		CMP EBX,OFFSET NUM_0x003a2eb0
+		CMP EBX,OFFSET ARRAY_0x003a2a04 + 1196
 		JL LAB_0x00123FF8
 	LAB_0x00124414: 
 		MOV AL,byte ptr [ESP + 018h]
@@ -320133,7 +320096,7 @@ RETURN_LAB_0012468a::
 	LAB_0x001246B3: 
 		TwinCall FUN_000FE630
 RETURN_LAB_001246b3::
-		MOV EDX,dword ptr [NUM_0x003a2eb0]
+		MOV EDX,dword ptr [ARRAY_0x003a2a04 + 1196]
 		LEA ECX,[EDX + EAX*01h]
 		CMP ECX,012Ch
 		JLE LAB_0x001246DA
@@ -320174,11 +320137,11 @@ RETURN_LAB_00124719::
 		MOV dword ptr [EDI],ESI
 		TwinCall FUN_001234D0
 RETURN_LAB_00124734::
-		MOV ECX,dword ptr [NUM_0x003a2eb0]
+		MOV ECX,dword ptr [ARRAY_0x003a2a04 + 1196]
 		MOV EAX,dword ptr [ESP + 01Ch]
 		INC ECX
 		DEC EAX
-		MOV dword ptr [NUM_0x003a2eb0],ECX
+		MOV dword ptr [ARRAY_0x003a2a04 + 1196],ECX
 		MOV dword ptr [ESP + 01Ch],EAX
 		JNZ LAB_0x001246F0
 		MOV EDI,dword ptr [ESP + 010h]
@@ -323304,16 +323267,16 @@ TwinProc FUN_001270D0, stdcall
 		MOV dword ptr [ECX + NUM_0x00412138],EDX
 		MOV dword ptr [ECX + NUM_0x0041213c],EDX
 		MOV word ptr [ECX + NUM_0x004121c0],DX
-		MOV word ptr [ECX + NUM_0x004121ca],DX
-		MOV word ptr [ECX + NUM_0x004121c6],DX
-		MOV word ptr [ECX + NUM_0x004121cc],DX
-		MOV word ptr [ECX + NUM_0x004121ce],DX
-		MOV word ptr [ECX + NUM_0x004121c8],DX
-		MOV dword ptr [ECX + NUM_0x004122a8],EDX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 8],DX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 4],DX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 10],DX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 12],DX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 6],DX
+		MOV dword ptr [ECX + ARRAY_0x004121c2 + 230],EDX
 		MOV DL,01h
-		MOV word ptr [ECX + NUM_0x004122a2],0FFFFh
-		MOV byte ptr [ECX + NUM_0x004122a4],DL
-		MOV byte ptr [ECX + NUM_0x004122a5],DL
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 224],0FFFFh
+		MOV byte ptr [ECX + ARRAY_0x004121c2 + 226],DL
+		MOV byte ptr [ECX + ARRAY_0x004121c2 + 227],DL
 		TwinProcExit, FUN_001270D0
 TwinProcEnd FUN_001270D0
 
@@ -323422,7 +323385,7 @@ TwinProc FUN_001272F0, c
 		CMP EAX,-01h
 		JZ LAB_0x00127308
 		IMUL EAX,EAX,0260h
-		MOV byte ptr [EAX + NUM_0x004122a4],00h
+		MOV byte ptr [EAX + ARRAY_0x004121c2 + 226],00h
 	LAB_0x00127308: 
 		TwinProcExit, FUN_001272F0
 TwinProcEnd FUN_001272F0
@@ -323433,7 +323396,7 @@ TwinProc FUN_00127310, c
 		CMP EAX,-01h
 		JZ LAB_0x00127328
 		IMUL EAX,EAX,0260h
-		MOV byte ptr [EAX + NUM_0x004122a4],02h
+		MOV byte ptr [EAX + ARRAY_0x004121c2 + 226],02h
 	LAB_0x00127328: 
 		TwinProcExit, FUN_00127310
 TwinProcEnd FUN_00127310
@@ -323444,7 +323407,7 @@ TwinProc FUN_00127330, c
 		CMP EAX,-01h
 		JZ LAB_0x00127348
 		IMUL EAX,EAX,0260h
-		MOV byte ptr [EAX + NUM_0x004122a4],01h
+		MOV byte ptr [EAX + ARRAY_0x004121c2 + 226],01h
 	LAB_0x00127348: 
 		TwinProcExit, FUN_00127330
 TwinProcEnd FUN_00127330
@@ -323457,7 +323420,7 @@ TwinProc FUN_00127350, c
 		MOV EAX,dword ptr [EDI]
 		MOV ECX,EAX
 		IMUL ECX,ECX,0260h
-		MOVSX EDX,word ptr [ECX + NUM_0x004121c2]
+		MOVSX EDX,word ptr [ECX + ARRAY_0x004121c2]
 		MOV CX,word ptr [ECX + NUM_0x004121c0]
 		MOV EDX,dword ptr [EDX*04h + PTR_0x003a2a00]
 		XOR EBX,EBX
@@ -323552,7 +323515,7 @@ RETURN_LAB_001273b0::
 		MOV EDX,dword ptr [EAX]
 		CMP EDX,dword ptr [ECX + NUM_0x004120c0]
 		JNZ LAB_0x00127520
-		CMP byte ptr [ECX + NUM_0x004122a5],BL
+		CMP byte ptr [ECX + ARRAY_0x004121c2 + 227],BL
 		JZ LAB_0x0012750E
 		MOV ECX,dword ptr [ESP + 014h]
 		MOVSX EDX,byte ptr [ECX + 0315h]
@@ -323596,7 +323559,7 @@ RETURN_LAB_001273b0::
 	LAB_0x00127539: 
 		MOV ECX,dword ptr [EDI]
 		IMUL ECX,ECX,0260h
-		MOV word ptr [ECX + NUM_0x004121c6],BX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 4],BX
 		MOV EDX,dword ptr [EDI]
 		IMUL EDX,EDX,0260h
 		POP ESI
@@ -323734,7 +323697,7 @@ TwinProc FUN_001276E0, stdcall
 		PUSH ESI
 		PUSH EDI
 		XOR EDI,EDI
-		MOV ESI,OFFSET NUM_0x004121c2
+		MOV ESI,OFFSET ARRAY_0x004121c2
 		LEA EBX,[EBX]
 	LAB_0x001276F0: 
 		CMP word ptr [ESI],00h
@@ -323763,13 +323726,13 @@ TwinProc FUN_00127720, c
 		JZ LAB_0x00127764
 		MOVSS XMM0,dword ptr [ESP + 08h]
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x004121d0],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 14],XMM0
 		MOVSS XMM0,dword ptr [ESP + 0Ch]
-		MOVSS dword ptr [EAX + NUM_0x004121d4],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 18],XMM0
 		MOVSS XMM0,dword ptr [ESP + 010h]
-		MOVSS dword ptr [EAX + NUM_0x004121d8],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 22],XMM0
 		XORPS XMM0,XMM0
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 	LAB_0x00127764: 
 		TwinProcExit, FUN_00127720
 TwinProcEnd FUN_00127720
@@ -323803,7 +323766,7 @@ RETURN_LAB_001277aa::
 		ADD ESP,010h
 		POP EDI
 		POP ESI
-		MOVSS dword ptr [EBX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EBX + ARRAY_0x004121c2 + 234],XMM0
 		POP EBP
 	LAB_0x001277C0: 
 		POP EBX
@@ -323825,16 +323788,16 @@ TwinProc FUN_001277D0, c
 		MOV ECX,010h
 		REP MOVSD
 		MOV ECX,dword ptr [EDX + 030h]
-		MOV dword ptr [EAX + NUM_0x004121d0],ECX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 14],ECX
 		MOV ECX,dword ptr [EDX + 034h]
-		MOV dword ptr [EAX + NUM_0x004121d4],ECX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 18],ECX
 		MOV EDX,dword ptr [EDX + 038h]
 		POP EDI
-		MOV dword ptr [EAX + NUM_0x004121d8],EDX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 22],EDX
 		MOVSS dword ptr [EAX + NUM_0x00412170],XMM0
 		MOVSS dword ptr [EAX + NUM_0x00412174],XMM0
 		MOVSS dword ptr [EAX + NUM_0x00412178],XMM0
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 		POP ESI
 	LAB_0x00127834: 
 		TwinProcExit, FUN_001277D0
@@ -323856,7 +323819,7 @@ TwinProc FUN_00127840, c
 		MOVSS dword ptr [EAX + NUM_0x00412170],XMM0
 		MOVSS dword ptr [EAX + NUM_0x00412174],XMM0
 		MOVSS dword ptr [EAX + NUM_0x00412178],XMM0
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 		POP ESI
 	LAB_0x00127887: 
 		TwinProcExit, FUN_00127840
@@ -323896,7 +323859,7 @@ RETURN_LAB_001278d6::
 		ADD ESP,018h
 		POP EDI
 		POP ESI
-		MOVSS dword ptr [EBX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EBX + ARRAY_0x004121c2 + 234],XMM0
 		POP EBP
 	LAB_0x001278EC: 
 		POP EBX
@@ -323919,7 +323882,7 @@ TwinProc FUN_001278F0, c
 		MOVSS dword ptr [EAX + NUM_0x004121b0],XMM0
 		MOVSS dword ptr [EAX + NUM_0x004121b4],XMM0
 		MOVSS dword ptr [EAX + NUM_0x004121b8],XMM0
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 		POP ESI
 	LAB_0x00127937: 
 		TwinProcExit, FUN_001278F0
@@ -323939,7 +323902,7 @@ TwinProc FUN_00127940, c
 		MOV ECX,010h
 		MOV ESI,EDX
 		REP MOVSD
-		MOV CL,byte ptr [EAX + NUM_0x004122a6]
+		MOV CL,byte ptr [EAX + ARRAY_0x004121c2 + 228]
 		TEST CL,CL
 		POP EDI
 		POP ESI
@@ -323949,12 +323912,12 @@ TwinProc FUN_00127940, c
 		MOVSS dword ptr [EAX + NUM_0x004121b8],XMM0
 	LAB_0x0012798B: 
 		MOV ECX,dword ptr [EDX + 030h]
-		MOV dword ptr [EAX + NUM_0x004121d0],ECX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 14],ECX
 		MOV ECX,dword ptr [EDX + 034h]
-		MOV dword ptr [EAX + NUM_0x004121d4],ECX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 18],ECX
 		MOV EDX,dword ptr [EDX + 038h]
-		MOV dword ptr [EAX + NUM_0x004121d8],EDX
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 22],EDX
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 	LAB_0x001279AE: 
 		TwinProcExit, FUN_00127940
 TwinProcEnd FUN_00127940
@@ -323968,11 +323931,11 @@ TwinProc FUN_001279B0, c
 		IMUL EAX,EAX,0260h
 		MOV CX,word ptr [ESP + 08h]
 		MOV DX,word ptr [ESP + 0Ch]
-		MOVSS dword ptr [EAX + NUM_0x00412298],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 214],XMM0
 		MOVSS XMM0,dword ptr [ESP + 014h]
-		MOV word ptr [EAX + NUM_0x00412294],CX
-		MOV word ptr [EAX + NUM_0x00412296],DX
-		MOVSS dword ptr [EAX + NUM_0x0041229c],XMM0
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 210],CX
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 212],DX
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 218],XMM0
 	LAB_0x001279F3: 
 		TwinProcExit, FUN_001279B0
 TwinProcEnd FUN_001279B0
@@ -323983,7 +323946,7 @@ TwinProc FUN_00127A00, c
 		CMP ECX,-01h
 		JZ LAB_0x00127AC9
 		IMUL ECX,ECX,0260h
-		MOVSX EAX,word ptr [ECX + NUM_0x004121c2]
+		MOVSX EAX,word ptr [ECX + ARRAY_0x004121c2]
 		PUSH ESI
 		MOV ESI,dword ptr [EAX*04h + PTR_0x003a2a00]
 		CMP word ptr [ESI + 01Ah],00h
@@ -323995,16 +323958,16 @@ TwinProc FUN_00127A00, c
 		MOV EBX,dword ptr [ESP + 010h]
 		PUSH EDI
 		JNZ LAB_0x00127A79
-		MOV word ptr [ECX + NUM_0x0041220e],00h
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 76],00h
 		MOVSS XMM1,dword ptr [ESI + 044h]
 		CVTSI2SS XMM0,EBX
 		MULSS XMM1,XMM0
 		CVTTSS2SI EDX,XMM1
-		MOV word ptr [ECX + NUM_0x00412204],DX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 66],DX
 		MOVSS XMM1,dword ptr [ESI + 048h]
 		MULSS XMM1,XMM0
 		CVTTSS2SI EAX,XMM1
-		MOV word ptr [ECX + NUM_0x00412206],AX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 68],AX
 	LAB_0x00127A79: 
 		MOVSX EDX,word ptr [ESI + 018h]
 		MOVSX EDI,word ptr [ESI + 01Ch]
@@ -324015,23 +323978,23 @@ TwinProc FUN_00127A00, c
 		SUB EDX,EBX
 		JNZ LAB_0x00127AA7
 		POP EDI
-		MOV word ptr [ECX + NUM_0x0041220e],00h
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 76],00h
 		MOV AX,word ptr [ESI + 018h]
 		POP EBX
-		MOV word ptr [ECX + NUM_0x0041220c],AX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 74],AX
 		POP ESI
 		TwinProcExit, FUN_00127A00
 	LAB_0x00127AA7: 
 		SUB EDI,EDX
-		MOV word ptr [ECX + NUM_0x0041220e],DI
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 76],DI
 		MOV AX,word ptr [ESI + 018h]
 		POP EDI
 		POP EBX
-		MOV word ptr [ECX + NUM_0x0041220c],AX
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 74],AX
 		POP ESI
 		TwinProcExit, FUN_00127A00
 	LAB_0x00127ABF: 
-		MOV word ptr [ECX + NUM_0x0041220e],00h
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 76],00h
 		POP ESI
 	LAB_0x00127AC9: 
 		TwinProcExit, FUN_00127A00
@@ -324101,11 +324064,11 @@ TwinProc FUN_00127BA0, c
 	LAB_0x00127BA0: 
 		MOV EAX,dword ptr [ESP + 04h]
 		IMUL EAX,EAX,0260h
-		MOV ECX,dword ptr [EAX + NUM_0x004121d0]
-		MOV EDX,dword ptr [EAX + NUM_0x004121d4]
+		MOV ECX,dword ptr [EAX + ARRAY_0x004121c2 + 14]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 18]
 		MOV dword ptr [EAX + NUM_0x004121b0],ECX
-		MOV ECX,dword ptr [EAX + NUM_0x004121d8]
-		MOV byte ptr [EAX + NUM_0x004122a6],01h
+		MOV ECX,dword ptr [EAX + ARRAY_0x004121c2 + 22]
+		MOV byte ptr [EAX + ARRAY_0x004121c2 + 228],01h
 		MOV dword ptr [EAX + NUM_0x004121b4],EDX
 		MOV dword ptr [EAX + NUM_0x004121b8],ECX
 		TwinProcExit, FUN_00127BA0
@@ -324138,13 +324101,13 @@ RETURN_LAB_00127c01::
 		JZ LAB_0x00127F3A
 		MOV EAX,dword ptr [EBP]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x004121c2],BX
+		MOV word ptr [EAX + ARRAY_0x004121c2],BX
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV word ptr [ECX + NUM_0x004121c4],DI
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 2],DI
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV byte ptr [EDX + NUM_0x004122a6],00h
+		MOV byte ptr [EDX + ARRAY_0x004121c2 + 228],00h
 		MOVSX EAX,word ptr [ESI + 016h]
 		MOV ECX,dword ptr [EBP]
 		PUSH EAX
@@ -324154,32 +324117,32 @@ RETURN_LAB_00127c63::
 		MOV EDX,dword ptr [EBP]
 		MOV AX,word ptr [ESI + 018h]
 		IMUL EDX,EDX,0260h
-		MOV word ptr [EDX + NUM_0x0041220c],AX
+		MOV word ptr [EDX + ARRAY_0x004121c2 + 74],AX
 		MOV EDX,dword ptr [EBP]
 		MOVSX ECX,byte ptr [ESI + 020h]
 		IMUL EDX,EDX,0260h
 		MOV EAX,dword ptr [ECX*04h + FUNPTR_0x003a2ec8]
-		MOV dword ptr [EDX + NUM_0x004121f4],EAX
+		MOV dword ptr [EDX + ARRAY_0x004121c2 + 50],EAX
 		MOV EDX,dword ptr [EBP]
 		MOVSX ECX,byte ptr [ESI + 021h]
 		IMUL EDX,EDX,0260h
 		MOV EAX,dword ptr [ECX*04h + NUM_0x003a2efc]
-		MOV dword ptr [EDX + NUM_0x004121f8],EAX
+		MOV dword ptr [EDX + ARRAY_0x004121c2 + 54],EAX
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV dword ptr [ECX + NUM_0x00412208],EDI
+		MOV dword ptr [ECX + ARRAY_0x004121c2 + 70],EDI
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV word ptr [EDX + NUM_0x00412204],DI
+		MOV word ptr [EDX + ARRAY_0x004121c2 + 66],DI
 		MOV EAX,dword ptr [EBP]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x00412206],DI
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 68],DI
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV word ptr [ECX + NUM_0x00412290],DI
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 206],DI
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV word ptr [EDX + NUM_0x00412292],01h
+		MOV word ptr [EDX + ARRAY_0x004121c2 + 208],01h
 		MOV CL,byte ptr [ESI + 0314h]
 		ADD ESP,08h
 		XOR EAX,EAX
@@ -324191,7 +324154,7 @@ RETURN_LAB_00127c63::
 		IMUL ECX,ECX,026h
 		ADD ECX,EAX
 		SHL ECX,04h
-		MOVSS dword ptr [ECX + NUM_0x0041221c],XMM0
+		MOVSS dword ptr [ECX + ARRAY_0x004121c2 + 90],XMM0
 		MOVSX EDX,byte ptr [ESI + 0314h]
 		INC EAX
 		CMP EAX,EDX
@@ -324200,51 +324163,51 @@ RETURN_LAB_00127c63::
 		MOV EAX,dword ptr [EBP]
 		XORPS XMM0,XMM0
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x004121dc],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 26],XMM0
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOVSS dword ptr [ECX + NUM_0x004121e0],XMM0
+		MOVSS dword ptr [ECX + ARRAY_0x004121c2 + 30],XMM0
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOVSS dword ptr [EDX + NUM_0x004121e4],XMM0
+		MOVSS dword ptr [EDX + ARRAY_0x004121c2 + 34],XMM0
 		MOV EAX,dword ptr [EBP]
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x004121e8],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 38],XMM0
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOVSS dword ptr [ECX + NUM_0x004121ec],XMM0
+		MOVSS dword ptr [ECX + ARRAY_0x004121c2 + 42],XMM0
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOVSS dword ptr [EDX + NUM_0x004121f0],XMM0
+		MOVSS dword ptr [EDX + ARRAY_0x004121c2 + 46],XMM0
 		MOV EAX,dword ptr [EBP]
 		MOV EDX,dword ptr [ESP + 02Ch]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x004122a2],0FFFFh
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 224],0FFFFh
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV dword ptr [ECX + NUM_0x004122a8],EDX
+		MOV dword ptr [ECX + ARRAY_0x004121c2 + 230],EDX
 		MOV EAX,dword ptr [EBP]
 		MOVSS XMM1,dword ptr [FLOAT_0x00392928]
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOVSS dword ptr [ECX + NUM_0x00412310],XMM1
+		MOVSS dword ptr [ECX + ARRAY_0x004121c2 + 334],XMM1
 		MOV EDX,dword ptr [EBP]
 		MOVSS XMM1,dword ptr [NUM_0x0044b6c0]
 		IMUL EDX,EDX,0260h
-		MOVSS dword ptr [EDX + NUM_0x00412314],XMM1
+		MOVSS dword ptr [EDX + ARRAY_0x004121c2 + 338],XMM1
 		MOV EAX,dword ptr [EBP]
 		CMP EAX,-01h
 		JZ LAB_0x00127E48
 		MOVSS XMM1,dword ptr [ESP + 020h]
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x004121d0],XMM1
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 14],XMM1
 		MOVSS XMM1,dword ptr [ESP + 024h]
-		MOVSS dword ptr [EAX + NUM_0x004121d4],XMM1
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 18],XMM1
 		MOVSS XMM1,dword ptr [ESP + 028h]
-		MOVSS dword ptr [EAX + NUM_0x004121d8],XMM1
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 22],XMM1
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM0
 	LAB_0x00127E48: 
 		MOV EAX,dword ptr [EBP]
 		PUSH EDI
@@ -324275,7 +324238,7 @@ RETURN_LAB_00127e80::
 RETURN_LAB_00127e8c::
 		XORPS XMM0,XMM0
 		ADD ESP,010h
-		MOVSS dword ptr [EBX + NUM_0x004122ac],XMM0
+		MOVSS dword ptr [EBX + ARRAY_0x004121c2 + 234],XMM0
 		XOR EDI,EDI
 	LAB_0x00127EA1: 
 		MOV EAX,dword ptr [EBP]
@@ -324283,11 +324246,11 @@ RETURN_LAB_00127e8c::
 		JZ LAB_0x00127ED8
 		XORPS XMM0,XMM0
 		IMUL EAX,EAX,0260h
-		MOVSS dword ptr [EAX + NUM_0x00412298],XMM0
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 214],XMM0
 		MOVSS XMM0,dword ptr [FLOAT_0x0038a83c]
-		MOV word ptr [EAX + NUM_0x00412294],DI
-		MOV word ptr [EAX + NUM_0x00412296],DI
-		MOVSS dword ptr [EAX + NUM_0x0041229c],XMM0
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 210],DI
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 212],DI
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 218],XMM0
 	LAB_0x00127ED8: 
 		CMP dword ptr [ESP + 010h],EDI
 		JNZ LAB_0x00127F04
@@ -325990,15 +325953,15 @@ TwinProc FUN_00129370, c
 		MOV EAX,dword ptr [ESP + 010h]
 		XORPS XMM0,XMM0
 		IMUL EAX,EAX,0260h
-		MOVSX ECX,word ptr [EAX + NUM_0x004121c2]
-		MOV EDX,dword ptr [EAX + NUM_0x004121d0]
+		MOVSX ECX,word ptr [EAX + ARRAY_0x004121c2]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 14]
 		PUSH ESI
 		MOV ESI,dword ptr [ECX*04h + PTR_0x003a2a00]
 		MOV ECX,dword ptr [ESP + 018h]
 		MOV dword ptr [ECX],EDX
-		MOV EDX,dword ptr [EAX + NUM_0x004121d4]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 18]
 		MOV dword ptr [ECX + 04h],EDX
-		MOV EDX,dword ptr [EAX + NUM_0x004121d8]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 22]
 		MOV dword ptr [ECX + 08h],EDX
 		CMP byte ptr [ESI + 020h],0Bh
 		MOVSS dword ptr [ESP + 04h],XMM0
@@ -326055,17 +326018,17 @@ TwinProc FUN_00129450, c
 		MOV EAX,dword ptr [ESP + 04h]
 		XORPS XMM0,XMM0
 		IMUL EAX,EAX,0260h
-		MOVSX ECX,word ptr [EAX + NUM_0x004121c2]
-		MOV EDX,dword ptr [EAX + NUM_0x004121d0]
+		MOVSX ECX,word ptr [EAX + ARRAY_0x004121c2]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 14]
 		SUB ESP,0Ch
 		PUSH ESI
 		MOV ESI,dword ptr [ECX*04h + PTR_0x003a2a00]
 		PUSH EDI
 		MOV EDI,dword ptr [ESP + 01Ch]
 		MOV dword ptr [EDI],EDX
-		MOV ECX,dword ptr [EAX + NUM_0x004121d4]
+		MOV ECX,dword ptr [EAX + ARRAY_0x004121c2 + 18]
 		MOV dword ptr [EDI + 04h],ECX
-		MOV EDX,dword ptr [EAX + NUM_0x004121d8]
+		MOV EDX,dword ptr [EAX + ARRAY_0x004121c2 + 22]
 		MOV dword ptr [EDI + 08h],EDX
 		CMP byte ptr [ESI + 020h],08h
 		JZ LAB_0x001294E2
@@ -326167,7 +326130,7 @@ TwinProc FUN_001295E0, c
 		MOV dword ptr [ESP + 010h],EDI
 		JMP LAB_0x00129610
 	LAB_0x00129610: 
-		MOV AX,word ptr [EDI + NUM_0x004121c2]
+		MOV AX,word ptr [EDI + ARRAY_0x004121c2]
 		TEST AX,AX
 		JZ LAB_0x00129834
 		CMP AX,0FFFFh
@@ -326180,7 +326143,7 @@ TwinProc FUN_001295E0, c
 		XOR EBP,EBP
 		TEST AL,AL
 		JLE LAB_0x00129834
-		LEA EBX,[EDI + NUM_0x00412210]
+		LEA EBX,[EDI + ARRAY_0x004121c2 + 78]
 	LAB_0x00129652: 
 		MOVSS XMM0,dword ptr [EBX + 0Ch]
 		UCOMISS XMM0,dword ptr [FLOAT_0x003869d8]
@@ -326207,7 +326170,7 @@ RETURN_LAB_00129693::
 		MOVSS XMM2,dword ptr [ESP + 024h]
 		MOVSS XMM3,dword ptr [ESP + 028h]
 		MOVSS XMM4,dword ptr [ESP + 02Ch]
-		MOVSS XMM5,dword ptr [EDI + NUM_0x004121d8]
+		MOVSS XMM5,dword ptr [EDI + ARRAY_0x004121c2 + 22]
 		MULSS XMM2,XMM0
 		MULSS XMM3,XMM0
 		MOVSS dword ptr [NUM_0x0044b14c],XMM2
@@ -326218,9 +326181,9 @@ RETURN_LAB_00129693::
 		MULSS XMM1,XMM0
 		MULSS XMM1,dword ptr [ESI + 088h]
 		ADDSS XMM1,XMM3
-		MOVSS XMM3,dword ptr [EDI + NUM_0x004121d0]
+		MOVSS XMM3,dword ptr [EDI + ARRAY_0x004121c2 + 14]
 		ADDSS XMM3,XMM2
-		MOVSS XMM2,dword ptr [EDI + NUM_0x004121d4]
+		MOVSS XMM2,dword ptr [EDI + ARRAY_0x004121c2 + 18]
 		ADDSS XMM2,XMM1
 		ADDSS XMM5,XMM4
 		ADD ESP,0Ch
@@ -327559,7 +327522,7 @@ TwinProc FUN_0012AA50, c
 		JL LAB_0x0012AA80
 	LAB_0x0012AA96: 
 		IMUL EAX,EAX,0260h
-		MOVSX ECX,word ptr [EAX + NUM_0x004121c2]
+		MOVSX ECX,word ptr [EAX + ARRAY_0x004121c2]
 		MOV AX,word ptr [EAX + NUM_0x004121c0]
 		TEST AX,AX
 		PUSH EBX
@@ -327592,7 +327555,7 @@ RETURN_LAB_0012aaf3::
 		MOV dword ptr [EDX],EAX
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOVSX EDX,word ptr [ECX + NUM_0x004121c2]
+		MOVSX EDX,word ptr [ECX + ARRAY_0x004121c2]
 		MOV EAX,dword ptr [EDX*04h + PTR_0x003a2a00]
 		MOVSX ECX,word ptr [EAX + 031Eh]
 		CVTSI2SS XMM1,ECX
@@ -327682,22 +327645,22 @@ RETURN_LAB_0012aaf3::
 		REP MOVSD
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV ECX,dword ptr [EDX + NUM_0x004122a8]
+		MOV ECX,dword ptr [EDX + ARRAY_0x004121c2 + 230]
 		MOV EDX,dword ptr [PTR_0x0044b638]
 		MOV dword ptr [EAX + EDX*01h + 064h],ECX
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV EDX,dword ptr [ECX + NUM_0x004121d0]
+		MOV EDX,dword ptr [ECX + ARRAY_0x004121c2 + 14]
 		MOV ECX,dword ptr [PTR_0x0044b638]
 		MOV dword ptr [EAX + ECX*01h + 050h],EDX
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV ECX,dword ptr [EDX + NUM_0x004121d4]
+		MOV ECX,dword ptr [EDX + ARRAY_0x004121c2 + 18]
 		MOV EDX,dword ptr [PTR_0x0044b638]
 		MOV dword ptr [EAX + EDX*01h + 054h],ECX
 		MOV ECX,dword ptr [EBP]
 		IMUL ECX,ECX,0260h
-		MOV EDX,dword ptr [ECX + NUM_0x004121d8]
+		MOV EDX,dword ptr [ECX + ARRAY_0x004121c2 + 22]
 		MOV ECX,dword ptr [PTR_0x0044b638]
 		MOV dword ptr [EAX + ECX*01h + 058h],EDX
 		MOV DX,word ptr [EBX + 0330h]
@@ -327705,7 +327668,7 @@ RETURN_LAB_0012aaf3::
 		MOV word ptr [EAX + ECX*01h + 068h],DX
 		MOV EDX,dword ptr [EBP]
 		IMUL EDX,EDX,0260h
-		MOV CL,byte ptr [EDX + NUM_0x004122a6]
+		MOV CL,byte ptr [EDX + ARRAY_0x004121c2 + 228]
 		MOV EDX,dword ptr [PTR_0x0044b638]
 		MOV byte ptr [EAX + EDX*01h + 06Ah],CL
 	LAB_0x0012ACFB: 
@@ -327772,7 +327735,7 @@ RETURN_LAB_0012aaf3::
 		JNZ LAB_0x0012ADA6
 		MOV EAX,dword ptr [EBP]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x004121c2],SI
+		MOV word ptr [EAX + ARRAY_0x004121c2],SI
 		MOV EAX,dword ptr [NUM_0x0044b0c0]
 		DEC EAX
 		POP EDI
@@ -327808,7 +327771,7 @@ TwinProc FUN_0012ADF0, c
 		JL LAB_0x0012AE15
 	LAB_0x0012AE2B: 
 		IMUL EAX,EAX,0260h
-		MOVSX EAX,word ptr [EAX + NUM_0x004121c2]
+		MOVSX EAX,word ptr [EAX + ARRAY_0x004121c2]
 		PUSH EBX
 		MOV EBX,dword ptr [EAX*04h + PTR_0x003a2a00]
 		PUSH EDI
@@ -327843,12 +327806,12 @@ RETURN_LAB_0012ae64::
 		JNZ LAB_0x0012AE77
 		MOV EAX,dword ptr [ESI]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x004121c2],00h
+		MOV word ptr [EAX + ARRAY_0x004121c2],00h
 		MOV ECX,dword ptr [ESI]
 		MOV EAX,dword ptr [NUM_0x0044b0c0]
 		IMUL ECX,ECX,0260h
 		DEC EAX
-		MOV word ptr [ECX + NUM_0x004122a2],0FFFFh
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 224],0FFFFh
 		MOV dword ptr [NUM_0x0044b0c0],EAX
 		MOV DX,word ptr [ESI]
 		POP EDI
@@ -327900,8 +327863,8 @@ TwinProc FUN_0012AF10, c
 		TEST ECX,ECX
 		CMOVZ ECX,dword ptr [NUM_0x003ec54c]
 		IMUL EAX,EAX,0260h
-		MOV dword ptr [EAX + NUM_0x004122a8],ECX
-		MOV word ptr [EAX + NUM_0x004122a2],065h
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 230],ECX
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 224],065h
 		TwinProcExit, FUN_0012AF10
 TwinProcEnd FUN_0012AF10
 
@@ -327931,13 +327894,13 @@ RETURN_LAB_0012af68::
 		JZ LAB_0x0012AFA9
 		MOV EDX,dword ptr [ESP + 014h]
 		IMUL EAX,EAX,0260h
-		MOV dword ptr [EAX + NUM_0x00412208],EDX
+		MOV dword ptr [EAX + ARRAY_0x004121c2 + 70],EDX
 		MOV EAX,dword ptr [ESI]
 		IMUL EAX,EAX,0260h
-		MOV word ptr [EAX + NUM_0x0041220e],00h
+		MOV word ptr [EAX + ARRAY_0x004121c2 + 76],00h
 		MOV ECX,dword ptr [ESI]
 		IMUL ECX,ECX,0260h
-		MOV word ptr [ECX + NUM_0x004121c4],01h
+		MOV word ptr [ECX + ARRAY_0x004121c2 + 2],01h
 	LAB_0x0012AFA9: 
 		POP ESI
 		TwinProcExit, FUN_0012AF40
@@ -328397,7 +328360,7 @@ RETURN_LAB_0012b636::
 		MOVSS dword ptr [EAX + NUM_0x004121b0],XMM1
 		MOVSS dword ptr [EAX + NUM_0x004121b4],XMM1
 		MOVSS dword ptr [EAX + NUM_0x004121b8],XMM1
-		MOVSS dword ptr [EAX + NUM_0x004122ac],XMM1
+		MOVSS dword ptr [EAX + ARRAY_0x004121c2 + 234],XMM1
 	LAB_0x0012B72C: 
 		MOV ESI,dword ptr [ESP + 02Ch]
 		TEST ESI,ESI
@@ -329570,7 +329533,7 @@ RETURN_LAB_0012c665::
 		INC EAX
 		CMP EAX,0180h
 		JL LAB_0x0012C670
-		MOV EAX,OFFSET NUM_0x004121ca
+		MOV EAX,OFFSET ARRAY_0x004121c2 + 8
 	LAB_0x0012C685: 
 		MOV word ptr [EAX + -06h],BX
 		MOV word ptr [EAX],BX

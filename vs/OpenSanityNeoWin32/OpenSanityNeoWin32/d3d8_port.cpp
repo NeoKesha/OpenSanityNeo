@@ -203,6 +203,15 @@ extern "C" void WINAPI D3DDevice_EnableOverlay(BOOL Enable) {
 }
 
 extern "C" void* WINAPI D3D_AllocContiguousMemory(DWORD Size, DWORD Alignment) {
+	if (_applicationSystem->lastTexture != NULL) {
+		//Hack for alloc paired with set
+		void* ptr = _applicationSystem->lastTexture->resource.data;
+		_applicationSystem->lastTexture = NULL;
+		//return ptr;
+	}
+	//TODO: else - create system pool texture, lock it and return
+	//Check in freeing if pointer is to syspool texture -> release it.
+
 	return XMemAlloc(Size, Alignment);
 }
 

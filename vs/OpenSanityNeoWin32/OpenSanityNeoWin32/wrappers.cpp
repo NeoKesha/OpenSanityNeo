@@ -187,14 +187,8 @@ extern "C" void WINAPI Wrapper_D3DDevice_SetTexture(D3DTEXTURESTAGESTATETYPE Sta
 	if (pTexture == NULL) {
 		return;
 	}
-	if (*((void**)pTexture) == _applicationSystem->d3dtexturevft) {
-		_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), pTexture);
-	}
-	else {
-		D3DTextureBase* texture = (D3DTextureBase*)pTexture;
-		IDirect3DTexture8* texIterface = GetTextureInterface(texture);
-		_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), texIterface);
-	}
+
+	_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), ConvertToInterface(pTexture));
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetOverscanColor(D3DCOLOR Color) {
 	D3DDevice_SetOverscanColor(Color);
@@ -274,22 +268,21 @@ extern "C" void WINAPI Wrapper_D3DSurface_LockRect(IDirect3DSurface8* pThis, D3D
 }
 
 extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DTexture_GetSurfaceLevel2(IDirect3DTexture8* pThis, UINT Level) {
-	IDirect3DTexture8* pTexture;
-	IDirect3DSurface8* pSurface;
-	HRESULT texResult = _applicationSystem->D3DDevice->CreateTexture(320, 240, 1, 0, D3DFMT_X8R8G8B8, D3DPOOL_DEFAULT, &pTexture);
-	RegisterTexture(pTexture);
-	HRESULT surfResult = pTexture->GetSurfaceLevel(0, &pSurface);
-	return pSurface;
+	IDirect3DTexture8* texInterface = ConvertToInterface(pThis);
+	IDirect3DSurface8* surface;
+	HRESULT surfResult = texInterface->GetSurfaceLevel(Level, &surface);
+	return surface;
 }
 extern "C" HRESULT WINAPI Wrapper_D3DTexture_LockRect(IDirect3DTexture8* pThis, UINT Level, D3DLOCKED_RECT* pLockedRect, CONST RECT* pRect, DWORD Flags) {
-	return pThis->LockRect(Level, pLockedRect, pRect, Flags);
+	IDirect3DTexture8* texInterface = ConvertToInterface(pThis);
+	return texInterface->LockRect(Level, pLockedRect, pRect, Flags);
 }
 extern "C" void* WINAPI Wrapper_D3D_AllocContiguousMemory(DWORD Size, DWORD Alignment) {
 	return D3D_AllocContiguousMemory(Size, Alignment);
 }
 
 extern "C" HRESULT  __stdcall Wrapper_D3DXCreateTexture(IDirect3DDevice8* pThis,UINT Width, UINT Height, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DTexture8** ppTexture) {
-	HRESULT result = _applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), Pool, ppTexture);
+	HRESULT result = _applicationSystem->D3DDevice->CreateTexture(Width, Height, Levels, Usage, ConvertD3DFormat(Format), D3DPOOL_MANAGED, ppTexture);
 	RegisterTexture(*ppTexture);
 	return result;
 }
@@ -365,6 +358,7 @@ extern "C" XBOXAPI BOOL __stdcall Wrapper_XSetFileCacheSize(IN SIZE_T dwCacheSiz
 }
 
 extern "C" XBOXAPI LPVOID __stdcall Wrapper_XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR ulPhysicalAddress, IN ULONG_PTR ulAlignment, IN DWORD flProtect) {
+
 	return XPhysicalAlloc(dwSize, ulPhysicalAddress, ulAlignment, flProtect);
 }
 
@@ -440,7 +434,24 @@ extern "C" HRESULT __stdcall Wrapper_XGSpliceVertexShaders(DWORD* pNewShader, DW
 }
 
 extern "C" void __stdcall Wrapper_XGSwizzleRect(LPCVOID pSource, DWORD Pitch, LPCRECT pRect, LPVOID pDest, DWORD Width, DWORD Height, const LPPOINT pPoint, DWORD BytesPerPixel) {
+	//TODO pSource is system pool texture pDest is default pool texture
+	// Use Texture Update from device
+	// later unswizzle
 	//XGSwizzleRect(pSource, Pitch, pRect, pDest, Width, Height, pPoint, BytesPerPixel);
+	/*IDirect3DTexture8* tmp;
+	if (BytesPerPixel != 4) {
+		int a = 0;
+	}
+	_applicationSystem->D3DDevice->CreateTexture(Width, Height, 1, 0, (BytesPerPixel == 4) ? D3DFMT_X8R8G8B8 : D3DFMT_DXT4, D3DPOOL_SYSTEMMEM, &tmp);
+	D3DLOCKED_RECT rect;
+	tmp->LockRect(0, &rect, 0, 0);
+	memcpy(rect.pBits, pSource, Width * Height * BytesPerPixel);
+	tmp->UnlockRect(0);
+	D3DTextureBase tex;
+	tex.resource.data = pDest;
+	IDirect3DTexture8* dst = GetTextureInterface(&tex);
+	_applicationSystem->D3DDevice->UpdateTexture(tmp, dst);
+	*/
 }
 
 extern "C" void  __stdcall Wrapper_XAudioCreatePcmFormat(WORD nChannels, DWORD nSamplesPerSec, WORD wBitsPerSample, LPWAVEFORMATEX pwfx) {
@@ -483,11 +494,13 @@ extern "C" HRESULT __stdcall Wrapper_XMVDecoder_EnableAudioStream(XMVDecoder* pD
 //DSound
 
 extern "C" HRESULT __stdcall Wrapper_DirectSoundCreate(LPGUID pguidDeviceId, LPDIRECTSOUND* ppDirectSound, LPUNKNOWN pUnkOuter) {
-	return DirectSoundCreate(pguidDeviceId, ppDirectSound, pUnkOuter);
+	HRESULT result = DirectSoundCreate(pguidDeviceId, ppDirectSound, pUnkOuter);
+	_applicationSystem->DSDevice = *ppDirectSound;
+	return result;
 }
 
 extern "C" HRESULT __stdcall Wrapper_DirectSoundCreateBuffer(LPCDSBUFFERDESC pdsbd, LPDIRECTSOUNDBUFFER* ppBuffer) {
-	return DirectSoundCreateBuffer(pdsbd, ppBuffer);
+	return _applicationSystem->DSDevice->CreateSoundBuffer(pdsbd, ppBuffer, NULL); //TODO caps
 }
 
 extern "C" HRESULT __stdcall Wrapper_DirectSoundCreateStream(LPCDSSTREAMDESC pdssd, LPDIRECTSOUNDSTREAM* ppStream) {
@@ -495,19 +508,19 @@ extern "C" HRESULT __stdcall Wrapper_DirectSoundCreateStream(LPCDSSTREAMDESC pds
 }
 
 extern "C" ULONG __stdcall Wrapper_IDirectSound_AddRef(LPDIRECTSOUND pDirectSound) {
-	return IDirectSound_AddRef(pDirectSound);
+	return _applicationSystem->DSDevice->AddRef();
 }
 
 extern "C" ULONG __stdcall Wrapper_IDirectSound_Release(LPDIRECTSOUND pDirectSound) {
-	return IDirectSound_Release(pDirectSound);
+	return _applicationSystem->DSDevice->Release();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_GetCaps(LPDIRECTSOUND pDirectSound, LPDSCAPS pdsc) {
-	return IDirectSound_GetCaps(pDirectSound, pdsc);
+	return _applicationSystem->DSDevice->GetCaps(pdsc);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_CreateSoundBuffer(LPDIRECTSOUND pDirectSound, LPCDSBUFFERDESC pdsbd, LPDIRECTSOUNDBUFFER* ppBuffer, LPUNKNOWN pUnkOuter) {
-	return IDirectSound_CreateSoundBuffer(pDirectSound, pdsbd, ppBuffer, pUnkOuter);
+	return _applicationSystem->DSDevice->CreateSoundBuffer(pdsbd, ppBuffer, pUnkOuter); //TODO caps
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_CreateSoundStream(LPDIRECTSOUND pDirectSound, LPCDSSTREAMDESC pdssd, LPDIRECTSOUNDSTREAM* ppStream, LPUNKNOWN pUnkOuter) {
@@ -515,15 +528,15 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSound_CreateSoundStream(LPDIRECTSOUN
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_GetSpeakerConfig(LPDIRECTSOUND pDirectSound, LPDWORD pdwSpeakerConfig) {
-	return IDirectSound_GetSpeakerConfig(pDirectSound, pdwSpeakerConfig);
+	return _applicationSystem->DSDevice->GetSpeakerConfig(pdwSpeakerConfig);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetCooperativeLevel(LPDIRECTSOUND pDirectSound, HWND hWnd, DWORD dwLevel) {
-	return IDirectSound_SetCooperativeLevel(pDirectSound, hWnd, dwLevel);
+	return _applicationSystem->DSDevice->SetCooperativeLevel(hWnd, dwLevel);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_Compact(LPDIRECTSOUND pDirectSound) {
-	return IDirectSound_Compact(pDirectSound);
+	return _applicationSystem->DSDevice->Compact();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_DownloadEffectsImage(LPDIRECTSOUND pDirectSound, LPCVOID pvImageBuffer, DWORD dwImageSize, LPCDSEFFECTIMAGELOC pImageLoc, LPDSEFFECTIMAGEDESC* ppImageDesc) {
@@ -555,39 +568,45 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetAllParameters(LPDIRECTSOUND
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetOrientation(LPDIRECTSOUND pDirectSound, FLOAT xFront, FLOAT yFront, FLOAT zFront, FLOAT xTop, FLOAT yTop, FLOAT zTop, DWORD dwApply) {
-	return IDirectSound_SetOrientation(pDirectSound, xFront, yFront, zFront, xTop, yTop, zTop, dwApply);
+	return _applicationSystem->DSListener->SetOrientation(xFront, yFront, zFront, xTop, yTop, zTop, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetPosition(LPDIRECTSOUND pDirectSound, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply) {
-	return IDirectSound_SetPosition(pDirectSound, x, y, z, dwApply);
+	return _applicationSystem->DSListener->SetPosition(x, y, z, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetVelocity(LPDIRECTSOUND pDirectSound, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply) {
-	return IDirectSound_SetVelocity(pDirectSound, x, y, z, dwApply);
+	return _applicationSystem->DSListener->SetVelocity(x, y, z, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetDistanceFactor(LPDIRECTSOUND pDirectSound, FLOAT flDistanceFactor, DWORD dwApply) {
-	return IDirectSound_SetDistanceFactor(pDirectSound, flDistanceFactor, dwApply);
+	return _applicationSystem->DSListener->SetDistanceFactor(flDistanceFactor, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetDopplerFactor(LPDIRECTSOUND pDirectSound, FLOAT flDopplerFactor, DWORD dwApply) {
-	return IDirectSound_SetDopplerFactor(pDirectSound, flDopplerFactor, dwApply);
+	return _applicationSystem->DSListener->SetDopplerFactor(flDopplerFactor, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetRolloffFactor(LPDIRECTSOUND pDirectSound, FLOAT flRolloffFactor, DWORD dwApply) {
-	return IDirectSound_SetRolloffFactor(pDirectSound, flRolloffFactor, dwApply);
+	return _applicationSystem->DSListener->SetRolloffFactor(flRolloffFactor, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_SetI3DL2Listener(LPDIRECTSOUND pDirectSound, LPCDSI3DL2LISTENER pds3dl, DWORD dwApply) {
-	return IDirectSound_SetI3DL2Listener(pDirectSound, pds3dl, dwApply);
+	DSBUFFERDESC desc;
+	ZeroMemory(&desc, sizeof(desc));
+	desc.dwSize = sizeof(desc);
+	desc.dwFlags = DSBCAPS_PRIMARYBUFFER | DSBCAPS_CTRL3D;
+	HRESULT result1 = _applicationSystem->DSDevice->CreateSoundBuffer(&desc, &_applicationSystem->DSPrimaryBuffer, NULL);
+	HRESULT result2 = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DListener8, (LPVOID*) &_applicationSystem->DSListener);
+	return S_OK;
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_CommitDeferredSettings(LPDIRECTSOUND pDirectSound) {
-	return IDirectSound_CommitDeferredSettings(pDirectSound);
+	return _applicationSystem->DSListener->CommitDeferredSettings();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_GetTime(LPDIRECTSOUND pDirectSound, REFERENCE_TIME* prtCurrent) {
-	return IDirectSound_GetTime(pDirectSound, prtCurrent);
+	return IDirectSound_GetTime(pDirectSound, prtCurrent); //IDirectMusicPerformance8
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSound_GetOutputLevels(LPDIRECTSOUND pDirectSound, LPDSOUTPUTLEVELS pOutputLevels, BOOL fResetPeakValues) {
@@ -599,27 +618,27 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSound_SynchPlayback(LPDIRECTSOUND pD
 }
 
 extern "C" ULONG __stdcall Wrapper_IDirectSoundBuffer_AddRef(LPDIRECTSOUNDBUFFER pBuffer) {
-	return IDirectSoundBuffer_AddRef(pBuffer);
+	return pBuffer->AddRef();
 }
 
 extern "C" ULONG __stdcall Wrapper_IDirectSoundBuffer_Release(LPDIRECTSOUNDBUFFER pBuffer) {
-	return IDirectSoundBuffer_Release(pBuffer);
+	return pBuffer->Release();
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetFormat(LPDIRECTSOUNDBUFFER pBuffer, LPCWAVEFORMATEX pwfxFormat) {
-	return IDirectSoundBuffer_SetFormat(pBuffer, pwfxFormat);
+	return pBuffer->SetFormat(pwfxFormat);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetFrequency(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwFrequency) {
-	return IDirectSoundBuffer_SetFrequency(pBuffer, dwFrequency);
+	return pBuffer->SetFrequency(dwFrequency);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetVolume(LPDIRECTSOUNDBUFFER pBuffer, LONG lVolume) {
-	return IDirectSoundBuffer_SetVolume(pBuffer, lVolume);
+	return pBuffer->SetVolume(lVolume);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetPitch(LPDIRECTSOUNDBUFFER pBuffer, LONG lPitch) {
-	return IDirectSoundBuffer_SetPitch(pBuffer, lPitch);
+	return S_OK; //unsupported
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetLFO(LPDIRECTSOUNDBUFFER pBuffer, LPCDSLFODESC pLFODesc) {
@@ -651,39 +670,57 @@ extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetMixBinVolumes(LPDIREC
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetAllParameters(LPDIRECTSOUNDBUFFER pBuffer, LPCDS3DBUFFER pds3db, DWORD dwApply) {
-	return IDirectSoundBuffer_SetAllParameters(pBuffer, pds3db, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetAllParameters(pds3db, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetConeAngles(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwInsideConeAngle, DWORD dwOutsideConeAngle, DWORD dwApply) {
-	return IDirectSoundBuffer_SetConeAngles(pBuffer, dwInsideConeAngle, dwOutsideConeAngle, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetConeAngles(dwInsideConeAngle, dwOutsideConeAngle, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetConeOrientation(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply) {
-	return IDirectSoundBuffer_SetConeOrientation(pBuffer, x, y, z, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetConeOrientation(x, y, z, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetConeOutsideVolume(LPDIRECTSOUNDBUFFER pBuffer, LONG lConeOutsideVolume, DWORD dwApply) {
-	return IDirectSoundBuffer_SetConeOutsideVolume(pBuffer, lConeOutsideVolume, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetConeOutsideVolume(lConeOutsideVolume, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetMaxDistance(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flMaxDistance, DWORD dwApply) {
-	return IDirectSoundBuffer_SetMaxDistance(pBuffer, flMaxDistance, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetMaxDistance(flMaxDistance, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetMinDistance(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flMinDistance, DWORD dwApply) {
-	return IDirectSoundBuffer_SetMinDistance(pBuffer, flMinDistance, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetMinDistance(flMinDistance, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetMode(LPDIRECTSOUNDBUFFER pBuffer, DWORD dwMode, DWORD dwApply) {
-	return IDirectSoundBuffer_SetMode(pBuffer, dwMode, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetMode(dwMode, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetPosition(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply) {
-	return IDirectSoundBuffer_SetPosition(pBuffer, x, y, z, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetPosition(x, y, z, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetVelocity(LPDIRECTSOUNDBUFFER pBuffer, FLOAT x, FLOAT y, FLOAT z, DWORD dwApply) {
-	return IDirectSoundBuffer_SetVelocity(pBuffer, x, y, z, dwApply);
+	LPDIRECTSOUND3DBUFFER buffer3d;
+	HRESULT result = _applicationSystem->DSPrimaryBuffer->QueryInterface(IID_IDirectSound3DBuffer, (LPVOID*)&buffer3d);
+	return buffer3d->SetVelocity(x, y, z, dwApply);
 }
 
 extern "C" HRESULT __stdcall Wrapper_IDirectSoundBuffer_SetDistanceFactor(LPDIRECTSOUNDBUFFER pBuffer, FLOAT flDistanceFactor, DWORD dwApply) {
