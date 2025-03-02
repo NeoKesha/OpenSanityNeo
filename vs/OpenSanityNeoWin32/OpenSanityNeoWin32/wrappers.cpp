@@ -190,7 +190,7 @@ extern "C" void WINAPI Wrapper_D3DDevice_SetTexture(D3DTEXTURESTAGESTATETYPE Sta
 		return;
 	}
 
-	_applicationSystem->D3DDevice->SetTexture(ConvertTextureStageType(Stage), ConvertToInterface(pTexture));
+	_applicationSystem->D3DDevice->SetTexture(Stage, ConvertToInterface(pTexture));
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetOverscanColor(D3DCOLOR Color) {
 	D3DDevice_SetOverscanColor(Color);
@@ -226,26 +226,24 @@ extern "C" void WINAPI Wrapper_D3DDevice_Clear(DWORD Count, CONST D3DRECT* pRect
 	_applicationSystem->D3DDevice->Clear(Count, pRects, ConvertClearFlags(Flags), Color, Z, Stencil);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_DrawVerticesUP(D3DPRIMITIVETYPE PrimitiveType, UINT VertexCount, CONST void* pVertexStreamZeroData, UINT VertexStreamZeroStride) {
-	//TODO: Mite mite!
 	_applicationSystem->D3DDevice->DrawPrimitiveUP(ConvertPrimitiveType(PrimitiveType), VertexCount-2, pVertexStreamZeroData, VertexStreamZeroStride);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_DrawVertices(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT VertexCount) {
-	//TODO: Mite mite!
 	_applicationSystem->D3DDevice->DrawPrimitive(ConvertPrimitiveType(PrimitiveType), StartVertex, VertexCount - 2);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
 	_applicationSystem->D3DDevice->BeginScene();
-	//D3DDevice_Begin(ConvertPrimitiveType(PrimitiveType));
 }
 
 extern "C" void WINAPI Wrapper_D3DDevice_End() {
 	_applicationSystem->D3DDevice->EndScene();
-	//D3DDevice_End();
 }
 
 extern "C" DWORD WINAPI Wrapper_D3DDevice_Swap(DWORD Flags) {
 	HandleWinApiUpdates();
-	return _applicationSystem->D3DDevice->Present(NULL, NULL, NULL, NULL);
+	DWORD result = _applicationSystem->D3DDevice->Present(NULL, NULL, NULL, NULL);
+	Sleep(50);
+	return result;
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetPixelShader(DWORD Handle) {
 	_applicationSystem->D3DDevice->SetPixelShader(Handle);

@@ -43,7 +43,7 @@ extern "C" XBOXAPI LPVOID WINAPI XPhysicalAlloc(IN SIZE_T dwSize, IN ULONG_PTR u
 	return malloc(dwSize);
 }
 extern "C" XBOXAPI DWORD WINAPI XGetVideoFlags(VOID) {
-	return XC_VIDEO_FLAGS_WIDESCREEN | XC_VIDEO_FLAGS_HDTV_1080i;
+	return XC_VIDEO_FLAGS_HDTV_480p;
 }
 extern "C" XBOXAPI DWORD WINAPI XGetVideoStandard(VOID) {
 	return XC_VIDEO_STANDARD_PAL_I;
