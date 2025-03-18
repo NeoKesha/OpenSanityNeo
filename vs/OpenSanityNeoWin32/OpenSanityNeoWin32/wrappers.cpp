@@ -186,10 +186,6 @@ extern "C" IDirect3DSurface8* WINAPI Wrapper_D3DDevice_GetPalette2(DWORD Stage) 
 	return D3DDevice_GetPalette2(Stage);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetTexture(D3DTEXTURESTAGESTATETYPE Stage, IDirect3DTexture8* pTexture) {
-	if (pTexture == NULL) {
-		return;
-	}
-
 	_applicationSystem->D3DDevice->SetTexture(Stage, ConvertToInterface(pTexture));
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetOverscanColor(D3DCOLOR Color) {
@@ -229,7 +225,7 @@ extern "C" void WINAPI Wrapper_D3DDevice_DrawVerticesUP(D3DPRIMITIVETYPE Primiti
 	_applicationSystem->D3DDevice->DrawPrimitiveUP(ConvertPrimitiveType(PrimitiveType), VertexCount-2, pVertexStreamZeroData, VertexStreamZeroStride);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_DrawVertices(D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT VertexCount) {
-	_applicationSystem->D3DDevice->DrawPrimitive(ConvertPrimitiveType(PrimitiveType), StartVertex, VertexCount - 2);
+	//_applicationSystem->D3DDevice->DrawPrimitive(ConvertPrimitiveType(PrimitiveType), StartVertex, VertexCount - 2);
 }
 extern "C" void WINAPI Wrapper_D3DDevice_Begin(D3DPRIMITIVETYPE PrimitiveType) {
 	_applicationSystem->D3DDevice->BeginScene();
@@ -242,7 +238,8 @@ extern "C" void WINAPI Wrapper_D3DDevice_End() {
 extern "C" DWORD WINAPI Wrapper_D3DDevice_Swap(DWORD Flags) {
 	HandleWinApiUpdates();
 	DWORD result = _applicationSystem->D3DDevice->Present(NULL, NULL, NULL, NULL);
-	Sleep(50);
+	
+	Sleep(16);
 	return result;
 }
 extern "C" void WINAPI Wrapper_D3DDevice_SetPixelShader(DWORD Handle) {
@@ -980,6 +977,7 @@ extern "C" DWORD  __stdcall Wrapper_GetFileSize(HANDLE hFile, LPDWORD lpFileSize
 	return fSize;
 }
 extern "C" HANDLE  __stdcall Wrapper_CreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) {
+	LogFunc(lpFileName);
 	LPCSTR fixedPath = ConvertFilePath(lpFileName);
 	HANDLE handle = CreateFileA(fixedPath, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
 	return handle;

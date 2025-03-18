@@ -1,7 +1,9 @@
 ;;Common macro
 
 TwinMain MACRO procName, conv
-    main PROC c
+	IFNDEF % @CatStr(<CPP_>, <main>)
+		main PROC c
+	ENDIF
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
 		CALL DBG_INIT
@@ -11,11 +13,15 @@ TwinMain MACRO procName, conv
 ENDM
 
 TwinProcThunk MACRO procName, conv
-    procName PROC conv
+	IFNDEF % @CatStr(<CPP_>, procName)
+		procName PROC conv
+	ENDIF
 ENDM
 
 TwinProcThiscall MACRO procName, conv
-	procName PROC stdcall
+	IFNDEF % @CatStr(<CPP_>, procName)
+		procName PROC stdcall
+	ENDIF
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
 		PUSH EAX
@@ -27,8 +33,13 @@ TwinProcThiscall MACRO procName, conv
 	ENDIF
 ENDM
 
+;;produces dead code
+;;manual cleanup needed
 TwinProc MACRO procName, conv
-    procName PROC conv
+	IFNDEF % @CatStr(<CPP_>, procName)
+		procName PROC conv
+	ENDIF
+	
 	IFDEF DEBUG_ENABLED
 		DEBUG_PROLOGUE_MACRO
 		PUSH EAX
@@ -41,11 +52,17 @@ TwinProc MACRO procName, conv
 ENDM
 
 TwinProcEnd MACRO procName
-    procName ENDP
+	IFNDEF % @CatStr(<CPP_>, procName)
+		procName ENDP
+	ENDIF
 ENDM
 
 TwinCall MACRO procName
-	CALL procName
+	IFNDEF % @CatStr(<CPP_>, procName)
+		CALL procName
+	ELSE
+		CALL @CatStr(<CPP_>, procName)
+	ENDIF
 ENDM
 
 TwinProcExit MACRO stackDepth, procName

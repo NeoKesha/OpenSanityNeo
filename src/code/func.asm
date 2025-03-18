@@ -206577,7 +206577,7 @@ RETURN_LAB_000cf322::
 		TwinCall FUN_00131ED0
 RETURN_LAB_000cf32a::
 		MOV ECX,dword ptr [PTR_0x004a71ec]
-		JMP FUN_00204660
+		JMP ExWrapper_TestCPPFunction@0
 TwinProcEnd FUN_000CF320
 
 TwinMain main, c
@@ -206658,7 +206658,7 @@ RETURN_LAB_000cf416::
 		TwinCall FUN_00131ED0
 RETURN_LAB_000cf41e::
 		MOV ECX,dword ptr [PTR_0x004a71ec]
-		TwinCall FUN_00204660
+		TwinCall ExWrapper_TestCPPFunction@0
 RETURN_LAB_000cf429::
 		PUSH OFFSET PTR_0x0039eb4c
 		PUSH 05h
@@ -208177,7 +208177,7 @@ TwinProc FUN_000D0460, c
 		XOR ESI,ESI
 	LAB_0x000D0470: 
 		MOV ECX,dword ptr [PTR_0x004a71ec]
-		TwinCall FUN_00204660
+		TwinCall ExWrapper_TestCPPFunction@0
 RETURN_LAB_000d0476::
 		MOV EAX,dword ptr [PTR_0x003e6bf8]
 		XOR BL,BL

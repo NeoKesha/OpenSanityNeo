@@ -1,8 +1,11 @@
 EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
 EXTERN D3D__TextureState : DWORD
+EXTERN D3D__DirtyFlags : DWORD
 EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN D3D__RenderState : DWORD
-EXTERN D3D__DirtyFlags : DWORD
+;;comment
+EXTERN STDCALL TestCPPFunction@0 :PROC 
+ExWrapper_TestCPPFunction@0 EQU TestCPPFunction@0
 EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
 EXTERN MmQueryAddressProtect@4 :PROC
 EXTERN MmSetAddressProtect@12 :PROC
@@ -230,7 +233,7 @@ ELSE
     EXTERN C atexit :PROC
     ExWrapper_atexit EQU atexit
 ENDIF
-EXTERN SYSCALL @__security_check_cookie@4 :PROC
+    EXTERN SYSCALL @__security_check_cookie@4 :PROC
 IFDEF WIN32
     EXTERN C Wrapper_qsort :PROC
     ExWrapper_qsort EQU Wrapper_qsort
@@ -402,7 +405,7 @@ ELSE
     EXTERN STDCALL D3DDevice_SetRenderState_PSTextureModes@4 :PROC
     ExWrapper_D3DDevice_SetRenderState_PSTextureModes@4 EQU D3DDevice_SetRenderState_PSTextureModes@4
 ENDIF
-EXTERN SYSCALL @D3DDevice_SetRenderState_Simple@8 :PROC
+    EXTERN SYSCALL @D3DDevice_SetRenderState_Simple@8 :PROC
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4 :PROC
     ExWrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4 EQU Wrapper_D3DDevice_SetRenderState_EdgeAntiAlias@4
@@ -718,8 +721,8 @@ ELSE
     EXTERN STDCALL D3DDevice_CreateVertexShader@16 :PROC
     ExWrapper_D3DDevice_CreateVertexShader@16 EQU D3DDevice_CreateVertexShader@16
 ENDIF
-EXTERN SYSCALL @D3DDevice_SetVertexShaderConstant1Fast@8 :PROC
-EXTERN SYSCALL @D3DDevice_SetVertexShaderConstantNotInlineFast@12 :PROC
+    EXTERN SYSCALL @D3DDevice_SetVertexShaderConstant1Fast@8 :PROC
+    EXTERN SYSCALL @D3DDevice_SetVertexShaderConstantNotInlineFast@12 :PROC
 IFDEF WIN32
     EXTERN STDCALL Wrapper_D3DDevice_SetStreamSource@12 :PROC
     ExWrapper_D3DDevice_SetStreamSource@12 EQU Wrapper_D3DDevice_SetStreamSource@12
@@ -937,8 +940,8 @@ ELSE
     EXTERN STDCALL XGSetVertexBufferHeader@24 :PROC
     ExWrapper_XGSetVertexBufferHeader@24 EQU XGSetVertexBufferHeader@24
 ENDIF
-EXTERN SYSCALL ?GetBufferPointer@XGBuffer@@QAGPAXXZ :PROC
-EXTERN SYSCALL ?GetBufferSize@XGBuffer@@QAGKXZ :PROC
+    EXTERN SYSCALL ?GetBufferPointer@XGBuffer@@QAGPAXXZ :PROC
+    EXTERN SYSCALL ?GetBufferSize@XGBuffer@@QAGKXZ :PROC
 IFDEF WIN32
     EXTERN STDCALL Wrapper_XGAssembleShader@44 :PROC
     ExWrapper_XGAssembleShader@44 EQU Wrapper_XGAssembleShader@44
@@ -1079,7 +1082,7 @@ ELSE
     EXTERN STDCALL IDirectSoundStream_SetHeadroom@8 :PROC
     ExWrapper_IDirectSoundStream_SetHeadroom@8 EQU IDirectSoundStream_SetHeadroom@8
 ENDIF
-EXTERN SYSCALL ?SetMixBinVolumes@CDirectSoundStream@DirectSound@@QAGJPBU_DSMIXBINS@@@Z :PROC
+    EXTERN SYSCALL ?SetMixBinVolumes@CDirectSoundStream@DirectSound@@QAGJPBU_DSMIXBINS@@@Z :PROC
 IFDEF WIN32
     EXTERN STDCALL Wrapper_IDirectSoundStream_Pause@8 :PROC
     ExWrapper_IDirectSoundStream_Pause@8 EQU Wrapper_IDirectSoundStream_Pause@8

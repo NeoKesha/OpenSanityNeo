@@ -32,3 +32,7 @@ float __cdecl ClampFloat(float val, float min, float max) {
 #endif
 	return val;
 }
+
+extern "C" void __stdcall TestCPPFunction() {
+	
+}

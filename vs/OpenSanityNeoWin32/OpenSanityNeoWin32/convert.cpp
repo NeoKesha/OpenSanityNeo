@@ -407,6 +407,7 @@ DWORD ConvertLockFlags(DWORD flags) {
 }
 
 IDirect3DTexture8* ConvertToInterface(void* data) {
+    if (data == NULL) return NULL;
     if (*((void**)data) == _applicationSystem->d3dtexturevft) {
         return (IDirect3DTexture8*)data;
     } else {

@@ -3843,7 +3843,7 @@ DBG_FUN_00014354 db "ActionDummy586::UnkMethod 00014354", 0, 0, 0, 0
 DBG_FUN_00014359 db "UnkFamily10L::Construct 00014359", 0, 0, 0, 0
 DBG_FUN_0001435E db "PerceptEdgeNeedsFlying::Dispose 0001435e", 0, 0, 0, 0
 DBG_FUN_00014363 db "Action0x0D7::GetSize 00014363", 0, 0, 0, 0
-DBG_FUN_00014368 db "GameController::ResetCharacterNodes 00014368", 0, 0, 0, 0
+DBG_FUN_00014368 db "GameContext::ResetCharacterNodes 00014368", 0, 0, 0, 0
 DBG_FUN_0001436D db "ActionThrowAttachedObject::GetSize 0001436d", 0, 0, 0, 0
 DBG_FUN_00014372 db "UnkFamily8BD::thunk_FUN_000abb00 00014372", 0, 0, 0, 0
 DBG_FUN_00014377 db "OlegModuleAbstract::Unroll 00014377", 0, 0, 0, 0
@@ -12877,7 +12877,7 @@ DBG_FUN_000BA630 db "Global::FUN_000ba630 000ba630", 0, 0, 0, 0
 DBG_FUN_000BA690 db "Global::FUN_000ba690 000ba690", 0, 0, 0, 0
 DBG_FUN_000BA6C0 db "GameController::FUN_000ba6c0 000ba6c0", 0, 0, 0, 0
 DBG_FUN_000BA790 db "GameController::DrawText 000ba790", 0, 0, 0, 0
-DBG_FUN_000BA890 db "GameController::ResetCharacterNodes 000ba890", 0, 0, 0, 0
+DBG_FUN_000BA890 db "GameContext::ResetCharacterNodes 000ba890", 0, 0, 0, 0
 DBG_FUN_000BA970 db "Global::FUN_000ba970 000ba970", 0, 0, 0, 0
 DBG_FUN_000BAA40 db "Global::FUN_000baa40 000baa40", 0, 0, 0, 0
 DBG_FUN_000BAB50 db "Global::FUN_000bab50 000bab50", 0, 0, 0, 0
@@ -14618,7 +14618,7 @@ DBG_FUN_000F7510 db "Global::FUN_000f7510 000f7510", 0, 0, 0, 0
 DBG_FUN_000F7530 db "AutoClass4::Construct 000f7530", 0, 0, 0, 0
 DBG_FUN_000F7590 db "Global::EmptyFunction 000f7590", 0, 0, 0, 0
 DBG_FUN_000F75A0 db "AutoClass4::AddNodeToSlot 000f75a0", 0, 0, 0, 0
-DBG_FUN_000F7600 db "Global::FUN_000f7600 000f7600", 0, 0, 0, 0
+DBG_FUN_000F7600 db "AutoClass4::FUN_000f7600 000f7600", 0, 0, 0, 0
 DBG_FUN_000F7670 db "Global::FUN_000f7670 000f7670", 0, 0, 0, 0
 DBG_FUN_000F76C0 db "Global::FUN_000f76c0 000f76c0", 0, 0, 0, 0
 DBG_FUN_000F7710 db "AutoClass4::FUN_000f7710 000f7710", 0, 0, 0, 0
@@ -14658,7 +14658,7 @@ DBG_FUN_000F8420 db "InstanceNodeObjectLink::Construct 000f8420", 0, 0, 0, 0
 DBG_FUN_000F8460 db "InstanceContextBase::Construct 000f8460", 0, 0, 0, 0
 DBG_FUN_000F84C0 db "InstanceContextBase::Construct 000f84c0", 0, 0, 0, 0
 DBG_FUN_000F8530 db "InstanceContext::SetNode 000f8530", 0, 0, 0, 0
-DBG_FUN_000F85A0 db "InstanceContext::FUN_000f85a0 000f85a0", 0, 0, 0, 0
+DBG_FUN_000F85A0 db "InstanceContext::AttachNode 000f85a0", 0, 0, 0, 0
 DBG_FUN_000F8610 db "InstanceContext::Construct 000f8610", 0, 0, 0, 0
 DBG_FUN_000F8740 db "InstanceContext::Construct 000f8740", 0, 0, 0, 0
 DBG_FUN_000F8880 db "InstanceContext::Construct 000f8880", 0, 0, 0, 0
@@ -15227,7 +15227,7 @@ DBG_FUN_00105750 db "Global::FUN_00105750 00105750", 0, 0, 0, 0
 DBG_FUN_00105790 db "Global::FUN_00105790 00105790", 0, 0, 0, 0
 DBG_FUN_001057C0 db "Global::FUN_001057c0 001057c0", 0, 0, 0, 0
 DBG_FUN_001057F0 db "Global::FUN_001057f0 001057f0", 0, 0, 0, 0
-DBG_FUN_00105840 db "TwinsanityMaterialShader::FUN_00105840 00105840", 0, 0, 0, 0
+DBG_FUN_00105840 db "TwinsanityMaterialShader::SetMaterial 00105840", 0, 0, 0, 0
 DBG_FUN_001058E0 db "Global::FUN_001058e0 001058e0", 0, 0, 0, 0
 DBG_FUN_00105940 db "Decals::Construct 00105940", 0, 0, 0, 0
 DBG_FUN_00105A20 db "Global::FUN_00105a20 00105a20", 0, 0, 0, 0

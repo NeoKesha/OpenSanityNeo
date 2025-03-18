@@ -1,6 +1,5 @@
 	INCLUDE decls\configRelease.asm
 	INCLUDE decls\macro.asm
-	
 	INCLUDE manual\manualdecl.asm
 	INCLUDE decls\decls.asm
 	INCLUDE decls\proto.asm
