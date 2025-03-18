@@ -207173,7 +207173,7 @@ RETURN_LAB_000cf96e::
 		TEST EAX,EAX
 		JL LAB_0x000CF9BA
 		LEA ECX,[ESP + 04h]
-		TwinCall FUN_0020DDF0
+		TwinCall ?GetLength@FileStream@@UAEHXZ
 RETURN_LAB_000cf97b::
 		PUSH 01h
 		MOV ESI,EAX
@@ -642569,11 +642569,6 @@ RETURN_LAB_00204656::
 		TwinProcExit, FUN_00204640
 TwinProcEnd FUN_00204640
 
-TwinProc FUN_00204660, stdcall
-	LAB_0x00204660: 
-		TwinProcExit, FUN_00204660
-TwinProcEnd FUN_00204660
-
 TwinProc FUN_00204670, c
 		MOV ECX,dword ptr [ESP + 04h]
 		MOV EAX,dword ptr [ECX]
@@ -658150,15 +658145,6 @@ TwinProc FUN_0020DDE0, stdcall
 	LAB_0x0020DDE0: 
 		TwinProcExit, FUN_0020DDE0
 TwinProcEnd FUN_0020DDE0
-
-TwinProc FUN_0020DDF0, stdcall
-	LAB_0x0020DDF0: 
-		MOV EAX,dword ptr [ECX + 04h]
-		PUSH 00h
-		PUSH EAX
-		TwinCall ExWrapper_GetFileSize@8
-		TwinProcExit, FUN_0020DDF0
-TwinProcEnd FUN_0020DDF0
 
 TwinProc FUN_0020DE00, stdcall
 	LAB_0x0020DE00: 

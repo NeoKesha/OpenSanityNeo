@@ -1,2 +1,4 @@
-#comment
+#comment STDCALL replacement
 00204660 TestCPPFunction
+#test file stream replacement, thiscall
+0020ddf0 ?GetLength@FileStream@@UAEHXZ
