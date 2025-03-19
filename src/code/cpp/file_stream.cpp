@@ -1,14 +1,15 @@
 #include <XTL.h>
 #include <stl.h>
+#include "twin_base.h"
 
-class FileStream {
+class FileStream : TwinBase {
 	HANDLE handle;
 	int errno;
 
 public:
 	FileStream();
+	~FileStream();
 
-	virtual void Dispose();
 	virtual size_t Read(char* buffer, size_t size, int reserved);
 	virtual void EmptyFunction1(int reserved1, int reserved2);
 	virtual size_t Write(char* buffer, size_t size);
@@ -47,6 +48,14 @@ public:
 	virtual void CloseFile();
 	virtual unsigned int ReadCheck(char* buffer, size_t size, unsigned char flag);
 };
+
+FileStream::FileStream() {
+	this->handle = INVALID_HANDLE_VALUE;
+}
+
+FileStream::~FileStream() {
+	this->CloseFile();
+}
 
 size_t FileStream::Read(char* buffer, size_t size, int reserved) {
 	int bytesRead;
@@ -264,4 +273,15 @@ Holy script:
 	DWORD dwBytesToWrite = (DWORD)strlen(logbuffer);
     DWORD dwBytesWritten = 0;
 	WriteFile(hLogFile, logbuffer, dwBytesToWrite, &dwBytesWritten, NULL); 
+	
+	
+	char logbuffer[1024];
+	HANDLE hLogFile;
+	ZeroMemory(logbuffer, sizeof(logbuffer));
+	sprintf(logbuffer, "");
+	hLogFile = CreateFile(TEXT("debug.log"),  FILE_APPEND_DATA | FILE_GENERIC_READ,  0, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL|FILE_FLAG_NO_BUFFERING|FILE_FLAG_WRITE_THROUGH, NULL);   
+	DWORD dwBytesToWrite = (DWORD)strlen(logbuffer);
+    DWORD dwBytesWritten = 0;
+	WriteFile(hLogFile, logbuffer, dwBytesToWrite, &dwBytesWritten, NULL); 
+	CloseHandle(hLogFile);
 */

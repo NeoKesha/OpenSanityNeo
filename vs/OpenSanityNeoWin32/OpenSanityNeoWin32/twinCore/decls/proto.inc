@@ -1,7 +1,9 @@
 ;;comment STDCALL replacement
 EXTERN STDCALL TestCPPFunction@0 :PROC 
 ExWrapper_TestCPPFunction@0 EQU TestCPPFunction@0
-;;test file stream replacement, thiscall
+;;File Stream VT
+EXTERN SYSCALL ??1FileStream@@QAE@XZ:PROC 
+ExWrapper_??1FileStream@@QAE@XZ EQU ??1FileStream@@QAE@XZ
 EXTERN SYSCALL ?Read@FileStream@@UAEIPADIH@Z:PROC 
 ExWrapper_?Read@FileStream@@UAEIPADIH@Z EQU ?Read@FileStream@@UAEIPADIH@Z
 EXTERN SYSCALL ?EmptyFunction1@FileStream@@UAEXHH@Z:PROC 
@@ -76,9 +78,15 @@ EXTERN SYSCALL ?CloseFile@FileStream@@UAEXXZ:PROC
 ExWrapper_?CloseFile@FileStream@@UAEXXZ EQU ?CloseFile@FileStream@@UAEXXZ
 EXTERN SYSCALL ?ReadCheck@FileStream@@UAEIPADIE@Z:PROC 
 ExWrapper_?ReadCheck@FileStream@@UAEIPADIE@Z EQU ?ReadCheck@FileStream@@UAEIPADIE@Z
-EXTERN D3D__TextureState : DWORD
+;;File Stream
+EXTERN SYSCALL ??0FileStream@@QAE@XZ:PROC 
+ExWrapper_??0FileStream@@QAE@XZ EQU ??0FileStream@@QAE@XZ
+EXTERN SYSCALL ??1FileStream@@QAE@XZ:PROC 
+ExWrapper_??1FileStream@@QAE@XZ EQU ??1FileStream@@QAE@XZ
+;;0020f110 ?Dispose@FileStream@@QAEXXZ
 EXTERN D3DDIRTYFROMRENDERSTATE : DWORD
 EXTERN D3D__RenderState : DWORD
+EXTERN D3D__TextureState : DWORD
 EXTERN D3D__DirtyFlags : DWORD
 EXTERN XDEVICE_TYPE_GAMEPAD_TABLE : DWORD
 EXTERN RtlLeaveCriticalSectionAndRegion@4 :PROC
@@ -24502,7 +24510,6 @@ FUN_0020DB40 PROTO stdcall
 FUN_0020DB60 PROTO stdcall
 FUN_0020DB80 PROTO stdcall
 FUN_0020DB90 PROTO stdcall
-FUN_0020DBA0 PROTO stdcall
 FUN_0020DEF0 PROTO stdcall
 FUN_0020DF80 PROTO stdcall
 FUN_0020DFD0 PROTO stdcall
@@ -24538,7 +24545,6 @@ FUN_0020EF30 PROTO stdcall
 FUN_0020F030 PROTO stdcall
 FUN_0020F0C0 PROTO stdcall
 FUN_0020F0E0 PROTO stdcall
-FUN_0020F110 PROTO stdcall
 FUN_0020F140 PROTO stdcall
 FUN_0020F1D0 PROTO c
 FUN_0020F220 PROTO stdcall
@@ -24706,7 +24712,6 @@ FUN_00211D20 PROTO stdcall
 FUN_00211DF0 PROTO stdcall
 FUN_00211ED0 PROTO stdcall
 FUN_002120E0 PROTO stdcall
-FUN_00212140 PROTO stdcall
 FUN_00212180 PROTO stdcall
 FUN_002121E0 PROTO stdcall
 FUN_00212220 PROTO stdcall
