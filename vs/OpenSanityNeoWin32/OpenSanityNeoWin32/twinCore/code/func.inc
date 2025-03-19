@@ -207168,19 +207168,19 @@ RETURN_LAB_000cf954::
 		PUSH OFFSET STR_0x0038df88
 		LEA ECX,[ESP + 010h]
 		MOV dword ptr [ESP + 01Ch],OFFSET STR_0x0038df80
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_000cf96e::
 		TEST EAX,EAX
 		JL LAB_0x000CF9BA
 		LEA ECX,[ESP + 04h]
-		TwinCall ?GetLength@FileStream@@UAEHXZ
+		TwinCall ?GetLength@FileStream@@UAEIXZ
 RETURN_LAB_000cf97b::
 		PUSH 01h
 		MOV ESI,EAX
 		PUSH ESI
 		PUSH OFFSET NUM_0x003e63d0
 		LEA ECX,[ESP + 010h]
-		TwinCall FUN_0020DD00
+		TwinCall ?Read@FileStream@@UAEIPADIH@Z
 RETURN_LAB_000cf98e::
 		LEA EAX,[ESP + 010h]
 		PUSH EAX
@@ -309223,7 +309223,7 @@ RETURN_LAB_0011dd85::
 		PUSH 01h
 		PUSH EDX
 		LEA ECX,[ESP + 02Ch]
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_0011dd97::
 		MOV EAX,dword ptr [ESI]
 		LEA ECX,[ESP + 020h]
@@ -309372,7 +309372,7 @@ RETURN_LAB_0011deff::
 		PUSH 01h
 		PUSH EDX
 		LEA ECX,[ESP + 02Ch]
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_0011df11::
 		LEA EAX,[ESP + 020h]
 		PUSH EAX
@@ -389154,7 +389154,7 @@ RETURN_LAB_0015687b::
 		PUSH 01h
 		PUSH EDX
 		LEA ECX,[ESP + 02Ch]
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_0015688d::
 		LEA EAX,[ESP + 020h]
 		PUSH EAX
@@ -526791,10 +526791,10 @@ RETURN_LAB_001b434f::
 		PUSH 01h
 		PUSH OFFSET STR_0x003951a4
 		LEA ECX,[ESP + 01Ch]
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_001b4361::
 		LEA ECX,[ESP + 010h]
-		TwinCall FUN_0020DED0
+		TwinCall ?IsInvalid@FileStream@@UAEHXZ
 RETURN_LAB_001b436a::
 		TEST EAX,EAX
 		JNZ LAB_0x001B4382
@@ -657929,333 +657929,6 @@ TwinProc FUN_0020DBA0, stdcall
 		TwinProcExit, FUN_0020DBA0
 TwinProcEnd FUN_0020DBA0
 
-TwinProcThiscall FUN_0020DBB0, stdcall
-	LAB_0x0020DBB0: 
-		SUB ESP,0418h
-		MOV EAX,dword ptr [__security_cookie]
-		PUSH EBX
-		PUSH EBP
-		MOV dword ptr [ESP + 041Ch],EAX
-		MOV EAX,dword ptr [ESP + 0428h]
-		PUSH ESI
-		MOV EBP,ECX
-		XOR ESI,ESI
-		MOV ECX,03h
-		XOR EBX,EBX
-		CMP EAX,ECX
-		PUSH EDI
-		MOV dword ptr [ESP + 010h],ESI
-		JA LAB_0x0020DC14
-		JMP dword ptr [EAX*04h + ARRAY_0x0020dcc4]
-	LAB_0x0020DBE7: 
-		MOV EBX,080000000h
-		MOV dword ptr [ESP + 010h],ECX
-		JMP LAB_0x0020DC14
-	LAB_0x0020DBF2: 
-		MOV dword ptr [ESP + 010h],05h
-		JMP LAB_0x0020DC0F
-	LAB_0x0020DBFC: 
-		MOV EBX,0C0000000h
-		MOV dword ptr [ESP + 010h],ECX
-		JMP LAB_0x0020DC14
-	LAB_0x0020DC07: 
-		MOV dword ptr [ESP + 010h],02h
-	LAB_0x0020DC0F: 
-		MOV EBX,040000000h
-	LAB_0x0020DC14: 
-		MOV EAX,dword ptr [STRUCT_0x004a7b50]
-		PUSH EAX
-		LEA ECX,[ESP + 018h]
-		MOV dword ptr [ESP + 018h],ESI
-		MOV dword ptr [ESP + 01Ch],ESI
-		MOV dword ptr [ESP + 020h],ESI
-		TwinCall FUN_00157BF0
-RETURN_LAB_0020dc2a::
-		MOV ECX,dword ptr [ESP + 014h]
-		CMP ECX,ESI
-		JNZ LAB_0x0020DC3C
-		MOV ECX,OFFSET STR_0x00388031
-	LAB_0x0020DC3C: 
-		LEA EDX,[ESP + 020h]
-	LAB_0x0020DC40: 
-		MOV AL,byte ptr [ECX]
-		INC ECX
-		MOV byte ptr [EDX],AL
-		INC EDX
-		TEST AL,AL
-		JNZ LAB_0x0020DC40
-		MOV EAX,dword ptr [ESP + 042Ch]
-		MOV ESI,EAX
-	LAB_0x0020DC53: 
-		MOV CL,byte ptr [EAX]
-		INC EAX
-		TEST CL,CL
-		JNZ LAB_0x0020DC53
-		LEA EDI,[ESP + 020h]
-		SUB EAX,ESI
-		DEC EDI
-	LAB_0x0020DC61: 
-		MOV CL,byte ptr [EDI + 01h]
-		INC EDI
-		TEST CL,CL
-		JNZ LAB_0x0020DC61
-		MOV ECX,EAX
-		SHR ECX,02h
-		REP MOVSD
-		PUSH 00h
-		MOV ECX,EAX
-		AND ECX,03h
-		PUSH 00h
-		REP MOVSB
-		MOV ECX,dword ptr [ESP + 018h]
-		PUSH ECX
-		PUSH 00h
-		PUSH 00h
-		PUSH EBX
-		LEA EDX,[ESP + 038h]
-		PUSH EDX
-		TwinCall ExWrapper_CreateFileA@28
-		MOV dword ptr [EBP + 04h],EAX
-		TwinCall ExWrapper_GetLastError@0
-		MOV ESI,dword ptr [EBP + 04h]
-		LEA ECX,[ESP + 014h]
-		MOV dword ptr [EBP + 08h],EAX
-		TwinCall FUN_00157330
-RETURN_LAB_0020dca1::
-		MOV ECX,dword ptr [ESP + 0424h]
-		POP EDI
-		MOV EAX,ESI
-		POP ESI
-		POP EBP
-		POP EBX
-		TwinCall @__security_check_cookie@4
-		ADD ESP,0418h
-		TwinProcExit 0Ch, FUN_0020DBB0
-	ARRAY_0x0020dcc4 LABEL DWORD
-		ARRAY_0x0020dcc4_CASE_0 DWORD LAB_0x0020DC07
-		ARRAY_0x0020dcc4_CASE_1 DWORD LAB_0x0020DBE7
-		ARRAY_0x0020dcc4_CASE_2 DWORD LAB_0x0020DBF2
-		ARRAY_0x0020dcc4_CASE_3 DWORD LAB_0x0020DBFC
-TwinProcEnd FUN_0020DBB0
-
-TwinProc FUN_0020DCE0, stdcall
-	LAB_0x0020DCE0: 
-		PUSH ESI
-		MOV ESI,ECX
-		MOV EAX,dword ptr [ESI + 04h]
-		CMP EAX,-01h
-		JZ LAB_0x0020DCF1
-		PUSH EAX
-		TwinCall ExWrapper_CloseHandle@4
-	LAB_0x0020DCF1: 
-		MOV dword ptr [ESI + 04h],0FFFFFFFFh
-		POP ESI
-		TwinProcExit, FUN_0020DCE0
-TwinProcEnd FUN_0020DCE0
-
-TwinProcThiscall FUN_0020DD00, stdcall
-	LAB_0x0020DD00: 
-		PUSH ECX
-		MOV EDX,dword ptr [ESP + 08h]
-		PUSH ESI
-		PUSH 00h
-		MOV ESI,ECX
-		MOV ECX,dword ptr [ESP + 014h]
-		LEA EAX,[ESP + 08h]
-		PUSH EAX
-		MOV EAX,dword ptr [ESI + 04h]
-		PUSH ECX
-		PUSH EDX
-		PUSH EAX
-		MOV dword ptr [ESP + 018h],00h
-		TwinCall ExWrapper_ReadFile@20
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		MOV EAX,dword ptr [ESP + 04h]
-		POP ESI
-		POP ECX
-		TwinProcExit 0Ch, FUN_0020DD00
-TwinProcEnd FUN_0020DD00
-
-TwinProcThiscall FUN_0020DD40, stdcall
-	LAB_0x0020DD40: 
-		PUSH ECX
-		PUSH ESI
-		PUSH EDI
-		MOV EDI,dword ptr [ESP + 014h]
-		PUSH 00h
-		LEA EAX,[ESP + 0Ch]
-		PUSH EAX
-		MOV ESI,ECX
-		MOV ECX,dword ptr [ESP + 018h]
-		MOV EDX,dword ptr [ESI + 04h]
-		PUSH EDI
-		PUSH ECX
-		PUSH EDX
-		MOV dword ptr [ESP + 01Ch],00h
-		TwinCall ExWrapper_ReadFile@20
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		MOV EAX,dword ptr [ESP + 08h]
-		CMP EAX,EDI
-		POP EDI
-		POP ESI
-		JNC LAB_0x0020DD88
-		MOV CL,byte ptr [ESP + 010h]
-		TEST CL,CL
-		JZ LAB_0x0020DD88
-		TEST EAX,EAX
-		JNZ LAB_0x0020DD88
-		OR EAX,0FFFFFFFFh
-	LAB_0x0020DD88: 
-		POP ECX
-		TwinProcExit 0Ch, FUN_0020DD40
-TwinProcEnd FUN_0020DD40
-
-TwinProcThiscall FUN_0020DD90, stdcall
-	LAB_0x0020DD90: 
-		PUSH ECX
-		MOV EDX,dword ptr [ESP + 08h]
-		PUSH ESI
-		PUSH 00h
-		MOV ESI,ECX
-		MOV ECX,dword ptr [ESP + 014h]
-		LEA EAX,[ESP + 08h]
-		PUSH EAX
-		MOV EAX,dword ptr [ESI + 04h]
-		PUSH ECX
-		PUSH EDX
-		PUSH EAX
-		MOV dword ptr [ESP + 018h],00h
-		TwinCall ExWrapper_WriteFile@20
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		MOV EAX,dword ptr [ESP + 04h]
-		POP ESI
-		POP ECX
-		TwinProcExit 08h, FUN_0020DD90
-TwinProcEnd FUN_0020DD90
-
-TwinProc FUN_0020DDD0, stdcall
-	LAB_0x0020DDD0: 
-		TwinProcExit 08h, FUN_0020DDD0
-TwinProcEnd FUN_0020DDD0
-
-TwinProc FUN_0020DDE0, stdcall
-	LAB_0x0020DDE0: 
-		TwinProcExit, FUN_0020DDE0
-TwinProcEnd FUN_0020DDE0
-
-TwinProc FUN_0020DE00, stdcall
-	LAB_0x0020DE00: 
-		MOV EAX,dword ptr [ECX + 04h]
-		PUSH 01h
-		PUSH 00h
-		PUSH 00h
-		PUSH EAX
-		TwinCall ExWrapper_SetFilePointer@16
-		TwinProcExit, FUN_0020DE00
-TwinProcEnd FUN_0020DE00
-
-TwinProc FUN_0020DE10, stdcall
-	LAB_0x0020DE10: 
-		PUSH ESI
-		MOV ESI,ECX
-		MOV EAX,dword ptr [ESI]
-		PUSH EDI
-		TwinCall dword ptr [EAX + 01Ch]
-		MOV EDX,dword ptr [ESI]
-		MOV ECX,ESI
-		MOV EDI,EAX
-		TwinCall dword ptr [EDX + 018h]
-		CMP EDI,EAX
-		SBB EAX,EAX
-		POP EDI
-		INC EAX
-		POP ESI
-		TwinProcExit, FUN_0020DE10
-TwinProcEnd FUN_0020DE10
-
-TwinProc FUN_0020DE30, stdcall
-	LAB_0x0020DE30: 
-		PUSH ESI
-		PUSH 00h
-		PUSH 00h
-		MOV ESI,ECX
-		MOV EAX,dword ptr [ESI + 04h]
-		PUSH 00h
-		PUSH EAX
-		TwinCall ExWrapper_SetFilePointer@16
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		POP ESI
-		TwinProcExit, FUN_0020DE30
-TwinProcEnd FUN_0020DE30
-
-TwinProc FUN_0020DE50, stdcall
-	LAB_0x0020DE50: 
-		PUSH ESI
-		PUSH 02h
-		PUSH 00h
-		MOV ESI,ECX
-		MOV EAX,dword ptr [ESI + 04h]
-		PUSH 00h
-		PUSH EAX
-		TwinCall ExWrapper_SetFilePointer@16
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		POP ESI
-		TwinProcExit, FUN_0020DE50
-TwinProcEnd FUN_0020DE50
-
-TwinProcThiscall FUN_0020DE70, stdcall
-	LAB_0x0020DE70: 
-		MOV EAX,dword ptr [ESP + 04h]
-		PUSH ESI
-		PUSH 01h
-		PUSH 00h
-		MOV ESI,ECX
-		MOV ECX,dword ptr [ESI + 04h]
-		PUSH EAX
-		PUSH ECX
-		TwinCall ExWrapper_SetFilePointer@16
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		POP ESI
-		TwinProcExit 04h, FUN_0020DE70
-TwinProcEnd FUN_0020DE70
-
-TwinProcThiscall FUN_0020DEA0, stdcall
-	LAB_0x0020DEA0: 
-		MOV EAX,dword ptr [ESP + 04h]
-		PUSH ESI
-		PUSH 00h
-		PUSH 00h
-		MOV ESI,ECX
-		MOV ECX,dword ptr [ESI + 04h]
-		PUSH EAX
-		PUSH ECX
-		TwinCall ExWrapper_SetFilePointer@16
-		TwinCall ExWrapper_GetLastError@0
-		MOV dword ptr [ESI + 08h],EAX
-		POP ESI
-		TwinProcExit 04h, FUN_0020DEA0
-TwinProcEnd FUN_0020DEA0
-
-TwinProc FUN_0020DED0, stdcall
-	LAB_0x0020DED0: 
-		CMP dword ptr [ECX + 04h],-01h
-		JZ LAB_0x0020DEE0
-		MOV EAX,dword ptr [ECX + 08h]
-		TEST EAX,EAX
-		JNZ LAB_0x0020DEE0
-		XOR EAX,EAX
-		TwinProcExit, FUN_0020DED0
-	LAB_0x0020DEE0: 
-		MOV EAX,01h
-		TwinProcExit, FUN_0020DED0
-TwinProcEnd FUN_0020DED0
-
 TwinProc FUN_0020DEF0, stdcall
 	LAB_0x0020DEF0: 
 		MOV EAX,ECX
@@ -660167,7 +659840,7 @@ TwinProcThiscall FUN_0020F0E0, stdcall
 		MOV ECX,ESI
 		MOV dword ptr [ESI],OFFSET FUNPTR_0x003967a0
 		MOV dword ptr [ESI + 04h],0FFFFFFFFh
-		TwinCall FUN_0020DBB0
+		TwinCall ?OpenFile@FileStream@@UAEXPADHH@Z
 RETURN_LAB_0020f101::
 		MOV EAX,ESI
 		POP ESI
@@ -662610,237 +662283,6 @@ TwinProcThiscall FUN_00210A90, stdcall
 		MOV byte ptr [EAX + 0Ch],CL
 		TwinProcExit 0Ch, FUN_00210A90
 TwinProcEnd FUN_00210A90
-
-TwinProcThiscall FUN_00210AB0, stdcall
-	LAB_0x00210AB0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 01h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210AB0
-TwinProcEnd FUN_00210AB0
-
-TwinProcThiscall FUN_00210AD0, stdcall
-	LAB_0x00210AD0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 02h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210AD0
-TwinProcEnd FUN_00210AD0
-
-TwinProcThiscall FUN_00210AF0, stdcall
-	LAB_0x00210AF0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 04h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210AF0
-TwinProcEnd FUN_00210AF0
-
-TwinProcThiscall FUN_00210B10, stdcall
-	LAB_0x00210B10: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 04h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210B10
-TwinProcEnd FUN_00210B10
-
-TwinProcThiscall FUN_00210B30, stdcall
-	LAB_0x00210B30: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 01h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210B30
-TwinProcEnd FUN_00210B30
-
-TwinProcThiscall FUN_00210B50, stdcall
-	LAB_0x00210B50: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 02h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210B50
-TwinProcEnd FUN_00210B50
-
-TwinProcThiscall FUN_00210B70, stdcall
-	LAB_0x00210B70: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 04h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210B70
-TwinProcEnd FUN_00210B70
-
-TwinProcThiscall FUN_00210B90, stdcall
-	LAB_0x00210B90: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 04h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210B90
-TwinProcEnd FUN_00210B90
-
-TwinProcThiscall FUN_00210BB0, stdcall
-	LAB_0x00210BB0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 01h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210BB0
-TwinProcEnd FUN_00210BB0
-
-TwinProcThiscall FUN_00210BD0, stdcall
-	LAB_0x00210BD0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 04h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210BD0
-TwinProcEnd FUN_00210BD0
-
-TwinProcThiscall FUN_00210BF0, stdcall
-	LAB_0x00210BF0: 
-		MOV EDX,dword ptr [ESP + 04h]
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		PUSH 08h
-		PUSH EDX
-		TwinCall dword ptr [EAX + 04h]
-		TwinProcExit 04h, FUN_00210BF0
-TwinProcEnd FUN_00210BF0
-
-TwinProcThiscall FUN_00210C10, stdcall
-	LAB_0x00210C10: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C10
-TwinProcEnd FUN_00210C10
-
-TwinProcThiscall FUN_00210C20, stdcall
-	LAB_0x00210C20: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 02h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C20
-TwinProcEnd FUN_00210C20
-
-TwinProcThiscall FUN_00210C30, stdcall
-	LAB_0x00210C30: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 04h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C30
-TwinProcEnd FUN_00210C30
-
-TwinProcThiscall FUN_00210C40, stdcall
-	LAB_0x00210C40: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 04h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C40
-TwinProcEnd FUN_00210C40
-
-TwinProcThiscall FUN_00210C50, stdcall
-	LAB_0x00210C50: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C50
-TwinProcEnd FUN_00210C50
-
-TwinProcThiscall FUN_00210C60, stdcall
-	LAB_0x00210C60: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 02h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C60
-TwinProcEnd FUN_00210C60
-
-TwinProcThiscall FUN_00210C70, stdcall
-	LAB_0x00210C70: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 04h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C70
-TwinProcEnd FUN_00210C70
-
-TwinProcThiscall FUN_00210C80, stdcall
-	LAB_0x00210C80: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 04h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C80
-TwinProcEnd FUN_00210C80
-
-TwinProcThiscall FUN_00210C90, stdcall
-	LAB_0x00210C90: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 01h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210C90
-TwinProcEnd FUN_00210C90
-
-TwinProcThiscall FUN_00210CA0, stdcall
-	LAB_0x00210CA0: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 04h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 04h, FUN_00210CA0
-TwinProcEnd FUN_00210CA0
-
-TwinProcThiscall FUN_00210CB0, stdcall
-	LAB_0x00210CB0: 
-		MOV EAX,dword ptr [ECX]
-		PUSH 08h
-		LEA EDX,[ESP + 08h]
-		PUSH EDX
-		TwinCall dword ptr [EAX + 0Ch]
-		TwinProcExit 08h, FUN_00210CB0
-TwinProcEnd FUN_00210CB0
 
 TwinProcThiscall FUN_00210CC0, stdcall
 		MOV EAX,dword ptr [ESP + 04h]
