@@ -1,2 +1,9 @@
-
-/bin
+/tool/Psychetron/Psychetron/obj
+/tool/Psychetron/.vs
+/tool/Psychetron/Psychetron/bin
+/twin/runtime
+twin/Newtonsoft.Json.dll
+twin/Psychetron.deps.json
+twin/Psychetron.dll
+twin/Psychetron.exe
+twin/Psychetron.runtimeconfig.json

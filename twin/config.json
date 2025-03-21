@@ -1,0 +1,20 @@
+{
+  "cl_path": ".\\runtime\\bin\\cl.exe",
+  "ml_path": ".\\runtime\\bin\\ml.exe",
+  "link_path": ".\\runtime\\bin\\link.exe",
+  "imagebld_path": ".\\runtime\\bin\\imagebld.exe",
+  "include_path": ".\\runtime\\include\\",
+  "lib_path": ".\\runtime\\lib\\",
+  "database_path": ".\\database\\",
+  "source_path": ".\\source\\",
+  "cpplist_path": ".\\cpplist.txt",
+  "intermediate_path": ".\\output\\obj\\",
+  "output_path": ".\\output\\bin\\",
+  "game_path": "",
+  "copy_on_complete": false,
+  "fastbuild": true,
+  "cl_flags": "/c  /EHsc",
+  "ml_flags": "/coff /c /Zf",
+  "link_flags": "/SUBSYSTEM:XBOX /NODEFAULTLIB /MAPINFO:EXPORTS",
+  "imagebld_flags": "/STACK:65536"
+}
