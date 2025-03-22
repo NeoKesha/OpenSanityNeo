@@ -27,12 +27,12 @@ namespace Psychetron
         }
         private void btn_browseOutputPath_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_outputPath, config.output_path);
         }
 
         private void btn_browseIntermediatePath_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_intermediatePath, config.intermediate_path);
         }
 
         private void btn_browseGamePath_Click(object sender, EventArgs e)
@@ -47,12 +47,12 @@ namespace Psychetron
 
         private void btn_browseSource_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_sourcePath, config.source_path);
         }
 
         private void btn_browseDatabase_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_databasePath, config.database_path);
         }
 
         private void btn_browseCpplist_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace Psychetron
 
         private void btn_browseInclude_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_includePath, config.include_path);
         }
 
         private void btn_browseImagebld_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Psychetron
 
         private void btn_browse_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            BrowseAndUpdateDirectory(tb_libPath, config.lib_path);
         }
         private void btn_saveConfig_Click(object sender, EventArgs e)
         {

@@ -1,4 +1,4 @@
-{
+﻿{
   "cl_path": ".\\runtime\\bin\\cl.exe",
   "ml_path": ".\\runtime\\bin\\ml.exe",
   "link_path": ".\\runtime\\bin\\link.exe",
