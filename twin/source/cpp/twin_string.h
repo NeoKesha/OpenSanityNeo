@@ -28,6 +28,7 @@ public:
 	void ParseIntInternal(unsigned int number,int length);
 	void ReadFromFile(MemoryStream* memoryStream);
 	unsigned int Replace(char* substring,char* replaceWith);
+	bool FUN_00157de0(int* outInt);
 	
 	static void __cdecl ReplaceByStrBeforeC(TwinString* str1,TwinString* str2,char c);
 	static bool __cdecl SetCdRomVolume(TwinString* str);
@@ -35,10 +36,10 @@ public:
 	static TwinString* __cdecl Split(TwinString* result, TwinString* delimiter, TwinString** outStrings);
 	static TwinString*  __cdecl TwinString::FUN_00158ec0(TwinString* str,int param_2,unsigned int param_3);
 	static TwinString*  __cdecl TwinString::FUN_00158fb0(TwinString* str,int param_2,unsigned int param_3);
-	static unsigned int StrDiff(TwinString* str, char* other);
-	static unsigned int StrDiffParseFloat(TwinString* str, char* key, float* outFloat);
-	static unsigned int StrDiffParseStr(TwinString* str, char* key, TwinString* outString);
-	static unsigned int StrParseInt(TwinString* str ,char* key, int* outInt);
+	static bool __stdcall StrDiff(char* str, char* other);
+	static bool __stdcall StrDiffParseFloat(char* str, char* key, float* outFloat);
+	static bool __stdcall StrDiffParseStr(char* str, char* key, TwinString* outString);
+	static bool __stdcall StrParseInt(char* str ,char* key, int* outInt);
 	
 	bool SubstringRelated(char* substring);
 	void ToUpper();

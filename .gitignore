@@ -9,3 +9,4 @@ twin/Psychetron.deps.json
 twin/Psychetron.dll
 twin/Psychetron.exe
 twin/Psychetron.runtimeconfig.json
+twin/config.json

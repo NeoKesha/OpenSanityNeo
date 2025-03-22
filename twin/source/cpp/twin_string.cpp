@@ -16,6 +16,12 @@ TwinString::TwinString() {
 	this->length = 0;
 }
 
+TwinString::~TwinString() {
+	FreeMemory(this->buffer);
+	this->capacity = 0;
+	this->length = 0;
+}
+
 void TwinString::SetValue(char* str) {
 	if ((str != 0) && (*str != '\0')) {
 		this->length = strlen(str);
@@ -147,21 +153,55 @@ TwinString*  __cdecl TwinString::FUN_00158fb0(TwinString* str,int param_2,unsign
 	AssertNonImplemented
 	return 0;
 }
-unsigned int TwinString::StrDiff(TwinString* str, char* other){
+bool TwinString::StrDiff(char* str, char* other){
 	AssertNonImplemented
 	return 0;
 }
-unsigned int TwinString::StrDiffParseFloat(TwinString* str, char* key, float* outFloat){
+bool TwinString::StrDiffParseFloat(char* str, char* key, float* outFloat){
 	AssertNonImplemented
 	return 0;
 }
-unsigned int TwinString::StrDiffParseStr(TwinString* str, char* key, TwinString* outString){
+bool TwinString::StrDiffParseStr(char* str, char* key, TwinString* outString){
 	AssertNonImplemented
 	return 0;
 }
-unsigned int TwinString::StrParseInt(TwinString* str ,char* key, int* outInt){
-	AssertNonImplemented
-	return 0;
+
+bool TwinString::FUN_00157de0(int* outInt) {
+	char* ptr = this->buffer;
+	if ((ptr[0] == '+') || (ptr[0] == '-')) {
+		ptr = ptr + 1;
+	}
+	
+	int result = 0;
+	if ((*ptr > '/') && (*ptr < ':')) {
+		do {
+			result = *ptr - 0x30 + result * 10;
+			ptr = ptr + 1;
+			if (*ptr < '0') break;
+		} while (*ptr < ':');
+		
+		if (*ptr != '.') {
+			if (*ptr == '-') {
+				result = -result;
+			}
+			*outInt = result;
+			return *ptr == '\0';
+		}
+	}
+	return false;
+}
+
+bool TwinString::StrParseInt(char* str ,char* key, int* outInt){
+	TwinString tmpString;
+
+	size_t keyLength = strlen(key);
+	int cmp = _strnicmp(str, key, keyLength);
+	if ((cmp == 0) && (str[keyLength] == '=')) {
+		tmpString.Set(str + keyLength + 1);
+		tmpString.FUN_00157de0(outInt);
+		return true;
+	}
+	return false;
 }
 	
 bool TwinString::SubstringRelated(char* substring){
