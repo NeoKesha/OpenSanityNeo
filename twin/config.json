@@ -1,4 +1,4 @@
-{
+﻿{
   "cl_path": ".\\runtime\\bin\\cl.exe",
   "ml_path": ".\\runtime\\bin\\ml.exe",
   "link_path": ".\\runtime\\bin\\link.exe",
@@ -10,9 +10,10 @@
   "cpplist_path": ".\\cpplist.txt",
   "intermediate_path": ".\\output\\obj\\",
   "output_path": ".\\output\\bin\\",
-  "game_path": "..\\..\\..\\Content",
-  "copy_on_complete": true,
+  "game_path": "",
+  "copy_on_complete": false,
   "fastbuild": true,
+  "stop_on_error": true,
   "cl_flags": "/c  /EHsc",
   "ml_flags": "/coff /c /Zf",
   "link_flags": "/SUBSYSTEM:XBOX /NODEFAULTLIB /MAPINFO:EXPORTS",

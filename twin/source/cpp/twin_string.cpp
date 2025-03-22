@@ -48,9 +48,32 @@ TwinString* TwinString::Concatenate(TwinString* dst, char* str){
 	AssertNonImplemented
 	return 0;
 }
-TwinString* TwinString::Copy(char* str){
-	AssertNonImplemented
-	return 0;
+TwinString* TwinString::Copy(char* other){
+	if (other != this->buffer) {
+		if (other == 0) {
+			this->length = 0;
+		}
+		else {
+			this->length = strlen(other);
+		}
+		
+		size_t newCapacity = (this->length + 0x20U) & 0xffffffe0;
+		if (this->capacity < newCapacity) {
+			if (this->buffer != 0) {
+				FreeMemory(this->buffer);
+			}
+			this->capacity = newCapacity;
+			this->buffer = (char *)AllocateMemory(this->capacity);
+		}
+		
+		if (other == 0) {
+			*this->buffer = '\0';
+		}
+		else {
+			strcpy(this->buffer, other);
+		}
+	}
+	return this;
 }
 TwinString* TwinString::CopyFromCharArray(char* other){
 	AssertNonImplemented
@@ -102,8 +125,10 @@ void __cdecl TwinString::ReplaceByStrBeforeC(TwinString* str1,TwinString* str2,c
 	AssertNonImplemented
 	return;
 }
+
+extern "C" TwinString CdRomVolume;
 bool __cdecl TwinString::SetCdRomVolume(TwinString* str){
-	AssertNonImplemented
+	CdRomVolume.Copy(str->buffer);
 	return 0;
 }
 bool __cdecl TwinString::FUN_0015a9a0(TwinString* str1,TwinString* str2){

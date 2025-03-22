@@ -88,6 +88,7 @@ namespace Psychetron
             tb_mlFlags = new TextBox();
             label16 = new Label();
             btn_validateConfig = new Button();
+            cb_stopOnError = new CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -375,6 +376,7 @@ namespace Psychetron
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(cb_stopOnError);
             groupBox3.Controls.Add(cb_copyXbe);
             groupBox3.Controls.Add(cb_fastbuild);
             groupBox3.Controls.Add(btn_browseGamePath);
@@ -396,7 +398,7 @@ namespace Psychetron
             // cb_copyXbe
             // 
             cb_copyXbe.AutoSize = true;
-            cb_copyXbe.Location = new Point(116, 105);
+            cb_copyXbe.Location = new Point(219, 105);
             cb_copyXbe.Name = "cb_copyXbe";
             cb_copyXbe.Size = new Size(147, 19);
             cb_copyXbe.TabIndex = 21;
@@ -634,6 +636,16 @@ namespace Psychetron
             btn_validateConfig.UseVisualStyleBackColor = true;
             btn_validateConfig.Click += btn_validateConfig_Click;
             // 
+            // cb_stopOnError
+            // 
+            cb_stopOnError.AutoSize = true;
+            cb_stopOnError.Location = new Point(89, 104);
+            cb_stopOnError.Name = "cb_stopOnError";
+            cb_stopOnError.Size = new Size(125, 19);
+            cb_stopOnError.TabIndex = 22;
+            cb_stopOnError.Text = "Stop Build on Error";
+            cb_stopOnError.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -719,5 +731,6 @@ namespace Psychetron
         private Label label16;
         private Button btn_build;
         private Button btn_validateConfig;
+        private CheckBox cb_stopOnError;
     }
 }

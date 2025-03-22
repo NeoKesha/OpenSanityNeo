@@ -177,6 +177,7 @@ namespace Psychetron
 
             cb_fastbuild.Checked = config.fastbuild;
             cb_copyXbe.Checked = config.copy_on_complete;
+            cb_stopOnError.Checked = config.stop_on_error;
 
             tb_clFlags.Text = config.cl_flags;
             tb_mlFlags.Text = config.ml_flags;
@@ -207,6 +208,7 @@ namespace Psychetron
 
             config.fastbuild = cb_fastbuild.Checked;
             config.copy_on_complete = cb_copyXbe.Checked;
+            config.stop_on_error = cb_stopOnError.Checked;
 
             config.cl_flags = tb_clFlags.Text;
             config.ml_flags = tb_mlFlags.Text;
@@ -295,11 +297,23 @@ namespace Psychetron
             if (ShoudRebuildTwinCore())
             {
                 tb_log.AppendText("Building Twin Core MASM project\r\n");
-                BuildAssemblyProject();
+                if (!BuildAssemblyProject() && config.stop_on_error)
+                {
+                    tb_log.AppendText("Failed to build Twin Core. Halting the build.\r\n");
+                    return;
+                }
                 tb_log.AppendText("Preprocessing func.asm\r\n");
-                PreprocessFuncAsm();
+                if (!PreprocessFuncAsm() && config.stop_on_error)
+                {
+                    tb_log.AppendText("Failed to build Twin Core. Halting the build.\r\n");
+                    return;
+                }
                 tb_log.AppendText("Assembling Twin Core\r\n");
-                AssembleTwinCore();
+                if (!AssembleTwinCore() && config.stop_on_error)
+                {
+                    tb_log.AppendText("Failed to build Twin Core. Halting the build.\r\n");
+                    return;
+                }
             } else
             {
                 tb_log.AppendText("Twin Core is up to date\r\n");
@@ -314,13 +328,25 @@ namespace Psychetron
                     continue;
                 }
                 tb_log.AppendText("Compiling "+fname + ".cpp\r\n");
-                CompileCppModule(cppFile);
+                if (!CompileCppModule(cppFile) && config.stop_on_error)
+                {
+                    tb_log.AppendText($"Failed to compile {fname}.cpp. Halting the build.\r\n");
+                    return;
+                }
             }
 
             tb_log.AppendText("Linking EXE\r\n");
-            BuildExe();
+            if (!BuildExe() && config.stop_on_error)
+            {
+                tb_log.AppendText("Failed to build an EXE. Halting the build.\r\n");
+                return;
+            }
             tb_log.AppendText("Making XBE\r\n");
-            BuildXbe();
+            if(!BuildXbe() && config.stop_on_error)
+            {
+                tb_log.AppendText("Failed to build an XBE. Halting the build.\r\n");
+                return;
+            }
             if (config.copy_on_complete)
             {
                 tb_log.AppendText("Copying XBE to game's location\r\n");
@@ -354,7 +380,7 @@ namespace Psychetron
             message = "Couldn't start " + Path.GetFileName(cmd);
             return false;
         }
-        private void BuildAssemblyProject()
+        private bool BuildAssemblyProject()
         {
             if (Directory.Exists(Path.Join(config.source_path, "assembly")))
             {
@@ -378,9 +404,13 @@ namespace Psychetron
                 }
                 File.Copy(coreFile, dstPath);
             }
+
+            return true;
         }
-        private void PreprocessFuncAsm()
+        private bool PreprocessFuncAsm()
         {
+            HashSet<string> globals = new HashSet<string>();
+            Dictionary<string, string> dataAliases = new Dictionary<string, string>();
             Dictionary<String, String> cppList = new Dictionary<String, String>();
             if (File.Exists(config.cpplist_path))
             {
@@ -395,6 +425,43 @@ namespace Psychetron
                         cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
                     }
                 }
+            }
+            if (File.Exists(Path.Join(config.database_path, "aliases\\dataNames.txt")))
+            {
+                using (var srcFile = new FileStream(Path.Join(config.database_path, "aliases\\dataNames.txt"), FileMode.Open, FileAccess.Read))
+                {
+                    var reader = new StreamReader(srcFile);
+                    while (!reader.EndOfStream)
+                    {
+                        var tokens = reader.ReadLine().Trim().Split(" ");
+                        dataAliases.Add(tokens[0], tokens[1]);
+                    }
+                }
+            }
+            if (File.Exists(Path.Join(config.database_path, "aliases\\globals.txt")))
+            {
+                using (var srcFile = new FileStream(Path.Join(config.database_path, "aliases\\globals.txt"), FileMode.Open, FileAccess.Read))
+                {
+                    var reader = new StreamReader(srcFile);
+                    while (!reader.EndOfStream)
+                    {
+                        globals.Add(reader.ReadLine().Trim()); 
+                    }
+                }
+            }
+
+            using (var dataFile = new FileStream(Path.Join(config.source_path, fileDataAsm), FileMode.Append, FileAccess.Write))
+            {
+                var writer = new StreamWriter(dataFile);
+                foreach (var global in globals)
+                {
+                    writer.WriteLine("PUBLIC " + global);
+                    if (dataAliases.ContainsKey(global))
+                    {
+                        writer.WriteLine($"ALIAS <{dataAliases[global]}> = <{global}>");
+                    }
+                }
+                writer.Flush();
             }
 
             using (var srcFile = new FileStream(Path.Join(config.database_path, fileFuncAsm), FileMode.Open, FileAccess.Read))
@@ -491,7 +558,7 @@ namespace Psychetron
                 }
                 writer.Flush();
             }
-
+            return true;
         }
 
         private enum PreprocessorState
@@ -501,14 +568,16 @@ namespace Psychetron
             INSIDE_SKIP
         }
 
-        private void AssembleTwinCore()
+        private bool AssembleTwinCore()
         {
             string message = null;
             var args = config.ml_flags;
+            var result = true;
             args += " /Fo" + "\"" + Path.Join(config.intermediate_path, "main.obj") + "\" "+Path.Join(config.source_path, "assembly\\main.asm");
             if (!StartProcess(config.ml_path, args, out message))
             {
                 tb_log.AppendText(message + "\r\n");
+                result = false;
             } else
             {
                 tb_log.AppendText("Twin Core assembled successfully!\r\n");
@@ -520,13 +589,16 @@ namespace Psychetron
             if (!StartProcess(config.cl_path, args, out message))
             {
                 tb_log.AppendText(message + "\r\n");
+                result = false;
             }
             else
             {
                 tb_log.AppendText("Twin Core Strings compiled successfully!\r\n");
             }
+
+            return result;
         }
-        private void CompileCppModule(string path)
+        private bool CompileCppModule(string path)
         {
             string message = null;
             var name = Path.GetFileNameWithoutExtension(path);
@@ -536,9 +608,13 @@ namespace Psychetron
             if (!StartProcess(config.cl_path, args, out message))
             {
                 tb_log.AppendText(message + "\r\n");
+                return false;
+            } else
+            {
+                return true;
             }
         }
-        private void BuildExe()
+        private bool BuildExe()
         {
             objList.Clear();
             var files = Directory.GetFiles(config.intermediate_path, "*.obj", SearchOption.AllDirectories);
@@ -561,13 +637,15 @@ namespace Psychetron
             if (!StartProcess(config.link_path, args, out message))
             {
                 tb_log.AppendText(message + "\r\n");
+                return false;
             }
             else
             {
                 tb_log.AppendText("Twinsanity EXE linked successfully!\r\n");
+                return true;
             }
         }
-        private void BuildXbe()
+        private bool BuildXbe()
         {
             string message = null;
             var args = config.imagebld_flags;
@@ -576,13 +654,15 @@ namespace Psychetron
             if (!StartProcess(config.imagebld_path, args, out message))
             {
                 tb_log.AppendText(message + "\r\n");
+                return false;
             }
             else
             {
                 tb_log.AppendText("Twinsanity XBE builded successfully!\r\n");
+                return true;
             }
         }
-        private void CopyXbe()
+        private bool CopyXbe()
         {
             if (File.Exists(Path.Join(config.game_path, "default.xbe")))
             {
@@ -591,7 +671,12 @@ namespace Psychetron
             if (File.Exists(Path.Join(config.output_path, "default.xbe")))
             {
                 File.Copy(Path.Join(config.output_path, "default.xbe"), Path.Join(config.game_path, "default.xbe"));
+            } else
+            {
+                return false;
             }
+
+            return true;
         }
         private bool ShoudRebuildTwinCore()
         {
@@ -643,6 +728,7 @@ namespace Psychetron
         public string output_path { get; set; }
         public string game_path { get; set; }
         public bool copy_on_complete { get; set; }
+        public bool stop_on_error { get; set; }
         public bool fastbuild { get; set; }
         public string cl_flags { get; set; }
         public string ml_flags { get; set; }
