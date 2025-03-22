@@ -4,11 +4,11 @@
 #include "memory_stream.h"
 
 MemoryStream::MemoryStream() {
-
+	//Not implemented
 }
 
 MemoryStream::~MemoryStream() {
-
+	//Not implemented
 }
 
 size_t MemoryStream::Read(char* buffer, size_t size, int reserved) {
@@ -35,6 +35,7 @@ void MemoryStream::SeekBackwards(int reserved, size_t amount) {
 }
 
 size_t MemoryStream::Write(char* buffer, size_t size) {
+	//Not implemented
 	return 0;
 }
 

@@ -413,7 +413,7 @@ namespace Psychetron
                     {
                         case PreprocessorState.OUTSIDE:
                             dstLine = srcLine;
-                            if (srcLine.StartsWith("TwinProc") && !srcLine.StartsWith("TwinProcEnd"))
+                            if ((srcLine.StartsWith("TwinProc") || srcLine.StartsWith("TwinMain")) && !srcLine.StartsWith("TwinProcEnd"))
                             {
                                 var tokens = srcLine.Split(" ");
                                 var funcName = tokens[1].Replace(",", "");
