@@ -21,7 +21,7 @@ public:
 	TwinString* FUN_00157630(float param_1);
 	TwinString* ParseInt(unsigned int number);
 	
-	void AppendVariant(char* str);
+	void Prepend(char* str);
 	int FindSubstringEndPos(int startIndex,char* str);
 	unsigned int FUN_00135e40(char* str);
 	bool FUN_001572d0(int length);

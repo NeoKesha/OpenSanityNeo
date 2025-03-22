@@ -87,7 +87,7 @@
 000249e0 ?FUN_000249e0@TwinString@@QAEPAV1@I@Z
 00157630 ?FUN_00157630@TwinString@@QAEPAV1@M@Z
 001576a0 ?ParseInt@TwinString@@QAEPAV1@I@Z
-00157ad0 ?AppendVariant@TwinString@@QAEXPAD@Z
+00157ad0 ?Prepend@TwinString@@QAEXPAD@Z
 00159f20 ?FindSubstringEndPos@TwinString@@QAEHHPAD@Z
 00135e40 ?FUN_00135e40@TwinString@@QAEIPAD@Z
 001572d0 ?FUN_001572d0@TwinString@@QAE_NH@Z

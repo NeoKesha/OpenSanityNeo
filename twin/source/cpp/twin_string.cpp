@@ -42,17 +42,85 @@ void TwinString::SetValue(char* str) {
 	this->length = 0;
 }
 
-TwinString* TwinString::Append(char* str){
-	AssertNonImplemented
-	return 0;
+TwinString* TwinString::Append(char* other){
+	size_t otherLength = strlen(other);
+	if (otherLength < 1) { 
+		return this;
+	}
+	
+	this->length = this->length + otherLength;
+	size_t newCapacity = (this->length + 0x20U) & 0xffffffe0;
+	
+	char* oldBuffer = this->buffer;
+	bool cleanupFlag = false;
+	if (this->capacity < newCapacity) {
+		this->capacity = newCapacity;
+		this->buffer = (char*)AllocateMemory(newCapacity);
+		cleanupFlag = true;
+	}
+	if (oldBuffer == 0) {
+		strcpy(this->buffer, other);
+	}
+	else {
+		if (cleanupFlag) {
+			strcpy(this->buffer, oldBuffer);
+		}
+		size_t myLength = strlen(this->buffer);
+		char* dst = this->buffer + myLength;
+		char* src = other;
+		for (int i = otherLength / 4; i > 0; --i) {
+			*((int*)dst) = *((int*)src);
+			dst += 4;
+			src += 4;
+		}
+		for (int i = otherLength % 4; i > 0; --i) {
+			*(dst) = *(src);
+			dst += 1;
+			src += 1;
+		}
+	}
+	if (cleanupFlag) {
+		FreeMemory(oldBuffer);
+		this->capacity = 0;
+	}
+	this->buffer[this->length] = '\0';
+
+	return this;
 }
 TwinString* TwinString::AppendInt(unsigned int num){
-	AssertNonImplemented
-	return 0;
+	this->buffer = (char *)AllocateMemory(32);
+	this->length = 0;
+	this->capacity = 32;
+	
+	if (num == 0) {
+		this->buffer[this->length] = '0';
+	} 
+	else {
+		unsigned int number = num / 10;
+		if (number != 0) {
+			this->ParseIntInternal(number, 0);
+		}
+		this->buffer[this->length] = num - 10 * number + '0';
+	}
+	
+	this->length = this->length + 1;
+	this->buffer[this->length] = '\0';
+	
+	return this;
 }
+
 TwinString* TwinString::Concatenate(TwinString* dst, char* str){
-	AssertNonImplemented
-	return 0;
+	TwinString tmpStr;
+	tmpStr.Copy(this->buffer);
+	tmpStr.Append(str);
+	
+
+	dst->buffer = 0;
+	dst->length = 0;
+	dst->capacity = 0;
+	dst->Copy(tmpStr.buffer);
+
+	return dst;
 }
 TwinString* TwinString::Copy(char* other){
 	if (other != this->buffer) {
@@ -98,8 +166,12 @@ TwinString* TwinString::ParseInt(unsigned int number){
 	return 0;
 }
 	
-void TwinString::AppendVariant(char* str){
-	AssertNonImplemented
+void TwinString::Prepend(char* str){
+	//ISSUE: non original implementation because i am tired
+	TwinString tmp;
+	tmp.Copy(str);
+	tmp.Append(this->buffer);
+	this->Copy(tmp.buffer);
 	return;
 }
 int TwinString::FindSubstringEndPos(int startIndex,char* str){
@@ -114,12 +186,28 @@ bool TwinString::FUN_001572d0(int length){
 	AssertNonImplemented
 	return 0;
 }
-void TwinString::ParseIntInternal(unsigned int number,int length){
-	AssertNonImplemented
-	return;
+void TwinString::ParseIntInternal(unsigned int value, int length){
+	unsigned int num = value / 10;
+	if ((num != 0) || (length > 1)) {
+		this->ParseIntInternal(num, length - 1);
+	}
+	
+	this->buffer[this->length] = value - 10 * num + '0';
+	this->length = this->length + 1;
 }
 void TwinString::ReadFromFile(MemoryStream* memoryStream){
-	AssertNonImplemented
+	FreeMemory(this->buffer);
+	this->buffer = 0;
+	this->length = 0;
+	this->capacity = 0;
+	
+	memoryStream->ReadInt2((char*)&(this->length));
+	if (this->length > 0) {
+		this->capacity = (this->length + 0x20U) & 0xffffffe0;
+		this->buffer = (char*)AllocateMemory(this->capacity);
+		memoryStream->Read(this->buffer, this->length, 1);
+		this->buffer[this->length] = '\0';
+	}
 	return;
 }
 unsigned int TwinString::Replace(char* substring,char* replaceWith){
@@ -154,16 +242,26 @@ TwinString*  __cdecl TwinString::FUN_00158fb0(TwinString* str,int param_2,unsign
 	return 0;
 }
 bool TwinString::StrDiff(char* str, char* other){
-	AssertNonImplemented
-	return 0;
+	return _strnicmp(str, other, strlen(other)) == 0;
 }
 bool TwinString::StrDiffParseFloat(char* str, char* key, float* outFloat){
 	AssertNonImplemented
 	return 0;
 }
 bool TwinString::StrDiffParseStr(char* str, char* key, TwinString* outString){
-	AssertNonImplemented
-	return 0;
+	char cVar1;
+	char *str2endPointer;
+	int str2Length;
+	int equal;
+
+	size_t keyLength = strlen(key);
+	int cmp = _strnicmp(str,key,keyLength);
+	if ((cmp == 0) && (str[keyLength] == '=')) {
+		outString->Copy(str + keyLength + 1);
+		outString->ToUpper();
+		return true;
+	}
+	return false;
 }
 
 bool TwinString::FUN_00157de0(int* outInt) {
@@ -209,14 +307,21 @@ bool TwinString::SubstringRelated(char* substring){
 	return 0;
 }
 void TwinString::ToUpper(){
-	AssertNonImplemented
+	for (int i = 0; i < this->length; ++i) {
+		this->buffer[i] = toupper(this->buffer[i]);
+	}
 	return;
 }
 void TwinString::ToLower(){
-	AssertNonImplemented
+	for (int i = 0; i < this->length; ++i) {
+		this->buffer[i] = tolower(this->buffer[i]);
+	}
 	return;
 }
 void TwinString::Write(MemoryStream* stream){
-	AssertNonImplemented
+	stream->WriteInt2(this->length);
+	if (this->length != 0) {
+		stream->Write(this->buffer, this->length);
+	}
 	return;
 }
