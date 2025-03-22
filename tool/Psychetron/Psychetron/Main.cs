@@ -537,10 +537,6 @@ namespace Psychetron
             {
                 tb_log.AppendText(message + "\r\n");
             }
-            else
-            {
-                tb_log.AppendText("Twin Core Strings compiled successfully!\r\n");
-            }
         }
         private void BuildExe()
         {
@@ -588,12 +584,14 @@ namespace Psychetron
         }
         private void CopyXbe()
         {
-            if (File.Exists(Path.Join(config.game_path,"default.xbe")))
+            if (File.Exists(Path.Join(config.game_path, "default.xbe")))
             {
                 File.Delete(Path.Join(config.game_path, "default.xbe"));
             }
-
-            File.Copy(Path.Join(config.output_path, "default.xbe"), Path.Join(config.game_path, "default.xbe"));
+            if (File.Exists(Path.Join(config.output_path, "default.xbe")))
+            {
+                File.Copy(Path.Join(config.output_path, "default.xbe"), Path.Join(config.game_path, "default.xbe"));
+            }
         }
         private bool ShoudRebuildTwinCore()
         {

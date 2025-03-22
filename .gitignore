@@ -2,6 +2,8 @@
 /tool/Psychetron/.vs
 /tool/Psychetron/Psychetron/bin
 /twin/runtime
+/twin/output
+/twin/source/assembly
 twin/Newtonsoft.Json.dll
 twin/Psychetron.deps.json
 twin/Psychetron.dll
