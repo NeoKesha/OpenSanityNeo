@@ -7,9 +7,8 @@ class MemoryStream : TwinBase {
 
 public:
 	MemoryStream();
-	~MemoryStream();
+	virtual ~MemoryStream();
 
-	virtual void VDDPlaceholder() = 0;
 	virtual size_t Read(char* buffer, size_t size, int reserved);
 	virtual void SeekBackwards(int reserved, size_t amount);
 	virtual size_t Write(char* buffer, size_t size);

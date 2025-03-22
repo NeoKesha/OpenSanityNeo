@@ -5,9 +5,8 @@ class FileStream : TwinBase {
 
 public:
 	FileStream();
-	~FileStream();
+	virtual ~FileStream();
 
-	//virtual void VDDPlaceholder() = 0; <- It's wrong, but if VFTable of File Stream is broken, it fixes crash in main menu, wtf
 	virtual size_t Read(char* buffer, size_t size, int reserved);
 	virtual void EmptyFunction1(int reserved1, int reserved2);
 	virtual size_t Write(char* buffer, size_t size);

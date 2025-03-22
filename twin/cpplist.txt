@@ -1,5 +1,6 @@
+#For safety Cosntructors and Destructors are skipped for now
 #File Stream VT
-00212140 ??1FileStream@@QAE@XZ
+#00212140 ??1FileStream@@QAE@XZ 
 0020dd00 ?Read@FileStream@@UAEIPADIH@Z
 0020ddd0 ?EmptyFunction1@FileStream@@UAEXHH@Z
 0020dd90 ?Write@FileStream@@UAEIPADI@Z
@@ -38,8 +39,8 @@
 0020dce0 ?CloseFile@FileStream@@UAEXXZ
 0020dd40 ?ReadCheck@FileStream@@UAEIPADIE@Z
 #File Stream
-0020dba0 ??0FileStream@@QAE@XZ
-0020f110 ??1FileStream@@QAE@XZ
+#0020dba0 ??0FileStream@@QAE@XZ
+#0020f110 ??1FileStream@@QAE@XZ
 #Memory Stream VT
 0020d7c0 ?Read@MemoryStream@@UAEIPADIH@Z
 0020d8e0 ?SeekBackwards@MemoryStream@@UAEXHI@Z
