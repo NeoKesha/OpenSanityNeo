@@ -14,7 +14,7 @@
   "copy_on_complete": true,
   "stop_on_error": true,
   "fastbuild": true,
-  "cl_flags": "/c  /EHsc",
+  "cl_flags": "/c  /EHsc /Od",
   "ml_flags": "/coff /c /Zf",
   "link_flags": "/SUBSYSTEM:XBOX /NODEFAULTLIB /MAPINFO:EXPORTS",
   "imagebld_flags": "/STACK:65536"

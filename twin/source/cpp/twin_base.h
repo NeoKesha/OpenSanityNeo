@@ -15,3 +15,5 @@ public:
     static void* operator new(size_t size);
     static void operator delete(void* ptr);
 };
+
+//#define FUNNY_001

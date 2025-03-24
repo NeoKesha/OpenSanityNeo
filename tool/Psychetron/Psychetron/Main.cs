@@ -455,11 +455,16 @@ namespace Psychetron
                 var writer = new StreamWriter(dataFile);
                 foreach (var global in globals)
                 {
-                    writer.WriteLine("PUBLIC " + global);
+                    
                     if (dataAliases.ContainsKey(global))
+                    {//RenderTarget EQU PTR_0x003ec568
+                        writer.WriteLine($"{dataAliases[global]} EQU {global}");
+                        writer.WriteLine("PUBLIC " + dataAliases[global]);
+                    } else
                     {
-                        writer.WriteLine($"ALIAS <{dataAliases[global]}> = <{global}>");
+                        writer.WriteLine("PUBLIC " + global);
                     }
+                    
                 }
                 writer.Flush();
             }
