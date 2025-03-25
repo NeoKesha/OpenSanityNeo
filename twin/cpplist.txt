@@ -140,9 +140,11 @@
 00101e40 ?SetXY@RenderSystemAbstract@@UAEXPAVVector2@@@Z
 0011a440 ?EmptyFunction4@RenderSystemAbstract@@UAEXH@Z
 #Clock
-000f6500 ?ResetFlags@UnkTimePack@@QAEXXZ
-000f63c0 ?SetFlags@UnkTimePack@@QAEXXZ
-#000f7a50 ??0GlobalClock@@QAE@XZ
+000f7a50 ??0GlobalClock@@QAE@H@Z
 #000f7bc0 ?CalculateDeltaTime@GlobalClock@@QAEXXZ
 #000f63f0 ?FUN_000f63f0@GlobalClock@@QAEXXZ
 000f6640 ?TimeOutCheck@GlobalClock@@QAE_NM@Z
+#UnkTimePack
+000f7a00 ?InitializeFields@UnkTimePack@@QAEXXZ
+000f6500 ?ResetFlags@UnkTimePack@@QAEXXZ
+000f63c0 ?SetFlags@UnkTimePack@@QAEXXZ

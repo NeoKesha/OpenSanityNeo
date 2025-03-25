@@ -3,8 +3,53 @@
 #include <limits.h>
 #include "global_clock.h"
 
-GlobalClock::GlobalClock() {
-	AssertNonImplemented
+GlobalClock::GlobalClock(int fps) {
+	this->timeArray.InitializeFields();
+	
+	this->prevTime = 0;
+	this->fps = fps;
+	this->startTimestamp.u.LowPart = 0;
+	this->startTimestamp.u.HighPart = 0;
+	this->timestamp.u.LowPart = 0;
+	this->timestamp.u.HighPart = 0;
+	
+	int result = QueryPerformanceFrequency(&this->frequency);
+	unsigned int flag = -(unsigned int)(result != 0) & frequency.u.LowPart;
+	if (!QueryPerformanceCounter(&this->startTimestamp)) {
+		this->startTimestamp.u.LowPart = 0;
+		this->startTimestamp.u.HighPart = 0;
+	}
+	this->a.u.LowPart = this->frequency.u.LowPart / 7373;
+	this->a.u.HighPart = this->frequency.u.HighPart / 7373;
+	this->divisions = 0;
+	
+	unsigned int frequencyLow = frequency.u.LowPart;
+	while (frequencyLow >= 9000) {
+		frequencyLow >>= 1;
+		++this->divisions;
+	}
+	SOME_STATE.u.LowPart = 3;
+	CLOCK_TIME_1 = 1.0f;
+	CLOCK_TIME_2 = 1.0f;
+	CLOCK_TIME_3 = 1.0f;
+	CLOCK_TIME_4 = 1.0f;
+	CLOCK_TIME_5 = 1.0f;
+	CLOCK_TIME_6 = 1.0f;
+	CLOCK_TIME_7 = 1.0f;
+	CLOCK_TIME_8 = 1.0f;
+	
+	TicksPerTime = (float)frequencyLow;
+	TimePerTick1 = 1.0f / TicksPerTime;
+	SOME_STATE.u.HighPart = 0;
+	ENV_FLOAT_116_DT3 = SOME_STATE.u.HighPart;
+	this->timeArray.fields[0].flags |= 1;
+	this->timeArray.fields[1].flags |= 1;
+	this->timeArray.fields[2].flags |= 1;
+	this->timeArray.fields[3].flags |= 1;
+	this->timeArray.fields[4].flags |= 1;
+	this->timeArray.fields[5].flags |= 1;
+	this->timeArray.fields[6].flags |= 1;
+	this->timeArray.fields[7].flags |= 1;
 }
 void GlobalClock::CalculateDeltaTime() {
 	AssertNonImplemented
