@@ -2,128 +2,7 @@
 #include <stl.h>
 #include <xgraphics.h>
 #include "twin_base.h"
-
-extern "C" float FixedDeltaTime;
-extern "C" int FPS;
-extern "C" IDirect3DDevice8* D3D_Device;
-extern "C" IDirect3DDevice8* D3D_Device2;
-extern "C" IDirect3D8* GRAPHICS_ENABLED;
-extern "C" D3DSurface* RenderTarget;
-extern "C" D3DSurface* StencilSurface;
-
-extern "C" void* __stdcall FUN_00104CB0();
-
-void Reset() {
-	D3D__TextureState[0][D3DTSS_ADDRESSU] = D3DTADDRESS_WRAP;
-	D3D__TextureState[0][D3DTSS_ADDRESSV] = D3DTADDRESS_WRAP;
-	D3D__TextureState[0][D3DTSS_MAGFILTER] = D3DTEXF_LINEAR;
-	D3D__TextureState[0][D3DTSS_MINFILTER] = D3DTEXF_LINEAR;
-	D3D__TextureState[0][D3DTSS_MIPFILTER] = D3DTEXF_NONE;
-	D3D__TextureState[0][D3DTSS_ALPHAKILL] = D3DTALPHAKILL_ENABLE;
-	D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-	D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-	D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-	D3D__TextureState[0][D3DTSS_ALPHAOP] = D3DTOP_MODULATE;
-	D3D__TextureState[0][D3DTSS_ALPHAARG1] = D3DTA_DIFFUSE;
-	D3D__TextureState[0][D3DTSS_ALPHAARG2] = D3DTA_TEXTURE;
-	D3D__TextureState[0][D3DTSS_RESULTARG] = D3DTA_TEMP;
-	
-	D3D__RenderState[D3DRS_LIGHTING] = false;
-	D3D__RenderState[D3DRS_SRCBLEND] = D3DBLEND_SRCALPHA;
-	D3D__RenderState[D3DRS_DESTBLEND] = D3DBLEND_INVSRCALPHA;
-	D3D__RenderState[D3DRS_ALPHATESTENABLE] = false;
-	D3D__RenderState[D3DRS_ALPHAREF] = 0xff;
-	D3D__RenderState[D3DRS_ALPHAFUNC] = D3DCMP_GREATEREQUAL;
-	D3D__RenderState[D3DRS_STENCILFUNC] = D3DCMP_ALWAYS;
-	D3D__RenderState[D3DRS_STENCILREF] = 0x40;
-	D3D__RenderState[D3DRS_STENCILPASS] = D3DSTENCILOP_REPLACE;
-	D3D__RenderState[D3DRS_ALPHABLENDENABLE] = false;
-	
-	D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_SOLID;
-}
-
-extern "C" void* __cdecl RegisterScreenSurfaces() {
-
-	RenderTarget = D3DDevice_GetRenderTarget2();
-	StencilSurface = D3DDevice_GetDepthStencilSurface2();
-	
-	
-#ifdef FUNNY_001
-	static int frame = -360;
-	static int stage = 0;
-++frame;
-	if (frame >= 180) {
-		++stage;
-		frame = 0;
-	}
-
-	float fogStart = 1.0f;
-	float fogEnd = 2.0f;
-	float alpha = 0.5f + 0.5f * sin(frame * 0.01f); // Smooth fade effect
-	switch (stage) {
-		case 0:
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-			break;
-		case 1://Diffuse only
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG1;
-			break;
-		case 2://Texture only
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG2;
-			break;
-		case 3://Red tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0xFF0000;
-			break;
-		case 4://Green tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x00FF00;
-			break;
-		case 5://Blue tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x0000FF;
-			break;
-		case 6://Grayscale
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_DOTPRODUCT3;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_DIFFUSE;
-			break;
-		case 7://Shit tint
-			Reset();
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = D3DCOLOR_XRGB(112, 66, 20); // Brownish color
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			break;
-		case 8: //Wireframe
-			Reset();
-			D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_WIREFRAME;
-			break;
-		default:
-			Reset();
-			stage = 0;
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-			break;
-	}
-#endif
-	
-	return FUN_00104CB0();
-}
+#include "graphics.h"
 
 extern "C" void __cdecl InitD3D() {
 	D3DPRESENT_PARAMETERS params;
@@ -145,8 +24,8 @@ extern "C" void __cdecl InitD3D() {
 		params.Flags = params.Flags | D3DPRESENTFLAG_WIDESCREEN ;
 	}
 	
-	GRAPHICS_ENABLED = Direct3DCreate8(0);
-	if (GRAPHICS_ENABLED != 0) {
+	Direct3D8 = Direct3DCreate8(0);
+	if (Direct3D8 != 0) {
 		D3DDISPLAYMODE displayMode;
 		int modes = Direct3D_GetAdapterModeCount(D3DADAPTER_DEFAULT);
 		for (int i = 0; i < modes; ++i) {
@@ -278,4 +157,147 @@ extern "C" void __cdecl InitD3D() {
 			D3D__RenderState[D3DRS_ALPHABLENDENABLE] = false;
 		}
 	}
+}
+
+#ifdef FUNNY_001
+void Reset() {
+	D3D__TextureState[0][D3DTSS_ADDRESSU] = D3DTADDRESS_WRAP;
+	D3D__TextureState[0][D3DTSS_ADDRESSV] = D3DTADDRESS_WRAP;
+	D3D__TextureState[0][D3DTSS_MAGFILTER] = D3DTEXF_LINEAR;
+	D3D__TextureState[0][D3DTSS_MINFILTER] = D3DTEXF_LINEAR;
+	D3D__TextureState[0][D3DTSS_MIPFILTER] = D3DTEXF_NONE;
+	D3D__TextureState[0][D3DTSS_ALPHAKILL] = D3DTALPHAKILL_ENABLE;
+	D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+	D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
+	D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
+	D3D__TextureState[0][D3DTSS_ALPHAOP] = D3DTOP_MODULATE;
+	D3D__TextureState[0][D3DTSS_ALPHAARG1] = D3DTA_DIFFUSE;
+	D3D__TextureState[0][D3DTSS_ALPHAARG2] = D3DTA_TEXTURE;
+	D3D__TextureState[0][D3DTSS_RESULTARG] = D3DTA_TEMP;
+	
+	D3D__RenderState[D3DRS_LIGHTING] = false;
+	D3D__RenderState[D3DRS_SRCBLEND] = D3DBLEND_SRCALPHA;
+	D3D__RenderState[D3DRS_DESTBLEND] = D3DBLEND_INVSRCALPHA;
+	D3D__RenderState[D3DRS_ALPHATESTENABLE] = false;
+	D3D__RenderState[D3DRS_ALPHAREF] = 0xff;
+	D3D__RenderState[D3DRS_ALPHAFUNC] = D3DCMP_GREATEREQUAL;
+	D3D__RenderState[D3DRS_STENCILFUNC] = D3DCMP_ALWAYS;
+	D3D__RenderState[D3DRS_STENCILREF] = 0x40;
+	D3D__RenderState[D3DRS_STENCILPASS] = D3DSTENCILOP_REPLACE;
+	D3D__RenderState[D3DRS_ALPHABLENDENABLE] = false;
+	
+	D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_SOLID;
+}
+#endif
+
+extern "C" void* __cdecl RegisterScreenSurfaces() {
+	RenderSurface = D3DDevice_GetRenderTarget2();
+	StencilSurface = D3DDevice_GetDepthStencilSurface2();
+	
+#ifdef FUNNY_001
+	static int frame = -360;
+	static int stage = 0;
+++frame;
+	if (frame >= 180) {
+		++stage;
+		frame = 0;
+	}
+
+	float fogStart = 1.0f;
+	float fogEnd = 2.0f;
+	float alpha = 0.5f + 0.5f * sin(frame * 0.01f); // Smooth fade effect
+	switch (stage) {
+		case 0:
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
+			break;
+		case 1://Diffuse only
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG1;
+			break;
+		case 2://Texture only
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG2;
+			break;
+		case 3://Red tint
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
+			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0xFF0000;
+			break;
+		case 4://Green tint
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
+			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x00FF00;
+			break;
+		case 5://Blue tint
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
+			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x0000FF;
+			break;
+		case 6://Grayscale
+			Reset();
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_DOTPRODUCT3;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_DIFFUSE;
+			break;
+		case 7://Shit tint
+			Reset();
+			D3D__RenderState[D3DRS_TEXTUREFACTOR] = D3DCOLOR_XRGB(112, 66, 20); // Brownish color
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
+			break;
+		case 8: //Wireframe
+			Reset();
+			D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_WIREFRAME;
+			break;
+		default:
+			Reset();
+			stage = 0;
+			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
+			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
+			break;
+	}
+#endif
+	
+	return ResetAndRegisterRenderTarget();
+}
+
+extern "C" void* __cdecl ResetAndRegisterRenderTarget() {
+	D3DTexture *pDVar1;
+	D3DLOCKED_RECT rect;
+
+	D3DSurface_LockRect(RenderSurface, &rect, 0, D3DLOCK_NOOVERWRITE | D3DLOCK_READONLY);
+	ZeroMemory(ScreenTexture1, sizeof(ScreenTexture1));
+	XGSetTextureHeader(640, 480, 1, 0, D3DFMT_LIN_X8R8G8B8, 0, ScreenTexture1, 0, 0xa00);
+	D3DResource_Register(ScreenTexture1, rect.pBits);
+	return rect.pBits;
+}
+
+extern "C" void __cdecl InitFrameBuffer() {
+	D3DTexture *pDVar1;
+
+	ScreenTexture1 = (D3DTexture *)AllocateMemory(0x14);
+	ScreenTexture2 = (D3DTexture *)AllocateMemory(0x14);
+	ZeroMemory(ScreenTexture1, sizeof(ScreenTexture1));
+	ZeroMemory(ScreenTexture2, sizeof(ScreenTexture2));
+	size_t length = XGSetTextureHeader(320, 240, 1, 0, D3DFMT_LIN_X8R8G8B8, 0, ScreenTexture2, 0, 0x500);
+	void* buffer = D3D_AllocContiguousMemory(length, 0x80);
+	D3DResource_Register(ScreenTexture2, buffer);
+	RENDER_TARGET = D3DTexture_GetSurfaceLevel2(ScreenTexture2, 0);
+	return;
+}
+
+extern "C" void __cdecl ReleaseScreenSurfaces(void) {
+	D3DResource_Release(RenderSurface);
+	D3DResource_Release(StencilSurface);
+	return;
 }

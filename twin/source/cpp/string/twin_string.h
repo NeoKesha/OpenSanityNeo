@@ -1,5 +1,7 @@
 #pragma once
-#include "memory_stream.h"
+#include <twin_base.h>
+#include <stream/memory_stream.h>
+
 class TwinString {
 public:
 	char* buffer;

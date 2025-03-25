@@ -1,6 +1,5 @@
 #include <XTL.h>
 #include <stl.h>
-#include "twin_base.h"
 #include "file_stream.h"
 
 FileStream::FileStream() {

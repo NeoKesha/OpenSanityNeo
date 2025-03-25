@@ -1,6 +1,5 @@
 #include <XTL.h>
 #include <stl.h>
-#include "twin_base.h"
 #include "twin_string.h"
 
 TwinString* TwinString::Set(char* str) {

@@ -409,6 +409,8 @@ namespace Psychetron
         }
         private bool PreprocessFuncAsm()
         {
+            var totalLines = 0;
+            var processedLines = 0;
             HashSet<string> globals = new HashSet<string>();
             Dictionary<string, string> dataAliases = new Dictionary<string, string>();
             Dictionary<String, String> cppList = new Dictionary<String, String>();
@@ -534,7 +536,12 @@ namespace Psychetron
                             break;
                     }
 
-                    if (dstLine != null) writer.WriteLine(dstLine);
+                    totalLines++;
+                    if (dstLine != null)
+                    {
+                        processedLines++;
+                        writer.WriteLine(dstLine);
+                    }
                 }
                 writer.Flush();
                 protoWriter.Flush();
@@ -563,6 +570,8 @@ namespace Psychetron
                 }
                 writer.Flush();
             }
+
+            tb_log.AppendText($"{100.0f - processedLines*100.0f/totalLines:0.00}% of code ported to C++\r\n");
             return true;
         }
 
@@ -607,7 +616,7 @@ namespace Psychetron
         {
             string message = null;
             var name = Path.GetFileNameWithoutExtension(path);
-            var args = path + " /I" + config.include_path;
+            var args = path + " /I" + config.include_path + " /I" + Path.Join(config.source_path, "cpp");
             args += " /Fo" + "\"" + Path.Join(config.intermediate_path, name + ".obj") + "\" ";
             args += " " + config.cl_flags;
             if (!StartProcess(config.cl_path, args, out message))
@@ -711,8 +720,10 @@ namespace Psychetron
             if (!File.Exists(Path.Join(config.intermediate_path, name+".obj"))) return true;
 
             FileInfo cppInfo = new FileInfo(path);
+            FileInfo hInfo = new FileInfo(path.Replace(".cpp", ".h"));
             FileInfo objInfo = new FileInfo(Path.Join(config.intermediate_path, name+".obj"));
             if (cppInfo.LastWriteTime > objInfo.LastWriteTime) return true;
+            if (hInfo.LastWriteTime > objInfo.LastWriteTime) return true;
 
             return false;
         }

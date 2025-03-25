@@ -1,16 +1,20 @@
 #pragma once
-class FileStream : TwinBase {
-	HANDLE handle;
-	int errno;
+#include <twin_base.h>
+
+class MemoryStream : TwinBase {
+	unsigned int flags;
+	byte* dataStart;
+	byte* currentPtr;
+	size_t length;
 
 public:
-	FileStream();
-	virtual ~FileStream();
+	MemoryStream();
+	virtual ~MemoryStream();
 
 	virtual size_t Read(char* buffer, size_t size, int reserved);
-	virtual void EmptyFunction1(int reserved1, int reserved2);
+	virtual void SeekBackwards(int reserved, size_t amount);
 	virtual size_t Write(char* buffer, size_t size);
-	virtual void EmptyFunction2();
+	virtual void EmptyFunction();
 	virtual int IsInvalid();
 	virtual size_t GetLength();
 	virtual size_t GetPosition();
@@ -41,7 +45,4 @@ public:
 	virtual void WriteInt5(int value);
 	virtual void WriteShort2(short value);
 	virtual void WriteByte3(unsigned char value);
-	virtual void OpenFile(char* fname, int fmode, int reserved);
-	virtual void CloseFile();
-	virtual unsigned int ReadCheck(char* buffer, size_t size, unsigned char flag);
 };
