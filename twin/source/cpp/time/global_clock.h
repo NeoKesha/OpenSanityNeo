@@ -9,17 +9,13 @@ public:
 	UnkTimePack timeArray;
 	int fps;
 	int divisions;
-	unsigned int frequencyHigh;
-	unsigned int frequencyLow;
-	int a;
-	int b;
-	unsigned int startTimestampHigh;
-	unsigned int startTimestampLow;
-	unsigned int timestampHigh;
-	unsigned int timestampLow;
+	LARGE_INTEGER frequency;
+	LARGE_INTEGER a;
+	LARGE_INTEGER startTimestamp;
+	LARGE_INTEGER timestamp;
 	
 	GlobalClock();
 	void CalculateDeltaTime();
 	void FUN_000f63f0();
-	void TimeOutCheck(float budget);
+	bool TimeOutCheck(float budget);
 };

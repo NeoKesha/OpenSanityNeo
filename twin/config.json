@@ -13,7 +13,7 @@
   "game_path": "..\\..\\..\\Content",
   "copy_on_complete": true,
   "stop_on_error": true,
-  "fastbuild": true,
+  "fastbuild": false,
   "cl_flags": "/c  /EHsc",
   "ml_flags": "/coff /c /Zf",
   "link_flags": "/SUBSYSTEM:XBOX /NODEFAULTLIB /MAPINFO:EXPORTS",

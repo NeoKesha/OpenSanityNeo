@@ -145,4 +145,4 @@
 #000f7a50 ??0GlobalClock@@QAE@XZ
 #000f7bc0 ?CalculateDeltaTime@GlobalClock@@QAEXXZ
 #000f63f0 ?FUN_000f63f0@GlobalClock@@QAEXXZ
-#000f6640 ?TimeOutCheck@GlobalClock@@QAEXM@Z
+000f6640 ?TimeOutCheck@GlobalClock@@QAE_NM@Z

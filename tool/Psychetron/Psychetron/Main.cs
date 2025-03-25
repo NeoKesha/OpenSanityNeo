@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using System.Text;
+using System.Threading;
 using static System.Windows.Forms.AxHost;
 
 namespace Psychetron
@@ -364,6 +366,42 @@ namespace Psychetron
             startInfo.RedirectStandardError = true;
             startInfo.Arguments = arguments;
             process.StartInfo = startInfo;
+
+            StringBuilder output = new StringBuilder();
+
+            using (AutoResetEvent outputWaitHandle = new AutoResetEvent(false))
+            {
+                process.OutputDataReceived += (sender, e) => {
+                    if (e.Data == null)
+                    {
+                        outputWaitHandle.Set();
+                    }
+                    else
+                    {
+                        output.AppendLine(e.Data);
+                    }
+                };
+
+                if (process.Start())
+                {
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
+
+                    process.WaitForExit();
+                    if (process.ExitCode != 0)
+                    {
+                        message = output.ToString();
+                        return false;
+                    }
+                    else
+                    {
+                        message = "";
+                        return true;
+                    }
+                } 
+            }
+
+            /*
             if (process.Start())
             {
                 process.WaitForExit();
@@ -376,6 +414,7 @@ namespace Psychetron
                 message = "";
                 return true;
             }
+            */
 
             message = "Couldn't start " + Path.GetFileName(cmd);
             return false;
