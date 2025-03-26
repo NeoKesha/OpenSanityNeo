@@ -8,7 +8,7 @@ class UnkTimePack : TwinBase {
 public:
 	UnkTimePackField fields[8];
 	
-	void ResetFlags();
-	void SetFlags();
+	void StopTime();
+	void ResumeTime();
 	void InitializeFields();
 };

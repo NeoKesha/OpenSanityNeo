@@ -17,3 +17,4 @@ public:
 };
 
 //#define FUNNY_001
+//#define FUNNY_002

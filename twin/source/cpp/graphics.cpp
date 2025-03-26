@@ -3,6 +3,8 @@
 #include <xgraphics.h>
 #include "twin_base.h"
 #include "graphics.h"
+#include <time/global_clock.h>
+#include <input/input_controller.h>
 
 extern "C" void __cdecl InitD3D() {
 	D3DPRESENT_PARAMETERS params;
@@ -190,6 +192,18 @@ void Reset() {
 }
 #endif
 
+
+extern "C" InputController* INPUT_CONTROLLER;
+extern "C" GlobalClock*  GlobalClock;
+extern "C" float CLOCK_TIME_1;
+extern "C" float CLOCK_TIME_2;
+extern "C" float CLOCK_TIME_3;
+extern "C" float CLOCK_TIME_4;
+extern "C" float CLOCK_TIME_5;
+extern "C" float CLOCK_TIME_6;
+extern "C" float CLOCK_TIME_7;
+extern "C" float CLOCK_TIME_8;
+
 extern "C" void* __cdecl RegisterScreenSurfaces() {
 	RenderSurface = D3DDevice_GetRenderTarget2();
 	StencilSurface = D3DDevice_GetDepthStencilSurface2();
@@ -268,6 +282,50 @@ extern "C" void* __cdecl RegisterScreenSurfaces() {
 	}
 #endif
 	
+#ifdef FUNNY_002
+	byte white = INPUT_CONTROLLER->inputSourceList[0]->state.Gamepad.bAnalogButtons[XINPUT_GAMEPAD_WHITE];
+	byte prev_white = INPUT_CONTROLLER->inputSourceList[0]->prevState.Gamepad.bAnalogButtons[XINPUT_GAMEPAD_WHITE];
+	static bool timestop = false;
+	static float targetTimeA1 = 1.0f;
+	static float targetTimeA2 = 0.5f;
+	static float targetTimeB1 = 1.0f;
+	static float targetTimeB2 = 0.0f;
+	static float timeParam = 1.0f;
+	static float change = 0.15f;
+	if (white == 255 && prev_white == 0) {
+		if (!timestop) {
+			OutputDebugStringA("ZAWARUDO!");
+		} else {
+			OutputDebugStringA("STAR PLATINUM");
+		}
+		timestop = !timestop;
+	}
+	
+	if (timestop) {
+		D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SUBTRACT;
+		D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TFACTOR;
+		D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
+		D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0xFFFFFFFF;
+		if (timeParam > 0.0f) timeParam -= change;
+		if (timeParam < 0.0f) timeParam = 0.0f;
+	} else {
+		D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
+		D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
+		D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
+		if (timeParam < 1.0f) timeParam += change;
+		if (timeParam > 0.0f) timeParam = 1.0f;
+	}
+
+	CLOCK_TIME_1 = 1.0f; //Camera
+	CLOCK_TIME_2 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	CLOCK_TIME_3 = targetTimeA1 * timeParam + targetTimeA2 * (1.0f - timeParam); //Crash
+	CLOCK_TIME_4 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	CLOCK_TIME_5 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	CLOCK_TIME_6 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	CLOCK_TIME_7 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	CLOCK_TIME_8 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
+	
+#endif
 	return ResetAndRegisterRenderTarget();
 }
 

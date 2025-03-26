@@ -11,7 +11,7 @@ void UnkTimePack::InitializeFields() {
 	return;
 }
 
-void UnkTimePack::ResetFlags() {
+void UnkTimePack::StopTime() {
 	this->fields[0].flags &= 0xfffffffe;
 	this->fields[1].flags &= 0xfffffffe;
 	this->fields[2].flags &= 0xfffffffe;
@@ -22,7 +22,7 @@ void UnkTimePack::ResetFlags() {
 	this->fields[7].flags &= 0xfffffffe;
 }
 	
-void UnkTimePack::SetFlags() {
+void UnkTimePack::ResumeTime() {
 	this->fields[0].flags |= 1;
 	this->fields[1].flags |= 1;
 	this->fields[2].flags |= 1;

@@ -146,5 +146,14 @@
 000f6640 ?TimeOutCheck@GlobalClock@@QAE_NM@Z
 #UnkTimePack
 000f7a00 ?InitializeFields@UnkTimePack@@QAEXXZ
-000f6500 ?ResetFlags@UnkTimePack@@QAEXXZ
-000f63c0 ?SetFlags@UnkTimePack@@QAEXXZ
+000f6500 ?StopTime@UnkTimePack@@QAEXXZ
+000f63c0 ?ResumeTime@UnkTimePack@@QAEXXZ
+#InputController
+0020aa90 ??0InputController@@QAE@XZ
+0020a1b0 ?EmptyFunction1@InputController@@UAEXXZ
+0020aba0 ?ProcessInsertionRemovals@InputController@@UAEEM@Z
+0020a1c0 ?EmptyFunction2@InputController@@UAEXXZ
+#0020ae10 ??1InputController@@UAE@XZ destructor
+#0020af50 ??_GInputController@@UAEPAXI@Z scalar deleting destructor
+#0020a260 ?SendDataToControllersEx@InputController@@UAEXXZ
+0020a280 ?ResetFlags@InputController@@UAEXXZ
