@@ -7,7 +7,6 @@
   "lib_path": ".\\runtime\\lib\\",
   "database_path": ".\\database\\",
   "source_path": ".\\source\\",
-  "cpplist_path": ".\\cpplist.txt",
   "intermediate_path": ".\\output\\obj\\",
   "output_path": ".\\output\\bin\\",
   "game_path": "",

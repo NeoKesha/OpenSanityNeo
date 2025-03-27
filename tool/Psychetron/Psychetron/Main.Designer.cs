@@ -52,9 +52,6 @@ namespace Psychetron
             tb_clPath = new TextBox();
             label1 = new Label();
             groupBox2 = new GroupBox();
-            btn_browseCpplist = new Button();
-            tb_cpplistPath = new TextBox();
-            label7 = new Label();
             btn_browseSource = new Button();
             tb_sourcePath = new TextBox();
             label11 = new Label();
@@ -62,6 +59,7 @@ namespace Psychetron
             tb_databasePath = new TextBox();
             label12 = new Label();
             groupBox3 = new GroupBox();
+            cb_stopOnError = new CheckBox();
             cb_copyXbe = new CheckBox();
             cb_fastbuild = new CheckBox();
             btn_browseGamePath = new Button();
@@ -88,7 +86,6 @@ namespace Psychetron
             tb_mlFlags = new TextBox();
             label16 = new Label();
             btn_validateConfig = new Button();
-            cb_stopOnError = new CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -280,9 +277,6 @@ namespace Psychetron
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btn_browseCpplist);
-            groupBox2.Controls.Add(tb_cpplistPath);
-            groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(btn_browseSource);
             groupBox2.Controls.Add(tb_sourcePath);
             groupBox2.Controls.Add(label11);
@@ -295,32 +289,6 @@ namespace Psychetron
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "Source Settings";
-            // 
-            // btn_browseCpplist
-            // 
-            btn_browseCpplist.Location = new Point(291, 74);
-            btn_browseCpplist.Name = "btn_browseCpplist";
-            btn_browseCpplist.Size = new Size(75, 23);
-            btn_browseCpplist.TabIndex = 8;
-            btn_browseCpplist.Text = "Browse...";
-            btn_browseCpplist.UseVisualStyleBackColor = true;
-            btn_browseCpplist.Click += btn_browseCpplist_Click;
-            // 
-            // tb_cpplistPath
-            // 
-            tb_cpplistPath.Location = new Point(92, 75);
-            tb_cpplistPath.Name = "tb_cpplistPath";
-            tb_cpplistPath.Size = new Size(193, 23);
-            tb_cpplistPath.TabIndex = 7;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(6, 78);
-            label7.Name = "label7";
-            label7.Size = new Size(80, 15);
-            label7.TabIndex = 6;
-            label7.Text = "CPP List Path:";
             // 
             // btn_browseSource
             // 
@@ -394,6 +362,16 @@ namespace Psychetron
             groupBox3.TabIndex = 19;
             groupBox3.TabStop = false;
             groupBox3.Text = "Build Settings";
+            // 
+            // cb_stopOnError
+            // 
+            cb_stopOnError.AutoSize = true;
+            cb_stopOnError.Location = new Point(89, 104);
+            cb_stopOnError.Name = "cb_stopOnError";
+            cb_stopOnError.Size = new Size(125, 19);
+            cb_stopOnError.TabIndex = 22;
+            cb_stopOnError.Text = "Stop Build on Error";
+            cb_stopOnError.UseVisualStyleBackColor = true;
             // 
             // cb_copyXbe
             // 
@@ -636,16 +614,6 @@ namespace Psychetron
             btn_validateConfig.UseVisualStyleBackColor = true;
             btn_validateConfig.Click += btn_validateConfig_Click;
             // 
-            // cb_stopOnError
-            // 
-            cb_stopOnError.AutoSize = true;
-            cb_stopOnError.Location = new Point(89, 104);
-            cb_stopOnError.Name = "cb_stopOnError";
-            cb_stopOnError.Size = new Size(125, 19);
-            cb_stopOnError.TabIndex = 22;
-            cb_stopOnError.Text = "Stop Build on Error";
-            cb_stopOnError.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -693,9 +661,6 @@ namespace Psychetron
         private Button btn_browseDatabase;
         private TextBox tb_databasePath;
         private Label label12;
-        private Button btn_browseCpplist;
-        private TextBox tb_cpplistPath;
-        private Label label7;
         private GroupBox groupBox3;
         private Button btn_browseGamePath;
         private TextBox tb_gamePath;

@@ -31,57 +31,42 @@ namespace Psychetron
         {
             BrowseAndUpdateDirectory(tb_outputPath, config.output_path);
         }
-
         private void btn_browseIntermediatePath_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_intermediatePath, config.intermediate_path);
         }
-
         private void btn_browseGamePath_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_gamePath, config.game_path);
         }
-
         private void btn_browseLink_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateFile(tb_libPath, config.link_path, "LINK.EXE|LINK.EXE");
         }
-
         private void btn_browseSource_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_sourcePath, config.source_path);
         }
-
         private void btn_browseDatabase_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_databasePath, config.database_path);
         }
-
-        private void btn_browseCpplist_Click(object sender, EventArgs e)
-        {
-            BrowseAndUpdateFile(tb_cpplistPath, config.cpplist_path, "cpplist.txt|cpplist.txt");
-        }
-
         private void btn_browseCl_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateFile(tb_clPath, config.cl_path, "CL.EXE|CL.EXE");
         }
-
         private void btn_browseMl_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateFile(tb_mlPath, config.ml_path, "ML.EXE|ML.EXE");
         }
-
         private void btn_browseInclude_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_includePath, config.include_path);
         }
-
         private void btn_browseImagebld_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateFile(tb_imagebldPath, config.imagebld_path, "IMAGEBLD.EXE|IMAGEBLD.EXE");
         }
-
         private void btn_browse_Click(object sender, EventArgs e)
         {
             BrowseAndUpdateDirectory(tb_libPath, config.lib_path);
@@ -90,17 +75,14 @@ namespace Psychetron
         {
             SaveConfig();
         }
-
         private void btn_reloadConfig_Click(object sender, EventArgs e)
         {
             ReloadConfig();
         }
-
         private void btn_validateConfig_Click(object sender, EventArgs e)
         {
             ValidateConfig();
         }
-
         private void btn_build_Click(object sender, EventArgs e)
         {
             if (ValidateConfig())
@@ -148,7 +130,6 @@ namespace Psychetron
             }
             UpdateUI();
         }
-
         private void SaveConfig()
         {
             UpdateConfig();
@@ -159,7 +140,6 @@ namespace Psychetron
                 writer.Flush();
             }
         }
-
         private void UpdateUI()
         {
             tb_clPath.Text = config.cl_path;
@@ -171,7 +151,6 @@ namespace Psychetron
 
             tb_databasePath.Text = config.database_path;
             tb_sourcePath.Text = config.source_path;
-            tb_cpplistPath.Text = config.cpplist_path;
 
             tb_outputPath.Text = config.output_path;
             tb_intermediatePath.Text = config.intermediate_path;
@@ -186,7 +165,6 @@ namespace Psychetron
             tb_linkFlags.Text = config.link_flags;
             tb_imagebldFlags.Text = config.imagebld_flags;
         }
-
         private void ClearLog()
         {
             tb_log.Clear();
@@ -202,7 +180,6 @@ namespace Psychetron
 
             config.database_path = tb_databasePath.Text;
             config.source_path = tb_sourcePath.Text;
-            config.cpplist_path = tb_cpplistPath.Text;
 
             config.output_path = tb_outputPath.Text;
             config.intermediate_path = tb_intermediatePath.Text;
@@ -217,7 +194,6 @@ namespace Psychetron
             config.link_flags = tb_linkFlags.Text;
             config.imagebld_flags = tb_imagebldFlags.Text;
         }
-
         private bool ValidateConfig()
         {
             var valid = true;
@@ -453,20 +429,25 @@ namespace Psychetron
             HashSet<string> globals = new HashSet<string>();
             Dictionary<string, string> dataAliases = new Dictionary<string, string>();
             Dictionary<String, String> cppList = new Dictionary<String, String>();
-            if (File.Exists(config.cpplist_path))
+            var cppLists = Directory.GetFiles(Path.Join(config.database_path, "cppLists"), "*.txt", SearchOption.AllDirectories);
+            foreach (var cppListPath in cppLists)
             {
-                using (var srcFile = new FileStream(config.cpplist_path, FileMode.Open, FileAccess.Read))
+                if (File.Exists(cppListPath))
                 {
-                    var reader = new StreamReader(srcFile);
-                    while (!reader.EndOfStream)
+                    using (var srcFile = new FileStream(cppListPath, FileMode.Open, FileAccess.Read))
                     {
-                        var line = reader.ReadLine();
-                        if (line.StartsWith("#")) continue;
-                        var tokens = line.Split(" ");
-                        cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
+                        var reader = new StreamReader(srcFile);
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+                            if (line.StartsWith("#")) continue;
+                            var tokens = line.Split(" ");
+                            cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
+                        }
                     }
                 }
             }
+
             if (File.Exists(Path.Join(config.database_path, "aliases\\dataNames.txt")))
             {
                 using (var srcFile = new FileStream(Path.Join(config.database_path, "aliases\\dataNames.txt"), FileMode.Open, FileAccess.Read))
@@ -746,8 +727,13 @@ namespace Psychetron
             FileInfo mainStringsObjInfo = new FileInfo(Path.Join(config.intermediate_path, "main.obj"));
             if (libTwinDataCInfo.LastWriteTime > mainStringsObjInfo.LastWriteTime) return true;
 
-            FileInfo cppListInfo = new FileInfo(config.cpplist_path);
-            if (cppListInfo.LastWriteTime > mainObjInfo.LastWriteTime) return true;
+            var cppLists = Directory.GetFiles(Path.Join(config.database_path, "cppLists"), "*.txt", SearchOption.AllDirectories);
+            foreach (var cppListPath in cppLists)
+            {
+                FileInfo cppListInfo = new FileInfo(cppListPath);
+                if (cppListInfo.LastWriteTime > mainObjInfo.LastWriteTime) return true;
+            }
+
 
             return false;
         }
@@ -778,7 +764,6 @@ namespace Psychetron
         public string lib_path { get; set; }
         public string database_path { get; set; }
         public string source_path { get; set; }
-        public string cpplist_path { get; set; }
         public string intermediate_path { get; set; }
         public string output_path { get; set; }
         public string game_path { get; set; }
