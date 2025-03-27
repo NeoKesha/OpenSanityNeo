@@ -1,10 +1,10 @@
 #pragma once
 #include <twin_base.h>
 class FileStream : TwinBase {
+public:
 	HANDLE handle;
 	int errno;
-
-public:
+	
 	FileStream();
 	virtual ~FileStream();
 

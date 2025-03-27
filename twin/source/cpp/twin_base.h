@@ -16,5 +16,4 @@ public:
     static void operator delete(void* ptr);
 };
 
-//#define FUNNY_001
-//#define FUNNY_002
+//#define ENABLE_FUN

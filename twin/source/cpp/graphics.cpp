@@ -3,8 +3,7 @@
 #include <xgraphics.h>
 #include "twin_base.h"
 #include "graphics.h"
-#include <time/global_clock.h>
-#include <input/input_controller.h>
+#include <fun/fun.h>
 
 extern "C" void __cdecl InitD3D() {
 	D3DPRESENT_PARAMETERS params;
@@ -161,171 +160,15 @@ extern "C" void __cdecl InitD3D() {
 	}
 }
 
-#ifdef FUNNY_001
-void Reset() {
-	D3D__TextureState[0][D3DTSS_ADDRESSU] = D3DTADDRESS_WRAP;
-	D3D__TextureState[0][D3DTSS_ADDRESSV] = D3DTADDRESS_WRAP;
-	D3D__TextureState[0][D3DTSS_MAGFILTER] = D3DTEXF_LINEAR;
-	D3D__TextureState[0][D3DTSS_MINFILTER] = D3DTEXF_LINEAR;
-	D3D__TextureState[0][D3DTSS_MIPFILTER] = D3DTEXF_NONE;
-	D3D__TextureState[0][D3DTSS_ALPHAKILL] = D3DTALPHAKILL_ENABLE;
-	D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-	D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-	D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-	D3D__TextureState[0][D3DTSS_ALPHAOP] = D3DTOP_MODULATE;
-	D3D__TextureState[0][D3DTSS_ALPHAARG1] = D3DTA_DIFFUSE;
-	D3D__TextureState[0][D3DTSS_ALPHAARG2] = D3DTA_TEXTURE;
-	D3D__TextureState[0][D3DTSS_RESULTARG] = D3DTA_TEMP;
-	
-	D3D__RenderState[D3DRS_LIGHTING] = false;
-	D3D__RenderState[D3DRS_SRCBLEND] = D3DBLEND_SRCALPHA;
-	D3D__RenderState[D3DRS_DESTBLEND] = D3DBLEND_INVSRCALPHA;
-	D3D__RenderState[D3DRS_ALPHATESTENABLE] = false;
-	D3D__RenderState[D3DRS_ALPHAREF] = 0xff;
-	D3D__RenderState[D3DRS_ALPHAFUNC] = D3DCMP_GREATEREQUAL;
-	D3D__RenderState[D3DRS_STENCILFUNC] = D3DCMP_ALWAYS;
-	D3D__RenderState[D3DRS_STENCILREF] = 0x40;
-	D3D__RenderState[D3DRS_STENCILPASS] = D3DSTENCILOP_REPLACE;
-	D3D__RenderState[D3DRS_ALPHABLENDENABLE] = false;
-	
-	D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_SOLID;
-}
-#endif
-
-
-extern "C" InputController* INPUT_CONTROLLER;
-extern "C" GlobalClock*  GlobalClock;
-extern "C" float CLOCK_TIME_1;
-extern "C" float CLOCK_TIME_2;
-extern "C" float CLOCK_TIME_3;
-extern "C" float CLOCK_TIME_4;
-extern "C" float CLOCK_TIME_5;
-extern "C" float CLOCK_TIME_6;
-extern "C" float CLOCK_TIME_7;
-extern "C" float CLOCK_TIME_8;
-
 extern "C" void* __cdecl RegisterScreenSurfaces() {
 	RenderSurface = D3DDevice_GetRenderTarget2();
 	StencilSurface = D3DDevice_GetDepthStencilSurface2();
 	
-#ifdef FUNNY_001
-	static int frame = -360;
-	static int stage = 0;
-++frame;
-	if (frame >= 180) {
-		++stage;
-		frame = 0;
-	}
-
-	float fogStart = 1.0f;
-	float fogEnd = 2.0f;
-	float alpha = 0.5f + 0.5f * sin(frame * 0.01f); // Smooth fade effect
-	switch (stage) {
-		case 0:
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-			break;
-		case 1://Diffuse only
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG1;
-			break;
-		case 2://Texture only
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SELECTARG2;
-			break;
-		case 3://Red tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0xFF0000;
-			break;
-		case 4://Green tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x00FF00;
-			break;
-		case 5://Blue tint
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0x0000FF;
-			break;
-		case 6://Grayscale
-			Reset();
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_DOTPRODUCT3;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_DIFFUSE;
-			break;
-		case 7://Shit tint
-			Reset();
-			D3D__RenderState[D3DRS_TEXTUREFACTOR] = D3DCOLOR_XRGB(112, 66, 20); // Brownish color
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TEXTURE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TFACTOR;
-			break;
-		case 8: //Wireframe
-			Reset();
-			D3D__RenderState[D3DRS_FILLMODE] = D3DFILL_WIREFRAME;
-			break;
-		default:
-			Reset();
-			stage = 0;
-			D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-			D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-			D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-			break;
-	}
+#ifdef ENABLE_FUN
+	InitFun();
+	UpdateFun();
 #endif
 	
-#ifdef FUNNY_002
-	byte white = INPUT_CONTROLLER->inputSourceList[0]->state.Gamepad.bAnalogButtons[XINPUT_GAMEPAD_WHITE];
-	byte prev_white = INPUT_CONTROLLER->inputSourceList[0]->prevState.Gamepad.bAnalogButtons[XINPUT_GAMEPAD_WHITE];
-	static bool timestop = false;
-	static float targetTimeA1 = 1.0f;
-	static float targetTimeA2 = 0.5f;
-	static float targetTimeB1 = 1.0f;
-	static float targetTimeB2 = 0.0f;
-	static float timeParam = 1.0f;
-	static float change = 0.15f;
-	if (white == 255 && prev_white == 0) {
-		if (!timestop) {
-			OutputDebugStringA("ZAWARUDO!");
-		} else {
-			OutputDebugStringA("STAR PLATINUM");
-		}
-		timestop = !timestop;
-	}
-	
-	if (timestop) {
-		D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_SUBTRACT;
-		D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_TFACTOR;
-		D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-		D3D__RenderState[D3DRS_TEXTUREFACTOR] = 0xFFFFFFFF;
-		if (timeParam > 0.0f) timeParam -= change;
-		if (timeParam < 0.0f) timeParam = 0.0f;
-	} else {
-		D3D__TextureState[0][D3DTSS_COLOROP] = D3DTOP_MODULATE;
-		D3D__TextureState[0][D3DTSS_COLORARG1] = D3DTA_DIFFUSE;
-		D3D__TextureState[0][D3DTSS_COLORARG2] = D3DTA_TEXTURE;
-		if (timeParam < 1.0f) timeParam += change;
-		if (timeParam > 0.0f) timeParam = 1.0f;
-	}
-
-	CLOCK_TIME_1 = 1.0f; //Camera
-	CLOCK_TIME_2 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	CLOCK_TIME_3 = targetTimeA1 * timeParam + targetTimeA2 * (1.0f - timeParam); //Crash
-	CLOCK_TIME_4 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	CLOCK_TIME_5 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	CLOCK_TIME_6 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	CLOCK_TIME_7 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	CLOCK_TIME_8 = targetTimeB1 * timeParam + targetTimeB2 * (1.0f - timeParam); 
-	
-#endif
 	return ResetAndRegisterRenderTarget();
 }
 

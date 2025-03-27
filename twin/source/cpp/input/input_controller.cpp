@@ -34,7 +34,7 @@ byte InputController::ProcessInsertionRemovals(float deltaTime) {
 	DWORD removals = 0;
 	if (XGetDeviceChanges(XDEVICE_TYPE_GAMEPAD, &insertions, &removals)) {
 		this->connectedDevicesMask = ~removals & this->connectedDevicesMask | insertions;
-		
+		//TODO: I am not finished, finish me please
 
 	}
 	
