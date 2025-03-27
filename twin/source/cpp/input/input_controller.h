@@ -3,10 +3,10 @@
 
 class PortsStruct {
 public:
-	unsigned int a;
-	short b;
+	unsigned int leftMotor;
+	short rightMotor;
 	short c;
-	unsigned int d;
+	float time;
 };
 
 extern "C" PortsStruct PORTS_START[4];
@@ -14,14 +14,15 @@ extern "C" PortsStruct PORTS_START[4];
 class InputData : TwinBase {
 public:
 	HANDLE handle;
-	int devicePtr[16];
-	int val1;
-	short val2;
+	XINPUT_FEEDBACK feedback;
 	XINPUT_STATE state;
 	XINPUT_STATE prevState;
 	short val5;
 	int port;
 	int slot;
+	
+	void Disconnect();
+	void SetRumble(short leftMotor, short rightMotor);
 };
 
 class InputController : TwinBase {
@@ -33,9 +34,12 @@ public:
 	InputController();
 	
 	virtual void EmptyFunction1();
-    virtual byte ProcessInsertionRemovals(float deltaTime);
+    virtual byte UpdateControllerState(float deltaTime);
     virtual void EmptyFunction2();
     virtual ~InputController();
-    virtual void SendDataToControllersEx();
+    virtual void StopRumbleEx();
     virtual void ResetFlags();
+	
+	void ReconnectInputData(unsigned int insertions,unsigned int removals);
+	void StopRumble();
 };

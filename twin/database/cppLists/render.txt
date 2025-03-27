@@ -1,0 +1,30 @@
+#Render Global
+0010a120 InitD3D
+0010c9b0 RegisterScreenSurfaces
+00104cb0 ResetAndRegisterRenderTarget
+00104b90 InitFrameBuffer
+00104c30 ReleaseScreenSurfaces
+#RenderSystem
+#00104430 ?UnkFunc@RenderSystem@@UAEHHH@Z
+#00111e40 ?UpdateShadersClock@RenderSystem@@UAEXPAVUnkTimePack@@@Z
+00122a40 ?EmptyFunction1@RenderSystem@@UAEXXZ
+00122a50 ?EmptyFunction2@RenderSystem@@UAEXXZ
+#0010bc90 ?ResetGradient@RenderSystem@@UAEXXZ
+001044a0 ?SetXY@RenderSystem@@UAEXPAVVector2@@@Z
+00104400 ?SwapBuffer@RenderSystem@@UAEXXZ
+00104450 ?EmptyFunction5@RenderSystem@@UAEXH@Z
+00104440 ?EmptyFunction6@RenderSystem@@UAEXH@Z
+00104460 ?EmptyFunction7@RenderSystem@@UAEXHHH@Z
+#001155c0 ?CreateFontRenderer@RenderSystem@@UAEPAVRenderer@@XZ
+00104470 ?EmptyFunction8@RenderSystem@@UAEXH@Z
+00104490 ?EmptyFunction9@RenderSystem@@UAEXXZ
+00104480 ?EmptyFunction10@RenderSystem@@UAEXXZ
+#RenderSystemAbstract
+#0010ea40 ?UnkMethod1@RenderSystemAbstract@@UAEXXZ
+#001136e0 ?UnkMethod2@RenderSystemAbstract@@UAEXXZ
+#001148e0 ?Render@RenderSystemAbstract@@UAEXXZ
+0011a430 ?EmptyFunction3@RenderSystemAbstract@@UAEXH@Z
+#00114940 ?ResetGradient@RenderSystemAbstract@@UAEXXZ
+#001149b0 ?UnkMethod5@RenderSystemAbstract@@UAEXXZ
+00101e40 ?SetXY@RenderSystemAbstract@@UAEXPAVVector2@@@Z
+0011a440 ?EmptyFunction4@RenderSystemAbstract@@UAEXH@Z

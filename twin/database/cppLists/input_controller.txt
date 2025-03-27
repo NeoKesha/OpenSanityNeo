@@ -1,0 +1,13 @@
+#InputController
+0020aa90 ??0InputController@@QAE@XZ
+0020a1b0 ?EmptyFunction1@InputController@@UAEXXZ
+0020aba0 ?UpdateControllerState@InputController@@UAEEM@Z
+0020a1c0 ?EmptyFunction2@InputController@@UAEXXZ
+#0020ae10 ??1InputController@@UAE@XZ destructor
+#0020af50 ??_GInputController@@UAEPAXI@Z scalar deleting destructor
+0020a260 ?StopRumbleEx@InputController@@UAEXXZ
+0020a150 ?StopRumble@InputController@@QAEXXZ
+0020a280 ?ResetFlags@InputController@@UAEXXZ
+0020a290 ?ReconnectInputData@InputController@@QAEXII@Z
+0020a090 ?Disconnect@InputData@@QAEXXZ
+0020a050 ?SetRumble@InputData@@QAEXFF@Z
