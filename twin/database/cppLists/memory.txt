@@ -6,3 +6,18 @@
 00159740 ??0VirtualPoolController@@QAE@XZ
 001598b0 ?CacheDealloc@VirtualPoolController@@QAEXPAVVirtualAllocatorNode@@@Z
 001597c0 ?CachePoolAlloc@VirtualPoolController@@QAEPAXH@Z
+#VirtualPool
+001593a0 ??0VirtualPool@@QAE@XZ
+000d03e0 ?GetPool@VirtualPool@@SAPAV1@XZ
+#000d06b0 ?AllocateMemory@VirtualPool@@SAPAXI@Z
+#000d06d0 ?FreeMemory@VirtualPool@@SAXPAX@Z
+#0015b8b0 ?AllocateMemoryInternal@VirtualPool@@QAEPAXI@Z
+#0015b910 ?AllocateMemoryAligned@VirtualPool@@QAEPAXIH@Z
+#0015a7e0 ?FreeMemoryInternal@VirtualPool@@QAEXPAX@Z
+#0015a890 ?TwinHeapAlloc@VirtualPool@@QAEPAXPAVHeapAllocatorNode@@I@Z
+#001596d0 ?HeapDealloc@VirtualPool@@QAEHPAX@Z
+0015a6e0 ?InitPool@VirtualPool@@QAEXPAXI@Z
+#001595a0 ?ReallocHeapAllocatorNode@VirtualPool@@QAEPAXPAVHeapAllocatorNode@@I@Z
+#00158340 ?RemoveHeapAllocatorNodeFromChain@VirtualPool@@QAEXPAVHeapAllocatorNode@@@Z
+#001594d0 ?FUN_001594d0@VirtualPool@@QAEHPAVHeapAllocatorNode@@@Z
+#0015a800 ?FUN_0015a800@VirtualPool@@QAEXXZ
