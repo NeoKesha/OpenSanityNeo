@@ -1,6 +1,8 @@
 #pragma once
 #include "virtual_allocator_node.h"
 
+extern "C" int SEG_TABLE[63];
+
 class VirtualPoolController {
 public:
 	unsigned int allocatorsAmount;
