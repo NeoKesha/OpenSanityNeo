@@ -1,0 +1,8 @@
+#VirtualAllocatorNode
+001585b0 ?InitSegments@VirtualAllocatorNode@@QAEXIIPAV1@@Z
+00158660 ?InsertNode@VirtualAllocatorNode@@QAEXPAPAV1@@Z
+00156c30 ?ListInsertJonBurtonHack@VirtualAllocatorNode@@SAXPAEPAPAEII@Z
+#VirtualPoolController
+00159740 ??0VirtualPoolController@@QAE@XZ
+#001598b0 ?CacheDealloc@VirtualPoolController@@QAEXPAVVirtualAllocatorNode@@@Z
+#001597c0 ?CachePoolAlloc@VirtualPoolController@@QAEPAXH@Z
