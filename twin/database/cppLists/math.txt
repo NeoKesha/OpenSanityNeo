@@ -1,0 +1,16 @@
+00020e50 ?GetLength@Vector3@@SAMPAV1@@Z
+00020c90 ?Scale@Vector3@@SAXPAV1@0M@Z
+00020c50 ?Subtract@Vector3@@SAXPAV1@00@Z
+000642c0 ?GetLengthXZ@Vector3@@QAEMXZ
+000254b0 ?GetLengthSqr@Vector3@@QAEMXZ
+000251a0 ?Invert@Vector3@@QAEXXZ
+00025660 ?DistanceSqr@Vector3@@QAEMPAV1@@Z
+000256a0 ?Distance@Vector3@@QAEMPAV1@@Z
+00025380 ?DotProduct@Vector3@@QAEMPAV1@@Z
+00027600 ?CopyTo@Vector3@@QAEXPAVVector4@@@Z
+00025c00 ?GetLengthSqr@Vector4@@QAEMXZ
+000254e0 ?GetLength@Vector4@@QAEMXZ
+00020a80 ?Transform@Vector3@@SAXPAV1@0PAVMatrix4@@@Z
+00020b50 ?Transform@Vector4@@SAXPAV1@0PAVMatrix4@@@Z
+00029b20 ?CopyTo@Vector4@@QAEXPAV1@@Z
+00027150 ?Reset@Vector4@@QAEXXZ
