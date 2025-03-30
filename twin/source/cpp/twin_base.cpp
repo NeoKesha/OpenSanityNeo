@@ -7,5 +7,5 @@ void* TwinBase::operator new(size_t size) {
 }
 
 void TwinBase::operator delete(void* ptr) {
-	FUN_000D06D0(ptr);
+	VirtualPool::FreeMemory(ptr);
 }

@@ -99,6 +99,11 @@ void* VirtualPool::AllocateMemoryAligned(size_t size, int alignment){
 }
 
 void VirtualPool::FreeMemoryInternal(void* ptr){
+	if (this->virtualPoolController.allocatorCache[0x3f] <= ptr) {
+		this->virtualPoolController.CacheDealloc((VirtualAllocatorNode*)ptr);
+		return;
+	}
+	this->HeapDealloc(ptr);
 	return;
 }
 
@@ -122,8 +127,31 @@ void* VirtualPool::TwinHeapAlloc(HeapAllocatorNode* allocatorNode, size_t allocS
 	return 0;
 }
 
-int VirtualPool::HeapDealloc(void* ptr){
-	return 0;
+void VirtualPool::HeapDealloc(void* ptr){
+	if (ptr != 0 && this->isHeapAvailable != 0) {
+		HeapAllocatorNode* node = 0;
+		if (*(int*)((int)ptr - 0xc) == -0x1234568) {
+			node = (HeapAllocatorNode*)((int)ptr - 8);
+		} else {
+			node = (HeapAllocatorNode*)((int)ptr - 16);
+		}
+		this->heapObjectsAllocated -= 1;
+		if (this->topHeapAllocatorNode == 0) {
+			this->topHeapAllocatorNode = node;
+			node->prevNode = 0;
+			node->nextNode = 0;
+		} else {
+			this->topHeapAllocatorNode->prevNode = node;
+			node->nextNode = this->topHeapAllocatorNode;
+			this->topHeapAllocatorNode = node;
+		}
+		node->bufferLength |= 0x80000000;
+		this->heapAllocatorsCount += 1;
+		size_t a = (node->bufferLength & 0x7fffffff) + 0x10;
+		this->heapMemoryAvailable += a;
+		this->heapMemoryAllocated -= a;
+		this->FUN_001594d0(node);
+	}
 }
 
 void VirtualPool::InitPool(void* memptr, size_t size){
@@ -242,8 +270,32 @@ void VirtualPool::RemoveHeapAllocatorNodeFromChain(HeapAllocatorNode* node){
 	this->heapAllocatorsCount -= 1;
 }
 
-int VirtualPool::FUN_001594d0(HeapAllocatorNode* node){
-	return 0;
+void VirtualPool::FUN_001594d0(HeapAllocatorNode* node){
+	HeapAllocatorNode* nodePtr = (HeapAllocatorNode*)((int)&node->buffer + (node->bufferLength & 0x7fffffff));
+	if (((void*)nodePtr < this->heapEnd) && ((int)nodePtr->bufferLength < 0)) {
+		void* memptr = (void*)((int)&nodePtr->buffer + (nodePtr->bufferLength & 0x7fffffff));
+		if (this->currentHeapAllocatorNode == nodePtr) {
+			this->currentHeapAllocatorNode = node;
+		}
+		node->bufferLength = (nodePtr->bufferLength & 0x7fffffff) + 0x10 + (node->bufferLength & 0x7fffffff) | node->bufferLength & 0x80000000;
+		if (memptr < this->heapEnd) {
+			*(HeapAllocatorNode**)((int)memptr + 8) = node;
+		}
+		this->RemoveHeapAllocatorNodeFromChain(nodePtr);
+	}
+	nodePtr = node->nodeThatCausedAllocation;
+	if ((nodePtr != 0) && ((int)nodePtr->bufferLength < 0)) {
+		
+		nodePtr->bufferLength = (nodePtr->bufferLength & 0x7fffffff) + 0x10 + (node->bufferLength & 0x7fffffff) | nodePtr->bufferLength & 0x80000000;
+		void* memptr = (void*)((int)&node->buffer + (node->bufferLength & 0x7fffffff));
+		if (memptr < this->heapEnd) {
+			*(HeapAllocatorNode**)((int)memptr + 8) = node->nodeThatCausedAllocation;
+		}
+		if (this->currentHeapAllocatorNode == node) {
+			this->currentHeapAllocatorNode = node->nodeThatCausedAllocation;
+		}
+		this->RemoveHeapAllocatorNodeFromChain(node);
+	}
 }
 
 void VirtualPool::FUN_0015a800(){
