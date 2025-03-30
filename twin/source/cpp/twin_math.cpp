@@ -19,6 +19,20 @@ void __cdecl Vector3::Subtract(Vector3* dst, Vector3* a, Vector3* b) {
 	dst->z = a->z - b->z;
 }
 
+float __cdecl Vector3::DistanceDelta(Vector3* a ,Vector3* b, Vector3* outDelta) {
+	if (outDelta != 0) {
+		outDelta->x = a->x - b->x;
+		outDelta->y = a->y - b->y;
+		outDelta->z = a->z - b->z;
+		return sqrt(outDelta->x * outDelta->x + outDelta->y * outDelta->y + outDelta->z * outDelta->z);
+	}
+	
+	float dx = a->x - b->x;
+	float dy = a->y - b->y;
+	float dz = a->z - b->z;
+	return sqrt(dx * dx + dy * dy + dz * dz);
+}
+
 float Vector3::GetLengthXZ() {
 	return sqrt(this->x * this->x + this->z * this->z);
 }

@@ -1,6 +1,7 @@
 00020e50 ?GetLength@Vector3@@SAMPAV1@@Z
 00020c90 ?Scale@Vector3@@SAXPAV1@0M@Z
 00020c50 ?Subtract@Vector3@@SAXPAV1@00@Z
+00021500 ?DistanceDelta@Vector3@@SAMPAV1@00@Z
 000642c0 ?GetLengthXZ@Vector3@@QAEMXZ
 000254b0 ?GetLengthSqr@Vector3@@QAEMXZ
 000251a0 ?Invert@Vector3@@QAEXXZ

@@ -29,6 +29,7 @@ public:
 	static void __cdecl Scale(Vector3* vec, Vector3* src, float k);
 	static void __cdecl Subtract(Vector3* dst, Vector3* a, Vector3* b);
 	static void __cdecl Transform(Vector3* a, Vector3* b, Matrix4* m);
+	static float __cdecl DistanceDelta(Vector3* a ,Vector3* b, Vector3* outDelta);
 };
 
 class Vector4 {
