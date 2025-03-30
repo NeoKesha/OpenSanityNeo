@@ -8,6 +8,8 @@ extern "C" void UpdateFun();
 #define FUNNY_002
 
 #ifdef FUNNY_002
+	class InputController;
+	class GlobalClock;
 	class DSDevice {
 	public:
 
