@@ -16,7 +16,7 @@ TwinString::TwinString() {
 }
 
 TwinString::~TwinString() {
-	FreeMemory(this->buffer);
+	_FreeMemory(this->buffer);
 	this->capacity = 0;
 	this->length = 0;
 }
@@ -28,14 +28,14 @@ void TwinString::SetValue(char* str) {
 		size_t capacity = ((this->length) + 0x20U) & 0xffffffe0;
 		if (this->capacity < capacity) {
 			this->capacity = capacity;
-			this->buffer = (char *)AllocateMemory(capacity); //ISSUE: Memory Leak?!
+			this->buffer = (char *)_AllocateMemory(capacity); //ISSUE: Memory Leak?!
 		}
 
 		strcpy(this->buffer, str);
 		return;
 	}
 	
-	FreeMemory(this->buffer);
+	_FreeMemory(this->buffer);
 	this->capacity = 0;
 	this->buffer = 0;
 	this->length = 0;
@@ -54,7 +54,7 @@ TwinString* TwinString::Append(char* other){
 	bool cleanupFlag = false;
 	if (this->capacity < newCapacity) {
 		this->capacity = newCapacity;
-		this->buffer = (char*)AllocateMemory(newCapacity);
+		this->buffer = (char*)_AllocateMemory(newCapacity);
 		cleanupFlag = true;
 	}
 	if (oldBuffer == 0) {
@@ -79,7 +79,7 @@ TwinString* TwinString::Append(char* other){
 		}
 	}
 	if (cleanupFlag) {
-		FreeMemory(oldBuffer);
+		_FreeMemory(oldBuffer);
 		this->capacity = 0;
 	}
 	this->buffer[this->length] = '\0';
@@ -87,7 +87,7 @@ TwinString* TwinString::Append(char* other){
 	return this;
 }
 TwinString* TwinString::AppendInt(unsigned int num){
-	this->buffer = (char *)AllocateMemory(32);
+	this->buffer = (char *)_AllocateMemory(32);
 	this->length = 0;
 	this->capacity = 32;
 	
@@ -133,10 +133,10 @@ TwinString* TwinString::Copy(char* other){
 		size_t newCapacity = (this->length + 0x20U) & 0xffffffe0;
 		if (this->capacity < newCapacity) {
 			if (this->buffer != 0) {
-				FreeMemory(this->buffer);
+				_FreeMemory(this->buffer);
 			}
 			this->capacity = newCapacity;
-			this->buffer = (char *)AllocateMemory(this->capacity);
+			this->buffer = (char *)_AllocateMemory(this->capacity);
 		}
 		
 		if (other == 0) {
@@ -195,7 +195,7 @@ void TwinString::ParseIntInternal(unsigned int value, int length){
 	this->length = this->length + 1;
 }
 void TwinString::ReadFromFile(MemoryStream* memoryStream){
-	FreeMemory(this->buffer);
+	_FreeMemory(this->buffer);
 	this->buffer = 0;
 	this->length = 0;
 	this->capacity = 0;
@@ -203,7 +203,7 @@ void TwinString::ReadFromFile(MemoryStream* memoryStream){
 	memoryStream->ReadInt2((char*)&(this->length));
 	if (this->length > 0) {
 		this->capacity = (this->length + 0x20U) & 0xffffffe0;
-		this->buffer = (char*)AllocateMemory(this->capacity);
+		this->buffer = (char*)_AllocateMemory(this->capacity);
 		memoryStream->Read(this->buffer, this->length, 1);
 		this->buffer[this->length] = '\0';
 	}

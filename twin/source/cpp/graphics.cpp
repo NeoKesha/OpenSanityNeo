@@ -186,8 +186,8 @@ extern "C" void* __cdecl ResetAndRegisterRenderTarget() {
 extern "C" void __cdecl InitFrameBuffer() {
 	D3DTexture *pDVar1;
 
-	ScreenTexture1 = (D3DTexture *)AllocateMemory(0x14);
-	ScreenTexture2 = (D3DTexture *)AllocateMemory(0x14);
+	ScreenTexture1 = (D3DTexture *)_AllocateMemory(0x14);
+	ScreenTexture2 = (D3DTexture *)_AllocateMemory(0x14);
 	ZeroMemory(ScreenTexture1, sizeof(ScreenTexture1));
 	ZeroMemory(ScreenTexture2, sizeof(ScreenTexture2));
 	size_t length = XGSetTextureHeader(320, 240, 1, 0, D3DFMT_LIN_X8R8G8B8, 0, ScreenTexture2, 0, 0x500);

@@ -32,16 +32,17 @@ public:
 	
 	VirtualPool();
 	static VirtualPool* __cdecl GetPool();
-	//static void* __cdecl AllocateMemory(size_t size);
-	//static void __cdecl FreeMemory(void* ptr);
+	static unsigned int __cdecl GetAllocTableIndexBasedOnAllocSize(size_t size);
+	static void* __cdecl AllocateMemory(size_t size);
+	static void __cdecl FreeMemory(void* ptr);
 	
 	void* AllocateMemoryInternal(size_t size);
 	void* AllocateMemoryAligned(size_t size, int alignment);
 	void FreeMemoryInternal(void* ptr);
-	void* TwinHeapAlloc(HeapAllocatorNode* allocatorNode, size_t allocSize);
+	void* TwinHeapAlloc(HeapAllocatorNode* allocatorNode, size_t allocSize, int reserved);
 	int HeapDealloc(void* ptr);
 	void InitPool(void* memptr, size_t size);
-	void* ReallocHeapAllocatorNode(HeapAllocatorNode* node, size_t allocSize);
+	void* ReallocHeapAllocatorNode(HeapAllocatorNode* node, size_t allocSize, int reserved);
 	void RemoveHeapAllocatorNodeFromChain(HeapAllocatorNode* allocatedNode);
 	int FUN_001594d0(HeapAllocatorNode* node);
 	void FUN_0015a800();

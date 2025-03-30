@@ -3,7 +3,7 @@
 #include "twin_base.h"
 
 void* TwinBase::operator new(size_t size) {
-	return FUN_000D06B0(size);
+	return VirtualPool::AllocateMemory(size);
 }
 
 void TwinBase::operator delete(void* ptr) {

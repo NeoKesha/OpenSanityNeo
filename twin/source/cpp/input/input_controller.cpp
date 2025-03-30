@@ -12,7 +12,7 @@ InputController::InputController() {
 	preallocType.dwPreallocCount = 4;
 	XInitDevices(1, &preallocType);
 	for (int i = 0; i < 4; ++i) {
-		InputData* inputData = (InputData*)AllocateMemory(0x80); //TODO: proper new + constructor call
+		InputData* inputData = (InputData*)_AllocateMemory(0x80); //TODO: proper new + constructor call
 		if (inputData != 0) {
 			ZeroMemory(inputData, sizeof(InputData));
 			inputData->handle = XInputOpen(XDEVICE_TYPE_GAMEPAD, i, 0, 0);
