@@ -18,4 +18,4 @@ public:
     static void operator delete(void* ptr);
 };
 
-//#define ENABLE_FUN
+#define ENABLE_FUN
