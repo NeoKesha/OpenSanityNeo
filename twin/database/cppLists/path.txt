@@ -1,0 +1,15 @@
+#PathBase
+#001b18f0 ??0PathBase@@QAE@XZ
+#000de470 ??0PathBase@@QAE@PAV0@@Z
+#000defd0 ?Method1@PathBase@@UAEXPAVMatrix4@@@Z
+000df050 ?Read@PathBase@@UAEXPAVMemoryStream@@@Z
+000f29b0 ?GetBuilderIndex@PathBase@@UAEIXZ
+000df090 ?Write@PathBase@@UAEXPAVMemoryStream@@@Z
+#000f1eb0 ?Method5@PathBase@@UAE_NPAX@Z
+#Path 
+#001b1900 ??0Path@@QAE@XZ
+#000ec2e0 ??0Path@@QAE@PAV0@@Z
+000ecfd0 ?Read@Path@@UAEXPAVMemoryStream@@@Z
+000f3300 ?GetBuilderIndex@Path@@UAEIXZ
+000ed050 ?Write@Path@@UAEXPAVMemoryStream@@@Z
+#000f1f20 ?Method5@Path@@UAE_NPAX@Z
