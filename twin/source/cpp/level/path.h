@@ -42,7 +42,7 @@ public:
 	virtual bool Method5(void* unknown);
 	
 	int FindClosestPoint(Vector4* vec);
-	void FUN_000de6a0(int idx, float k);
+	float FUN_000de6a0(int idx, float k);
 	float FUN_000ecee0(Vector4* vec);
 	void FUN_000ecf20(unsigned int param_1, float param_2);
 	bool FUN_000efff0(Vector4* vec, float k);

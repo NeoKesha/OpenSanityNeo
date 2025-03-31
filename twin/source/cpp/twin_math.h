@@ -45,6 +45,7 @@ public:
 	void CopyTo(Vector4* other);
 	
 	static void __cdecl Transform(Vector4* a, Vector4* b, Matrix4* m);
+	static void __stdcall StaticTransform(Vector4* outVector, float k);
 };
 
 class Matrix4 {

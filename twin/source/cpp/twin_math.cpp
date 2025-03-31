@@ -105,3 +105,44 @@ void Vector4::CopyTo(Vector4* other) {
 	other->z = this->z;
 	other->w = 1.0f;
 }
+
+void __stdcall Vector4::StaticTransform(Vector4* outVector, float k) {
+	static Matrix4 mat;
+	bool inited = false;
+	if (!inited) {
+		mat.row1.x = -0.1666666f;
+		mat.row1.y = 0.4999998f;
+		mat.row2.x = 0.4999998f;
+		mat.row2.y = -0.9999996f;
+		mat.row2.z = 0.4999998f;
+		mat.row3.z = 0.4999998f;
+		mat.row1.z = -0.4999998f;
+		mat.row1.w = 0.1666666f;
+		mat.row2.w = 0.0f;
+		mat.row3.x = -0.4999998f;
+		mat.row3.y = 0.0f;
+		mat.row3.w = 0.0f;
+		mat.row4.x = 0.1666666f;
+		mat.row4.y = 0.6666664f;
+		mat.row4.z = 0.1666666f;
+		mat.row4.w = 0.0f;
+		inited = true;
+	}
+	
+	Vector4 result;
+	outVector->y = k * k;
+	outVector->x = k * k * k;
+	outVector->z = k;
+	outVector->w = 1.0f;
+	float x = outVector->x;
+	float y = outVector->y;
+	float z = outVector->z;
+	result.y = x * mat.row1.y + y * mat.row2.y + z * mat.row3.y + mat.row4.y;
+	result.x = x * mat.row1.x + y * mat.row2.x + z * mat.row3.x + mat.row4.x;
+	result.z = x * mat.row1.z + y * mat.row2.z + z * mat.row3.z + mat.row4.z;
+	result.w = x * mat.row1.w + y * mat.row2.w + z * mat.row3.w + mat.row4.w;
+	outVector->x = result.x;
+	outVector->y = result.y;
+	outVector->z = result.z;
+	outVector->w = result.w;
+}

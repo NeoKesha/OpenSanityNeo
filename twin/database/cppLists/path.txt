@@ -13,8 +13,8 @@
 000f3300 ?GetBuilderIndex@Path@@UAEIXZ
 000ed050 ?Write@Path@@UAEXPAVMemoryStream@@@Z
 #000f1f20 ?Method5@Path@@UAE_NPAX@Z
-#000ddca0 ?FindClosestPoint@Path@@QAEHPAVVector4@@@Z
-#000de6a0 ?FUN_000de6a0@Path@@QAEXHM@Z
+000ddca0 ?FindClosestPoint@Path@@QAEHPAVVector4@@@Z
+000de6a0 ?FUN_000de6a0@Path@@QAEMHM@Z
 #000ecee0 ?FUN_000ecee0@Path@@QAEMPAVVector4@@@Z
 #000ecf20 ?FUN_000ecf20@Path@@QAEXIM@Z
 #000efff0 ?FUN_000efff0@Path@@QAE_NPAVVector4@@M@Z

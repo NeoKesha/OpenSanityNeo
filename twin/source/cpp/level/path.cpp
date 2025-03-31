@@ -95,12 +95,67 @@ bool Path::Method5(void* unknown) {
 }
 
 int Path::FindClosestPoint(Vector4* vec) {
-	AssertNonImplemented;
-	return 0;
+	//TODO: Custom code reimplementation. Original uses smart vector batching?
+	int closestIdx = 0;
+	float dx = this->points[0].x - vec->x;
+	float dy = this->points[0].y - vec->y;
+	float dz = this->points[0].z - vec->z;
+	float closestDistance = dx * dx + dy * dy + dz * dz;
+	for (int i = 1; i < this->pointCnt; ++i) {
+		dx = this->points[i].x - vec->x;
+		dy = this->points[i].y - vec->y;
+		dz = this->points[i].z - vec->z;
+		float distance = dx * dx + dy * dy + dz * dz;
+		if (distance < closestDistance) {
+			closestIdx = i;
+			closestDistance = distance;
+		}
+	}
+	return closestIdx;
 }
 
-void Path::FUN_000de6a0(int idx, float k) {
-	AssertNonImplemented;
+float Path::FUN_000de6a0(int idx, float k) {
+	Vector4 vec1;
+	Vector4 vec2;
+	Vector4 vec3;
+	Vector4 vec4;
+	vec1.x = this->points[idx].x;
+	vec1.y = this->points[idx].y;
+	vec1.z = this->points[idx].z;
+	vec2.x = this->points[idx + 1].x;
+	vec2.y = this->points[idx + 1].y;
+	vec2.z = this->points[idx + 1].z;
+	vec3.x = this->points[idx + 2].x;
+	vec3.y = this->points[idx + 2].y; 
+	vec3.z = this->points[idx + 2].z;
+	vec4.x = this->points[idx + 3].x; 
+	vec4.y = this->points[idx + 3].y;
+	vec4.z = this->points[idx + 3].z;
+	float a = 0.0f; 
+	float b  = 0.0f; 
+	Vector4 vectorOut;
+	float prevX;
+	float prevY;
+	float prevZ;
+	bool flag = false;
+	if (0.0f <= k) {
+		do {
+			Vector4::StaticTransform(&vectorOut, b);
+			float x = vec3.x * vectorOut.z + vec2.x * vectorOut.y + vec4.x * vectorOut.w + vectorOut.x * vec1.x;
+			float y = vec4.y * vectorOut.w + vec3.y * vectorOut.z + vec2.y * vectorOut.y + vec1.y * vectorOut.x;
+			float z = vec4.z * vectorOut.w + vec3.z * vectorOut.z + vec2.z * vectorOut.y + vec1.z * vectorOut.x;
+			if (flag) {
+				float diffSqr = (z - prevZ) * (z - prevZ) + (y - prevY) * (y - prevY) +  (x - prevX) * (x - prevX);
+				a = sqrt(diffSqr) + a;
+			}
+			b = b + 0.01f;
+			prevX = x;
+			prevY = y;
+			prevZ = z;
+			flag = true;
+		} while (b <= k);
+	}
+	return a;
 }
 
 float Path::FUN_000ecee0(Vector4* vec) {

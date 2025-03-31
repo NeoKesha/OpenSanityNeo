@@ -15,3 +15,4 @@
 00020b50 ?Transform@Vector4@@SAXPAV1@0PAVMatrix4@@@Z
 00029b20 ?CopyTo@Vector4@@QAEXPAV1@@Z
 00027150 ?Reset@Vector4@@QAEXXZ
+000de520 ?StaticTransform@Vector4@@SGXPAV1@M@Z
