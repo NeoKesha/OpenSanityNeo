@@ -15,10 +15,11 @@
 #000f1f20 ?Method5@Path@@UAE_NPAX@Z
 000ddca0 ?FindClosestPoint@Path@@QAEHPAVVector4@@@Z
 000de6a0 ?FUN_000de6a0@Path@@QAEMHM@Z
-#000ecee0 ?FUN_000ecee0@Path@@QAEMPAVVector4@@@Z
+000ecee0 ?FUN_000ecee0@Path@@QAEMPAVVectorContainer@@@Z
 #000ecf20 ?FUN_000ecf20@Path@@QAEXIM@Z
 #000efff0 ?FUN_000efff0@Path@@QAE_NPAVVector4@@M@Z
-#000f17f0 ?FUN_000f17f0@Path@@QAE_NPAVVector4@@PAXH@Z
-#000f1c60 ?FUN_000f1c60@Path@@QAEXPAVVector4@@PAX@Z
+000f17f0 ?FUN_000f17f0@Path@@QAE_NPAVVector4@@PAVVectorContainer@@H@Z
+000f1c60 ?FUN_000f1c60@Path@@QAEXPAVVector4@@PAVVectorContainer@@@Z
 #000f1ce0 ?FUN_000f1ce0@Path@@QAEMPAVVector4@@0@Z
 #000f25e0 ?FUN_000f25e0@Path@@QAEHIHPAM0D@Z
+000ddfd0 ?FUN_000ddfd0@Path@@SGXPAVVector4@@MPAVMatrix4@@@Z

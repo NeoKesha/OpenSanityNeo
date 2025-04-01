@@ -15,7 +15,6 @@ PathBase::~PathBase() {
 }
 
 void PathBase::Method1(Matrix4* mat) {
-	OutputDebugStringA("Transform Path");
 	for (int i = 0; i < this->pointCnt; ++i) {
 		Vector4* point = this->points + i;
 		float x = point->x;
@@ -158,9 +157,15 @@ float Path::FUN_000de6a0(int idx, float k) {
 	return a;
 }
 
-float Path::FUN_000ecee0(Vector4* vec) {
-	AssertNonImplemented;
-	return 0;
+float Path::FUN_000ecee0(VectorContainer* data) {
+	float param;
+	if (data->idx == 0) {
+		param = 0;
+	} else {
+		param = this->parameters[data->idx - 1];
+	}
+	float k = this->FUN_000de6a0(data->idx, data->b);
+	return (k + param)/(this->parameters[this->pointCnt - 4]);
 }
 
 void Path::FUN_000ecf20(unsigned int param_1, float param_2) {
@@ -172,13 +177,34 @@ bool Path::FUN_000efff0(Vector4* vec, float k) {
 	return true;
 }
 
-bool Path::FUN_000f17f0(Vector4* vec, void* param_2, int param_3) {
-	AssertNonImplemented;
+bool Path::FUN_000f17f0(Vector4* vec, VectorContainer* data, int idx) {
+	Matrix4 mat;
+	Path::FUN_000ddfd0(this->points + idx, this->lastParameter[idx], &mat);
+	//TODO Unfinished! Mock
 	return true;
 }
 
-void Path::FUN_000f1c60(Vector4* param_1, void* data) {
-	AssertNonImplemented;
+void Path::FUN_000f1c60(Vector4* vec, VectorContainer* data) {
+	data->a = 1e+30;
+	int idx = this->FindClosestPoint(vec);
+	int pointIdx = idx - 3;
+	int someIdx = 4;
+	if (pointIdx < 0) {
+		someIdx = idx + 1;
+		pointIdx = 0;
+	}
+	idx = this->pointCnt - 3;
+	if (idx < someIdx + pointIdx) {
+		someIdx = idx - pointIdx;
+	}
+	while (someIdx != 0) {
+		bool flag = this->FUN_000f17f0(vec, data, pointIdx);
+		if (flag) {
+			data->idx = pointIdx;
+		}
+		++pointIdx;
+		--someIdx;
+	}
 }
 
 float Path::FUN_000f1ce0(Vector4* vec, Vector4* out) {
@@ -189,4 +215,53 @@ float Path::FUN_000f1ce0(Vector4* vec, Vector4* out) {
 int  Path::FUN_000f25e0(unsigned int param31, int param_2, float* param_3, float* param_4, char param_5) {
 	AssertNonImplemented;
 	return -1;
+}
+
+void Path::FUN_000ddfd0(Vector4* vecs,float k,Matrix4* mat) {
+	float x0 = vecs[0].x;
+	float y0 = vecs[0].y;
+	float z0 = vecs[0].z;
+	float x1 = vecs[1].x;
+	float y1 = vecs[1].y;
+	float z1 = vecs[1].z;
+	float w1 = vecs[1].w;
+	float x2 = vecs[2].x;
+	float y2 = vecs[2].y;
+	float z2 = vecs[2].z;
+	float w2 = vecs[2].w;
+	
+	float k1 = (y2 - y0) * 0.16666667f;
+	float k2 = (z2 - z0) * 0.16666667f;
+	float k3 = (vecs[2].y + vecs[0].y + vecs[1].y + y1) * 0.16666667f;
+	float k4 = (vecs[2].z + vecs[0].z + vecs[1].z + z1) * 0.16666667f;
+	float k5 = (x2 - x0) * 0.16666667f;
+	
+	float kSqr = k * k;
+	float kCube = k * kSqr;
+	
+	float k6 = (vecs[3].y + (y1 - y2) - vecs[0].y) * kCube * 0.16666667f;
+	float k7 = (vecs[3].x - (x1 - x2) - vecs[0].x) * kCube * 0.16666667f;
+	float k8 = (x0 - x1 - x1 + x2) * kSqr * 0.16666667f;
+	float k9 = (vecs[3].z + (z1 - z2) - vecs[0].z) * kCube * 0.16666667f;
+	float k10 = (y0 - y1 - y1 + y2) * kSqr * 0.16666667f;
+	float k11 = (z0 - z1 - z1 + z2) * kSqr * 0.16666667f;
+	
+	mat->row1.x = (vecs[2].x + vecs[0].x + vecs[1].x + x1) * 0.16666667f;
+	mat->row1.y = k3;
+	mat->row1.z = k4;
+	mat->row1.w = w1;
+	mat->row2.x = k8 + k7 + k5 * k;
+	mat->row2.y = k10 + k6 + k1 * k;
+	k7 *= 6.0f;
+	mat->row2.z = k11 + k9 + k2 * k;
+	mat->row2.w = 1.0f;
+	k6 *= 6;
+	mat->row3.y = k10 * 2.0f + k6;
+	mat->row3.w = 1.0f;
+	mat->row3.x = k8 * 2.0f + k7;
+	mat->row3.z = k11 * 2.0f + k9 * 6.0f;
+	mat->row4.x = k7;
+	mat->row4.y = k6;
+	mat->row4.z = k9 * 6.0f;
+	mat->row4.w = w2;
 }
