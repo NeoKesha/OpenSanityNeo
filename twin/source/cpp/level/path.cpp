@@ -1,6 +1,7 @@
 #include <XTL.h>
 #include <stl.h>
 #include "path.h"
+#include <math.h>
 
 PathBase::PathBase() {
 	this->points = 0;
@@ -179,9 +180,293 @@ bool Path::FUN_000efff0(Vector4* vec, float k) {
 
 bool Path::FUN_000f17f0(Vector4* vec, VectorContainer* data, int idx) {
 	Matrix4 mat;
-	Path::FUN_000ddfd0(this->points + idx, this->lastParameter[idx], &mat);
-	//TODO Unfinished! Mock
-	return true;
+	float step = this->lastParameter[idx];
+	bool result = false;
+	Path::FUN_000ddfd0(this->points + idx, step, &mat);
+	this->vec1.x = vec->x;
+	this->vec1.y = vec->y;
+	this->vec1.z = vec->z;
+	this->vec1.w = vec->w;
+	this->vec2.x = mat.row1.x;
+	this->vec2.y = mat.row1.y;
+	this->vec2.z = mat.row1.z;
+	this->vec2.w = mat.row1.w;
+	float dx1 = vec->x - mat.row1.x;
+	float dy1 = vec->y - mat.row1.y;
+	float dz1 = vec->z - mat.row1.z;
+	float dot1 = dx1 * dx1 + dy1 * dy1 + dz1 * dz1;
+	this->fl1 = dot1;
+	
+	float kx = (this->points[idx + 2].x * 4.0f + this->points[idx + 1].x + this->points[idx].x) * 0.16666667f;
+	float ky = (this->points[idx + 2].y * 4.0f + this->points[idx + 1].y + this->points[idx].y) * 0.16666667f;
+	float kz = (this->points[idx + 2].z * 4.0f + this->points[idx + 1].z + this->points[idx].z) * 0.16666667f;
+	float dx2 = vec->x - kx;
+	float dy2 = vec->y - ky;
+	float dz2 = vec->z - kz;
+	float dot2 = dz2 * dz2 + dy2 * dy2 + dx2 * dx2;
+	if (dot2 < dot1) {
+		this->vec2.x = kx;
+		this->vec2.y = ky;
+		this->vec2.z = kz;
+		this->vec2.w = this->points[idx + 1].w;
+		this->fl1 = dot2;
+		this->fl2 = 1.0f;
+	}
+	
+	float t = 0.0f;
+	Vector4 vec1;
+	vec1.x = mat.row1.x;
+	vec1.y = mat.row1.y;
+	vec1.z = mat.row1.z;
+	vec1.w = mat.row1.w;
+	while (t < 1.0f) {
+		float dx3 = vec->x - vec1.x;
+		float dy3 = vec->y - vec1.y;
+		float dz3 = vec->z - vec1.z;
+		float dot3 = dx3 * dx3 + dy3 * dy3 + dz3 * dz3;
+		if (t > 0.0f && dot3 < this->fl1 * 0.998f) {
+			PathTmpStruct tmp; //Matrix4 stack reuse
+			tmp.cnt = 4;
+			tmp.vec1.x = 0.000049999999f;
+			tmp.vec1.y = 0.000049999999f;
+			tmp.vec1.z = 0.0f;
+			tmp.vec1.w = 1.0f;
+			tmp.FUN_000f25e0(this, Path::FUN_000effe0, &t, &dot3, 1);
+			FUN_000ec8c0(this->points + idx, t, &vec1);
+			this->vec2.x = vec1.x;
+			this->vec2.y = vec1.y;
+			this->vec2.z = vec1.z;
+			this->vec2.w = vec1.w;
+			this->fl1 = dot3;
+			this->fl2 = t;
+			if (data->a <= dot3) {
+				return result;
+			}
+			
+			data->vec1.x = this->vec2.x;
+			data->vec1.y = this->vec2.y;
+			data->vec1.z = this->vec2.z;
+			data->vec1.w = this->vec2.w;
+			data->a = this->fl1;
+			data->b = this->fl2;
+			return true;
+		}
+		if (dot3 < data->a) {
+			data->vec1.x = vec1.x;
+			data->vec1.y = vec1.y;
+			data->vec1.z = vec1.z;
+			data->vec1.w = mat.row1.w;
+			data->a = dot3;
+			data->b = t;
+			result = true;
+		}
+		
+		t += step;
+		vec1.x = mat.row2.x + vec1.x;
+		vec1.y = mat.row2.y + vec1.y;
+		vec1.z = mat.row2.z + vec1.z;
+		
+		mat.row2.x = mat.row3.x + mat.row2.x; //Stack reuse restore?!
+		mat.row2.y = mat.row3.y + mat.row2.y;
+		mat.row2.z = mat.row3.z + mat.row2.z;
+		
+		mat.row3.x = mat.row4.x + mat.row3.x;
+		mat.row3.y = mat.row4.y + mat.row3.y;
+		mat.row3.z = mat.row4.z + mat.row3.z;
+	}
+	return result;
+}
+
+
+//ISSUE: TODO: this code is shit and is probably not working, same with all FUN methods i know no whit what they do
+int PathTmpStruct::FUN_000f25e0(Path* path, float(__stdcall *cb)(Path* path, float k), float* t, float* dot, bool flag) {
+	this->vec2.z = *t;
+	this->vec2.x = *t;
+	if (flag) {
+		this->vec2.w = *dot;
+		this->vec2.y = *dot;
+	} else {
+		*dot = cb(path, *t);
+		this->vec2.w = *dot;
+		this->vec2.y = *dot;
+	}
+	if (this->cnt < 1) {
+		return -1;
+	}
+	
+	float dotResult = 0;
+	float someShit = 0;
+	for (int i = 0; i <= this->cnt; ++i) {
+		float dotFuckingSaved = *dot;
+		float tVal = *t;
+		if (tVal < 0) {
+			tVal = 0.0f - tVal;
+		}
+		tVal *= this->vec1.y;
+		if (tVal < this->vec1.x) {
+			tVal = this->vec1.x;
+		}
+		float jimbo = (this->vec1.x + this->vec1.w) * 0.5f;
+		float newT = *t - jimbo;
+		float apple = tVal * 0.5f;
+		if (newT < 0) {
+			newT = 0.0f - newT;
+		}
+		if (newT < tVal - jimbo) {
+			return 0;
+		}
+		float dotVal = *dot;
+		if (dotVal < 0) {
+			dotVal = 0.0f - dotVal;
+		}
+		float resVal = 0;
+		float tmp3 = 0;
+		float tmpWeight = 0;
+		if (tVal * 0.5f < dotVal) {
+			float k1 = *t - this->vec2.x;
+			float k2 = *t - this->vec2.z;
+			float tmp1 = (*dot - this->vec2.w) * k1;
+			float tmp2 = (*dot - this->vec2.y) * k2;
+			tmp3 = (tmp1 - tmp2) * 2.0f;
+			tmpWeight = k1 * tmp1 - k2 * tmp2;
+			if (tmp3 > 0) {
+				tmpWeight = 0.0f - tmpWeight;
+			}
+			if (tmp3 < 0) {
+				tmp3 = 0.0f - tmp3;
+			}
+			
+			if (tmpWeight < 0) {
+				newT = 0.0 - tmpWeight;
+			}
+			resVal = dotFuckingSaved;
+			dotResult = someShit;
+		}
+		
+		float otherT = resVal * tmp3 * 0.5f;
+		if (otherT < 0) {
+			otherT = 0.0f - otherT;
+		}
+		
+		if ((otherT <= newT) || (tmpWeight <= (this->vec1.x - *t) * tmp3) || ((this->vec1.w - *t) * tmp3 <= tmpWeight)) {
+			if (jimbo <= *t) {
+				dotResult = this->vec1.z - *t;
+			} else {
+				dotResult = this->vec1.w - *t;
+			}
+			someShit = dotResult * 0.381966f;
+		} else {
+			otherT = *t + newT / tmp3;
+			this->a = otherT;
+			if (otherT - this->vec1.z < tVal) {
+				someShit = 0.0f - apple;
+			} else {
+				someShit = newT / tmpWeight;
+				if (this->vec1.w - otherT < tVal) {
+					someShit = apple;
+					if (jimbo <= *t) {
+						someShit = 0.0f - apple;
+					}
+				}
+				resVal = someShit;
+				if (someShit < 0.0f) {
+					resVal = 0.0f - someShit;
+				}
+				
+				tVal = *t;
+				if (resVal < apple) {
+					if (someShit >= 0.0f) {
+						tVal = tVal + apple;
+					} else {
+						tVal = tVal - apple;
+					}
+				} else {
+					tVal = tVal + someShit;
+				}
+				
+				this->a = tVal;
+				jimbo = cb(path, this->a);
+				this->b = jimbo;
+				tVal = *t; 
+				//god save my soul
+				if (*dot < jimbo) {
+					if (tVal <= this->a) {
+						this->vec1.w = this->a;
+					} else {
+						this->vec1.z = this->a;
+					}
+					if ((jimbo <= this->vec2.w) || (tVal = this->vec2.z, (_isnan(tVal) || _isnan(*t)) != (tVal == *t))) {
+						tVal = this->a;
+						this->vec2.x = this->vec2.z;
+						this->vec2.y = this->vec2.w;
+						this->vec2.z = tVal;
+						this->vec2.w = jimbo;
+					} else if ((jimbo <= this->vec2.y) || ((_isnan(this->vec2.x) || _isnan(*t)) != (this->vec2.x == *t)) || ((_isnan(this->vec2.x) || _isnan(this->vec2.z)) != (this->vec2.x == this->vec2.z))) {
+						this->vec2.x = this->a;
+						this->vec2.y = this->vec2.w;
+					}
+				} else {
+					if (tVal <= this->a) {
+						this->vec1.z = *t;
+					} else {
+						this->vec1.w = *t;
+					}
+					this->vec2.y = this->vec2.w;
+					tVal = this->a;
+					this->vec2.x = this->vec2.z;
+					this->vec2.z = *t;
+					this->vec2.w = *dot;
+					*t = tVal;
+					*dot = this->b;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
+float Path::FUN_000eca50(float k) {
+	Vector4 vec;
+	FUN_000ec8c0(this->points + this->num, k, &vec);
+	vec.x = this->vec1.x - vec.x;
+	vec.y = this->vec1.y - vec.y;
+	vec.z = this->vec1.z - vec.z;
+	return vec.x * vec.x + vec.y * vec.y + vec.z * vec.z;
+}
+
+float Path::FUN_000effe0(Path* path, float k) {
+	return path->FUN_000eca50(k);
+}
+
+void Path::FUN_000ec8c0(Vector4* vecs, float k, Vector4* vec) {
+	float x0 = vecs[0].x;
+	float y0 = vecs[0].y;
+	float z0 = vecs[0].z;
+	float x1 = vecs[1].x;
+	float y1 = vecs[1].y;
+	float z1 = vecs[1].z;
+	float x2 = vecs[2].x;
+	float y2 = vecs[2].y;
+	float z2 = vecs[2].z;
+	float x3 = vecs[3].x;
+	float y3 = vecs[3].y;
+	float z3 = vecs[3].z;
+	Vector4 outVec;
+	Vector4::StaticTransform(&outVec,k);
+	vec->x = outVec.x * x0;
+	vec->w = 1.0f;
+	float k1 = outVec.y * x1 + outVec.x * x0;
+	float k2 = outVec.y * z1 + outVec.x * z0;
+	vec->x = outVec.x * z0;
+	float k3 = outVec.y * y1 + outVec.x * y0;
+	vec->y = outVec.x * y0;
+	outVec.x = outVec.w * x3;
+	vec->x = k1;
+	vec->y = k3;
+	vec->z = k2;
+	vec->x = k1 + outVec.x + outVec.z * x2;
+	vec->y = k3 + outVec.w * y3 + outVec.z * y2;
+	vec->z = k2 + outVec.w + z3 + outVec.z * z2;
 }
 
 void Path::FUN_000f1c60(Vector4* vec, VectorContainer* data) {
@@ -210,11 +495,6 @@ void Path::FUN_000f1c60(Vector4* vec, VectorContainer* data) {
 float Path::FUN_000f1ce0(Vector4* vec, Vector4* out) {
 	AssertNonImplemented;
 	return 0;
-}
-
-int  Path::FUN_000f25e0(unsigned int param31, int param_2, float* param_3, float* param_4, char param_5) {
-	AssertNonImplemented;
-	return -1;
 }
 
 void Path::FUN_000ddfd0(Vector4* vecs,float k,Matrix4* mat) {

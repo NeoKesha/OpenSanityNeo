@@ -63,7 +63,21 @@ public:
 	bool FUN_000f17f0(Vector4* vec, VectorContainer* data, int idx);
 	void FUN_000f1c60(Vector4* vec, VectorContainer* data);
 	float FUN_000f1ce0(Vector4* vec, Vector4* out);
-	int  FUN_000f25e0(unsigned int param31, int param_2, float* param_3, float* param_4, char param_5);
 
 	static void __stdcall FUN_000ddfd0(Vector4* vecs,float k,Matrix4* mat);
+	static void __stdcall FUN_000ec8c0(Vector4* vecs,float k,Vector4* vec);
+
+	float FUN_000eca50(float k);
+	static float __stdcall FUN_000effe0(Path* path, float k);
+};
+
+class PathTmpStruct {
+public:
+	int cnt;
+	Vector4 vec1;
+	Vector4 vec2;
+	float a;
+	float b;
+	
+	int FUN_000f25e0(Path* path, float(__stdcall *cb)(Path* path, float k), float* t, float* dot, bool flag);
 };

@@ -2,6 +2,7 @@
 #include <stl.h>
 #include "twin_math.h"
 #include <math.h>
+#include <level/path.h>
 
 float __cdecl Vector3::GetLength(Vector3* vec) {
 	return sqrt(vec->x * vec->x + vec->y * vec->y + vec->z * vec->z);

@@ -48,6 +48,7 @@ public:
 	static void __stdcall StaticTransform(Vector4* outVector, float k);
 };
 
+class Path;
 class Matrix4 {
 public:
 	Vector4 row1;

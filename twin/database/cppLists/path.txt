@@ -19,7 +19,10 @@
 #000ecf20 ?FUN_000ecf20@Path@@QAEXIM@Z
 #000efff0 ?FUN_000efff0@Path@@QAE_NPAVVector4@@M@Z
 000f17f0 ?FUN_000f17f0@Path@@QAE_NPAVVector4@@PAVVectorContainer@@H@Z
+000ec8c0 ?FUN_000ec8c0@Path@@SGXPAVVector4@@M0@Z
 000f1c60 ?FUN_000f1c60@Path@@QAEXPAVVector4@@PAVVectorContainer@@@Z
 #000f1ce0 ?FUN_000f1ce0@Path@@QAEMPAVVector4@@0@Z
-#000f25e0 ?FUN_000f25e0@Path@@QAEHIHPAM0D@Z
 000ddfd0 ?FUN_000ddfd0@Path@@SGXPAVVector4@@MPAVMatrix4@@@Z
+000effe0 ?FUN_000effe0@Path@@SGMPAV1@M@Z
+000eca50 ?FUN_000eca50@Path@@QAEMM@Z
+000f25e0 ?FUN_000f25e0@PathTmpStruct@@QAEHPAVPath@@P6GM0M@ZPAM2_N@Z
