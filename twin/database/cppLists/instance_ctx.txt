@@ -1,0 +1,5 @@
+00059740 ?CreateRef@InstanceContextSmartPtr@@QAEPAVInstanceContextRefCounter@@PAVInstanceContext@@E@Z
+00024590 ?FreeCtx@InstanceContextSmartPtr@@QAEXPAVInstanceContext@@@Z
+00059e80 ?FUN_00059e80@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
+000246e0 ?Release@InstanceContextSmartPtr@@QAEXXZ
+00059c60 ?SetCtx@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
