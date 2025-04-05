@@ -1,6 +1,8 @@
 #pragma once
 #include <twin_base.h>
+#include "auto_class_2.h"
 
+class InstanceContextBase;
 class InstanceContext;
 class InstanceContextRefCounter;
 class InstanceContextSmartPtr;
@@ -22,9 +24,29 @@ public:
 	InstanceContextSmartPtr* SetCtx(InstanceContext* ctx);
 };
 
-class InstanceContext {
+class InstanceContextBase {
 public:
-	byte padding[0xb4]; //TODO: unfinished class
+	InstanceContextBase();
+	virtual ~InstanceContextBase();
+
+	InstanceContext* ctx1;
+	int a;
+	int b;
+	int c;
+	int flags;
+	//InstanceTransform* transform; 
+	void* transform; 
+	InstanceContext* ctx2;
+	AutoClass2 ac2;
+	int d;
+	int e;
+	int f;
+	//ChunkData* chunkData;
+	void* chunkData;
+};
+
+class InstanceContext : public InstanceContextBase { //TODO: unfinished class
+public:
 	int a;
 	int b;
 	int c;
