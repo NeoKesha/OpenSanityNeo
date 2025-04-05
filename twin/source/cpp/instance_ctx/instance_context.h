@@ -11,7 +11,7 @@ public:
 	int refCount;
 };
 
-class InstanceContextSmartPtr {
+class InstanceContextSmartPtr : public TwinBase {
 public:
 	InstanceContextRefCounter* refCounter;
 	
