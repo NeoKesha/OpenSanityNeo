@@ -56,3 +56,9 @@ public:
 	Vector4 row3;
 	Vector4 row4;
 };
+
+class BoundingBox {
+public:
+	Vector4 v1;
+	Vector4 v2;
+};
