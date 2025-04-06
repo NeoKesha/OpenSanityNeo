@@ -11,3 +11,14 @@
 #InstanceTransform
 000e1640 ??0InstanceTransform@@QAE@XZ
 000d1ac0 ??0InstanceTransform@@QAE@PAV0@@Z
+000e1730 ?FillMatrix@InstanceTransform@@QAEXXZ
+000fd150 ?Reset@InstanceTransform@@QAE_NXZ
+00026710 ?SetupPosition@InstanceTransform@@QAE_NPAVVector4@@@Z
+000265d0 ?GetTransformRow2@InstanceTransform@@QAEXPAVVector4@@@Z
+00026600 ?GetTransformRow3@InstanceTransform@@QAEXPAVVector4@@@Z
+00026640 ?GetTransformRow4@InstanceTransform@@QAEXPAVVector4@@@Z
+00026670 ?ExtractPosition@InstanceTransform@@QAEXXZ
+000266b0 ?GetPosition@InstanceTransform@@QAEXPAVVector4@@@Z
+000267c0 ?SetPositionFromOther@InstanceTransform@@QAE_NPAV1@@Z
+00026880 ?AddPosition@InstanceTransform@@QAE_NPAVVector4@@@Z
+000a6690 ?FUN_000a6690@InstanceTransform@@QAEXPAVMatrix4@@PAVVector4@@1H@Z

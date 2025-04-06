@@ -147,3 +147,32 @@ void __stdcall Vector4::StaticTransform(Vector4* outVector, float k) {
 	outVector->z = result.z;
 	outVector->w = result.w;
 }
+
+void Matrix4::FromRotation(Vector4 *rot) {
+	float a = rot->x * (rot->x + rot->x);
+	float b = rot->y + rot->y;
+	float c = rot->z + rot->z;
+	float d = rot->w * (rot->x + rot->x);
+	
+	this->row1.x = 1.0f - (rot->z * c + rot->y * b);
+	this->row1.y = rot->w * c + rot->x * b;
+	this->row1.z = rot->x * c - rot->w * b;
+	this->row1.w = 0.0f;
+	
+	this->row2.x = rot->x * b - rot->w * c;
+	this->row2.y = 1.0f - (rot->z * c + a);
+	this->row2.z = d + rot->y * c;
+	this->row2.w = 0.0f;
+	
+	this->row3.x = rot->w * b + rot->x * c;
+	this->row3.y = rot->y * c - d;
+	this->row3.z = 1.0f - (rot->y * b + a);
+	this->row3.w = 0.0f;
+}
+
+void Matrix4::TransformOut(Vector4* vec, Vector4* out) {
+	out->x = this->row3.x * vec->z + this->row2.x * vec->y + this->row1.x * vec->x;
+	out->y = this->row3.y * vec->z + this->row2.y * vec->y + this->row1.y * vec->x;
+	out->z = this->row3.z * vec->z + this->row2.z * vec->y + this->row1.z * vec->x;
+	out->w = vec->w;
+}

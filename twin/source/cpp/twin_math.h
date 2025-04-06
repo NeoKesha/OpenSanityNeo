@@ -55,6 +55,9 @@ public:
 	Vector4 row2;
 	Vector4 row3;
 	Vector4 row4;
+	
+	void FromRotation(Vector4* rot);
+	void TransformOut(Vector4* vec, Vector4* out);
 };
 
 class BoundingBox {

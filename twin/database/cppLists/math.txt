@@ -16,3 +16,5 @@
 00029b20 ?CopyTo@Vector4@@QAEXPAV1@@Z
 00027150 ?Reset@Vector4@@QAEXXZ
 000de520 ?StaticTransform@Vector4@@SGXPAV1@M@Z
+000d9f80 ?FromRotation@Matrix4@@QAEXPAVVector4@@@Z
+000d42b0 ?TransformOut@Matrix4@@QAEXPAVVector4@@0@Z

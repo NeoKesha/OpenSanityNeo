@@ -5,7 +5,7 @@
 extern "C" void InitFun();
 extern "C" void UpdateFun();
 //#define FUNNY_001
-#define FUNNY_002
+//#define FUNNY_002
 
 #ifdef FUNNY_002
 	class InputController;
