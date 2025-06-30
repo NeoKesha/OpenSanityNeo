@@ -232,11 +232,11 @@ bool InstanceTransform::AddPosition(Vector4* delta) {
 	return true;
 }
 
-void InstanceTransform::FUN_000a6690(Matrix4* mat, Vector4* vec, Vector4* out, int reserved) {
+void __stdcall InstanceTransform::FUN_000a6690(InstanceTransform* instTransform, Matrix4* mat, Vector4* vec, Vector4* out) {
 	Vector3 tUp;
-	tUp.x = this->transform.row2.x;
-	tUp.y = this->transform.row2.y;
-	tUp.z = this->transform.row2.z;
+	tUp.x = instTransform->transform.row2.x;
+	tUp.y = instTransform->transform.row2.y;
+	tUp.z = instTransform->transform.row2.z;
 	float length = sqrt(vec->x * vec->x + vec->y * vec->y + vec->z * vec->z);
 	float lengthInverse = 1.0f / length;
 	Vector4 result;

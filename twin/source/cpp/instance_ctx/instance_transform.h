@@ -29,7 +29,7 @@ public:
 	
 	bool SetPositionFromOther(InstanceTransform* other);
 	bool AddPosition(Vector4* delta);
-	void FUN_000a6690(Matrix4* mat, Vector4* vec, Vector4* out, int reserved);
+	static void __stdcall FUN_000a6690(InstanceTransform* instTransform, Matrix4* mat, Vector4* vec, Vector4* out);
 };
 
 
