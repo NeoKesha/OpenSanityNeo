@@ -17,6 +17,6 @@ public:
 	unsigned short dataAmount[6];
 	unsigned short blockOffset[5];
 	unsigned short unk;
-	int blobSize;
+	unsigned int blobSize;
 	unsigned char* blob;
 };

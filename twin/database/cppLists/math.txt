@@ -11,6 +11,7 @@
 00027600 ?CopyTo@Vector3@@QAEXPAVVector4@@@Z
 00025c00 ?GetLengthSqr@Vector4@@QAEMXZ
 000254e0 ?GetLength@Vector4@@QAEMXZ
+00025c40 ?GetInverseLengthSqr@Vector4@@QAEMMM@Z
 00020a80 ?Transform@Vector3@@SAXPAV1@0PAVMatrix4@@@Z
 00020b50 ?Transform@Vector4@@SAXPAV1@0PAVMatrix4@@@Z
 00029b20 ?CopyTo@Vector4@@QAEXPAV1@@Z
@@ -18,3 +19,4 @@
 000de520 ?StaticTransform@Vector4@@SGXPAV1@M@Z
 000d9f80 ?FromRotation@Matrix4@@QAEXPAVVector4@@@Z
 000d42b0 ?TransformOut@Matrix4@@QAEXPAVVector4@@0@Z
+00149a50 ?AddVectorToDict@Vector4@@SAHPAV1@@Z

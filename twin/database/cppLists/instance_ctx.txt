@@ -25,6 +25,6 @@
 #AutoClass40
 00149610 ??0AutoClass40@@QAE@XZ
 00149640 ??1AutoClass40@@QAE@XZ
-#0014b370 ?FUN_0014b370@AutoClass40@@QAEXPAVMemoryStream@@@Z
+0014b370 ?FUN_0014b370@AutoClass40@@QAEXPAVMemoryStream@@@Z
 #00150ee0 ?FUN_00150ee0@AutoClass40@@QAEXPAVMatrix4@@@Z
 #00149b70 ?Set@AutoClass40@@QAEXPAVVector4@@0@Z

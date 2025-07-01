@@ -78,7 +78,7 @@ float Vector4::GetLengthSqr() {
 }
 
 float Vector4::GetLength() {
-	return sqrt(this->x * this->x + this->y * this->y + this->z * this->z + this->w * this->w);
+	return sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
 }
 
 void __cdecl Vector3::Transform(Vector3* a, Vector3* b, Matrix4* m) {
@@ -100,11 +100,45 @@ void Vector4::Reset() {
 	this->w = 1.0f;
 }
 
+float Vector4::GetInverseLengthSqr(float defaultInverse, float epsilon) {
+	float length = this->x * this->x + this->y * this->y + this->z * this->z + this->w * this->w;
+	if (length > epsilon * epsilon) {
+		return 1.0f / length;
+	}
+	
+	return defaultInverse;
+}
+
 void Vector4::CopyTo(Vector4* other) {
 	other->x = this->x;
 	other->y = this->y;
 	other->z = this->z;
 	other->w = 1.0f;
+}
+
+int __cdecl Vector4::AddVectorToDict(Vector4 *vector) {
+	Vector4* ptr = &VECTOR_ARRAY;
+	for (int i = 0; i < SOME_VECTOR_INDEX; ++i) {
+		float dx = ptr->x - vector->x;
+		float dy = ptr->y - vector->y;
+		float dz = ptr->z - vector->z;
+		if (sqrt(dx*dx + dy*dy + dz*dz) < 0.0001f) {
+			return i;
+		}
+		++ptr;
+	}
+	
+	int cnt = SOME_VECTOR_INDEX;
+	Vector4* last = &VECTOR_ARRAY + SOME_VECTOR_INDEX;
+	++SOME_VECTOR_INDEX;
+	last->x = vector->x;
+	last->y = vector->y;
+	last->z = vector->z;
+	last->w = vector->w;
+	static char buffer[512];
+	sprintf(buffer, "New entry %d: %f %f %f", cnt, last->x, last->y, last->z);
+	OutputDebugString(buffer);
+	return cnt;
 }
 
 void __stdcall Vector4::StaticTransform(Vector4* outVector, float k) {

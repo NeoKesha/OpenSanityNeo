@@ -32,6 +32,10 @@ public:
 	static float __cdecl DistanceDelta(Vector3* a ,Vector3* b, Vector3* outDelta);
 };
 
+//Globals
+extern "C" Vector4 VECTOR_ARRAY;
+extern "C" int SOME_VECTOR_INDEX;
+
 class Vector4 {
 public:
 	float x;
@@ -41,11 +45,13 @@ public:
 	
 	float GetLength();
 	float GetLengthSqr();
+	float GetInverseLengthSqr(float defaultInverse, float epsilon);
 	void Reset();
 	void CopyTo(Vector4* other);
 	
 	static void __cdecl Transform(Vector4* a, Vector4* b, Matrix4* m);
 	static void __stdcall StaticTransform(Vector4* outVector, float k);
+	static int __cdecl AddVectorToDict(Vector4 *vector);
 };
 
 class Path;
