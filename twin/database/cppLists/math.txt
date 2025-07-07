@@ -19,4 +19,3 @@
 000de520 ?StaticTransform@Vector4@@SGXPAV1@M@Z
 000d9f80 ?FromRotation@Matrix4@@QAEXPAVVector4@@@Z
 000d42b0 ?TransformOut@Matrix4@@QAEXPAVVector4@@0@Z
-00149a50 ?AddVectorToDict@Vector4@@SAHPAV1@@Z

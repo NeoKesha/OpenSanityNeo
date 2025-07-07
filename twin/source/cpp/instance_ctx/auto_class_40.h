@@ -3,6 +3,8 @@
 #include <twin_math.h>
 #include <stream\memory_stream.h>
 
+extern "C" void __cdecl FUN_0014e450(unsigned char idx1, unsigned char idx2, unsigned char idx3);
+
 class AutoClass40 : public TwinBase {
 public:
 
