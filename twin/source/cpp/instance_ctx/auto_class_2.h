@@ -1,20 +1,20 @@
 #pragma once
 #include <twin_base.h>
 #include <twin_math.h>
+#include "auto_class_40.h"
 
+class InstanceContextBase;
 class AutoClass2 : public TwinBase {
 public:
 
-	AutoClass2(void* ctx);
+	AutoClass2();
+	AutoClass2(InstanceContextBase* ctx);
 
-	//InstanceContext* ctx;
-	void* ctx;
-	//AutoClass40* ac40ptr;
-	void* ac40ptr;
+	InstanceContextBase* ctx;
+	AutoClass40* ac40ptr;
 	int a;
 	int b;
-	//InstanceContext* ctx2;
-	void* ctx2;
+	InstanceContextBase* ctx2;
 	int c;
 	int d;
 	Matrix4* matrix1;

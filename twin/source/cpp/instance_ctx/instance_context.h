@@ -1,6 +1,7 @@
 #pragma once
 #include <twin_base.h>
 #include "auto_class_2.h"
+#include "instance_transform.h"
 
 class InstanceContextBase;
 class InstanceContext;
@@ -24,19 +25,27 @@ public:
 	InstanceContextSmartPtr* SetCtx(InstanceContext* ctx);
 };
 
-class InstanceContextBase {
+class InstanceContextBase : public TwinBase {
 public:
 	InstanceContextBase();
+	InstanceContextBase(InstanceTransform* transform);
+	InstanceContextBase(int param);
+	InstanceContextBase(InstanceTransform* transform, int param);
+	
 	virtual ~InstanceContextBase();
+	
+	virtual bool Method1();
+	virtual bool Method2();
+	virtual bool Method3();
+	virtual void Method4();
 
-	InstanceContext* ctx1;
+	InstanceContextBase* ctx1;
 	int a;
 	int b;
 	int c;
 	int flags;
-	//InstanceTransform* transform; 
-	void* transform; 
-	InstanceContext* ctx2;
+	InstanceTransform* transform; 
+	InstanceContextBase* ctx2;
 	AutoClass2 ac2;
 	int d;
 	int e;

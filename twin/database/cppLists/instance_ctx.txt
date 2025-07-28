@@ -7,7 +7,7 @@
 ###
 00059c60 ?SetCtx@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
 #AutoClass2
-00137310 ??0AutoClass2@@QAE@PAX@Z
+00137310 ??0AutoClass2@@QAE@PAVInstanceContextBase@@@Z
 #InstanceTransform
 000e1640 ??0InstanceTransform@@QAE@XZ
 000d1ac0 ??0InstanceTransform@@QAE@PAV0@@Z
@@ -28,3 +28,14 @@
 0014b370 ?FUN_0014b370@AutoClass40@@QAEXPAVMemoryStream@@@Z
 #00150ee0 ?FUN_00150ee0@AutoClass40@@QAEXPAVMatrix4@@@Z
 #00149b70 ?Set@AutoClass40@@QAEXPAVVector4@@0@Z
+#InstanceContext
+000f8460 ??0InstanceContextBase@@QAE@XZ
+000f6fc0 ??0InstanceContextBase@@QAE@PAVInstanceTransform@@@Z
+000f84c0 ??0InstanceContextBase@@QAE@H@Z
+000f7020 ??0InstanceContextBase@@QAE@PAVInstanceTransform@@H@Z
+000f7080 ??1InstanceContextBase@@UAE@XZ
+000fd3b0 ??_GInstanceContextBase@@UAEPAXI@Z
+000f70a0 ?Method1@InstanceContextBase@@UAE_NXZ
+000f70c0 ?Method2@InstanceContextBase@@UAE_NXZ
+000f70e0 ?Method3@InstanceContextBase@@UAE_NXZ
+000f7100 ?Method4@InstanceContextBase@@UAEXXZ

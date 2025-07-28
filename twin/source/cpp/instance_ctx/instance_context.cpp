@@ -86,3 +86,49 @@ InstanceContextSmartPtr* InstanceContextSmartPtr::SetCtx(InstanceContext* ctx){
 	this->refCounter = ctx->smartPtr.CreateRef(ctx, 0);
 	return this;
 }
+
+InstanceContextBase::InstanceContextBase() : ac2(this) {
+	OutputDebugString("ENTER");
+	c = 0;
+	flags = 0;
+	chunkData = NULL;
+	transform = new InstanceTransform();
+	transform->Reset();
+	OutputDebugString("EXIT");
+}
+InstanceContextBase::InstanceContextBase(InstanceTransform* other) : ac2(this) {
+	c = 0;
+	flags = 0;
+	chunkData = NULL;
+	transform = new InstanceTransform(other);
+}
+InstanceContextBase::InstanceContextBase(int param) {
+	AssertNonImplemented
+}
+InstanceContextBase::InstanceContextBase(InstanceTransform* transform, int param) {
+	AssertNonImplemented
+}
+
+InstanceContextBase::~InstanceContextBase() {
+	PrintMe
+}
+
+bool InstanceContextBase::Method1() {
+	PrintMe
+	return true;
+}
+
+bool InstanceContextBase::Method2() {
+	PrintMe
+	return true;
+}
+
+bool InstanceContextBase::Method3() {
+	PrintMe
+	return true;
+}
+
+void InstanceContextBase::Method4() {
+	PrintMe
+	return;
+}

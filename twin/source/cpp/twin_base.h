@@ -4,6 +4,9 @@
 	OutputDebugStringA(__FUNCTION__);\
 	while(true);\
 }
+#define PrintMe {\
+	OutputDebugStringA(__FUNCTION__);\
+}
 
 //#define _AllocateMemory(size) (FUN_000D06B0(size)) 
 #define _AllocateMemory(size) (VirtualPool::AllocateMemory(size)) 
