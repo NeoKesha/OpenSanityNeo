@@ -54,10 +54,33 @@ public:
 	void* chunkData;
 };
 
+class InstanceDataList {
+public:
+	int cnt;
+	void* nodes[24]; //NodeAbstract;
+};
+
 class InstanceContext : public InstanceContextBase { //TODO: unfinished class
 public:
-	int a;
-	int b;
-	int c;
+	int var1;
+	int var2;
+	int var3;
 	InstanceContextSmartPtr smartPtr;
+	int var4;
+	int var5;
+	int var6;
+	Vector4 vec;
+	int var7;
+	InstanceDataList nodes;
+	void* findMe;
+	//InstanceContextSub* subPtr;
+	void* subPtr;
+	InstanceContext* prev;
+	InstanceContext* next;
+	int var8;
+	int var9;
+	int var10;
+	int someIndex;
+	int var11;
+	int var12;
 };

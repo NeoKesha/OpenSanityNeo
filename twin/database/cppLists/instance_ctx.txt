@@ -1,9 +1,8 @@
 #Smart ptr fot InstanceContext
 00059740 ?CreateRef@InstanceContextSmartPtr@@QAEPAVInstanceContextRefCounter@@PAVInstanceContext@@E@Z
-###disable those because i can't delete InstanceContext yet
-#00024590 ?FreeCtx@InstanceContextSmartPtr@@QAEXPAVInstanceContext@@@Z
-#00059e80 ?FUN_00059e80@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
-#000246e0 ?Release@InstanceContextSmartPtr@@QAEXXZ
+00024590 ?FreeCtx@InstanceContextSmartPtr@@QAEXPAVInstanceContext@@@Z
+00059e80 ?FUN_00059e80@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
+000246e0 ?Release@InstanceContextSmartPtr@@QAEXXZ
 ###
 00059c60 ?SetCtx@InstanceContextSmartPtr@@QAEPAV1@PAVInstanceContext@@@Z
 #AutoClass2
@@ -39,3 +38,9 @@
 000f70c0 ?Method2@InstanceContextBase@@UAE_NXZ
 000f70e0 ?Method3@InstanceContextBase@@UAE_NXZ
 000f7100 ?Method4@InstanceContextBase@@UAEXXZ
+#InstanceNodeAbstract
+000f6740 ??0InstanceNodeAbstract@@QAE@XZ
+000fd330 ??_GInstanceNodeAbstract@@UAEPAXI@Z
+000f6760 ??1InstanceNodeAbstract@@UAE@XZ
+000f9930 ?ReleaseCtxPtr@InstanceNodeAbstract@@UAEXVInstanceContextSmartPtr@@@Z
+000f6770 ?SetCtx@InstanceNodeAbstract@@UAEXPAVInstanceContext@@@Z
