@@ -1,7 +1,23 @@
+#ActionAbstract
 00024c80 ??0ActionAbstract@@QAE@XZ
 00024ce0 ??_GActionAbstract@@UAEPAXI@Z
 0017ef10 ??1ActionAbstract@@UAE@XZ
 00024ca0 ?UnkMethod@ActionAbstract@@UAEXPAX@Z
-00024cc0 ?EmptyFunction@ActionAbstract@@UAEXPAVInstanceContext@@@Z
+00024cc0 ?Execute@ActionAbstract@@UAEXPAVInstanceContext@@@Z
 0017ef80 ?ReturnTrue@ActionAbstract@@UAE_NH@Z
 00016fc3 ?Get0x1806@ActionAbstract@@UAEHXZ
+#SetPlayerInput
+#0002a490 ??0ActionSetPlayerInput@@QAE@XZ forbidden before everything implemented
+#scalar ??_GActionSetPlayerInput@@UAEPAXI@Z
+#dtor ??1ActionSetPlayerInput@@UAE@XZ
+#00045610 ?UnkMethod@ActionSetPlayerInput@@UAEXPAX@Z
+#0004ae20 ?ExecuteFromCallContext@ActionSetPlayerInput@@UAEXPAVUnkTimePack@@PAVInstanceContext@@H@Z
+0002a4c0 ?GetSize@ActionSetPlayerInput@@UAEHXZ
+#pickup wumpa
+#0002a3f0 ??0ActionPickUpWumpa@@QAE@XZ forbidden before everything implemented
+000568c0 ??_GActionPickUpWumpa@@UAEPAXI@Z
+#0017ef10 ??1ActionPickUpWumpa@@UAE@XZ already resolved
+#000455a0 ?UnkMethod@ActionPickUpWumpa@@UAEXPAX@Z
+#00039f50 ?Execute@ActionPickUpWumpa@@UAEXPAVInstanceContext@@@Z
+0002a420 ?ExecuteFromCallContext@ActionPickUpWumpa@@UAEXPAVUnkTimePack@@PAVInstanceContext@@H@Z
+0002a440 ?GetSize@ActionPickUpWumpa@@UAEHXZ
