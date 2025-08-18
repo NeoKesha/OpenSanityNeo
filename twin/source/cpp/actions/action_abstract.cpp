@@ -1,7 +1,7 @@
 #include <XTL.h>
 #include <stl.h>
 #include "action_abstract.h"
-
+#include <game/game_controller.h>
 ActionAbstract::ActionAbstract() {
 	idx = -1;
 	nextAction = 0;
@@ -73,7 +73,20 @@ void ActionPickUpWumpa::Execute(InstanceContext* ctx) {
 	//Node crate
 	//Decomp Game Controller
 	//Decomp OLEG
-	AssertNonImplemented
+	static char buffer[256];
+	
+	for (int i = 0; i < 64; ++i) {
+		OlegModuleAbstract* module = GameController1->oleg.modules[i];
+		if (module == 0) continue;
+		
+		sprintf(buffer, "Module %d: (%f %f) (%f %f)", i, module->vec1.x,module->vec1.y,module->vec2.x,module->vec2.y);
+		OutputDebugString(buffer);
+		
+		module->vec2.x = 20.0f;
+		module->vec2.y = 20.0f;
+	}
+
+	GameController1->oleg.wumpaCnt += wumpaAmount;
 	return;
 }
 
