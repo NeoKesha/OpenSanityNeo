@@ -46,6 +46,6 @@
 000f6770 ?SetCtx@InstanceNodeAbstract@@UAEXPAVInstanceContext@@@Z
 00014a61 ?IsA@InstanceNodeAbstract@@UAE_NXZ
 00014066 ?EmptyFunction@InstanceNodeAbstract@@UAEXH@Z
-000133af ?UpdateTime@InstanceNodeAbstract@@UAEXPAVUnkTimePack@@@Z
+000133af ?UpdateTime@InstanceNodeAbstract@@UAEXPAVUnkTimePack@@H@Z
 000f6790 ?Step@InstanceNodeAbstract@@UAE_NPAVUnkTimePack@@@Z
 00065bb0 ?EmptyFunction2@InstanceNodeAbstract@@UAEXXZ

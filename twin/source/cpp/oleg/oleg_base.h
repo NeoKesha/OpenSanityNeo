@@ -54,6 +54,7 @@ public:
 	unsigned char wumpaCnt;
 	unsigned char cnt2;
 	unsigned char cnt3;
+	int screenFlags;
 	
 	int a;
 	int b;
@@ -122,7 +123,7 @@ public:
 
 class OlegModuleB : public OlegModuleAbstract {
 public:
-	Vector2 array[10]
+	Vector2 array[10];
 };
 
 class OlegModuleIcon : public OlegModuleA {
@@ -176,5 +177,6 @@ public:
 	unsigned char index1;
 	unsigned char b;
 	int index2;
-	UIElementSimpleShapeA** imageArray;
+	//UIElementSimpleShapeA** imageArray;
+	void** imageArray;
 };

@@ -34,7 +34,7 @@ void InstanceNodeAbstract::EmptyFunction(int param) {
 	
 }
 
-void InstanceNodeAbstract::UpdateTime(UnkTimePack* time) {
+void InstanceNodeAbstract::UpdateTime(UnkTimePack* time, int flags) {
 	this->time = time->fields[0].time1;
 }
 
@@ -50,5 +50,5 @@ bool InstanceNodeAbstract::Step(UnkTimePack* newTime) {
 }
 
 void InstanceNodeAbstract::EmptyFunction2() {
-
+	
 }

@@ -14,7 +14,7 @@ public:
 	virtual bool IsA();
 	virtual int GetIndex() = 0;
 	virtual void EmptyFunction(int param);
-	virtual void UpdateTime(UnkTimePack* time);
+	virtual void UpdateTime(UnkTimePack* time, int flags);
 	virtual bool Step(UnkTimePack* time);
 	virtual void EmptyFunction2();
 	virtual int GetBuilderIndex() = 0;

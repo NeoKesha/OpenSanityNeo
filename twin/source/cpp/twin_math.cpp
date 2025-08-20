@@ -157,6 +157,14 @@ void __stdcall Vector4::StaticTransform(Vector4* outVector, float k) {
 	outVector->w = result.w;
 }
 
+Matrix4::Matrix4() {
+	ZeroMemory(this, sizeof(Matrix4));
+	row1.x = 1.0f;
+	row2.y = 1.0f;
+	row3.z = 1.0f;
+	row4.w = 1.0f;
+}
+
 void Matrix4::FromRotation(Vector4 *rot) {
 	float a = rot->x * (rot->x + rot->x);
 	float b = rot->y + rot->y;
@@ -184,4 +192,131 @@ void Matrix4::TransformOut(Vector4* vec, Vector4* out) {
 	out->y = this->row3.y * vec->z + this->row2.y * vec->y + this->row1.y * vec->x;
 	out->z = this->row3.z * vec->z + this->row2.z * vec->y + this->row1.z * vec->x;
 	out->w = vec->w;
+}
+
+void Matrix4::Multiply4443(Matrix4* mat, Matrix4* out) {
+	float a11 = this->row1.x;
+	float a12 = this->row1.y;
+	float a13 = this->row1.z;
+	float a14 = this->row1.w;
+	float a21 = this->row2.x;
+	float a22 = this->row2.y;
+	float a23 = this->row2.z;
+	float a24 = this->row2.w;
+	float a31 = this->row3.x;
+	float a32 = this->row3.y;
+	float a33 = this->row3.z;
+	float a34 = this->row3.w;
+	float a41 = this->row4.x;
+	float a42 = this->row4.y;
+	float a43 = this->row4.z;
+	float a44 = this->row4.w;
+	float b11 = mat->row1.x;
+	float b12 = mat->row1.y;
+	float b13 = mat->row1.z;
+	float b14 = mat->row1.w;
+	float b21 = mat->row2.x;
+	float b22 = mat->row2.y;
+	float b23 = mat->row2.z;
+	float b24 = mat->row2.w;
+	float b31 = mat->row3.x;
+	float b32 = mat->row3.y;
+	float b33 = mat->row3.z;
+	float b34 = mat->row3.w;
+	float b41 = mat->row4.x;
+	float b42 = mat->row4.y;
+	float b43 = mat->row4.z;
+	float b44 = mat->row4.w;
+	out->row1.x = a11 * b11 + a12 * b21 + a13 * b31 + a14 * b41;
+	out->row1.y = a11 * b12 + a12 * b22 + a13 * b32 + a14 * b42;
+	out->row1.z = a11 * b13 + a12 * b23 + a13 * b33 + a14 * b43;
+	out->row1.w = a11 * b14 + a12 * b24 + a13 * b34 + a14 * b44;
+	out->row2.x = a21 * b11 + a22 * b21 + a23 * b31 + a24 * b41;
+	out->row2.y = a21 * b12 + a22 * b22 + a23 * b32 + a24 * b42;
+	out->row2.z = a21 * b13 + a22 * b23 + a23 * b33 + a24 * b43;
+	out->row2.w = a21 * b14 + a22 * b24 + a23 * b34 + a24 * b44;
+	out->row3.x = a31 * b11 + a32 * b21 + a33 * b31 + a34 * b41;
+	out->row3.y = a31 * b12 + a32 * b22 + a33 * b32 + a34 * b42;
+	out->row3.z = a31 * b13 + a32 * b23 + a33 * b33 + a34 * b43;
+	out->row3.w = a31 * b14 + a32 * b24 + a33 * b34 + a34 * b44;
+	out->row4.x = a41 * b11 + a42 * b21 + a43 * b31 + a44 * b41;
+	out->row4.y = a41 * b12 + a42 * b22 + a43 * b32 + a44 * b42;
+	out->row4.z = a41 * b13 + a42 * b23 + a43 * b33 + a44 * b43;
+	out->row4.w = a41 * b14 + a42 * b24 + a43 * b34 + a44 * b44;
+	return;
+}
+
+SplineAbstract::SplineAbstract() {
+	next = 0;
+	position = 0.0f;
+	argument = 0.0f;
+	repeats = 0;
+}
+
+SplineAbstract::~SplineAbstract() {
+
+}
+
+void SplineAbstract::Transform(Matrix4* matrix) {
+
+}
+
+void SplineAbstract::UnkMethod(int param) {
+
+}
+
+void SplineAbstract::Reset() {
+	position = 0.0f;
+	argument = 0.0f;
+	repeats = 0;
+}
+
+SplineA::SplineA() : SplineAbstract() {
+	arrayLength = 4;
+	spline = new Vector2[arrayLength];
+	spline[0].x = 1.0f;
+	spline[0].y = 1.0f;
+	spline[1].x = 1.2f;
+	spline[1].y = 1.2f;
+	spline[2].x = 1.3f;
+	spline[2].y = 1.3f;
+	spline[3].x = 1.0f;
+	spline[3].y = 1.0f;
+}
+
+SplineA::~SplineA() {
+	delete spline; //not in the original code, fixing memory leak
+}
+
+SplineAbstract* SplineA::Step(float step, int param_2, int param_3, bool flag) {
+	SplineAbstract* segment = this;
+	if (flag) {
+		this->argument = this->position / this->length;
+		this->position = this->position + step;
+		if (this->argument >= 1.0f) {
+			this->repeats -= 1;
+			this->position = 0.0f;
+			if (this->repeats <= 0) {
+				segment = this->next;
+			}
+		}
+	}
+	return segment;
+}
+
+void SplineA::Transform(Matrix4* matrix) {
+	Vector2 vec;
+	Matrix4 tmpMatrix;
+	if (argument >= 1.0f) {
+		vec.x = spline[arrayLength - 1].x;
+		vec.y = spline[arrayLength - 1].y;
+	} else {
+		int idx = (int)((arrayLength - 1) * argument);
+		vec.x = (spline[idx + 1].x - spline[idx].x) * (argument - idx) + spline[idx].x;
+		vec.y = (spline[idx + 1].y - spline[idx].y) * (argument - idx) + spline[idx].y;
+	}
+	
+	tmpMatrix.row1.x = vec.x;
+	tmpMatrix.row2.y = vec.y;
+	tmpMatrix.Multiply4443(matrix, matrix);
 }

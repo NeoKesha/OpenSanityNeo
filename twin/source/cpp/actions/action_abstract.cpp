@@ -73,25 +73,12 @@ void ActionPickUpWumpa::Execute(InstanceContext* ctx) {
 	//Node crate
 	//Decomp Game Controller
 	//Decomp OLEG
-	static char buffer[256];
-	
-	for (int i = 0; i < 64; ++i) {
-		OlegModuleAbstract* module = GameController1->oleg.modules[i];
-		if (module == 0) continue;
-		
-		sprintf(buffer, "Module %d: (%f %f) (%f %f)", i, module->vec1.x,module->vec1.y,module->vec2.x,module->vec2.y);
-		OutputDebugString(buffer);
-		
-		module->vec2.x = 20.0f;
-		module->vec2.y = 20.0f;
-	}
-
+	GameController1->oleg.screenFlags = 0xFFFFFFFF;
 	GameController1->oleg.wumpaCnt += wumpaAmount;
 	return;
 }
 
 void ActionPickUpWumpa::ExecuteFromCallContext(UnkTimePack* time, InstanceContext *ctx, int unk) {
-	PrintMe
 	Execute((InstanceContext*)ctx->ctx1); //Upcast for life, because i don't know if it's base or child used in the actions and i am not comfortable with putting non base pointer into the base class
 	return;
 }

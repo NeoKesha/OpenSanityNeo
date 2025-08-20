@@ -1,4 +1,5 @@
 #pragma once
+#include <twin_base.h>
 
 class Matrix4;
 class Vector2;
@@ -52,6 +53,8 @@ public:
 class Path;
 class Matrix4 {
 public:
+	Matrix4();
+
 	Vector4 row1;
 	Vector4 row2;
 	Vector4 row3;
@@ -59,10 +62,38 @@ public:
 	
 	void FromRotation(Vector4* rot);
 	void TransformOut(Vector4* vec, Vector4* out);
+	void Multiply4443(Matrix4* mat, Matrix4* out);
 };
 
 class BoundingBox {
 public:
 	Vector4 v1;
 	Vector4 v2;
+};
+
+class SplineAbstract : public TwinBase {
+public:
+	SplineAbstract();
+	virtual ~SplineAbstract();
+	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag) = 0;
+	virtual void Transform(Matrix4* matrix);
+	virtual void UnkMethod(int param);
+	virtual void Reset();
+	
+	float length;
+	float position;
+	float argument;
+	int repeats;
+	SplineAbstract* next;
+};
+
+class SplineA : public SplineAbstract {
+public:
+	SplineA();
+	~SplineA();
+	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag);
+	virtual void Transform(Matrix4* matrix);
+	
+	int arrayLength;
+	Vector2* spline;
 };

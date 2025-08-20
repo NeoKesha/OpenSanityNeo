@@ -17,5 +17,20 @@
 00029b20 ?CopyTo@Vector4@@QAEXPAV1@@Z
 00027150 ?Reset@Vector4@@QAEXXZ
 000de520 ?StaticTransform@Vector4@@SGXPAV1@M@Z
+000d4120 ??0Matrix4@@QAE@XZ
 000d9f80 ?FromRotation@Matrix4@@QAEXPAVVector4@@@Z
 000d42b0 ?TransformOut@Matrix4@@QAEXPAVVector4@@0@Z
+000643c0 ?Multiply4443@Matrix4@@QAEXPAV1@0@Z
+#Spline Abstract
+000c3cd0 ??0SplineAbstract@@QAE@XZ
+000ac1e0 ??_GSplineAbstract@@UAEPAXI@Z
+000ac130 ??1SplineAbstract@@UAE@XZ
+000ac140 ?Transform@SplineAbstract@@UAEXPAVMatrix4@@@Z
+000ac150 ?UnkMethod@SplineAbstract@@UAEXH@Z
+000ac160 ?Reset@SplineAbstract@@UAEXXZ
+#Spline A
+#000b0370 ??0SplineA@@QAE@XZ
+#000c3ea0 ??_GSplineA@@UAEPAXI@Z
+#??1SplineA@@UAE@XZ already handled
+000c3e30 ?Step@SplineA@@UAEPAVSplineAbstract@@MHH_N@Z
+000b6e90 ?Transform@SplineA@@UAEXPAVMatrix4@@@Z
