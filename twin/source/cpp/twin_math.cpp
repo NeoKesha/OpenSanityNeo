@@ -307,13 +307,17 @@ SplineAbstract* SplineA::Step(float step, int param_2, int param_3, bool flag) {
 void SplineA::Transform(Matrix4* matrix) {
 	Vector2 vec;
 	Matrix4 tmpMatrix;
-	if (argument >= 1.0f) {
+	float j = argument;
+	if (1.0f <= j) {
 		vec.x = spline[arrayLength - 1].x;
 		vec.y = spline[arrayLength - 1].y;
 	} else {
-		int idx = (int)((arrayLength - 1) * argument);
-		vec.x = (spline[idx + 1].x - spline[idx].x) * (argument - idx) + spline[idx].x;
-		vec.y = (spline[idx + 1].y - spline[idx].y) * (argument - idx) + spline[idx].y;
+		Vector2* vectorArray = spline;
+		j = (float)(arrayLength - 1) * j;
+		int i = (int)j;
+		j = j - (float)i;
+		vec.x = (vectorArray[i + 1].x - vectorArray[i].x) * j + vectorArray[i].x;
+		vec.y = (vectorArray[i + 1].y - vectorArray[i].y) * j + vectorArray[i].y;
 	}
 	
 	tmpMatrix.row1.x = vec.x;

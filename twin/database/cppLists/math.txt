@@ -29,8 +29,8 @@
 000ac150 ?UnkMethod@SplineAbstract@@UAEXH@Z
 000ac160 ?Reset@SplineAbstract@@UAEXXZ
 #Spline A
-#000b0370 ??0SplineA@@QAE@XZ
-#000c3ea0 ??_GSplineA@@UAEPAXI@Z
+000b0370 ??0SplineA@@QAE@XZ
+000c3ea0 ??_GSplineA@@UAEPAXI@Z
 #??1SplineA@@UAE@XZ already handled
 000c3e30 ?Step@SplineA@@UAEPAVSplineAbstract@@MHH_N@Z
 000b6e90 ?Transform@SplineA@@UAEXPAVMatrix4@@@Z
