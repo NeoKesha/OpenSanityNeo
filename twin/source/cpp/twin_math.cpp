@@ -157,12 +157,84 @@ void __stdcall Vector4::StaticTransform(Vector4* outVector, float k) {
 	outVector->w = result.w;
 }
 
+void Rotation2D::FUN_000d2a10(float* x, float* y) {
+	int a = value + 8;
+	int b = a >> 4;
+	int c = b & 0xc00;
+	a = a & 0xf;
+	b = b & 0x3ff;
+	if (c < 0x801) {
+		if ((c == 0x800) || (c == 0)) {
+		  a = a - 8;
+		} else {
+			if (c != 0x400) {
+
+			} else {
+				b = 0x400 - b;
+				a = 7 - a;
+			}
+		}
+
+	} else if (c != 0xc00) {
+
+	} else {
+		b = 0x400 - b;
+		a = 7 - a;
+	}
+	
+
+	float cos = TRIGONOMETRY_INDEXES[b * 2] * 0.00024414063f;
+	float sin = TRIGONOMETRY_INDEXES[b * 2 + 1] * 0.00024414063f;
+	if (a == 0) {
+		*x = cos;
+		*y = sin;
+	} else {
+		float t = 6.2831855f * 0.00024414063f * 0.0625f * a;
+		*x = cos - t * sin;
+		*y = t * cos + sin;
+	}
+	if (c == 0x400) {
+		*x = 0.0 - *x;
+	} else {
+		if (c == 0x800) {
+			*x = 0.0 - *x;
+			*y = 0.0 - *y;
+			return;
+		}
+		if (c == 0xc00) {
+			*y = 0.0 - *y;
+			return;
+		}
+	}
+}
+
 Matrix4::Matrix4() {
 	ZeroMemory(this, sizeof(Matrix4));
 	row1.x = 1.0f;
 	row2.y = 1.0f;
 	row3.z = 1.0f;
 	row4.w = 1.0f;
+}
+
+Matrix4::Matrix4(int angle) {
+	ZeroMemory(this, sizeof(Matrix4));
+	if (angle == 0) {
+		row1.x = 1.0f;
+		row2.y = 1.0f;
+		row3.z = 1.0f;
+		row4.w = 1.0f;
+		return;
+	}
+	Rotation2D* hack = (Rotation2D*)&angle;
+	float x;
+	float y;
+	row4.w = 1.0f;
+	hack->FUN_000d2a10(&x, &y);
+	row2.y = x;
+	row1.x = x;
+	row3.z = 1.0f;
+	row2.x = -y;
+	row1.y = y;
 }
 
 void Matrix4::FromRotation(Vector4 *rot) {
@@ -322,5 +394,38 @@ void SplineA::Transform(Matrix4* matrix) {
 	
 	tmpMatrix.row1.x = vec.x;
 	tmpMatrix.row2.y = vec.y;
+	tmpMatrix.Multiply4443(matrix, matrix);
+}
+
+SplineC::SplineC() : SplineAbstract() {
+
+}
+
+SplineC::~SplineC() {
+
+}
+
+SplineAbstract* SplineC::Step(float step, int param_2, int param_3, bool flag) {
+	SplineAbstract* segment = this;
+	this->argument = this->position / this->length;
+	this->position = this->position + step;
+	if (this->argument >= 1.0f) {
+		this->repeats -= 1;
+		this->position -= this->length;
+		if (this->repeats <= 0) {
+			segment = this->next;
+		}
+	}
+	return segment;
+}
+
+void SplineC::Transform(Matrix4* matrix) {
+	Rotation2D a;
+	float x;
+	float y;
+	a.value = (65536.0f / 6.2831855f) * (argument * 6.2831855f);
+	a.FUN_000d2a10(&x, &y);
+	y = 0.78539819f * y * 0.5f;
+	Matrix4 tmpMatrix((65536.0f / 6.2831855f) * y);
 	tmpMatrix.Multiply4443(matrix, matrix);
 }

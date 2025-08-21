@@ -6,6 +6,15 @@ class Vector2;
 class Vector3;
 class Vector4;
 
+extern "C" short TRIGONOMETRY_INDEXES[2048];
+
+class Rotation2D {
+public:
+	void FUN_000d2a10(float* x, float* y);
+	
+	int value;
+};
+
 class Vector2 {
 public:
 	float x;
@@ -54,6 +63,7 @@ class Path;
 class Matrix4 {
 public:
 	Matrix4();
+	Matrix4(int angle);
 
 	Vector4 row1;
 	Vector4 row2;
@@ -96,4 +106,12 @@ public:
 	
 	int arrayLength;
 	Vector2* spline;
+};
+
+class SplineC : public SplineAbstract {
+public:
+	SplineC();
+	~SplineC();
+	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag);
+	virtual void Transform(Matrix4* matrix);
 };
