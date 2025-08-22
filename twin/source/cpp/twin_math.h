@@ -108,6 +108,20 @@ public:
 	Vector2* spline;
 };
 
+class SplineB : public SplineAbstract {
+public:
+	SplineB();
+	~SplineB();
+	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag);
+	virtual void Transform(Matrix4* matrix);
+	virtual void Reset();
+	
+	int a;
+	int b;
+	//UnkFamily20Base unkStruct[0x4C];
+	unsigned char unkStruct[0x4C];
+};
+
 class SplineC : public SplineAbstract {
 public:
 	SplineC();

@@ -397,6 +397,31 @@ void SplineA::Transform(Matrix4* matrix) {
 	tmpMatrix.Multiply4443(matrix, matrix);
 }
 
+SplineB::SplineB() : SplineAbstract() {
+	AssertNonImplemented
+	//Construct unkStruct
+}
+
+SplineB::~SplineB() {
+	//Deconstruct unkStruct
+	AssertNonImplemented
+}
+
+SplineAbstract* SplineB::Step(float step, int param_2, int param_3, bool flag) {
+	AssertNonImplemented
+	return this;
+}
+
+void SplineB::Transform(Matrix4* matrix) {
+	AssertNonImplemented
+}
+
+void SplineB::Reset() {
+	AssertNonImplemented
+	//Reset unk struct
+	//call parent
+}
+
 SplineC::SplineC() : SplineAbstract() {
 
 }
