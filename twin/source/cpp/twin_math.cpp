@@ -429,3 +429,40 @@ void SplineC::Transform(Matrix4* matrix) {
 	Matrix4 tmpMatrix((65536.0f / 6.2831855f) * y);
 	tmpMatrix.Multiply4443(matrix, matrix);
 }
+
+SplineD::SplineD() : SplineAbstract() {
+}
+
+SplineD::~SplineD() {
+}
+
+SplineAbstract* SplineD::Step(float step, int param_2, int param_3, bool flag) {
+	SplineAbstract* segment = this;
+	if (flag) {
+		this->argument = this->position / this->length;
+		this->position = this->position + step;
+		if (this->argument >= 1.0f) {
+			this->repeats -= 1;
+			this->position = 0.0f;
+			if (this->repeats <= 0) {
+				segment = this->next;
+			}
+		}
+	}
+	return segment;
+}
+
+extern "C" bool IS_WIDESCREEN;
+void SplineD::Transform(Matrix4* matrix) {
+	float t = 0.44f;
+	if (!IS_WIDESCREEN) {
+		t = 0.36f;
+	}
+	matrix->row4.x = t * argument + matrix->row4.x;
+}
+
+void SplineD::Reset() {
+	position = 0.0f;
+	argument = 0.0f;
+	repeats = 0;
+}
