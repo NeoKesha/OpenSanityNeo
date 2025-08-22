@@ -46,3 +46,8 @@
 000c3fa0 ??_GSplineD@@UAEPAXI@Z
 000ac930 ?Step@SplineD@@UAEPAVSplineAbstract@@MHH_N@Z
 000ac980 ?Transform@SplineD@@UAEXPAVMatrix4@@@Z
+#Spline E
+000c3fd0 ??0SplineE@@QAE@XZ
+000c4000 ??_GSplineE@@UAEPAXI@Z
+000ac9c0 ?Step@SplineE@@UAEPAVSplineAbstract@@MHH_N@Z
+000b0550 ?Transform@SplineE@@UAEXPAVMatrix4@@@Z

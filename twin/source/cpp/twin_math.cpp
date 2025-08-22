@@ -426,7 +426,7 @@ void SplineC::Transform(Matrix4* matrix) {
 	a.value = (65536.0f / 6.2831855f) * (argument * 6.2831855f);
 	a.FUN_000d2a10(&x, &y);
 	y = 0.78539819f * y * 0.5f;
-	Matrix4 tmpMatrix((65536.0f / 6.2831855f) * y);
+	Matrix4 tmpMatrix((int)((65536.0f / 6.2831855f) * y));
 	tmpMatrix.Multiply4443(matrix, matrix);
 }
 
@@ -461,8 +461,33 @@ void SplineD::Transform(Matrix4* matrix) {
 	matrix->row4.x = t * argument + matrix->row4.x;
 }
 
-void SplineD::Reset() {
-	position = 0.0f;
-	argument = 0.0f;
-	repeats = 0;
+SplineE::SplineE() : SplineAbstract() {
+	
+}
+
+SplineE::~SplineE() {
+}
+
+SplineAbstract* SplineE::Step(float step, int param_2, int param_3, bool flag) {
+	SplineAbstract* segment = this;
+	this->argument = this->position / this->length;
+	this->position = this->position + step;
+	if (this->argument >= 1.0f) {
+		this->repeats -= 1;
+		this->position = 0.0f;
+		if (this->repeats <= 0) {
+			segment = this->next;
+		}
+	}
+	return segment;
+}
+
+void SplineE::Transform(Matrix4* matrix) {
+	Matrix4 tmpMatrix((int)((65536.0f / 6.2831855f) * (argument * 6.2831855f * 4)));
+	float t = 0.44f;
+	if (!IS_WIDESCREEN) {
+		t = 0.36f;
+	}
+	matrix->row4.x = t + matrix->row4.x;
+	tmpMatrix.Multiply4443(matrix, matrix);
 }

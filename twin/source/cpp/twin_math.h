@@ -122,5 +122,12 @@ public:
 	~SplineD();
 	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag);
 	virtual void Transform(Matrix4* matrix);
-	virtual void Reset();
+};
+
+class SplineE : public SplineAbstract {
+public:
+	SplineE();
+	~SplineE();
+	virtual SplineAbstract* Step(float step, int param_2, int param_3, bool flag);
+	virtual void Transform(Matrix4* matrix);
 };
