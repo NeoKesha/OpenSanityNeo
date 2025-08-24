@@ -8,11 +8,11 @@ public:
 	ActionAbstract();
 	virtual ~ActionAbstract();
 	
-	virtual void UnkMethod(void* dataToIterate);
-	virtual void Execute(InstanceContext* ctx);
-	virtual void ExecuteFromCallContext(UnkTimePack* time, InstanceContext *ctx, int unk) = 0;
+	virtual void UnkMethod(void* dataToIterate); //Construct (Action *param_1,DynamicArray<> *param_2)
+	virtual void Execute(InstanceContext* ctx); //PerformAction (Action *param_1,AgentProcess *param_2)
+	virtual void ExecuteFromCallContext(UnkTimePack* time, InstanceContext *ctx, int unk) = 0; //PerformAction (FakeAction *param_1,Clock *param_2,ChannelControl *param_3,LayerControl *param_4)
 	virtual int GetSize() = 0;
-	virtual bool ReturnTrue(int param);
+	virtual bool ReturnTrue(int param); //Serialize (Action *this,ChunkFile *param_1)
 	virtual int Get0x1806();
 	
 	int idx;

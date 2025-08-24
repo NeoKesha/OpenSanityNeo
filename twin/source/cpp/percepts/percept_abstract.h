@@ -30,3 +30,15 @@ class Percept0x04D : public PerceptAbstract {
 	virtual ~Percept0x04D();
 	virtual float GetUtilityScore(InstanceContext *ctx, int param1, int param2);
 };
+
+class Percept0x04E : public PerceptAbstract {
+	Percept0x04E();
+	virtual ~Percept0x04E();
+	virtual float GetUtilityScore(InstanceContext *ctx, int param1, int param2);
+};
+
+class Percept0x051 : public PerceptAbstract {
+	Percept0x051();
+	virtual ~Percept0x051();
+	virtual float GetUtilityScore(InstanceContext *ctx, int param1, int param2);
+};

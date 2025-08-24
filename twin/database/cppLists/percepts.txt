@@ -13,3 +13,11 @@
 0002f5e0 ??0Percept0x04D@@AAE@XZ
 0002f600 ??_GPercept0x04D@@EAEPAXI@Z
 0015f810 ?GetUtilityScore@Percept0x04D@@EAEMPAVInstanceContext@@HH@Z
+#0x4E
+0002f630 ??0Percept0x04E@@AAE@XZ
+0002f650 ??_GPercept0x04E@@EAEPAXI@Z
+0015f860 ?GetUtilityScore@Percept0x04E@@EAEMPAVInstanceContext@@HH@Z
+#0x51
+0002f6d0 ??0Percept0x051@@AAE@XZ
+0002f6f0 ??_GPercept0x051@@EAEPAXI@Z
+0015d160 ?GetUtilityScore@Percept0x051@@EAEMPAVInstanceContext@@HH@Z
