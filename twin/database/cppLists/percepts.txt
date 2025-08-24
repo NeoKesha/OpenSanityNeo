@@ -9,3 +9,7 @@
 0002e3c0 ??0PerceptRandom@@AAE@XZ
 0002e3e0 ??_GPerceptRandom@@EAEPAXI@Z
 0019c8b0 ?GetUtilityScore@PerceptRandom@@EAEMPAVInstanceContext@@HH@Z
+#0x4D
+0002f5e0 ??0Percept0x04D@@AAE@XZ
+0002f600 ??_GPercept0x04D@@EAEPAXI@Z
+0015f810 ?GetUtilityScore@Percept0x04D@@EAEMPAVInstanceContext@@HH@Z

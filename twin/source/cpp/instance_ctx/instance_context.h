@@ -54,10 +54,39 @@ public:
 	void* chunkData;
 };
 
+struct ComponentId {
+	enum Enum {
+		NodeU = 0,
+		Instance,
+		Undefined2,
+		OGI,
+		Undefined4,
+		Physics,
+		ObjectLink,
+		Trigger,
+		CameraTrigger,
+		NodeR,
+		Shadow,
+		Input,
+		Character,
+		Crate,
+		Projectile,
+		Creature,
+		Furniture,
+		ChiChiGrass,
+		PayGate,
+		NodeF,
+		NodeAA,
+		Undefined15,
+		Camera
+	};
+};
+
+class InstanceNodeAbstract;
 class InstanceDataList {
 public:
 	int cnt;
-	void* nodes[24]; //NodeAbstract;
+	InstanceNodeAbstract* nodes[24]; //NodeAbstract;
 };
 
 class InstanceContext : public InstanceContextBase { //TODO: unfinished class

@@ -24,3 +24,9 @@ class PerceptRandom : public PerceptAbstract {
 	virtual ~PerceptRandom();
 	virtual float GetUtilityScore(InstanceContext *ctx, int param1, int param2);
 };
+
+class Percept0x04D : public PerceptAbstract {
+	Percept0x04D();
+	virtual ~Percept0x04D();
+	virtual float GetUtilityScore(InstanceContext *ctx, int param1, int param2);
+};
