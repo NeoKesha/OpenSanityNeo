@@ -1,0 +1,11 @@
+#Percept Abstract
+0002e080 ??0PerceptAbstract@@QAE@XZ
+0002e0a0 ??0PerceptAbstract@@QAE@H@Z
+0002e100 ??_GPerceptAbstract@@UAEPAXI@Z
+0002e0d0 ??1PerceptAbstract@@UAE@XZ
+#00181670 ?Process@PerceptAbstract@@UAE_NPAX@Z got no effect, commenting for statistics
+0002e0f0 ?Get0x1807@PerceptAbstract@@UAEHXZ
+#Percept Random
+0002e3c0 ??0PerceptRandom@@AAE@XZ
+0002e3e0 ??_GPerceptRandom@@EAEPAXI@Z
+0019c8b0 ?GetUtilityScore@PerceptRandom@@EAEMPAVInstanceContext@@HH@Z
