@@ -76,6 +76,10 @@ void InstanceContextSmartPtr::Release(){
 	return;
 }
 
+InstanceNodeAbstract* InstanceDataList::GetNode(ComponentId::Enum index) {
+	return nodes[index];
+}
+
 InstanceContextSmartPtr* InstanceContextSmartPtr::SetCtx(InstanceContext* ctx){
 	if (ctx == 0) {
 		this->refCounter = 0;

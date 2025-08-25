@@ -27,6 +27,7 @@
 0014b370 ?FUN_0014b370@AutoClass40@@QAEXPAVMemoryStream@@@Z
 #00150ee0 ?FUN_00150ee0@AutoClass40@@QAEXPAVMatrix4@@@Z
 #00149b70 ?Set@AutoClass40@@QAEXPAVVector4@@0@Z
+000f6930 ?GetNode@InstanceDataList@@QAEPAVInstanceNodeAbstract@@W4Enum@ComponentId@@@Z
 #InstanceContext
 000f8460 ??0InstanceContextBase@@QAE@XZ
 000f6fc0 ??0InstanceContextBase@@QAE@PAVInstanceTransform@@@Z

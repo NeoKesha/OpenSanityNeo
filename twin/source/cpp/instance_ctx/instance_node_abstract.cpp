@@ -50,5 +50,5 @@ bool InstanceNodeAbstract::Step(UnkTimePack* newTime) {
 }
 
 void InstanceNodeAbstract::EmptyFunction2() {
-	
+
 }

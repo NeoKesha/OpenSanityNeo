@@ -85,6 +85,9 @@ struct ComponentId {
 class InstanceNodeAbstract;
 class InstanceDataList {
 public:
+
+	InstanceNodeAbstract* GetNode(ComponentId::Enum index);
+	
 	int cnt;
 	InstanceNodeAbstract* nodes[24]; //NodeAbstract;
 };
