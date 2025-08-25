@@ -43,7 +43,7 @@ public:
 	int var1;
 	int var2;
 	Vector4 var3;
-	int var7;
+	InstanceContext* focus;
 	int var8;
 	int var9;
 	void* var10;
