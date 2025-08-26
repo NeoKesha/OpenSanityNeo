@@ -73,3 +73,11 @@
 0002e320 ??0PerceptElse@@AAE@XZ
 0002e340 ??_GPerceptElse@@EAEPAXI@Z
 0019c890 ?GetUtilityScore@PerceptElse@@EAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+#Percept0x053
+0002ee60 ??0Percept0x053@@AAE@XZ
+0002ee80 ??_GPercept0x053@@EAEPAXI@Z
+0019d4d0 ?GetUtilityScore@Percept0x053@@EAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+#Percept0x054
+0002eeb0 ??0Percept0x054@@AAE@XZ
+0002eed0 ??_GPercept0x054@@EAEPAXI@Z
+0019d510 ?GetUtilityScore@Percept0x054@@EAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z

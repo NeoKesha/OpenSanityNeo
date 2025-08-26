@@ -40,6 +40,14 @@ public:
 
 class InstanceNodeInstance : public InstanceNodeAbstract {
 public:
+	virtual void EmptyFunction3();
+	virtual void InstanceMethod1(void* param1);
+	virtual void InstanceMethod2(void* param1) = 0;
+	virtual bool IsB() = 0;
+	virtual bool IsC() = 0;
+	virtual bool IsE();
+	virtual bool IsD();
+
 	int var1;
 	int var2;
 	Vector4 var3;
@@ -78,6 +86,8 @@ public:
 
 class InstanceNodeInstanceD : public InstanceNodeInstanceC {
 public:
+	virtual bool IsB();
+	virtual bool IsC();
 	int var29;
 	int var30;
 	void* var31;

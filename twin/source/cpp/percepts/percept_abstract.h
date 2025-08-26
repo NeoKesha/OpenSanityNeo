@@ -137,3 +137,15 @@ class PerceptElse: public PerceptAbstract {
 	virtual ~PerceptElse();
 	virtual float GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time);
 };
+
+class Percept0x053 : public PerceptAbstract {
+	Percept0x053();
+	virtual ~Percept0x053();
+	virtual float GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time);
+};
+
+class Percept0x054 : public PerceptAbstract {
+	Percept0x054();
+	virtual ~Percept0x054();
+	virtual float GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time);
+};

@@ -317,3 +317,41 @@ float PerceptElse::GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base*
 	control->elseControl = ELSE_CONTROL;
 	return 0.0f;
 }
+
+Percept0x053::Percept0x053() {
+	id = 0x53;
+}
+
+Percept0x053::~Percept0x053() {
+
+}
+
+float Percept0x053::GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time) {
+	if (agent->IsC()) {
+		if (((agent->var16) & 0x10000) == 0) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
+
+Percept0x054::Percept0x054() {
+	id = 0x54;
+}
+
+Percept0x054::~Percept0x054() {
+
+}
+
+float Percept0x054::GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time) {
+	if (agent->IsC()) {
+		if (((agent->var16 >> 0x11) & 1) == 0) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}

@@ -52,3 +52,27 @@ bool InstanceNodeAbstract::Step(UnkTimePack* newTime) {
 void InstanceNodeAbstract::EmptyFunction2() {
 
 }
+
+void InstanceNodeInstance::EmptyFunction3() {
+
+}
+
+void InstanceNodeInstance::InstanceMethod1(void* param1) {
+	AssertNonImplemented
+}
+
+bool InstanceNodeInstance::IsD() {
+	return false;
+}
+
+bool InstanceNodeInstance::IsE() {
+	return false;
+}
+
+bool InstanceNodeInstanceD::IsB() {
+	return true;
+}
+
+bool InstanceNodeInstanceD::IsC() {
+	return true;
+}

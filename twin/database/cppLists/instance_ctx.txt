@@ -50,3 +50,8 @@
 000133af ?UpdateTime@InstanceNodeAbstract@@UAEXPAVUnkTimePack@@H@Z
 000f6790 ?Step@InstanceNodeAbstract@@UAE_NPAVUnkTimePack@@@Z
 00065bb0 ?EmptyFunction2@InstanceNodeAbstract@@UAEXXZ
+#InstanceNodeInstance
+0005a1d0 ?IsD@InstanceNodeInstance@@UAE_NXZ
+0005a1e0 ?IsE@InstanceNodeInstance@@UAE_NXZ
+0017e980 ?IsB@InstanceNodeInstanceD@@UAE_NXZ
+0017e990 ?IsC@InstanceNodeInstanceD@@UAE_NXZ
