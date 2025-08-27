@@ -1,6 +1,6 @@
 #include <XTL.h>
 #include <stl.h>
-#include <time/global_clock.h>
+#include <time/time.h>
 #include <input/input_controller.h>
 #include <stream/file_stream.h>
 #include "fun.h"

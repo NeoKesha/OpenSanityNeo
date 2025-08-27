@@ -35,7 +35,7 @@ void InstanceNodeAbstract::EmptyFunction(int param) {
 }
 
 void InstanceNodeAbstract::UpdateTime(UnkTimePack* time, int flags) {
-	this->time = time->fields[0].time1;
+	this->time = time->fields[0].time1.time;
 }
 
 bool InstanceNodeAbstract::Step(UnkTimePack* newTime) {
@@ -44,7 +44,7 @@ bool InstanceNodeAbstract::Step(UnkTimePack* newTime) {
 			a1 = a1 & 0xfe;
 			return true;
 		}
-		time = newTime->fields[0].time1;
+		time = newTime->fields[0].time1.time;
 	}
 	return true;
 }

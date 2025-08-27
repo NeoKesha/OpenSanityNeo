@@ -1,7 +1,7 @@
-#UnkFamily1Base
-0018c300 ??0UnkFamily1Base@@QAE@XZ
-0019be00 ??_GUnkFamily1Base@@UAEPAXI@Z
-0018c340 ??1UnkFamily1Base@@UAE@XZ
+#LayerControl
+0018c300 ??0LayerControl@@QAE@XZ
+0019be00 ??_GLayerControl@@UAEPAXI@Z
+0018c340 ??1LayerControl@@UAE@XZ
 #Percept Abstract
 0002e080 ??0PerceptAbstract@@QAE@XZ
 0002e0a0 ??0PerceptAbstract@@QAE@H@Z
@@ -12,72 +12,72 @@
 #Percept Random
 0002e3c0 ??0PerceptRandom@@QAE@XZ
 0002e3e0 ??_GPerceptRandom@@UAEPAXI@Z
-0019c8b0 ?GetUtilityScore@PerceptRandom@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019c8b0 ?GetUtilityScore@PerceptRandom@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x4D
 0002f5e0 ??0Percept0x04D@@QAE@XZ
 0002f600 ??_GPercept0x04D@@UAEPAXI@Z
-0015f810 ?GetUtilityScore@Percept0x04D@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015f810 ?GetUtilityScore@Percept0x04D@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x4E
 0002f630 ??0Percept0x04E@@QAE@XZ
 0002f650 ??_GPercept0x04E@@UAEPAXI@Z
-0015f860 ?GetUtilityScore@Percept0x04E@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015f860 ?GetUtilityScore@Percept0x04E@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x4F
 0002f8c0 ??0Percept0x04F@@QAE@XZ
 0002f8e0 ??_GPercept0x04F@@UAEPAXI@Z
-0015fa90 ?GetUtilityScore@Percept0x04E@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015fa90 ?GetUtilityScore@Percept0x04E@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x50
 0002f910 ??0Percept0x050@@QAE@XZ
 0002f930 ??_GPercept0x050@@UAEPAXI@Z
-0015f9f0 ?GetUtilityScore@Percept0x050@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015f9f0 ?GetUtilityScore@Percept0x050@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x51
 0002f6d0 ??0Percept0x051@@QAE@XZ
 0002f6f0 ??_GPercept0x051@@UAEPAXI@Z
-0015d160 ?GetUtilityScore@Percept0x051@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015d160 ?GetUtilityScore@Percept0x051@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #0x52
 0002f680 ??0Percept0x052@@QAE@XZ
 0002f6a0 ??_GPercept0x052@@UAEPAXI@Z
-0015d130 ?GetUtilityScore@Percept0x052@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015d130 ?GetUtilityScore@Percept0x052@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptSqrMoveSpeed
 00030c90 ??0PerceptSqrMoveSpeed@@QAE@XZ
 00030cb0 ??_GPerceptSqrMoveSpeed@@UAEPAXI@Z
-0019c630 ?GetUtilityScore@PerceptSqrMoveSpeed@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019c630 ?GetUtilityScore@PerceptSqrMoveSpeed@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptNext
 0002e2c0 ??0PerceptNext@@QAE@XZ
 0002e2f0 ??_GPerceptNext@@UAEPAXI@Z
-0002e2e0 ?GetUtilityScore@PerceptNext@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0002e2e0 ?GetUtilityScore@PerceptNext@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptAttachedToAnAgent
 000309c0 ??0PerceptAttachedToAnAgent@@QAE@XZ
 000309e0 ??_GPerceptAttachedToAnAgent@@UAEPAXI@Z
-0019e080 ?GetUtilityScore@PerceptAttachedToAnAgent@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019e080 ?GetUtilityScore@PerceptAttachedToAnAgent@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptTimeInUnit
 0002e370 ??0PerceptTimeInUnit@@QAE@XZ
 0002e390 ??_GPerceptTimeInUnit@@UAEPAXI@Z
-0019c870 ?GetUtilityScore@PerceptTimeInUnit@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019c870 ?GetUtilityScore@PerceptTimeInUnit@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptIsVisible
 0002e180 ??0PerceptIsVisible@@QAE@XZ
 0002e1a0 ??_GPerceptIsVisible@@UAEPAXI@Z
-0019df80 ?GetUtilityScore@PerceptIsVisible@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019df80 ?GetUtilityScore@PerceptIsVisible@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptIsCollidable
 0002e130 ??0PerceptIsCollidable@@QAE@XZ
 0002e150 ??_GPerceptIsCollidable@@UAEPAXI@Z
-0019df50 ?GetUtilityScore@PerceptIsCollidable@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019df50 ?GetUtilityScore@PerceptIsCollidable@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptIsBusy
 0002e410 ??0PerceptIsBusy@@QAE@XZ
 0002e430 ??_GPerceptIsBusy@@UAEPAXI@Z
-0019e020 ?GetUtilityScore@PerceptIsBusy@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019e020 ?GetUtilityScore@PerceptIsBusy@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptFocusIsBusy
 0002f9b0 ??0PerceptFocusIsBusy@@QAE@XZ
 0002f9d0 ??_GPerceptFocusIsBusy@@UAEPAXI@Z
-0015fb80 ?GetUtilityScore@PerceptFocusIsBusy@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0015fb80 ?GetUtilityScore@PerceptFocusIsBusy@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #PerceptElse
 0002e320 ??0PerceptElse@@QAE@XZ
 0002e340 ??_GPerceptElse@@UAEPAXI@Z
-0019c890 ?GetUtilityScore@PerceptElse@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019c890 ?GetUtilityScore@PerceptElse@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #Percept0x053
 0002ee60 ??0Percept0x053@@QAE@XZ
 0002ee80 ??_GPercept0x053@@UAEPAXI@Z
-0019d4d0 ?GetUtilityScore@Percept0x053@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019d4d0 ?GetUtilityScore@Percept0x053@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
 #Percept0x054
 0002eeb0 ??0Percept0x054@@QAE@XZ
 0002eed0 ??_GPercept0x054@@UAEPAXI@Z
-0019d510 ?GetUtilityScore@Percept0x054@@UAEMPAVInstanceNodeInstanceD@@PAVUnkFamily1Base@@PAVPTime@@@Z
+0019d510 ?GetUtilityScore@Percept0x054@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z

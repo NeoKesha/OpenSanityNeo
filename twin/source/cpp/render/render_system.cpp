@@ -1,7 +1,7 @@
 #include <XTL.h>
 #include <stl.h>
 #include "render_system.h"
-#include <time/unk_time_pack.h>
+#include <time/time.h>
 
 RenderSystem::RenderSystem() {
 	AssertNonImplemented

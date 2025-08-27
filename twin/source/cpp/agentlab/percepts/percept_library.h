@@ -2,9 +2,6 @@
 #include <twin_base.h>
 #include "percept_abstract.h"
 
-extern "C" float TimePerTick1;
-extern "C" float ELSE_CONTROL;
-
 REGISTER_PERCEPT(Next)
 REGISTER_PERCEPT(IsCollidable)
 REGISTER_PERCEPT(Else)

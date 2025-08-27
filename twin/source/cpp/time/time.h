@@ -1,6 +1,5 @@
 #pragma once
 #include <twin_base.h>
-#include "unk_time_pack.h"
 
 extern "C" float TicksPerTime;
 extern "C" float TimePerTick1;
@@ -15,7 +14,28 @@ extern "C" float CLOCK_TIME_8;
 extern "C" LARGE_INTEGER SOME_STATE;
 extern "C" int ENV_FLOAT_116_DT3;
 
-class GlobalClock : TwinBase {
+class PTime : public TwinBase {
+public:
+	int time;
+};
+
+class UnkTimePackField : public TwinBase {
+public:
+	unsigned int flags;
+	PTime time1;
+	PTime time2;
+};
+
+class UnkTimePack : public TwinBase {
+public:
+	UnkTimePackField fields[8];
+	
+	void StopTime();
+	void ResumeTime();
+	void InitializeFields();
+};
+
+class GlobalClock : public TwinBase {
 public:
 	int prevTime;
 	int deltaTimeTicks;

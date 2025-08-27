@@ -1,26 +1,7 @@
 #pragma once
 #include <twin_base.h>
-
-class PTime : public TwinBase {
-public:
-	int time;
-};
-
-class UnkFamily1Base : public TwinBase {
-public:
-	UnkFamily1Base();
-	virtual ~UnkFamily1Base();
-	
-	int a;
-	int b;
-	int c;
-	int d;
-	float elseControl;
-	int time;
-	unsigned char g1;
-	unsigned char g2;
-	short g3;
-};
+#include <time\time.h>
+#include <agentlab\agentlab_control.h>
 
 class InstanceNodeInstanceD;
 class PerceptAbstract : public TwinBase {
@@ -29,7 +10,7 @@ public:
 	PerceptAbstract(int id);
 	virtual ~PerceptAbstract();
 	
-	virtual float GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time) = 0;
+	virtual float GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) = 0;
 	virtual bool Process(void* ptr);
 	virtual int Get0x1807();
 	
@@ -44,7 +25,7 @@ class Percept##Name : public PerceptAbstract { \
 public: \
     Percept##Name(); \
     virtual ~Percept##Name(); \
-    virtual float GetUtilityScore(InstanceNodeInstanceD *agent, UnkFamily1Base* control, PTime* time); \
+    virtual float GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time); \
 };
 #define DEFINE_PERCEPT(Name, Id) \
 	Percept##Name::Percept##Name() : PerceptAbstract(Id) {} \
