@@ -81,3 +81,11 @@
 0002eeb0 ??0Percept0x054@@QAE@XZ
 0002eed0 ??_GPercept0x054@@UAEPAXI@Z
 0019d510 ?GetUtilityScore@Percept0x054@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
+#Percept0x055
+0002ee10 ??0Percept0x054@@QAE@XZ
+0002ee30 ??_GPercept0x054@@UAEPAXI@Z
+0019d480 ?GetUtilityScore@Percept0x054@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
+#Percept0x056
+00030ce0 ??0Percept0x054@@QAE@XZ
+00030d00 ??_GPercept0x054@@UAEPAXI@Z
+0019c660 ?GetUtilityScore@Percept0x054@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z

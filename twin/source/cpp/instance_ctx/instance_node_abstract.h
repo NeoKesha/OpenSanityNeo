@@ -120,7 +120,10 @@ public:
 	int var58;
 	int var59;
 	int var60;
-	void* var61;
+	unsigned char var61a;
+	unsigned char var61b;
+	unsigned char var61c;
+	unsigned char var61d;
 	int var62;
 	int var63;
 	int var64;

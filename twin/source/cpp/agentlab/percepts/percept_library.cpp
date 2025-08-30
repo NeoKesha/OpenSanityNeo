@@ -193,3 +193,23 @@ float Percept0x054::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* 
 	}
 	return 0.0f;
 }
+
+DEFINE_PERCEPT(0x055, 0x055)
+float Percept0x055::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC()) {
+		if (((agent->var16 >> 0xf) & 1) == 0) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
+
+DEFINE_PERCEPT(0x056, 0x056)
+float Percept0x056::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC()) {
+		return agent->var61a * 0.003921569f;
+	}
+	return 0.0f;
+}
