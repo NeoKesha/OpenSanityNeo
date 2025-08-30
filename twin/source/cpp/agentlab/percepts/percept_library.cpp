@@ -252,3 +252,24 @@ float Percept0x058::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* 
 	}
 	return 1e+30f;
 }
+
+//distance to some cached pos
+DEFINE_PERCEPT(0x059, 0x059)
+float Percept0x059::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if ((agent->var16 >> 0xd & 1) != 0) {
+		InstanceTransform* agentTransform = agent->ctx->transform;
+		if ((agentTransform->a & 4 != 0)) {
+			agentTransform->position.x = agentTransform->transform.row4.x;
+			agentTransform->position.y = agentTransform->transform.row4.y;
+			agentTransform->position.z = agentTransform->transform.row4.z;
+			agentTransform->position.w = agentTransform->transform.row4.w;
+			agentTransform->a &= 0xfffffffa;
+		}
+
+		float dx = agentTransform->position.x - agent->pos.x;
+		float dy = agentTransform->position.y - agent->pos.y;
+		float dz = agentTransform->position.z - agent->pos.z;
+		return dx*dx + dy*dy + dz*dz;
+	}
+	return 1e+30f;
+}

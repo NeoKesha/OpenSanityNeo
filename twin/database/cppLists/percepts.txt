@@ -93,3 +93,7 @@
 0002f2c0 ??0Percept0x058@@QAE@XZ
 0002f2e0 ??_GPercept0x058@@UAEPAXI@Z
 0015f6a0 ?GetUtilityScore@Percept0x058@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
+#Percept0x059
+0002f310 ??0Percept0x059@@QAE@XZ
+0002f330 ??_GPercept0x059@@UAEPAXI@Z
+0015d060 ?GetUtilityScore@Percept0x059@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z

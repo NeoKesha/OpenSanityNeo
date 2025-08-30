@@ -91,10 +91,7 @@ public:
 	int var29;
 	int var30;
 	void* var31;
-	int var32;
-	int var33;
-	int var34;
-	int var35;
+	Vector4 pos;
 	int var36;
 	float var37;
 	int var38;
