@@ -213,3 +213,42 @@ float Percept0x056::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* 
 	}
 	return 0.0f;
 }
+
+//distance to enemy sqr
+DEFINE_PERCEPT(0x058, 0x058)
+float Percept0x058::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	InstanceContext* other = agent->var46;
+	if (other != 0 && ((other->flags & 1) != 0)) {
+		agent->var46 = 0;
+	}
+	
+	other = agent->var46;
+	
+	if (other != 0) {
+		InstanceTransform* agentTransform = agent->ctx->transform;
+		if ((agentTransform->a & 4 != 0)) {
+			agentTransform->position.x = agentTransform->transform.row4.x;
+			agentTransform->position.y = agentTransform->transform.row4.y;
+			agentTransform->position.z = agentTransform->transform.row4.z;
+			agentTransform->position.w = agentTransform->transform.row4.w;
+			agentTransform->a &= 0xfffffffa;
+		}
+		float agentX = agentTransform->position.x;
+		float agentY = agentTransform->position.y;
+		float agentZ = agentTransform->position.z;
+		
+		InstanceTransform* otherTransform = other->transform;
+		if ((otherTransform->a & 4 != 0)) {
+			otherTransform->position.x = otherTransform->transform.row4.x;
+			otherTransform->position.y = otherTransform->transform.row4.y;
+			otherTransform->position.z = otherTransform->transform.row4.z;
+			otherTransform->position.w = otherTransform->transform.row4.w;
+			otherTransform->a &= 0xfffffffa;
+		}
+		float dx = agentX - otherTransform->position.x;
+		float dy = agentY - otherTransform->position.y;
+		float dz = agentZ - otherTransform->position.z;
+		return dx*dx + dy*dy + dz*dz;
+	}
+	return 1e+30f;
+}
