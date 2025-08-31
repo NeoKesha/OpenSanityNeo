@@ -286,3 +286,55 @@ float Percept0x05D::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* 
 	}
 	return 0.0f;
 }
+
+DEFINE_PERCEPT(0x05E, 0x05E)
+float Percept0x05E::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC() && agent->var43 != 0) {
+		int flags = agent->var43->flags;
+		if (((flags & 0x40000000) == 0) || ((flags & 0x2000000) == 0)) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
+
+DEFINE_PERCEPT(0x05F, 0x05F)
+float Percept0x05F::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC() && agent->var43 != 0) {
+		int flags = agent->var43->flags;
+		if (((flags & 0x40000000) == 0) || ((flags & 0x4000000) == 0)) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
+
+DEFINE_PERCEPT(0x060, 0x060)
+float Percept0x060::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC() && agent->var43 != 0) {
+		int flags = agent->var43->flags;
+		if (((flags & 0x40000000) == 0) || ((flags & 0x8000000) == 0)) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
+
+DEFINE_PERCEPT(0x061, 0x061)
+float Percept0x061::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+	if (agent->IsC() && agent->var43 != 0) {
+		int flags = agent->var43->flags;
+		if (((flags & 0x40000000) == 0) || ((flags & 0x10000000) == 0)) {
+			return 0.0f;
+		} else {
+			return 1.0f;
+		}
+	}
+	return 0.0f;
+}
