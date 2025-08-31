@@ -93,7 +93,7 @@
 0002f310 ??0Percept0x059@@QAE@XZ
 0002f330 ??_GPercept0x059@@UAEPAXI@Z
 0015d060 ?GetUtilityScore@Percept0x059@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
-#Percept0x05C
-0002f040 ??0Percept0x05C@@QAE@XZ
-0002f060 ??_GPercept0x05C@@UAEPAXI@Z
-0019d560 ?GetUtilityScore@Percept0x05C@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z
+#Percept0x05D
+0002f040 ??0Percept0x05D@@QAE@XZ
+0002f060 ??_GPercept0x05D@@UAEPAXI@Z
+0019d560 ?GetUtilityScore@Percept0x05D@@UAEMPAVInstanceNodeInstanceD@@PAVLayerControl@@PAVPTime@@@Z

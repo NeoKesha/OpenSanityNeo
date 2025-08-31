@@ -274,10 +274,8 @@ float Percept0x059::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* 
 	return 1e+30f;
 }
 
-//TODO: somewhere there is a crash i cannot catch when logging. Something about jumping on ant's head and dying by a sword at the same time
-//Add logs everywhere at 5X percepts. 
-DEFINE_PERCEPT(0x05C, 0x05C)
-float Percept0x05C::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
+DEFINE_PERCEPT(0x05D, 0x05D)
+float Percept0x05D::GetUtilityScore(InstanceNodeInstanceD *agent, LayerControl* control, PTime* time) {
 	if (agent->IsC() && agent->var43 != 0) {
 		int flags = agent->var43->flags;
 		if (((flags & 0x40000000) == 0) || ((flags & 0x1000000) == 0)) {
