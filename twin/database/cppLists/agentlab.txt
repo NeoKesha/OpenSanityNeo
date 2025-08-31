@@ -1,0 +1,4 @@
+#LayerControl
+0018c300 ??0LayerControl@@QAE@XZ
+0019be00 ??_GLayerControl@@UAEPAXI@Z
+0018c340 ??1LayerControl@@UAE@XZ

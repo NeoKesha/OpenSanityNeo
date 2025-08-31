@@ -15,5 +15,10 @@ LayerControl::LayerControl() {
 }
 
 LayerControl::~LayerControl() {
-	
+
+}
+
+
+UnkFamily3Abstract::~UnkFamily3Abstract() {
+
 }

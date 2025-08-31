@@ -84,6 +84,7 @@ public:
 	int var28;
 };
 
+class UnkFamily3F;
 class InstanceNodeInstanceD : public InstanceNodeInstanceC {
 public:
 	virtual bool IsB();
@@ -99,7 +100,7 @@ public:
 	int var40;
 	int var41;
 	int var42;
-	int var43;
+	UnkFamily3F* var43;
 	int var44;
 	int var45;
 	InstanceContext* var46;
