@@ -427,6 +427,7 @@ namespace Psychetron
             var totalLines = 0;
             var processedLines = 0;
             HashSet<string> globals = new HashSet<string>();
+            List<KeyValuePair<string, string>> vtables = new List<KeyValuePair<string, string>>();
             Dictionary<string, string> dataAliases = new Dictionary<string, string>();
             Dictionary<String, String> cppList = new Dictionary<String, String>();
             var cppLists = Directory.GetFiles(Path.Join(config.database_path, "cppLists"), "*.txt", SearchOption.AllDirectories);
@@ -457,6 +458,10 @@ namespace Psychetron
                     {
                         var tokens = reader.ReadLine().Trim().Split(" ");
                         dataAliases.Add(tokens[0], tokens[1]);
+                        if (tokens[1].Contains("_VT"))
+                        {
+                            vtables.Add(new KeyValuePair<string, string>(tokens[1], tokens[0]));
+                        }
                     }
                 }
             }
@@ -588,6 +593,17 @@ namespace Psychetron
                     }
                     writer.WriteLine(dstLine);
                 }
+                foreach (var record in vtables)
+                {
+                    writer.WriteLine($"STR_{record.Key} BYTE \"{record.Key}\", 0");
+                }
+                writer.WriteLine($"REFLECTION_DATA DWORD {vtables.Count}");
+                foreach (var record in vtables)
+                {
+                    writer.WriteLine($"DWORD {record.Value}");
+                    writer.WriteLine($"DWORD STR_{record.Key}");
+                }
+                writer.WriteLine($"PUBLIC REFLECTION_DATA");
                 writer.Flush();
             }
 

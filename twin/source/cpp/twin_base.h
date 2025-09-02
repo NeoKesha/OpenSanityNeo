@@ -31,4 +31,18 @@ public:
     static void operator delete(void* ptr);
 };
 
+
+class ReflectionData {
+public:
+	int cnt;
+};
+class Reflection {
+public:
+	Reflection();
+	const char* GetName(void* vtable);
+	void** vtables;
+	const char** names;
+};
+extern "C" ReflectionData REFLECTION_DATA;
+
 //#define ENABLE_FUN
