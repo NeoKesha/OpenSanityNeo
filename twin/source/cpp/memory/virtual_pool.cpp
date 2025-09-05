@@ -1,6 +1,7 @@
 #include <XTL.h>
 #include <stl.h>
 #include "virtual_pool.h"
+#include <twin_base.h>
 
 VirtualPool::VirtualPool() {
 	ZeroMemory(this, sizeof(VirtualPool));
@@ -74,8 +75,11 @@ unsigned int VirtualPool::GetAllocTableIndexBasedOnAllocSize(size_t size) {
 	return (0xa0 < size) + 0x26;
 }
 
+extern "C" Reflection reflection;
 void* __cdecl VirtualPool::AllocateMemory(size_t size){
-	return VirtualPool::GetPool()->AllocateMemoryInternal(size);
+	void* ptr = VirtualPool::GetPool()->AllocateMemoryInternal(size);
+	reflection.RegisterSize(ptr, size);
+	return ptr;
 }
 
 void __cdecl VirtualPool::FreeMemory(void* ptr){

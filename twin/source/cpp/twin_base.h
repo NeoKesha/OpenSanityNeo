@@ -40,6 +40,8 @@ class Reflection {
 public:
 	Reflection();
 	const char* GetName(void* vtable);
+	void RegisterSize(void* ptr, size_t size);
+	size_t GetStructSize(void* ptr);
 	void** vtables;
 	const char** names;
 };

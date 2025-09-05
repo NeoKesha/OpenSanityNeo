@@ -443,7 +443,14 @@ namespace Psychetron
                             var line = reader.ReadLine();
                             if (line.StartsWith("#")) continue;
                             var tokens = line.Split(" ");
-                            cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
+                            if (tokens[0].ToUpper() == "000cf340".ToUpper())
+                            {
+                                cppList.Add("main", tokens[1]);
+                            } else
+                            {
+                                cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
+                            }
+                            
                         }
                     }
                 }
@@ -521,7 +528,11 @@ namespace Psychetron
                                     var conv = tokens[2].ToUpper();
                                     var externName = cppList[funcName];
                                     if (externName.StartsWith("?")) conv = "SYSCALL";
-                                    protoWriter.WriteLine("EXTERN " + conv + " " + externName + ": PROC");
+                                    if (externName != "main")
+                                    {
+                                        protoWriter.WriteLine("EXTERN " + conv + " " + externName + ": PROC");
+                                    }
+                                    
                                     dstLine = null;
                                     state = PreprocessorState.INSIDE_SKIP;
                                 }

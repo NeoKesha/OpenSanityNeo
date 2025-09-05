@@ -31,7 +31,15 @@ int ActionPickUpWumpa::GetSize() {
 	return sizeof(ActionPickUpWumpa);
 }
 
+extern "C" Reflection reflection;
 void ActionProbe::ExecuteFromCallContext(UnkTimePack* time, ChannelControl *channelControl, LayerControl* layerControl) {
+	size_t size1 = reflection.GetStructSize(time);
+	size_t size2 = reflection.GetStructSize(channelControl);
+	size_t size3 = reflection.GetStructSize(layerControl);
+	static char buffer[256];
+	sprintf(buffer, "Time: %x, CC: %x, LC: %x", size1, size2, size3);
+	OutputDebugString(buffer);
+	while(1);
 	return;
 }
 

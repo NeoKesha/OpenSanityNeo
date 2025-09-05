@@ -42,3 +42,21 @@ const char* Reflection::GetName(void* vtable) {
 	
 	return "NONE";
 }
+
+static map<void*, size_t> sizeMap;
+
+void Reflection::RegisterSize(void* ptr, size_t size) {
+	if (sizeMap.find(ptr) != sizeMap.end()) {
+		sizeMap[ptr] = size;
+	} else {
+		sizeMap.insert(make_pair(ptr, size));
+	}
+}
+
+size_t Reflection::GetStructSize(void* ptr) {
+	if (sizeMap.find(ptr) != sizeMap.end()) {
+		return sizeMap[ptr];
+	} else {
+		return 0;
+	}
+}
