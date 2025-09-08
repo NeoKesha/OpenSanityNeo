@@ -1,1 +1,4 @@
-000cf340 main
+#000cf340 main
+#00134060 DoSoundsStuff
+#000d0460 DoMemoryTasks
+#^000cffd0 @SpyGameContextDoStuff@12

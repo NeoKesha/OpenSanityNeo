@@ -11,7 +11,7 @@ public:
 
 extern "C" PortsStruct PORTS_START[4];
 
-class InputData : TwinBase {
+class InputData : public TwinBase {
 public:
 	HANDLE handle;
 	XINPUT_FEEDBACK feedback;
@@ -25,7 +25,7 @@ public:
 	void SetRumble(short leftMotor, short rightMotor);
 };
 
-class InputController : TwinBase {
+class InputController : public TwinBase {
 public:
 	InputData* inputSourceList[4];
 	unsigned int connectedDevicesMask;

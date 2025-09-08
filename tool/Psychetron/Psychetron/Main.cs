@@ -431,6 +431,7 @@ namespace Psychetron
             Dictionary<string, string> dataAliases = new Dictionary<string, string>();
             Dictionary<String, String> cppList = new Dictionary<String, String>();
             var cppLists = Directory.GetFiles(Path.Join(config.database_path, "cppLists"), "*.txt", SearchOption.AllDirectories);
+            var spyList = new HashSet<string>();    
             foreach (var cppListPath in cppLists)
             {
                 if (File.Exists(cppListPath))
@@ -441,7 +442,13 @@ namespace Psychetron
                         while (!reader.EndOfStream)
                         {
                             var line = reader.ReadLine();
+                            var isSpy = false;
                             if (line.StartsWith("#")) continue;
+                            if (line.StartsWith("^"))
+                            {
+                                isSpy = true;
+                                line = line.Substring(1);
+                            }
                             var tokens = line.Split(" ");
                             if (tokens[0].ToUpper() == "000cf340".ToUpper())
                             {
@@ -449,8 +456,8 @@ namespace Psychetron
                             } else
                             {
                                 cppList.Add("FUN_" + tokens[0].ToUpper(), tokens[1]);
+                                if (isSpy) spyList.Add("FUN_" + tokens[0].ToUpper());
                             }
-                            
                         }
                     }
                 }
@@ -523,7 +530,7 @@ namespace Psychetron
                             {
                                 var tokens = srcLine.Split(" ");
                                 var funcName = tokens[1].Replace(",", "");
-                                if (cppList.ContainsKey(funcName))
+                                if (cppList.ContainsKey(funcName) && !spyList.Contains(funcName))
                                 {
                                     var conv = tokens[2].ToUpper();
                                     var externName = cppList[funcName];
@@ -538,6 +545,14 @@ namespace Psychetron
                                 }
                                 else
                                 {
+                                    if (spyList.Contains(funcName))
+                                    {
+                                        var conv = tokens[2].ToUpper();
+                                        var externName = cppList[funcName];
+                                        if (externName.StartsWith("?")) conv = "SYSCALL";
+                                        if (externName.StartsWith("@")) conv = "SYSCALL";
+                                        protoWriter.WriteLine("EXTERN " + conv + " " + externName + ": PROC");
+                                    }
                                     state = PreprocessorState.INSIDE_COPY;
                                 }
                             }
@@ -549,7 +564,7 @@ namespace Psychetron
                                 foreach (var token in tokens)
                                 {
                                     var newToken = token;
-                                    if (cppList.ContainsKey(newToken))
+                                    if (cppList.ContainsKey(newToken) && !srcLine.StartsWith("TwinProcEnd"))
                                     {
                                         newToken = cppList[newToken];
                                     }
