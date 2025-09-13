@@ -7,3 +7,4 @@
 000f7a00 ?InitializeFields@UnkTimePack@@QAEXXZ
 000f6500 ?StopTime@UnkTimePack@@QAEXXZ
 000f63c0 ?ResumeTime@UnkTimePack@@QAEXXZ
+000f6620 TickFrameNumber

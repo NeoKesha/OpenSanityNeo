@@ -18,3 +18,4 @@ extern "C" void  __cdecl InitFrameBuffer();
 extern "C" void* __cdecl RegisterScreenSurfaces();
 extern "C" void* __cdecl ResetAndRegisterRenderTarget();
 extern "C" void  __cdecl ReleaseScreenSurfaces();
+extern "C" void  __stdcall ClearViewport(bool clearTargetAndStencil, bool clearZbuffer);

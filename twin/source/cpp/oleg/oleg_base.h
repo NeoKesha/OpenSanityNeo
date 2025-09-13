@@ -1,15 +1,8 @@
 #pragma once
 #include <twin_base.h>
+#include <misc_global.h>
 #include <twin_math.h>
 #include <string/twin_string.h>
-
-class Color {
-public:
-	unsigned char R;
-	unsigned char G;
-	unsigned char B;
-	unsigned char A;
-};
 
 class OlegMask {
 public:

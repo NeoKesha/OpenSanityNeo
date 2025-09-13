@@ -13,6 +13,9 @@ extern "C" float CLOCK_TIME_7;
 extern "C" float CLOCK_TIME_8;
 extern "C" LARGE_INTEGER SOME_STATE;
 extern "C" int ENV_FLOAT_116_DT3;
+extern "C" int FRAME_NUMBER;
+
+extern "C" void __cdecl TickFrameNumber();
 
 class PTime : public TwinBase {
 public:

@@ -139,3 +139,10 @@ bool GlobalClock::TimeOutCheck(float budget) {
 	}
 	return false;
 }
+
+extern "C" void __cdecl TickFrameNumber() {
+	LARGE_INTEGER result;
+	QueryPerformanceCounter(&result);
+	
+	FRAME_NUMBER += 1;
+}

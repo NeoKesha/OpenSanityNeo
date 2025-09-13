@@ -202,3 +202,14 @@ extern "C" void __cdecl ReleaseScreenSurfaces(void) {
 	D3DResource_Release(StencilSurface);
 	return;
 }
+
+extern "C" void  __stdcall ClearViewport(bool clearTargetAndStencil, bool clearZbuffer) {
+	int clearFlags = D3DCLEAR_STENCIL;
+	if (clearTargetAndStencil) {
+		clearFlags = D3DCLEAR_STENCIL | D3DCLEAR_TARGET;
+	}
+	if (clearZbuffer) {
+		clearFlags |= D3DCLEAR_ZBUFFER;
+	}
+	D3DDevice_Clear(0, 0, clearFlags, 0xFF000000, 1.0f, 0);
+}

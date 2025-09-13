@@ -4,6 +4,7 @@
 00104cb0 ResetAndRegisterRenderTarget
 00104b90 InitFrameBuffer
 00104c30 ReleaseScreenSurfaces
+00101ac0 ClearViewport@8
 #RenderSystem
 #00104430 ?UnkFunc@RenderSystem@@UAEHHH@Z
 #00111e40 ?UpdateShadersClock@RenderSystem@@UAEXPAVUnkTimePack@@@Z

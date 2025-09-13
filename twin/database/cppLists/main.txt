@@ -1,4 +1,10 @@
 #000cf340 main
 #00134060 DoSoundsStuff
 #000d0460 DoMemoryTasks
+#^000cfe70 @SpyUpdateGameState@12
 #^000cffd0 @SpyGameContextDoStuff@12
+#^000D0070 @SpyProcessCredits@12
+#^000D0750 @SpyEndFrameUpdate@12
+#^0020f490 SpyFUN_XX20f490
+#^000CF930 SpyFUN_000CF930
+000d0750 ?EndFrameUpdate@GameContext@@QAEXH@Z

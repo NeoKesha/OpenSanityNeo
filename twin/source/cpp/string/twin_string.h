@@ -2,7 +2,7 @@
 #include <twin_base.h>
 #include <stream/memory_stream.h>
 
-class TwinString {
+class TwinString : public TwinBase {
 public:
 	char* buffer;
 	size_t length;
@@ -47,4 +47,12 @@ public:
 	void ToUpper();
 	void ToLower();
 	void Write(MemoryStream* stream);
+};
+
+class StringCollection : public TwinBase {
+public:
+	TwinString* array;
+	int count;
+	int capacity;
+	int cnt2;
 };
