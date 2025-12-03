@@ -5,13 +5,22 @@
 #include <string/twin_string.h>
 #include <input/input_controller.h>
 
+class VideoPlayer : public TwinBase {
+public:
+	void** vftable;
+	int flags;
+	int a;
+	int b;
+	TwinString fmvName;
+};
+
 class RenderSystem;
 class GlobalClock;
 extern "C" RenderSystem* RENDERER;
 extern "C" GlobalClock* GLOBAL_CLOCK;
 extern "C" int VideoPlayerTerminated;
 extern "C" int GameState;
-extern "C" void* VIDEO_PLAYER;
+extern "C" VideoPlayer* VIDEO_PLAYER;
 
 class GameResources : public TwinBase {
 	unsigned char padding[0x44]; //TODO: Placeholder

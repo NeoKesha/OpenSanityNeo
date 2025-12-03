@@ -2,10 +2,9 @@
 #include <stl.h>
 #include "twin_main.h"
 #include <game/game_context.h>
+#include <graphics.h>
+#include <time/time.h>
 
-
-
-/*
 static char buffer[256];
 
 class DSDevice {
@@ -60,53 +59,32 @@ extern "C" int GameState;
 extern "C" __stdcall FUN_0012E030();
 void (__fastcall *ReleaseDSound)(DSDevice*) = reinterpret_cast<void(__fastcall*)(DSDevice*)>(FUN_0012E030);
 
-class VideoPlayer : public TwinBase {
-public:
-	void** vftable;
-	int flags;
-	int a;
-	int b;
-	TwinString fmvName;
-};
-extern "C" VideoPlayer* VIDEO_PLAYER;
-
 extern "C" __stdcall FUN_000CFE70();
-void (__fastcall *GameContextUpdateGameState)(void*, void*, int) = reinterpret_cast<void(__fastcall*)(void*, void*, int)>(FUN_000CFE70);
-extern "C" void __fastcall SpyUpdateGameState(void* gameContext, void* reserved, int flags) {
-	GameContextUpdateGameState(gameContext, reserved, flags);
+void (__fastcall *_GameContextUpdateGameState)(void*, void*, int) = reinterpret_cast<void(__fastcall*)(void*, void*, int)>(FUN_000CFE70);
+extern "C" void __fastcall GameContextUpdateGameState(void* gameContext, int flags) {
+	_GameContextUpdateGameState(gameContext, 0, flags);
 }
 
 extern "C" void __stdcall FUN_000CFFD0();
-void (__fastcall *GameContextDoStuff)(void*, void*, int) = reinterpret_cast<void (__fastcall*)(void*, void*, int)>(FUN_000CFFD0);
-extern "C" void __fastcall SpyGameContextDoStuff(void* gameContext, void* reserved, int flags) {
-	GameContextDoStuff(gameContext, reserved, flags);
+void (__fastcall *_GameContextDoStuff)(void*, void*, int) = reinterpret_cast<void (__fastcall*)(void*, void*, int)>(FUN_000CFFD0);
+extern "C" void __fastcall GameContextDoStuff(void* gameContext, int flags) {
+	_GameContextDoStuff(gameContext, 0, flags);
 
 }
 
 extern "C" void __stdcall FUN_000D0070();
-void (__fastcall *GameContextProcessCredits)(void*, void*, bool) = reinterpret_cast<void (__fastcall*)(void*, void*, bool)>(FUN_000D0070);
-extern "C" void __fastcall SpyProcessCredits(void* gameContext, void* reserved, int flags) {
-	GameContextProcessCredits(gameContext, reserved, flags);
-}
-
-extern "C" void __stdcall FUN_000D0750();
-void (__fastcall *GameContextEndFrameUpdate)(void*, void*, bool) = reinterpret_cast<void (__fastcall*)(void*, void*, bool)>(FUN_000D0750);
-extern "C" void __fastcall SpyEndFrameUpdate(void* gameContext, void* reserved, bool flags) {
-	GameContextEndFrameUpdate(gameContext, reserved, flags);
+void (__fastcall *_GameContextProcessCredits)(void*, void*, bool) = reinterpret_cast<void (__fastcall*)(void*, void*, bool)>(FUN_000D0070);
+extern "C" void __fastcall GameContextProcessCredits(void* gameContext, int flags) {
+	_GameContextProcessCredits(gameContext, 0, flags);
 }
 
 extern "C" Reflection reflection;
-extern "C" void __cdecl FUN_0020F490(void* ptr, int param, TwinString* str);
-extern "C" void __cdecl SpyFUN_XX20f490(void* ptr, int param, TwinString* str) {
-	OutputDebugString(str->buffer);
-	FUN_0020F490(ptr, param, str);
-}
 
-inline bool IsVideoPlayerUp(VideoPlayer* videoPlayer) {
-	return (videoPlayer != 0) && ((videoPlayer->flags & 0xf000) == 0x2000);
+inline int IsVideoPlayerUp(VideoPlayer* videoPlayer) {
+	return (int)((videoPlayer != 0) && ((videoPlayer->flags & 0xf000) == 0x2000));
 }
 extern "C" int DAT_003ead50;
-extern "C" void __cdecl main(int argc, char** argv) {
+extern "C" void __cdecl dmain(int argc, char** argv) {
 	FUN_000C62A4(); //cinit
 	LAUNCH_DATA launchData;
 	DWORD launchType;
@@ -132,7 +110,7 @@ extern "C" void __cdecl main(int argc, char** argv) {
 	IterateLanguages(5,&PTR_s_English_0039eb4c);
 	
 	//TODO: implement GameContext
-	void* gameContext = SpyFUN_000CF930(argc, argv);
+	GameContext* gameContext = (GameContext*)SpyFUN_000CF930(argc, argv);
 	//Mock construct
 	RENDERER = (RenderSystem*)_AllocateMemory(sizeof(RENDERER));
 	RenderSystemConstruct(RENDERER, 0, SCREEN_WIDTH, SCREEN_HEIGHT, IS_PAL);
@@ -145,11 +123,11 @@ extern "C" void __cdecl main(int argc, char** argv) {
 	while(GameState != 5) {
 		DAT_003ead50 = 0;
 		DirectSoundDoWork();
-		RegisterScreenSurfaces();
-		GameContextUpdateGameState(gameContext, 0, IsVideoPlayerUp(VIDEO_PLAYER));
-		GameContextDoStuff(gameContext, 0, IsVideoPlayerUp(VIDEO_PLAYER));
-		GameContextProcessCredits(gameContext, 0, IsVideoPlayerUp(VIDEO_PLAYER));
-		GameContextEndFrameUpdate(gameContext, 0, IsVideoPlayerUp(VIDEO_PLAYER));
+		int flags = (int)RegisterScreenSurfaces();
+		GameContextUpdateGameState(gameContext, (flags & 0xFFFFFF00) | IsVideoPlayerUp(VIDEO_PLAYER));
+		GameContextDoStuff(gameContext, (flags & 0xFFFFFF00) | IsVideoPlayerUp(VIDEO_PLAYER));
+		GameContextProcessCredits(gameContext, (flags & 0xFFFFFF00) | IsVideoPlayerUp(VIDEO_PLAYER));
+		gameContext->EndFrameUpdate((flags & 0xFFFFFF00) | IsVideoPlayerUp(VIDEO_PLAYER));
 		ReleaseScreenSurfaces();
 	}
 	
@@ -159,12 +137,3 @@ extern "C" void __cdecl main(int argc, char** argv) {
 	//delete RENDERER;
 	//delete gameContext;
 }
-
-extern "C" void __cdecl DoSoundsStuff(bool flag, void* ptr) {
-	
-}
-
-extern "C" void __cdecl DoMemoryTasks(bool flag) {
-	
-}
-*/
