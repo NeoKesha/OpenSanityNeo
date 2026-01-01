@@ -26,7 +26,7 @@ void InstanceNodeAbstract::SetCtx(InstanceContext* ctx) {
 	}
 }
 
-bool InstanceNodeAbstract::IsA() {
+bool InstanceNodeAbstract::IsA(int param1, void* param2) {
 	return true;
 }
 

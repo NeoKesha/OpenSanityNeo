@@ -13,7 +13,7 @@ public:
 	virtual void ReleaseCtxPtr(InstanceContextSmartPtr ptr);
 	virtual ~InstanceNodeAbstract();
 	virtual void SetCtx(InstanceContext* ctx);
-	virtual bool IsA();
+	virtual bool IsA(int param1, void* param2);
 	virtual int GetIndex() = 0;
 	virtual void EmptyFunction(int param);
 	virtual void UpdateTime(UnkTimePack* time, int flags);
